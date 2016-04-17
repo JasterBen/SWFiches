@@ -3,10 +3,11 @@ package com.example.hokan.swfiches.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,14 +17,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.example.hokan.swfiches.Adapter.CampaignAdapter;
+import com.example.hokan.swfiches.adapters.CampaignAdapter;
 import com.example.hokan.swfiches.R;
-import com.example.hokan.swfiches.activities.CharacterListActivity;
+import com.example.hokan.swfiches.activities.CampaignActivity;
 import com.example.hokan.swfiches.items.Campaign;
-
-import java.util.ArrayList;
 
 /**
  * Created by Utilisateur on 02/02/2016.
@@ -32,13 +30,14 @@ public class CampaignFragment extends Fragment implements View.OnClickListener,
         AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
     private final static int EDITTEXT_ID = 0;
-    public final static String CAMPAIGN = "campaign";
 
     protected CampaignAdapter campaignAdapter;
+    protected CampaignActivity act;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        act = (CampaignActivity) getActivity();
     }
 
     @Nullable
@@ -46,15 +45,13 @@ public class CampaignFragment extends Fragment implements View.OnClickListener,
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_campaign_list, container, false);
 
-        Context context = getContext();
-
         Button addCampaign = (Button) v.findViewById(R.id.add_campaign_button);
         addCampaign.setOnClickListener(this);
 
         RecyclerView recycler = (RecyclerView) v.findViewById(R.id.campaign_list);
 
-        recycler.setLayoutManager(new LinearLayoutManager(context));
-        campaignAdapter = new CampaignAdapter(context, this);
+        recycler.setLayoutManager(new LinearLayoutManager(act));
+        campaignAdapter = new CampaignAdapter(act, this, act);
         recycler.setAdapter(campaignAdapter);
 
         return v;
@@ -102,9 +99,18 @@ public class CampaignFragment extends Fragment implements View.OnClickListener,
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Campaign c = campaignAdapter.getItem(position);
-        Intent intent = new Intent(getContext(), CharacterListActivity.class);
-        intent.putExtra(CAMPAIGN, c);
-        startActivity(intent);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(CampaignActivity.CAMPAIGN, c);
+
+        CampaignActivity act =  (CampaignActivity) getActivity();
+        FragmentManager mgr = act.getSupportFragmentManager();
+        FragmentTransaction transaction = mgr.beginTransaction();
+
+        CharacterListFragment frag = new CharacterListFragment();
+        frag.setArguments(bundle);
+        transaction.replace(R.id.home_page_fragment, frag);
+        transaction.addToBackStack("campaign_fragment");
+        transaction.commit();
     }
 
     @Override

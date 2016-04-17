@@ -1,7 +1,5 @@
 package com.example.hokan.swfiches.fragments;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,9 +15,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.hokan.swfiches.Adapter.CharacterListAdapter;
+import com.example.hokan.swfiches.adapters.CharacterListAdapter;
 import com.example.hokan.swfiches.R;
-import com.example.hokan.swfiches.activities.CharacterListActivity;
+import com.example.hokan.swfiches.activities.CampaignActivity;
+import com.example.hokan.swfiches.items.Campaign;
 import com.example.hokan.swfiches.items.SWCharacter;
 
 /**
@@ -31,12 +30,19 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
     private final static int EDITTEXT_ID = 0;
 
     protected CharacterListAdapter adapter;
-    protected CharacterListActivity activity;
+    protected CampaignActivity activity;
+    protected Campaign campaign;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activity = (CharacterListActivity) getActivity();
+        activity = (CampaignActivity) getActivity();
+
+        Bundle bundle = getArguments();
+        if (bundle != null)
+        {
+            campaign = bundle.getParcelable(CampaignActivity.CAMPAIGN);
+        }
     }
 
     @Nullable
@@ -45,7 +51,7 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
         View v = inflater.inflate(R.layout.fragment_character_list, container, false);
 
         TextView title = (TextView) v.findViewById(R.id.character_list_campaign_name);
-        title.setText(activity.getCampaign().getName());
+        title.setText(campaign.getName());
 
         Button addCharacter = (Button) v.findViewById(R.id.add_character_button);
         addCharacter.setOnClickListener(this);
@@ -53,10 +59,15 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
         RecyclerView recycler = (RecyclerView) v.findViewById(R.id.character_list);
 
         recycler.setLayoutManager(new LinearLayoutManager(activity));
-        adapter = new CharacterListAdapter(activity, this);
+        adapter = new CharacterListAdapter(activity, this, activity);
         recycler.setAdapter(adapter);
 
         return v;
+    }
+
+
+    public Campaign getCampaign() {
+        return campaign;
     }
 
     @Override

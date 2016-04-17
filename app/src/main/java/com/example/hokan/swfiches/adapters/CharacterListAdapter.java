@@ -1,6 +1,5 @@
-package com.example.hokan.swfiches.Adapter;
+package com.example.hokan.swfiches.adapters;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hokan.swfiches.R;
-import com.example.hokan.swfiches.activities.CharacterListActivity;
+import com.example.hokan.swfiches.activities.CampaignActivity;
 import com.example.hokan.swfiches.fragments.CharacterListFragment;
+import com.example.hokan.swfiches.interfaces.CampaignListInterface;
 import com.example.hokan.swfiches.items.Campaign;
 import com.example.hokan.swfiches.items.SWCharacter;
 
@@ -24,9 +24,10 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
 
     protected ArrayList<SWCharacter> characterList;
     protected int characterListSize;
-    protected WeakReference<CharacterListActivity> act = new WeakReference<CharacterListActivity>(null);
+    protected WeakReference<CampaignActivity> act = new WeakReference<CampaignActivity>(null);
     protected CharacterListFragment fragment;
     protected Campaign campaign;
+    protected CampaignListInterface campaignListInterface;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -43,12 +44,13 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
 
     }
 
-    public CharacterListAdapter(CharacterListActivity activity, CharacterListFragment frag) {
-        act = new WeakReference<CharacterListActivity>(activity);
-        campaign = act.get().getCampaign();
+    public CharacterListAdapter(CampaignActivity activity, CharacterListFragment frag, CampaignListInterface cli) {
+        act = new WeakReference<CampaignActivity>(activity);
+        fragment = frag;
+        campaign = fragment.getCampaign();
         characterList = campaign.getCharacterList();
         characterListSize = characterList.size();
-        fragment = frag;
+        campaignListInterface = cli;
     }
 
     @Override
@@ -88,7 +90,7 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
         characterList.add(character);
         characterListSize++;
         notifyDataSetChanged();
-        campaign.setCharacterList(characterList);
+        campaignListInterface.changeCharacterList(campaign, characterList);
     }
 
     public void removeItem(int position)
@@ -96,7 +98,7 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
         characterList.remove(position);
         characterListSize--;
         notifyDataSetChanged();
-        campaign.setCharacterList(characterList);
+        campaignListInterface.changeCharacterList(campaign, characterList);
     }
 
     public SWCharacter getItem(int position)
