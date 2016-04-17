@@ -32,6 +32,7 @@ public class CampaignFragment extends Fragment implements View.OnClickListener,
         AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
     private final static int EDITTEXT_ID = 0;
+    public final static String CAMPAIGN = "campaign";
 
     protected CampaignAdapter campaignAdapter;
 
@@ -100,10 +101,9 @@ public class CampaignFragment extends Fragment implements View.OnClickListener,
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //TODO: lancer l'activité suivante AVEC LA BONNE CAMPAGNE !!!
         Campaign c = campaignAdapter.getItem(position);
-        //Toast.makeText(getContext(), c.getName(), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getContext(), CharacterListActivity.class);
+        intent.putExtra(CAMPAIGN, c);
         startActivity(intent);
     }
 

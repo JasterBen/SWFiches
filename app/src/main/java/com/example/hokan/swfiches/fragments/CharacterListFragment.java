@@ -15,9 +15,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.hokan.swfiches.Adapter.CharacterListAdapter;
 import com.example.hokan.swfiches.R;
+import com.example.hokan.swfiches.activities.CharacterListActivity;
 import com.example.hokan.swfiches.items.SWCharacter;
 
 /**
@@ -29,10 +31,12 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
     private final static int EDITTEXT_ID = 0;
 
     protected CharacterListAdapter adapter;
+    protected CharacterListActivity activity;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        activity = (CharacterListActivity) getActivity();
     }
 
     @Nullable
@@ -40,15 +44,16 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_character_list, container, false);
 
-        Context context = getContext();
+        TextView title = (TextView) v.findViewById(R.id.character_list_campaign_name);
+        title.setText(activity.getCampaign().getName());
 
         Button addCharacter = (Button) v.findViewById(R.id.add_character_button);
         addCharacter.setOnClickListener(this);
 
         RecyclerView recycler = (RecyclerView) v.findViewById(R.id.character_list);
 
-        recycler.setLayoutManager(new LinearLayoutManager(context));
-        adapter = new CharacterListAdapter(context, this);
+        recycler.setLayoutManager(new LinearLayoutManager(activity));
+        adapter = new CharacterListAdapter(activity, this);
         recycler.setAdapter(adapter);
 
         return v;
@@ -67,8 +72,6 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
 
     private void createNewCharacter()
     {
-        Activity activity = getActivity();
-
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(R.string.add_character_dialog_title);
         builder.setMessage(R.string.add_character_dialog_message);
@@ -101,7 +104,7 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(R.string.remove_character_dialog_title);
         builder.setMessage(R.string.remove_character_dialog_message);
         builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {

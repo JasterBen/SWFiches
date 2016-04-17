@@ -58,7 +58,7 @@ public class CampaignAdapter extends RecyclerView.Adapter<CampaignAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        holder.campaignTitle.setText(campaignList.get(position).getName());
+        holder.campaignTitle.setText(getItem(position).getName());
         holder.v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

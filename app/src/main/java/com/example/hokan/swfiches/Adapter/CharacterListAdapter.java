@@ -9,7 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hokan.swfiches.R;
+import com.example.hokan.swfiches.activities.CharacterListActivity;
 import com.example.hokan.swfiches.fragments.CharacterListFragment;
+import com.example.hokan.swfiches.items.Campaign;
 import com.example.hokan.swfiches.items.SWCharacter;
 
 import java.lang.ref.WeakReference;
@@ -22,8 +24,9 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
 
     protected ArrayList<SWCharacter> characterList;
     protected int characterListSize;
-    protected WeakReference<Context> ctx = new WeakReference<Context>(null);
+    protected WeakReference<CharacterListActivity> act = new WeakReference<CharacterListActivity>(null);
     protected CharacterListFragment fragment;
+    protected Campaign campaign;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -40,16 +43,17 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
 
     }
 
-    public CharacterListAdapter(Context context, CharacterListFragment frag) {
-        characterList = new ArrayList<>();
+    public CharacterListAdapter(CharacterListActivity activity, CharacterListFragment frag) {
+        act = new WeakReference<CharacterListActivity>(activity);
+        campaign = act.get().getCampaign();
+        characterList = campaign.getCharacterList();
         characterListSize = characterList.size();
-        ctx = new WeakReference<Context>(context);
         fragment = frag;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(ctx.get()).inflate(R.layout.cell_character_list, parent, false);
+        View v = LayoutInflater.from(act.get()).inflate(R.layout.cell_character_list, parent, false);
         return new ViewHolder(v);
     }
 
@@ -84,6 +88,7 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
         characterList.add(character);
         characterListSize++;
         notifyDataSetChanged();
+        campaign.setCharacterList(characterList);
     }
 
     public void removeItem(int position)
@@ -91,6 +96,7 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
         characterList.remove(position);
         characterListSize--;
         notifyDataSetChanged();
+        campaign.setCharacterList(characterList);
     }
 
     public SWCharacter getItem(int position)
