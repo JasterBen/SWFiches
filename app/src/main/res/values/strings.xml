@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">SWFiches</string>
+
+    <string name="add_campaign">Add a new campaign</string>
+    <string name="add_campaign_dialog_title">Add campaign</string>
+    <string name="add_campaign_dialog_message">Name your campaign</string>
+    <string name="campagne_default_title">Campagne %d</string>
+    <string name="remove_campaign_dialog_title">Remove campaign</string>
+    <string name="remove_campaign_dialog_message">Are you sure you want to remove this campaign ?</string>
+
+
+    <string name="add_character">Add a new character</string>
+    <string name="add_character_dialog_title">Add character</string>
+    <string name="add_character_dialog_message">Name your character</string>
+    <string name="character_default_name">Character %d</string>
+    <string name="remove_character_dialog_title">Remove character</string>
+    <string name="remove_character_dialog_message">Are you sure you want to remove this character ?</string>
+
+</resources>
