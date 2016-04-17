@@ -16,6 +16,8 @@ public class SWCharacter implements Parcelable {
     protected Carreer carreer;
     //protected ArrayList<Skill> skills;
 
+
+
     public SWCharacter(String name) {
         this.name = name;
     }

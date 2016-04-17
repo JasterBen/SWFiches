@@ -26,7 +26,7 @@ import com.example.hokan.swfiches.items.Campaign;
 /**
  * Created by Utilisateur on 02/02/2016.
  */
-public class CampaignFragment extends Fragment implements View.OnClickListener,
+public class CampaignListFragment extends Fragment implements View.OnClickListener,
         AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
     private final static int EDITTEXT_ID = 0;
@@ -76,16 +76,19 @@ public class CampaignFragment extends Fragment implements View.OnClickListener,
         builder.setTitle(R.string.add_campaign_dialog_title);
         builder.setMessage(R.string.add_campaign_dialog_message);
 
+        final String title = String.format(getString(R.string.campagne_default_title), campaignAdapter.getItemCount() + 1);
+
         final EditText input = new EditText(activity);
         input.setId(EDITTEXT_ID);
+        input.setHint(title);
         builder.setView(input);
 
         builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String name = !input.getText().toString().equals("") ?
-                        input.getText().toString() :
-                        String.format(getString(R.string.campagne_default_title), campaignAdapter.getItemCount() + 1);
+                        input.getText().toString() : title;
+
 
                 Campaign campaign = new Campaign(name);
                 campaignAdapter.addItem(campaign);

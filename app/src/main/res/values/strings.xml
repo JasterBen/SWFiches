@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">SWFiches</string>
 
+    <!-- Campaign List Fragment -->
     <string name="add_campaign">Add a new campaign</string>
     <string name="add_campaign_dialog_title">Add campaign</string>
     <string name="add_campaign_dialog_message">Name your campaign</string>
@@ -9,6 +10,7 @@
     <string name="remove_campaign_dialog_message">Are you sure you want to remove this campaign ?</string>
 
 
+    <!-- Character List Fragment -->
     <string name="add_character">Add a new character</string>
     <string name="add_character_dialog_title">Add character</string>
     <string name="add_character_dialog_message">Name your character</string>

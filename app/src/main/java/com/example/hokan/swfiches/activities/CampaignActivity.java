@@ -10,7 +10,7 @@ import android.os.Bundle;
 
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.SWFichesApplication;
-import com.example.hokan.swfiches.fragments.CampaignFragment;
+import com.example.hokan.swfiches.fragments.CampaignListFragment;
 import com.example.hokan.swfiches.interfaces.CampaignListInterface;
 import com.example.hokan.swfiches.items.Campaign;
 import com.example.hokan.swfiches.items.SWCharacter;
@@ -40,7 +40,7 @@ public class CampaignActivity extends AppCompatActivity implements CampaignListI
             FragmentManager mgr = getSupportFragmentManager();
             FragmentTransaction transaction = mgr.beginTransaction();
 
-            CampaignFragment frag = new CampaignFragment();
+            CampaignListFragment frag = new CampaignListFragment();
 
             transaction.replace(R.id.home_page_fragment, frag);
             transaction.commit();

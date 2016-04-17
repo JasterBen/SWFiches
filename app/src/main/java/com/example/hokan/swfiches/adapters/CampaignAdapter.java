@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hokan.swfiches.R;
-import com.example.hokan.swfiches.fragments.CampaignFragment;
+import com.example.hokan.swfiches.fragments.CampaignListFragment;
 import com.example.hokan.swfiches.interfaces.CampaignListInterface;
 import com.example.hokan.swfiches.items.Campaign;
 
@@ -21,7 +21,7 @@ import java.lang.ref.WeakReference;
 public class CampaignAdapter extends RecyclerView.Adapter<CampaignAdapter.ViewHolder> {
 
     protected WeakReference<Context> ctx = new WeakReference<Context>(null);
-    protected CampaignFragment fragment;
+    protected CampaignListFragment fragment;
     protected CampaignListInterface campaignListInterface;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -38,7 +38,7 @@ public class CampaignAdapter extends RecyclerView.Adapter<CampaignAdapter.ViewHo
         }
     }
 
-    public CampaignAdapter(Context context, CampaignFragment frag, CampaignListInterface cli) {
+    public CampaignAdapter(Context context, CampaignListFragment frag, CampaignListInterface cli) {
         ctx = new WeakReference<Context>(context);
         fragment = frag;
         campaignListInterface = cli;

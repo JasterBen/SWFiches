@@ -11,23 +11,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.hokan.swfiches.SWFichesApplication;
 import com.example.hokan.swfiches.adapters.CharacterListAdapter;
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.activities.CampaignActivity;
 import com.example.hokan.swfiches.items.Campaign;
 import com.example.hokan.swfiches.items.SWCharacter;
+import com.example.hokan.swfiches.items.Specie;
 
 /**
  * Created by Ben on 17/04/2016.
  */
 public class CharacterListFragment extends Fragment implements View.OnClickListener,
-        AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener{
-
-    private final static int EDITTEXT_ID = 0;
+        AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
     protected CharacterListAdapter adapter;
     protected CampaignActivity activity;
@@ -87,18 +90,40 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
         builder.setTitle(R.string.add_character_dialog_title);
         builder.setMessage(R.string.add_character_dialog_message);
 
-        final EditText input = new EditText(activity);
-        input.setId(EDITTEXT_ID);
-        builder.setView(input);
+        LayoutInflater inflater = LayoutInflater.from(activity);
+        View v = inflater.inflate(R.layout.dialog_create_character, null);
+
+        final String name = String.format(getString(R.string.character_default_name), adapter.getItemCount() + 1);
+        final SWCharacter character = new SWCharacter(name);
+
+        final EditText input = (EditText) v.findViewById(R.id.dialog_create_character_name);
+        input.setHint(name);
+
+        final Spinner speciesSpinner = (Spinner) v.findViewById(R.id.dialog_create_character_species);
+
+        ArrayAdapter<Specie> spinnerAdapter = new ArrayAdapter<Specie>(activity,
+                android.R.layout.simple_spinner_dropdown_item, SWFichesApplication.getApp().getSpeciesList());
+        speciesSpinner.setAdapter(spinnerAdapter);
+        speciesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                character.setSpecie((Specie) parent.getAdapter().getItem(position));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        builder.setView(v);
 
         builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String name = !input.getText().toString().equals("") ?
-                        input.getText().toString() :
-                        String.format(getString(R.string.character_default_name), adapter.getItemCount() + 1);
+                String newName = !input.getText().toString().equals("") ?
+                        input.getText().toString() : name;
 
-                SWCharacter character = new SWCharacter(name);
+                character.setName(newName);
                 adapter.addItem(character);
             }
         });
@@ -109,7 +134,13 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //lancer l'activité suivante
+        //lancer l'activité suivante qui affiche la fiche perso
+        SWCharacter c = adapter.getItem(position);
+        Specie s = c.getSpecie();
+        String format = "Espèce : %s\nVig : %d\nWound : %d\nCan use the force : %s";
+        Toast.makeText(activity,
+                String.format(format, s.getName(), s.getBrawn(), (s.getWound() + s.getBrawn()),
+                        s.isCanHaveForce() ? "Vrai" : "Faux"), Toast.LENGTH_SHORT).show();
 
     }
 
@@ -129,5 +160,4 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
 
         return false;
     }
-
 }
