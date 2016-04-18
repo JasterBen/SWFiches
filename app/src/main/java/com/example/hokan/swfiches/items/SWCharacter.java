@@ -3,8 +3,6 @@ package com.example.hokan.swfiches.items;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
-
 /**
  * Created by Utilisateur on 02/02/2016.
  */
@@ -13,7 +11,7 @@ public class SWCharacter implements Parcelable {
     protected String name;
     protected Specie specie;
     protected int forceRating;
-    protected Carreer carreer;
+    protected Career career;
     //protected ArrayList<Skill> skills;
 
 
@@ -38,12 +36,12 @@ public class SWCharacter implements Parcelable {
         this.specie = specie;
     }
 
-    public Carreer getCarreer() {
-        return carreer;
+    public Career getCareer() {
+        return career;
     }
 
-    public void setCarreer(Carreer carreer) {
-        this.carreer = carreer;
+    public void setCareer(Career career) {
+        this.career = career;
     }
 
     @Override
@@ -56,7 +54,7 @@ public class SWCharacter implements Parcelable {
         dest.writeString(name);
         dest.writeParcelable(specie, 0);
         dest.writeInt(forceRating);
-        dest.writeParcelable(carreer, 1);
+        dest.writeParcelable(career, 1);
     }
 
     public static final Parcelable.Creator<SWCharacter> CREATOR
@@ -74,6 +72,6 @@ public class SWCharacter implements Parcelable {
         name = in.readString();
         specie = in.readParcelable(Specie.class.getClassLoader());
         forceRating = in.readInt();
-        carreer = in.readParcelable(Carreer.class.getClassLoader());
+        career = in.readParcelable(Career.class.getClassLoader());
     }
 }

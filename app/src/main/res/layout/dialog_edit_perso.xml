@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/dialog_edit_perso_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Spinner
+        android:id="@+id/dialog_edit_perso_specie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </Spinner>
+
+    <Button
+        android:id="@+id/dialog_edit_perso_career"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_career"/>
+
+    <Button
+        android:id="@+id/dialog_edit_perso_specialization"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_first_specialization"/>
+
+    <Button
+        android:id="@+id/dialog_edit_perso_add_specialization"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_specialization"
+        android:enabled="false"/>
+
+</LinearLayout>

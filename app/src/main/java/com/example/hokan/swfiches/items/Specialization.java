@@ -9,7 +9,7 @@ public class Specialization {
 
     protected String name;
     protected ArrayList<Skill> carreerSkills;
-    protected Carreer carreur;
+    protected Career carreur;
 
 
 }

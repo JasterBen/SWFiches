@@ -1,6 +1,7 @@
 package com.example.hokan.swfiches.fragments;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hokan.swfiches.SWFichesApplication;
+import com.example.hokan.swfiches.activities.PlayerActivity;
 import com.example.hokan.swfiches.adapters.CharacterListAdapter;
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.activities.CampaignActivity;
@@ -134,14 +136,10 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //lancer l'activité suivante qui affiche la fiche perso
         SWCharacter c = adapter.getItem(position);
-        Specie s = c.getSpecie();
-        String format = "Espèce : %s\nVig : %d\nWound : %d\nCan use the force : %s";
-        Toast.makeText(activity,
-                String.format(format, s.getName(), s.getBrawn(), (s.getWound() + s.getBrawn()),
-                        s.isCanHaveForce() ? "Vrai" : "Faux"), Toast.LENGTH_SHORT).show();
-
+        Intent intent = new Intent(activity, PlayerActivity.class);
+        intent.putExtra(PlayerActivity.CHARACTER, c);
+        startActivity(intent);
     }
 
     @Override
