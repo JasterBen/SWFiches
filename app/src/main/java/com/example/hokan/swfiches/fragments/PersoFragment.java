@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.SWFichesApplication;
@@ -34,6 +33,8 @@ public class PersoFragment extends Fragment implements View.OnClickListener {
     protected TextView specTextView;
     protected PlayerActivity activity;
     protected SWCharacter character;
+    protected Button addCareer;
+    protected Button addSpecialization;
     protected Button addNewSpecialization;
 
 
@@ -57,8 +58,10 @@ public class PersoFragment extends Fragment implements View.OnClickListener {
         specieTextView.setText(character.getSpecie().getName());
 
         careerTextView = (TextView) v.findViewById(R.id.fragment_perso_career);
+        careerTextView.setText(character.getCareer() != null ? character.getCareer().getName() : "");
 
         specTextView = (TextView) v.findViewById(R.id.fragment_perso_specialization);
+        specTextView.setText(character.getMainSpecialization() != null ? character.getMainSpecialization().getName() : "");
 
         v.setOnClickListener(this);
 
@@ -103,10 +106,10 @@ public class PersoFragment extends Fragment implements View.OnClickListener {
             });
             //endregion
 
-            Button addCareer = (Button) dialogContent.findViewById(R.id.dialog_edit_perso_career);
+            addCareer = (Button) dialogContent.findViewById(R.id.dialog_edit_perso_career);
             addCareer.setOnClickListener(this);
 
-            Button addSpecialization = (Button) dialogContent.findViewById(R.id.dialog_edit_perso_specialization);
+            addSpecialization = (Button) dialogContent.findViewById(R.id.dialog_edit_perso_specialization);
             addSpecialization.setOnClickListener(this);
 
             addNewSpecialization = (Button) dialogContent.findViewById(R.id.dialog_edit_perso_add_specialization);
@@ -154,7 +157,9 @@ public class PersoFragment extends Fragment implements View.OnClickListener {
             builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    careerTextView.setText(character.getCareer().getName());
+                    String name = character.getCareer().getName();
+                    careerTextView.setText(name);
+                    addCareer.setText(name);
                 }
             });
 

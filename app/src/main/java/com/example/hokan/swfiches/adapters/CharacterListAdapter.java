@@ -105,4 +105,11 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
     {
         return characterList.get(position);
     }
+
+    public void setItem(SWCharacter character, int position)
+    {
+        characterList.set(position, character);
+        notifyDataSetChanged();
+        campaignListInterface.changeCharacterList(campaign, characterList);
+    }
 }

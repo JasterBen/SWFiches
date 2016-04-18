@@ -3,6 +3,8 @@ package com.example.hokan.swfiches.items;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 /**
  * Created by Utilisateur on 02/02/2016.
  */
@@ -12,6 +14,8 @@ public class SWCharacter implements Parcelable {
     protected Specie specie;
     protected int forceRating;
     protected Career career;
+    protected Specialization mainSpecialization;
+    protected ArrayList<Specialization> secondarySpecializations;
     //protected ArrayList<Skill> skills;
 
 
@@ -42,6 +46,14 @@ public class SWCharacter implements Parcelable {
 
     public void setCareer(Career career) {
         this.career = career;
+    }
+
+    public Specialization getMainSpecialization() {
+        return mainSpecialization;
+    }
+
+    public void setMainSpecialization(Specialization mainSpecialization) {
+        this.mainSpecialization = mainSpecialization;
     }
 
     @Override

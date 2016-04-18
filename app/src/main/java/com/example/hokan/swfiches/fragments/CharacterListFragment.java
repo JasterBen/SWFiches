@@ -1,5 +1,6 @@
 package com.example.hokan.swfiches.fragments;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,13 +18,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.SWFichesApplication;
+import com.example.hokan.swfiches.activities.CampaignActivity;
 import com.example.hokan.swfiches.activities.PlayerActivity;
 import com.example.hokan.swfiches.adapters.CharacterListAdapter;
-import com.example.hokan.swfiches.R;
-import com.example.hokan.swfiches.activities.CampaignActivity;
 import com.example.hokan.swfiches.items.Campaign;
 import com.example.hokan.swfiches.items.SWCharacter;
 import com.example.hokan.swfiches.items.Specie;
@@ -139,7 +139,8 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
         SWCharacter c = adapter.getItem(position);
         Intent intent = new Intent(activity, PlayerActivity.class);
         intent.putExtra(PlayerActivity.CHARACTER, c);
-        startActivity(intent);
+        intent.putExtra(PlayerActivity.POSITION, position);
+        startActivityForResult(intent, CampaignActivity.REQUEST_CODE);
     }
 
     @Override
@@ -158,4 +159,21 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
 
         return false;
     }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == CampaignActivity.REQUEST_CODE)
+        {
+            if (resultCode == Activity.RESULT_OK)
+            {
+                SWCharacter character = data.getParcelableExtra(PlayerActivity.CHARACTER);
+                int position = data.getIntExtra(PlayerActivity.POSITION, 0);
+                adapter.setItem(character, position);
+            }
+        }
+    }
+
+
 }

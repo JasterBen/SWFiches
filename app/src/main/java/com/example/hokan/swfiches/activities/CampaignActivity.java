@@ -20,6 +20,7 @@ import java.util.ArrayList;
 public class CampaignActivity extends AppCompatActivity implements CampaignListInterface {
 
     public final static String CAMPAIGN = "campaign";
+    public final static int REQUEST_CODE = 1;
 
     protected ArrayList<Campaign> campaignList;
     protected int campainListSize;
