@@ -6,7 +6,8 @@
     <EditText
         android:id="@+id/dialog_create_character_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:singleLine="true"/>
 
     <Spinner
         android:id="@+id/dialog_create_character_species"

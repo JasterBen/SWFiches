@@ -1,13 +1,12 @@
 package com.example.hokan.swfiches.fragments;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,9 +17,9 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.hokan.swfiches.adapters.CampaignAdapter;
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.activities.CampaignActivity;
+import com.example.hokan.swfiches.adapters.CampaignAdapter;
 import com.example.hokan.swfiches.items.Campaign;
 
 /**
@@ -81,6 +80,7 @@ public class CampaignListFragment extends Fragment implements View.OnClickListen
         final EditText input = new EditText(activity);
         input.setId(EDITTEXT_ID);
         input.setHint(title);
+        input.setSingleLine();
         builder.setView(input);
 
         builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {

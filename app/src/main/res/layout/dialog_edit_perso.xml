@@ -6,7 +6,8 @@
     <EditText
         android:id="@+id/dialog_edit_perso_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:singleLine="true"/>
 
     <Spinner
         android:id="@+id/dialog_edit_perso_specie"
@@ -17,14 +18,12 @@
     <Button
         android:id="@+id/dialog_edit_perso_career"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/add_career"/>
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/dialog_edit_perso_specialization"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/add_first_specialization"/>
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/dialog_edit_perso_add_specialization"

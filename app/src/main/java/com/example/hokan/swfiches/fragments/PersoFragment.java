@@ -36,6 +36,8 @@ public class PersoFragment extends Fragment implements View.OnClickListener {
     protected Button addCareer;
     protected Button addSpecialization;
     protected Button addNewSpecialization;
+    private String careerButtonText;
+    private String specButtonText;
 
 
     @Override
@@ -43,6 +45,7 @@ public class PersoFragment extends Fragment implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         activity = (PlayerActivity) getActivity();
         character = activity.getCharacter();
+
     }
 
     @Nullable
@@ -107,9 +110,13 @@ public class PersoFragment extends Fragment implements View.OnClickListener {
             //endregion
 
             addCareer = (Button) dialogContent.findViewById(R.id.dialog_edit_perso_career);
+            addCareer.setText(character.getCareer() != null ?
+                    character.getCareer().getName() : getString(R.string.add_career));
             addCareer.setOnClickListener(this);
 
             addSpecialization = (Button) dialogContent.findViewById(R.id.dialog_edit_perso_specialization);
+            addSpecialization.setText(character.getMainSpecialization() != null ?
+                    character.getMainSpecialization().getName() : getString(R.string.add_first_specialization));
             addSpecialization.setOnClickListener(this);
 
             addNewSpecialization = (Button) dialogContent.findViewById(R.id.dialog_edit_perso_add_specialization);

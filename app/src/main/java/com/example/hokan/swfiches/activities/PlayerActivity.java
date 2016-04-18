@@ -2,12 +2,14 @@ package com.example.hokan.swfiches.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.hokan.swfiches.R;
+import com.example.hokan.swfiches.SWFichesApplication;
 import com.example.hokan.swfiches.fragments.PersoFragment;
 import com.example.hokan.swfiches.items.SWCharacter;
 
@@ -27,6 +29,9 @@ public class PlayerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
+
+        if (!SWFichesApplication.getApp().isTablet())
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
 
         if (savedInstanceState == null)
         {
