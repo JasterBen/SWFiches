@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.SWFichesApplication;
+import com.example.hokan.swfiches.fragments.CharacteristicFragment;
 import com.example.hokan.swfiches.fragments.PersoFragment;
 import com.example.hokan.swfiches.items.SWCharacter;
 
@@ -43,8 +44,10 @@ public class PlayerActivity extends AppCompatActivity {
             FragmentTransaction transaction = mgr.beginTransaction();
 
             PersoFragment persoFrag = new PersoFragment();
+            CharacteristicFragment characFrag = new CharacteristicFragment();
 
             transaction.replace(R.id.perso_frag_container, persoFrag);
+            transaction.replace(R.id.charac_frag_container, characFrag);
             transaction.commit();
         }
     }

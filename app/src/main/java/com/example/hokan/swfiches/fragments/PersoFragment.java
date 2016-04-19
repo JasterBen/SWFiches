@@ -136,6 +136,8 @@ public class PersoFragment extends Fragment implements View.OnClickListener {
         }
         else if (id == R.id.dialog_edit_perso_career)
         {
+            //TODO : add gridview of checkbox
+
             AlertDialog.Builder builder = new AlertDialog.Builder(activity);
             builder.setTitle(R.string.dialog_add_career_title);
 
@@ -174,11 +176,12 @@ public class PersoFragment extends Fragment implements View.OnClickListener {
         }
         else if (id == R.id.dialog_edit_perso_specialization)
         {
+            //TODO : create dialog
             addNewSpecialization.setEnabled(true);
         }
         else if (id == R.id.dialog_edit_perso_add_specialization)
         {
-
+            // TODO
         }
     }
 

@@ -18,6 +18,7 @@
     <string name="remove_character_dialog_title">Remove character</string>
     <string name="remove_character_dialog_message">Are you sure you want to remove this character ?</string>
 
+    
     <!-- PersoFrag -->
     <string name="add_career">Career</string>
     <string name="add_first_specialization">Specialization</string>
@@ -31,5 +32,20 @@
     <string name="format_career">Career : %s</string>
     <string name="format_spezcialization">Specializations : %s</string>
     <string name="format_multiple_specialization">, %s</string>
+    
+    
+    <!-- CharacteristicFrag -->
+    <string name="format_brawn">Brawn : %s</string>
+    <string name="format_agility">Agility : %s</string>
+    <string name="format_intelligence">Intelligence : %s</string>
+    <string name="format_cunning">Cunning : %s</string>
+    <string name="format_willpower">Willpower : %s</string>
+    <string name="format_presence">Presence : %s</string>
+    <string name="dialog_brawn">Brawn</string>
+    <string name="dialog_agility">Agility</string>
+    <string name="dialog_intelligence">Intelligence</string>
+    <string name="dialog_cunning">Cunning</string>
+    <string name="dialog_willpower">Willpower</string>
+    <string name="dialog_presence">Presence</string>
 
 </resources>
