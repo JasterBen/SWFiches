@@ -20,6 +20,7 @@ import com.example.hokan.swfiches.SWFichesApplication;
 import com.example.hokan.swfiches.activities.PlayerActivity;
 import com.example.hokan.swfiches.items.Career;
 import com.example.hokan.swfiches.items.SWCharacter;
+import com.example.hokan.swfiches.items.Specialization;
 import com.example.hokan.swfiches.items.Specie;
 
 /**
@@ -36,8 +37,6 @@ public class PersoFragment extends Fragment implements View.OnClickListener {
     protected Button addCareer;
     protected Button addSpecialization;
     protected Button addNewSpecialization;
-    private String careerButtonText;
-    private String specButtonText;
 
 
     @Override
@@ -55,16 +54,16 @@ public class PersoFragment extends Fragment implements View.OnClickListener {
         View v = inflater.inflate(R.layout.fragment_perso, container, false);
 
         nameTextView = (TextView) v.findViewById(R.id.fragment_perso_name);
-        nameTextView.setText(character.getName());
+        nameTextView.setText(formatString('n'));
 
         specieTextView = (TextView) v.findViewById(R.id.fragment_perso_specie);
-        specieTextView.setText(character.getSpecie().getName());
+        specieTextView.setText(formatString('r'));
 
         careerTextView = (TextView) v.findViewById(R.id.fragment_perso_career);
-        careerTextView.setText(character.getCareer() != null ? character.getCareer().getName() : "");
+        careerTextView.setText(formatString('c'));
 
         specTextView = (TextView) v.findViewById(R.id.fragment_perso_specialization);
-        specTextView.setText(character.getMainSpecialization() != null ? character.getMainSpecialization().getName() : "");
+        specTextView.setText(formatString('s'));
 
         v.setOnClickListener(this);
 
@@ -100,7 +99,7 @@ public class PersoFragment extends Fragment implements View.OnClickListener {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     character.setSpecie((Specie) parent.getAdapter().getItem(position));
-                    specieTextView.setText(character.getSpecie().getName());
+                    specieTextView.setText(formatString('r'));
                 }
 
                 @Override
@@ -128,7 +127,7 @@ public class PersoFragment extends Fragment implements View.OnClickListener {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     character.setName(nameEditText.getText().toString());
-                    nameTextView.setText(nameEditText.getText().toString());
+                    nameTextView.setText(formatString('n'));
                 }
             });
 
@@ -164,9 +163,8 @@ public class PersoFragment extends Fragment implements View.OnClickListener {
             builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    String name = character.getCareer().getName();
-                    careerTextView.setText(name);
-                    addCareer.setText(name);
+                    careerTextView.setText(formatString('c'));
+                    addCareer.setText(character.getCareer().getName());
                 }
             });
 
@@ -181,6 +179,37 @@ public class PersoFragment extends Fragment implements View.OnClickListener {
         else if (id == R.id.dialog_edit_perso_add_specialization)
         {
 
+        }
+    }
+
+
+    /**
+     * @param mode 'n' for name, 'r' for specie, 'c' for career, 's' for spezialisation
+     * @return
+     */
+    private String formatString(char mode)
+    {
+        switch (mode) {
+            case 'n':
+                return String.format(getString(R.string.format_name),
+                        character.getName() != null ? character.getName() : "");
+            case 'r':
+                return String.format(getString(R.string.format_specie),
+                        character.getSpecie() != null ? character.getSpecie().getName() : null);
+            case 'c':
+                return String.format(getString(R.string.format_career),
+                        character.getCareer() != null ? character.getCareer().getName() : "");
+            case 's':
+                String res = String.format(getString(R.string.format_spezcialization),
+                        character.getMainSpecialization() != null ? character.getMainSpecialization().getName() : "");
+                if (character.getSecondarySpecializations() != null) {
+                    for (Specialization s : character.getSecondarySpecializations()) {
+                        res += String.format(getString(R.string.format_multiple_specialization), s.getName());
+                    }
+                }
+                return res;
+            default :
+                return "";
         }
     }
 }

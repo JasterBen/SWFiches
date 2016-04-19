@@ -56,6 +56,14 @@ public class SWCharacter implements Parcelable {
         this.mainSpecialization = mainSpecialization;
     }
 
+    public ArrayList<Specialization> getSecondarySpecializations() {
+        return secondarySpecializations;
+    }
+
+    public void setSecondarySpecializations(ArrayList<Specialization> secondarySpecializations) {
+        this.secondarySpecializations = secondarySpecializations;
+    }
+
     @Override
     public int describeContents() {
         return 0;

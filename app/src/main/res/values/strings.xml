@@ -26,5 +26,10 @@
     <string name="dialog_add_career_title">@string/add_career</string>
     <string name="dialog_add_specialization_title">@string/add_first_specialization</string>
     <string name="dialog_add_new_specialization_title">@string/add_specialization</string>
+    <string name="format_name">Name : %s</string>
+    <string name="format_specie">Specie : %s</string>
+    <string name="format_career">Career : %s</string>
+    <string name="format_spezcialization">Specializations : %s</string>
+    <string name="format_multiple_specialization">, %s</string>
 
 </resources>
