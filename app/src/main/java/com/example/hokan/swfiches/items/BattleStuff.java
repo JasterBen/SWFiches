@@ -1,9 +1,12 @@
 package com.example.hokan.swfiches.items;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Ben on 18/04/2016.
  */
-public class BattleStuff {
+public class BattleStuff implements Parcelable {
 
     protected String name;
     protected int weight;
@@ -57,5 +60,39 @@ public class BattleStuff {
 
     public void setSpecial(String special) {
         this.special = special;
+    }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeInt(weight);
+        dest.writeInt(actualMod);
+        dest.writeInt(maxMod);
+        dest.writeString(special);
+    }
+
+    public static final Parcelable.Creator<BattleStuff> CREATOR
+            = new Parcelable.Creator<BattleStuff>() {
+        public BattleStuff createFromParcel(Parcel in) {
+            return new BattleStuff(in);
+        }
+
+        public BattleStuff[] newArray(int size) {
+            return new BattleStuff[size];
+        }
+    };
+
+    protected BattleStuff(Parcel in) {
+        name = in.readString();
+        weight = in.readInt();
+        actualMod = in.readInt();
+        maxMod = in.readInt();
+        special = in.readString();
     }
 }

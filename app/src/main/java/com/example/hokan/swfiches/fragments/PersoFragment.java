@@ -17,8 +17,11 @@ import android.widget.TextView;
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.SWFichesApplication;
 import com.example.hokan.swfiches.items.Career;
+import com.example.hokan.swfiches.items.Skill;
 import com.example.hokan.swfiches.items.Specialization;
 import com.example.hokan.swfiches.items.Specie;
+
+import java.util.ArrayList;
 
 /**
  * Created by Ben on 18/04/2016.
@@ -171,6 +174,9 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         else if (id == R.id.dialog_edit_perso_add_specialization)
         {
             // TODO
+
+            if (character.getCustomSkillList() == null)
+                character.setCustomSkillList(new ArrayList<Skill>());
         }
     }
 
@@ -197,8 +203,8 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
             case 's':
                 String res = String.format(getString(R.string.format_spezcialization),
                         character.getMainSpecialization() != null ? character.getMainSpecialization().getName() : "");
-                if (character.getSecondarySpecializations() != null) {
-                    for (Specialization s : character.getSecondarySpecializations()) {
+                if (character.getSecondarySpecializationList() != null) {
+                    for (Specialization s : character.getSecondarySpecializationList()) {
                         res += String.format(getString(R.string.format_multiple_specialization), s.getName());
                     }
                 }

@@ -1,9 +1,12 @@
 package com.example.hokan.swfiches.items;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Utilisateur on 03/02/2016.
  */
-public class Skill {
+public class Skill implements Parcelable {
 
     protected String name;
     protected int level;
@@ -19,6 +22,18 @@ public class Skill {
     protected char characteristic;
     protected boolean isCareer;
 
+
+    public Skill(String name, char characteristic) {
+        this.name = name;
+        this.characteristic = characteristic;
+    }
+
+    public Skill(String name, int level, char characteristic, boolean isCareer) {
+        this.name = name;
+        this.level = level;
+        this.characteristic = characteristic;
+        this.isCareer = isCareer;
+    }
 
     public String getName() {
         return name;
@@ -52,5 +67,37 @@ public class Skill {
 
     public void setIsCareer(boolean isCareer) {
         this.isCareer = isCareer;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeInt(level);
+        dest.writeInt(characteristic);
+        dest.writeByte((byte) (isCareer ? 1 : 0));
+    }
+
+
+    public static final Parcelable.Creator<Skill> CREATOR
+            = new Parcelable.Creator<Skill>() {
+        public Skill createFromParcel(Parcel in) {
+            return new Skill(in);
+        }
+
+        public Skill[] newArray(int size) {
+            return new Skill[size];
+        }
+    };
+
+    private Skill(Parcel in) {
+        name = in.readString();
+        level = in.readInt();
+        characteristic = (char) in.readInt();
+        isCareer = in.readByte() != 0;
     }
 }

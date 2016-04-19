@@ -3,6 +3,7 @@ package com.example.hokan.swfiches;
 import android.app.Application;
 
 import com.example.hokan.swfiches.items.Career;
+import com.example.hokan.swfiches.items.Skill;
 import com.example.hokan.swfiches.items.Specie;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class SWFichesApplication extends Application {
     private boolean tablet;
     private ArrayList<Specie> speciesList;
     private ArrayList<Career> careerList;
+    private ArrayList<Skill> skillList;
 
     @Override
     public void onCreate() {
@@ -24,6 +26,7 @@ public class SWFichesApplication extends Application {
         tablet = getResources().getBoolean(R.bool.is_tablet);
         initSpeciesList();
         initCareerList();
+        initSkillList();
     }
 
     public static SWFichesApplication getApp() {
@@ -51,11 +54,23 @@ public class SWFichesApplication extends Application {
         careerList.add(new Career("Spy"));
     }
 
+    private void initSkillList()
+    {
+        skillList = new ArrayList<>();
+        skillList.add(new Skill("astrogation", 'i'));
+        skillList.add(new Skill("melee", 'b'));
+        skillList.add(new Skill("perception", 'c'));
+    }
+
     public ArrayList<Specie> getSpeciesList() {
         return speciesList;
     }
 
     public ArrayList<Career> getCareerList() {
         return careerList;
+    }
+
+    public ArrayList<Skill> getSkillList() {
+        return skillList;
     }
 }

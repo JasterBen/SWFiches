@@ -1,9 +1,12 @@
 package com.example.hokan.swfiches.items;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Ben on 18/04/2016.
  */
-public class Armor extends BattleStuff {
+public class Armor extends BattleStuff implements Parcelable {
 
     protected int soak;
     protected int contactDef;
@@ -40,5 +43,40 @@ public class Armor extends BattleStuff {
 
     public void setRangeDef(int rangeDef) {
         this.rangeDef = rangeDef;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeInt(weight);
+        dest.writeInt(actualMod);
+        dest.writeInt(maxMod);
+        dest.writeString(special);
+        dest.writeInt(soak);
+        dest.writeInt(contactDef);
+        dest.writeInt(rangeDef);
+    }
+
+    public static final Parcelable.Creator<Armor> CREATOR
+            = new Parcelable.Creator<Armor>() {
+        public Armor createFromParcel(Parcel in) {
+            return new Armor(in);
+        }
+
+        public Armor[] newArray(int size) {
+            return new Armor[size];
+        }
+    };
+
+    private Armor(Parcel in) {
+        super(in);
+        soak = in.readInt();
+        contactDef = in.readInt();
+        rangeDef = in.readInt();
     }
 }
