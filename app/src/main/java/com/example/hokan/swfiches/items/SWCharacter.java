@@ -80,6 +80,22 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
 
 
     //region getter setter
+
+
+    @Override
+    public void setBrawn(int brawn) {
+        super.setBrawn(brawn);
+        soak = brawn;
+        weight = 5 + brawn;
+        wound = specie.getWound() + brawn;
+    }
+
+    @Override
+    public void setWillpower(int willpower) {
+        super.setWillpower(willpower);
+        strain = specie.getStrain() + willpower;
+    }
+
     public Career getCareer() {
         return career;
     }

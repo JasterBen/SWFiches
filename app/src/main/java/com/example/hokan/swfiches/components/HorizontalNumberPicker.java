@@ -54,7 +54,7 @@ public class HorizontalNumberPicker extends LinearLayout implements View.OnClick
         minus.setOnClickListener(this);
 
         value = (TextView) findViewById(R.id.horizontal_number_picker_number_container);
-        //value.setText(actualValue);
+        value.setText(String.valueOf(actualValue));
 
         plus = (Button) findViewById(R.id.horizontal_number_picker_plus_button);
         plus.setOnClickListener(this);
@@ -62,11 +62,18 @@ public class HorizontalNumberPicker extends LinearLayout implements View.OnClick
 
     public void setMinValue(int minValue) {
         this.minValue = minValue;
+
+        if (actualValue <= minValue)
+            minus.setEnabled(false);
     }
 
     public void setActualValue(int actualValue) {
         this.actualValue = actualValue;
-        value.setText(actualValue);
+        value.setText(String.valueOf(actualValue));
+    }
+
+    public int getActualValue() {
+        return actualValue;
     }
 
     @Override
@@ -78,25 +85,25 @@ public class HorizontalNumberPicker extends LinearLayout implements View.OnClick
         {
             actualValue--;
 
-            if (actualValue == minValue)
-                minus.setEnabled(true);
+            if (actualValue <= minValue)
+                minus.setEnabled(false);
 
             if (actualValue < MAXVALUE && !plus.isEnabled())
                 plus.setEnabled(true);
 
-            value.setText(actualValue);
+            value.setText(String.valueOf(actualValue));
         }
         if (id == R.id.horizontal_number_picker_plus_button)
         {
             actualValue++;
 
-            if (actualValue == MAXVALUE)
+            if (actualValue >= MAXVALUE)
                 plus.setEnabled(false);
 
             if (actualValue > minValue && !minus.isEnabled())
                 minus.setEnabled(true);
 
-            value.setText(actualValue);
+            value.setText(String.valueOf(actualValue));
         }
 
     }

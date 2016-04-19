@@ -4,9 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +16,7 @@ import android.widget.TextView;
 
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.SWFichesApplication;
-import com.example.hokan.swfiches.activities.PlayerActivity;
 import com.example.hokan.swfiches.items.Career;
-import com.example.hokan.swfiches.items.SWCharacter;
 import com.example.hokan.swfiches.items.Specialization;
 import com.example.hokan.swfiches.items.Specie;
 
@@ -93,15 +88,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                     character.setSpecie((Specie) parent.getAdapter().getItem(position));
                     specieTextView.setText(formatString('r'));
 
-                    FragmentManager mgr = activity.getSupportFragmentManager();
-                    FragmentTransaction transaction = mgr.beginTransaction();
-
-                    CharacteristicFragment characFrag = new CharacteristicFragment();
-                    StatsFragment statFrag = new StatsFragment();
-
-                    transaction.replace(R.id.charac_frag_container, characFrag);
-                    transaction.replace(R.id.stat_frag_container, statFrag);
-                    transaction.commit();
+                    UpdateCharacterData();
                 }
 
                 @Override
