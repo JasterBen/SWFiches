@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,6 +102,14 @@ public class PersoFragment extends Fragment implements View.OnClickListener {
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     character.setSpecie((Specie) parent.getAdapter().getItem(position));
                     specieTextView.setText(formatString('r'));
+
+                    FragmentManager mgr = activity.getSupportFragmentManager();
+                    FragmentTransaction transaction = mgr.beginTransaction();
+
+                    CharacteristicFragment characFrag = new CharacteristicFragment();
+
+                    transaction.replace(R.id.charac_frag_container, characFrag);
+                    transaction.commit();
                 }
 
                 @Override
@@ -187,7 +197,10 @@ public class PersoFragment extends Fragment implements View.OnClickListener {
 
 
     /**
-     * @param mode 'n' for name, 'r' for specie, 'c' for career, 's' for spezialisation
+     * @param mode 'n' for name,
+     *             'r' for specie,
+     *             'c' for career,
+     *             's' for spezialisation
      * @return
      */
     private String formatString(char mode)
@@ -198,7 +211,7 @@ public class PersoFragment extends Fragment implements View.OnClickListener {
                         character.getName() != null ? character.getName() : "");
             case 'r':
                 return String.format(getString(R.string.format_specie),
-                        character.getSpecie() != null ? character.getSpecie().getName() : null);
+                        character.getSpecie() != null ? character.getSpecie().getName() : "");
             case 'c':
                 return String.format(getString(R.string.format_career),
                         character.getCareer() != null ? character.getCareer().getName() : "");
