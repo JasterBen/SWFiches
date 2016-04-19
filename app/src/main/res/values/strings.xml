@@ -48,4 +48,14 @@
     <string name="dialog_willpower">Willpower</string>
     <string name="dialog_presence">Presence</string>
 
+
+    <!-- StatsFrag -->
+    <string name="format_soak">Soak\n%s</string>
+    <string name="format_wound">Wound\n%1$s/%2$s</string>
+    <string name="format_strain">Strain\n%1$s/%2$s</string>
+    <string name="format_defense">Defense\n%1$s|%2$s</string>
+    <string name="format_force_rate">Force rate\n%s</string>
+    <string name="format_weight">Weight\n%1$s/%2$s</string>
+    <string name="format_xp">Xp\n%1$s/%2$s</string>
+
 </resources>

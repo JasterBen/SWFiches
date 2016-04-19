@@ -16,10 +16,8 @@ import com.example.hokan.swfiches.items.SWCharacter;
 /**
  * Created by Ben on 18/04/2016.
  */
-public class CharacteristicFragment extends Fragment implements View.OnClickListener {
+public class CharacteristicFragment extends PlayerSuperFragment implements View.OnClickListener {
 
-    protected PlayerActivity activity;
-    protected SWCharacter character;
     protected TextView brawnTextView;
     protected TextView agilityTextView;
     protected TextView intelligenceTextView;
@@ -27,13 +25,6 @@ public class CharacteristicFragment extends Fragment implements View.OnClickList
     protected TextView willpowerTextView;
     protected TextView presenceTextView;
 
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        activity = (PlayerActivity) getActivity();
-        character = activity.getCharacter();
-    }
 
     @Nullable
     @Override

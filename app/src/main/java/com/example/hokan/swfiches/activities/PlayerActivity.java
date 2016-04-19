@@ -10,8 +10,15 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.SWFichesApplication;
+import com.example.hokan.swfiches.fragments.ArmorFragment;
 import com.example.hokan.swfiches.fragments.CharacteristicFragment;
 import com.example.hokan.swfiches.fragments.PersoFragment;
+import com.example.hokan.swfiches.fragments.PsychoFragment;
+import com.example.hokan.swfiches.fragments.SkillsFragment;
+import com.example.hokan.swfiches.fragments.StatsFragment;
+import com.example.hokan.swfiches.fragments.StuffFragment;
+import com.example.hokan.swfiches.fragments.TreeFragment;
+import com.example.hokan.swfiches.fragments.WeaponFragment;
 import com.example.hokan.swfiches.items.SWCharacter;
 
 /**
@@ -45,9 +52,17 @@ public class PlayerActivity extends AppCompatActivity {
 
             PersoFragment persoFrag = new PersoFragment();
             CharacteristicFragment characFrag = new CharacteristicFragment();
+            StatsFragment statFrag = new StatsFragment();
+            SkillsFragment skillsFrag = new SkillsFragment();
+            TreeFragment treeFrag = new TreeFragment();
+            WeaponFragment weaponFrag = new WeaponFragment();
+            ArmorFragment armorFrag = new ArmorFragment();
+            StuffFragment stuffFrag = new StuffFragment();
+            PsychoFragment psychoFrag = new PsychoFragment();
 
             transaction.replace(R.id.perso_frag_container, persoFrag);
             transaction.replace(R.id.charac_frag_container, characFrag);
+            transaction.replace(R.id.stat_frag_container, statFrag);
             transaction.commit();
         }
     }

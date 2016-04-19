@@ -28,26 +28,16 @@ import com.example.hokan.swfiches.items.Specie;
 /**
  * Created by Ben on 18/04/2016.
  */
-public class PersoFragment extends Fragment implements View.OnClickListener {
+public class PersoFragment extends PlayerSuperFragment implements View.OnClickListener {
 
     protected TextView nameTextView;
     protected TextView specieTextView;
     protected TextView careerTextView;
     protected TextView specTextView;
-    protected PlayerActivity activity;
-    protected SWCharacter character;
     protected Button addCareer;
     protected Button addSpecialization;
     protected Button addNewSpecialization;
 
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        activity = (PlayerActivity) getActivity();
-        character = activity.getCharacter();
-
-    }
 
     @Nullable
     @Override
@@ -107,8 +97,10 @@ public class PersoFragment extends Fragment implements View.OnClickListener {
                     FragmentTransaction transaction = mgr.beginTransaction();
 
                     CharacteristicFragment characFrag = new CharacteristicFragment();
+                    StatsFragment statFrag = new StatsFragment();
 
                     transaction.replace(R.id.charac_frag_container, characFrag);
+                    transaction.replace(R.id.stat_frag_container, statFrag);
                     transaction.commit();
                 }
 
