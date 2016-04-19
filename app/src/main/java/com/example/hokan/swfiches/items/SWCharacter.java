@@ -18,8 +18,6 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
     protected int soak;
     protected int actualWound;
     protected int actualStrain;
-    protected int contactDefense;
-    protected int rangeDefense;
     protected int weight;
     protected int actualWeight;
     protected int actualXp;
@@ -48,13 +46,12 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         this.actualWound = 0;
         this.actualStrain = 0;
         this.forceRating = 0;
-        this.contactDefense = 0;
-        this.rangeDefense = 0;
         this.weight = -1;
         this.actualWeight = 0;
         this.actualXp = 0;
         this.totalXp = -1;
         this.skillList = SWFichesApplication.getApp().getSkillList();
+        this.armor = new Armor("", 0, 0, 0, "", 0, 0, 0);
     }
 
     public String getName() {
@@ -91,7 +88,7 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
     @Override
     public void setBrawn(int brawn) {
         super.setBrawn(brawn);
-        soak = brawn;
+        soak = brawn + armor.getSoak();
         weight = 5 + brawn;
         wound = specie.getWound() + brawn;
     }
@@ -157,22 +154,6 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
 
     public void setActualStrain(int actualStrain) {
         this.actualStrain = actualStrain;
-    }
-
-    public int getContactDefense() {
-        return contactDefense;
-    }
-
-    public void setContactDefense(int contactDefense) {
-        this.contactDefense = contactDefense;
-    }
-
-    public int getRangeDefense() {
-        return rangeDefense;
-    }
-
-    public void setRangeDefense(int rangeDefense) {
-        this.rangeDefense = rangeDefense;
     }
 
     public int getWeight() {
@@ -279,8 +260,6 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         dest.writeInt(soak);
         dest.writeInt(actualWound);
         dest.writeInt(actualStrain);
-        dest.writeInt(contactDefense);
-        dest.writeInt(rangeDefense);
         dest.writeInt(weight);
         dest.writeInt(actualWeight);
         dest.writeInt(actualXp);
@@ -318,8 +297,6 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         soak = in.readInt();
         actualWound = in.readInt();
         actualStrain = in.readInt();
-        contactDefense = in.readInt();
-        rangeDefense = in.readInt();
         weight = in.readInt();
         actualWeight = in.readInt();
         actualXp = in.readInt();

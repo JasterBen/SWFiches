@@ -95,8 +95,8 @@ public class StatsFragment extends PlayerSuperFragment implements View.OnClickLi
                         (character.getStrain() != -1 ? character.getStrain() : ""));
             case 'd':
                 return String.format(getString(R.string.format_defense),
-                        character.getContactDefense(),
-                        character.getRangeDefense());
+                        character.getArmor().getContactDef(),
+                        character.getArmor().getRangeDef());
             case 'f' :
                 return String.format(getString(R.string.format_force_rate),
                         character.getForceRating());
