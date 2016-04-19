@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:weightSum="2">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_brawn" />
+
+        <com.example.hokan.swfiches.components.HorizontalNumberPicker
+            android:id="@+id/dialog_edit_characteristic_brawn_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_agility" />
+
+        <com.example.hokan.swfiches.components.HorizontalNumberPicker
+            android:id="@+id/dialog_edit_characteristic_agility_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_intelligence" />
+
+        <com.example.hokan.swfiches.components.HorizontalNumberPicker
+            android:id="@+id/dialog_edit_characteristic_intelligence_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_cunning" />
+
+        <com.example.hokan.swfiches.components.HorizontalNumberPicker
+            android:id="@+id/dialog_edit_characteristic_cunning_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_willpower" />
+
+        <com.example.hokan.swfiches.components.HorizontalNumberPicker
+            android:id="@+id/dialog_edit_characteristic_willpower_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_presence" />
+
+        <com.example.hokan.swfiches.components.HorizontalNumberPicker
+            android:id="@+id/dialog_edit_characteristic_presence_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>

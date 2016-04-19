@@ -41,6 +41,7 @@
     <string name="format_cunning">Cunning : %s</string>
     <string name="format_willpower">Willpower : %s</string>
     <string name="format_presence">Presence : %s</string>
+    <string name="dialog_charac_title">Characteristics</string>
     <string name="dialog_brawn">Brawn</string>
     <string name="dialog_agility">Agility</string>
     <string name="dialog_intelligence">Intelligence</string>
