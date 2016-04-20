@@ -27,7 +27,7 @@ public abstract class PlayerSuperFragment extends Fragment {
     }
 
 
-    public void UpdateCharacterData()
+    public void UpdateCharacterStatsAndCharacs()
     {
         FragmentManager mgr = activity.getSupportFragmentManager();
         FragmentTransaction transaction = mgr.beginTransaction();
@@ -36,6 +36,17 @@ public abstract class PlayerSuperFragment extends Fragment {
         StatsFragment statFrag = new StatsFragment();
 
         transaction.replace(R.id.charac_frag_container, characFrag);
+        transaction.replace(R.id.stat_frag_container, statFrag);
+        transaction.commit();
+    }
+
+    public void UpdateCharacterStats()
+    {
+        FragmentManager mgr = activity.getSupportFragmentManager();
+        FragmentTransaction transaction = mgr.beginTransaction();
+
+        StatsFragment statFrag = new StatsFragment();
+
         transaction.replace(R.id.stat_frag_container, statFrag);
         transaction.commit();
     }

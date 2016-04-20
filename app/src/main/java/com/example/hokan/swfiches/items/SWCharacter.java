@@ -79,6 +79,7 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         this.soak = specie.getBrawn();
         this.weight = 5 + specie.getBrawn();
         this.totalXp = specie.getStartingxp();
+        this.forceRating = specie.isCanHaveForce() ? this.forceRating : 0;
     }
 
 
@@ -130,6 +131,8 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
     public void setForceRating(int forceRating) {
         if (specie.isCanHaveForce())
             this.forceRating = forceRating;
+        else
+            this.forceRating = 0;
     }
 
     public int getSoak() {

@@ -91,7 +91,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                     character.setSpecie((Specie) parent.getAdapter().getItem(position));
                     specieTextView.setText(formatString('r'));
 
-                    UpdateCharacterData();
+                    UpdateCharacterStatsAndCharacs();
                 }
 
                 @Override
