@@ -17,6 +17,8 @@ import com.example.hokan.swfiches.components.HorizontalNumberPicker;
  */
 public class CharacteristicFragment extends PlayerSuperFragment implements View.OnClickListener {
 
+    private final static int MAXVALUE = 6;
+
     protected TextView brawnTextView;
     protected TextView agilityTextView;
     protected TextView intelligenceTextView;
@@ -69,36 +71,42 @@ public class CharacteristicFragment extends PlayerSuperFragment implements View.
                     dialogContent.findViewById(R.id.dialog_edit_characteristic_brawn_picker);
             brawnPicker.setActualValue(character.getBrawn());
             brawnPicker.setMinValue(character.getSpecie().getBrawn());
+            brawnPicker.setMaxValue(MAXVALUE);
 
 
             final HorizontalNumberPicker agilityPicker = (HorizontalNumberPicker)
                     dialogContent.findViewById(R.id.dialog_edit_characteristic_agility_picker);
             agilityPicker.setActualValue(character.getAgility());
             agilityPicker.setMinValue(character.getSpecie().getAgility());
+            agilityPicker.setMaxValue(MAXVALUE);
 
 
             final HorizontalNumberPicker intellectPicker = (HorizontalNumberPicker)
                     dialogContent.findViewById(R.id.dialog_edit_characteristic_intelligence_picker);
             intellectPicker.setActualValue(character.getIntellect());
             intellectPicker.setMinValue(character.getSpecie().getIntellect());
+            intellectPicker.setMaxValue(MAXVALUE);
 
 
             final HorizontalNumberPicker cunningPicker = (HorizontalNumberPicker)
                     dialogContent.findViewById(R.id.dialog_edit_characteristic_cunning_picker);
             cunningPicker.setActualValue(character.getCunning());
             cunningPicker.setMinValue(character.getSpecie().getCunning());
+            cunningPicker.setMaxValue(MAXVALUE);
 
 
             final HorizontalNumberPicker willpowerPicker = (HorizontalNumberPicker)
                     dialogContent.findViewById(R.id.dialog_edit_characteristic_willpower_picker);
             willpowerPicker.setActualValue(character.getWillpower());
             willpowerPicker.setMinValue(character.getSpecie().getWillpower());
+            willpowerPicker.setMaxValue(MAXVALUE);
 
 
             final HorizontalNumberPicker presencePicker = (HorizontalNumberPicker)
                     dialogContent.findViewById(R.id.dialog_edit_characteristic_presence_picker);
             presencePicker.setActualValue(character.getPresence());
             presencePicker.setMinValue(character.getSpecie().getPresence());
+            presencePicker.setMaxValue(MAXVALUE);
 
 
             builder.setView(dialogContent);

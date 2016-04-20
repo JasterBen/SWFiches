@@ -1,5 +1,7 @@
 package com.example.hokan.swfiches.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hokan.swfiches.R;
+import com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSlash;
+import com.example.hokan.swfiches.components.HorizontalNumberPicker;
 
 /**
  * Created by Ben on 18/04/2016.
@@ -61,10 +65,61 @@ public class StatsFragment extends PlayerSuperFragment implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(activity, "plif", Toast.LENGTH_SHORT).show();
         // TODO
 
-        //si !specie.canhaveforce, griser la modification du forcerate
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle(R.string.dialog_stats_title);
+
+        LayoutInflater inflater = LayoutInflater.from(activity);
+        View dialogContent = inflater.inflate(R.layout.dialog_edit_stats, null);
+
+        final HorizontalDoubleEditTextWithSlash woundModifier = (HorizontalDoubleEditTextWithSlash)
+                dialogContent.findViewById(R.id.dialog_edit_stats_wound_modifier);
+        woundModifier.setLeftValue(character.getActualWound());
+        woundModifier.setRightValue(character.getWound());
+
+        final HorizontalDoubleEditTextWithSlash strainModifier = (HorizontalDoubleEditTextWithSlash)
+                dialogContent.findViewById(R.id.dialog_edit_stats_strain_modifier);
+        strainModifier.setLeftValue(character.getActualStrain());
+        strainModifier.setRightValue(character.getStrain());
+
+        HorizontalNumberPicker forceRatePicker = (HorizontalNumberPicker)
+                dialogContent.findViewById(R.id.dialog_edit_stats_force_modifier);
+        forceRatePicker.setMinValue(0);
+        if (!character.getSpecie().isCanHaveForce())
+            forceRatePicker.setMaxValue(0);
+        else
+            forceRatePicker.setMaxValue(32);
+
+        final HorizontalDoubleEditTextWithSlash weightModifier = (HorizontalDoubleEditTextWithSlash)
+                dialogContent.findViewById(R.id.dialog_edit_stats_weight_modifier);
+        weightModifier.setLeftValue(character.getActualWeight());
+        weightModifier.setRightValue(character.getWeight());
+
+        final HorizontalDoubleEditTextWithSlash xpModifier = (HorizontalDoubleEditTextWithSlash)
+                dialogContent.findViewById(R.id.dialog_edit_stats_xp_modifier);
+        xpModifier.setLeftValue(character.getActualXp());
+        xpModifier.setRightValue(character.getTotalXp());
+
+        builder.setView(dialogContent);
+
+        builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                character.setActualWound(woundModifier.getLeftValue());
+                character.setWound(woundModifier.getRightValue());
+                character.setActualStrain(strainModifier.getLeftValue());
+                character.setStrain(strainModifier.getRightValue());
+                character.setActualWeight(weightModifier.getLeftValue());
+                character.setWeight(weightModifier.getRightValue());
+                character.setActualXp(xpModifier.getLeftValue());
+                character.setTotalXp(xpModifier.getRightValue());
+
+                UpdateCharacterData();
+            }
+        });
+
+        builder.create().show();
     }
 
 

@@ -15,9 +15,8 @@ import com.example.hokan.swfiches.R;
  */
 public class HorizontalNumberPicker extends LinearLayout implements View.OnClickListener {
 
-    private final static int MAXVALUE = 6;
-
     private int minValue;
+    private int maxValue;
     private int actualValue;
 
     private Button minus;
@@ -67,6 +66,13 @@ public class HorizontalNumberPicker extends LinearLayout implements View.OnClick
             minus.setEnabled(false);
     }
 
+    public void setMaxValue(int maxValue) {
+        this.maxValue = maxValue;
+
+        if (actualValue >= maxValue)
+            plus.setEnabled(false);
+    }
+
     public void setActualValue(int actualValue) {
         this.actualValue = actualValue;
         value.setText(String.valueOf(actualValue));
@@ -88,7 +94,7 @@ public class HorizontalNumberPicker extends LinearLayout implements View.OnClick
             if (actualValue <= minValue)
                 minus.setEnabled(false);
 
-            if (actualValue < MAXVALUE && !plus.isEnabled())
+            if (actualValue < maxValue && !plus.isEnabled())
                 plus.setEnabled(true);
 
             value.setText(String.valueOf(actualValue));
@@ -97,7 +103,7 @@ public class HorizontalNumberPicker extends LinearLayout implements View.OnClick
         {
             actualValue++;
 
-            if (actualValue >= MAXVALUE)
+            if (actualValue >= maxValue)
                 plus.setEnabled(false);
 
             if (actualValue > minValue && !minus.isEnabled())

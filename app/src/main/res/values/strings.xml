@@ -58,5 +58,11 @@
     <string name="format_force_rate">Force rate\n%s</string>
     <string name="format_weight">Weight\n%1$s/%2$s</string>
     <string name="format_xp">Xp\n%1$s/%2$s</string>
+    <string name="dialog_stats_title">Statistics</string>
+    <string name="dialog_stats_wound">Wound Threshold</string>
+    <string name="dialog_stats_strain">Strain Threshold</string>
+    <string name="dialog_stats_force_rating">Force Rate</string>
+    <string name="dialog_stats_weight">Encumbrance</string>
+    <string name="dialog_stats_xp">XP</string>
 
 </resources>

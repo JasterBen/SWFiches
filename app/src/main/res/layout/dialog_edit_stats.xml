@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_stats_wound"/>
+
+    <com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSlash
+        android:id="@+id/dialog_edit_stats_wound_modifier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSlash>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_stats_strain"/>
+
+    <com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSlash
+        android:id="@+id/dialog_edit_stats_strain_modifier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSlash>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_stats_force_rating"/>
+
+    <com.example.hokan.swfiches.components.HorizontalNumberPicker
+        android:id="@+id/dialog_edit_stats_force_modifier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.example.hokan.swfiches.components.HorizontalNumberPicker>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_stats_weight"/>
+
+    <com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSlash
+        android:id="@+id/dialog_edit_stats_weight_modifier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSlash>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_stats_xp"/>
+
+    <com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSlash
+        android:id="@+id/dialog_edit_stats_xp_modifier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSlash>
+
+</LinearLayout>
