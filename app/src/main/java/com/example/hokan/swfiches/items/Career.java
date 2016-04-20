@@ -3,19 +3,31 @@ package com.example.hokan.swfiches.items;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 /**
  * Created by Utilisateur on 02/02/2016.
  */
 public class Career implements Parcelable {
 
     protected String name;
-    //protected ArrayList<Skill> carreerSkills;
-    //protected ArrayList<Specialization> specializationList;
+    protected ArrayList<Skill> carreerSkills;
+    protected ArrayList<Specialization> specializationList;
+
+
 
 
     public Career(String name) {
         this.name = name;
     }
+
+
+    public String getName() {
+        return name;
+    }
+
+
+
 
     @Override
     public int describeContents() {
@@ -25,6 +37,8 @@ public class Career implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
+        dest.writeTypedList(carreerSkills);
+        dest.writeTypedList(specializationList);
     }
 
     public static final Parcelable.Creator<Career> CREATOR
@@ -40,12 +54,10 @@ public class Career implements Parcelable {
 
     private Career(Parcel in) {
         name = in.readString();
-    }
-
-
-
-    public String getName() {
-        return name;
+        carreerSkills = new ArrayList<>(8);
+        in.readTypedList(carreerSkills, Skill.CREATOR);
+        specializationList = new ArrayList<>(6);
+        in.readTypedList(specializationList, Specialization.CREATOR);
     }
 
 
@@ -53,4 +65,5 @@ public class Career implements Parcelable {
     public String toString() {
         return name;
     }
+
 }

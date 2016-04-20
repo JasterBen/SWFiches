@@ -15,6 +15,9 @@ import com.example.hokan.swfiches.R;
  */
 public class HorizontalDoubleEditTextWithSeparator extends LinearLayout {
 
+    private int leftValue;
+    private int rightValue;
+    
     private EditText leftEditText;
     private EditText rightEditText;
     private TextView separatorTextView;
@@ -58,19 +61,27 @@ public class HorizontalDoubleEditTextWithSeparator extends LinearLayout {
 
 
     public int getLeftValue() {
-        return Math.max(Integer.parseInt(leftEditText.getText().toString()), 0);
+        return Math.max(!leftEditText.getText().toString().equals("") ? 
+                Integer.parseInt(leftEditText.getText().toString()) : leftValue, 0);
     }
 
     public void setLeftValue(int leftValue) {
-        leftEditText.setText(String.valueOf(leftValue));
+        this.leftValue = leftValue;
+        
+        if (leftValue != 0)
+            leftEditText.setText(String.valueOf(leftValue));
     }
 
     public int getRightValue() {
-        return Math.max(Integer.parseInt(rightEditText.getText().toString()), 0);
+        return Math.max(!rightEditText.getText().toString().equals("") ?
+                Integer.parseInt(rightEditText.getText().toString()) : rightValue, 0);
     }
 
     public void setRightValue(int rightValue) {
-        rightEditText.setText(String.valueOf(rightValue));
+        this.rightValue = rightValue;
+        
+        if (rightValue != 0)
+            rightEditText.setText(String.valueOf(rightValue));
     }
 
     public void setSeparator(String separator)
