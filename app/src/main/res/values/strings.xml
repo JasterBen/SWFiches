@@ -65,4 +65,34 @@
     <string name="dialog_stats_weight">Encumbrance</string>
     <string name="dialog_stats_xp">XP</string>
 
+
+    <!-- SkillFrag -->
+    <string name="skill_frag_title">Skills</string>
+
+
+    <!-- TreeFrag -->
+    <string name="tree_frag_button">See trees</string>
+
+
+    <!-- WeaponFrag -->
+    <string name="weapon_frag_title">Weapons</string>
+    <string name="weapon_frag_button">Add weapon</string>
+
+
+    <!-- ArmorFrag -->
+    <string name="armor_frag_title">Armor</string>
+    <string name="armor_frag_armor_name_format">Name : %s</string>
+    <string name="armor_frag_armor_soak_format">Soak\n%s</string>
+    <string name="armor_frag_armor_def_format">Defense\n%1$s|%2$s</string>
+    <string name="armor_frag_armor_weight_format">Weight\n%s</string>
+    <string name="armor_frag_armor_mod_format">Mod\n%1$s/%2$s</string>
+    <string name="armor_frag_armor_special_format">Special : %s</string>
+    <string name="armor_frag_dialog_armor_name">Name</string>
+    <string name="armor_frag_dialog_armor_soak">Soak</string>
+    <string name="armor_frag_dialog_armor_def_cac">Melee Defense</string>
+    <string name="armor_frag_dialog_armor_def_range">Range Defense</string>
+    <string name="armor_frag_dialog_armor_weight">Weight</string>
+    <string name="armor_frag_dialog_armor_mod">Mod</string>
+    <string name="armor_frag_dialog_armor_special">Special</string>
+
 </resources>

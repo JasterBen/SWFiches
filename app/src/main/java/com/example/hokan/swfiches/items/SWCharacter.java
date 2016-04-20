@@ -89,7 +89,7 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
     @Override
     public void setBrawn(int brawn) {
         super.setBrawn(brawn);
-        soak = brawn + armor.getSoak();
+        soak = brawn;
         weight = 5 + brawn;
         wound = specie.getWound() + brawn;
     }
@@ -136,7 +136,7 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
     }
 
     public int getSoak() {
-        return soak;
+        return soak + armor.getSoak();
     }
 
     public void setSoak(int soak) {

@@ -3,4 +3,22 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/weapon_frag_title"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/weapon_frag_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/weapon_frag_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/weapon_frag_button"/>
+
 </LinearLayout>

@@ -8,22 +8,22 @@
         android:layout_height="wrap_content"
         android:text="@string/dialog_stats_wound"/>
 
-    <com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSlash
+    <com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSeparator
         android:id="@+id/dialog_edit_stats_wound_modifier"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSlash>
+    </com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSeparator>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/dialog_stats_strain"/>
 
-    <com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSlash
+    <com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSeparator
         android:id="@+id/dialog_edit_stats_strain_modifier"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSlash>
+    </com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSeparator>
 
     <TextView
         android:layout_width="match_parent"
@@ -41,21 +41,21 @@
         android:layout_height="wrap_content"
         android:text="@string/dialog_stats_weight"/>
 
-    <com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSlash
+    <com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSeparator
         android:id="@+id/dialog_edit_stats_weight_modifier"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSlash>
+    </com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSeparator>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/dialog_stats_xp"/>
 
-    <com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSlash
+    <com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSeparator
         android:id="@+id/dialog_edit_stats_xp_modifier"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSlash>
+    </com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSeparator>
 
 </LinearLayout>

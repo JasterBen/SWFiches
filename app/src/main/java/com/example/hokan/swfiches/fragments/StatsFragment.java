@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.hokan.swfiches.R;
-import com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSlash;
+import com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSeparator;
 import com.example.hokan.swfiches.components.HorizontalNumberPicker;
 
 /**
@@ -73,12 +73,12 @@ public class StatsFragment extends PlayerSuperFragment implements View.OnClickLi
             LayoutInflater inflater = LayoutInflater.from(activity);
             View dialogContent = inflater.inflate(R.layout.dialog_edit_stats, null);
 
-            final HorizontalDoubleEditTextWithSlash woundModifier = (HorizontalDoubleEditTextWithSlash)
+            final HorizontalDoubleEditTextWithSeparator woundModifier = (HorizontalDoubleEditTextWithSeparator)
                     dialogContent.findViewById(R.id.dialog_edit_stats_wound_modifier);
             woundModifier.setLeftValue(character.getActualWound());
             woundModifier.setRightValue(character.getWound());
 
-            final HorizontalDoubleEditTextWithSlash strainModifier = (HorizontalDoubleEditTextWithSlash)
+            final HorizontalDoubleEditTextWithSeparator strainModifier = (HorizontalDoubleEditTextWithSeparator)
                     dialogContent.findViewById(R.id.dialog_edit_stats_strain_modifier);
             strainModifier.setLeftValue(character.getActualStrain());
             strainModifier.setRightValue(character.getStrain());
@@ -92,12 +92,12 @@ public class StatsFragment extends PlayerSuperFragment implements View.OnClickLi
             else
                 forceRatePicker.setMaxValue(32);
 
-            final HorizontalDoubleEditTextWithSlash weightModifier = (HorizontalDoubleEditTextWithSlash)
+            final HorizontalDoubleEditTextWithSeparator weightModifier = (HorizontalDoubleEditTextWithSeparator)
                     dialogContent.findViewById(R.id.dialog_edit_stats_weight_modifier);
             weightModifier.setLeftValue(character.getActualWeight());
             weightModifier.setRightValue(character.getWeight());
 
-            final HorizontalDoubleEditTextWithSlash xpModifier = (HorizontalDoubleEditTextWithSlash)
+            final HorizontalDoubleEditTextWithSeparator xpModifier = (HorizontalDoubleEditTextWithSeparator)
                     dialogContent.findViewById(R.id.dialog_edit_stats_xp_modifier);
             xpModifier.setLeftValue(character.getActualXp());
             xpModifier.setRightValue(character.getTotalXp());

@@ -63,6 +63,8 @@ public class PlayerActivity extends AppCompatActivity {
             transaction.replace(R.id.perso_frag_container, persoFrag);
             transaction.replace(R.id.charac_frag_container, characFrag);
             transaction.replace(R.id.stat_frag_container, statFrag);
+            //transaction.replace(R.id.weapon_frag_container, weaponFrag);
+            transaction.replace(R.id.armor_frag_container, armorFrag);
             transaction.commit();
         }
     }

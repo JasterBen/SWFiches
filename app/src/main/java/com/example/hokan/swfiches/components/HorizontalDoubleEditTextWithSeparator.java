@@ -1,35 +1,36 @@
 package com.example.hokan.swfiches.components;
 
 import android.content.Context;
-import android.text.InputType;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.hokan.swfiches.R;
 
 /**
  * Created by Ben on 20/04/2016.
  */
-public class HorizontalDoubleEditTextWithSlash extends LinearLayout {
+public class HorizontalDoubleEditTextWithSeparator extends LinearLayout {
 
     private EditText leftEditText;
     private EditText rightEditText;
+    private TextView separatorTextView;
 
 
-    public HorizontalDoubleEditTextWithSlash(Context context) {
+    public HorizontalDoubleEditTextWithSeparator(Context context) {
         super(context);
         init(context);
     }
 
-    public HorizontalDoubleEditTextWithSlash(Context context, AttributeSet attrs) {
+    public HorizontalDoubleEditTextWithSeparator(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
-    public HorizontalDoubleEditTextWithSlash(Context context, AttributeSet attrs, int defStyleAttr) {
+    public HorizontalDoubleEditTextWithSeparator(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
@@ -38,7 +39,7 @@ public class HorizontalDoubleEditTextWithSlash extends LinearLayout {
     private void init(Context context)
     {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.horizontal_double_edit_text_with_slash, null, false);
+        View view = inflater.inflate(R.layout.horizontal_double_edit_text_with_separator, null, false);
         addView(view);
     }
 
@@ -48,6 +49,9 @@ public class HorizontalDoubleEditTextWithSlash extends LinearLayout {
         super.onFinishInflate();
 
         leftEditText = (EditText) findViewById(R.id.horizontal_double_edit_text_slash_left);
+
+        separatorTextView = (TextView) findViewById(R.id.horizontal_double_edit_text_slash_separator);
+        separatorTextView.setText("/");
 
         rightEditText = (EditText) findViewById(R.id.horizontal_double_edit_text_slash_right);
     }
@@ -67,6 +71,11 @@ public class HorizontalDoubleEditTextWithSlash extends LinearLayout {
 
     public void setRightValue(int rightValue) {
         rightEditText.setText(String.valueOf(rightValue));
+    }
+
+    public void setSeparator(String separator)
+    {
+        separatorTextView.setText(separator);
     }
 
 
