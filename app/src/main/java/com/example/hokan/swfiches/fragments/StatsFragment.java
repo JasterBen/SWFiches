@@ -121,6 +121,8 @@ public class StatsFragment extends PlayerSuperFragment implements View.OnClickLi
                 }
             });
 
+            builder.setNegativeButton(android.R.string.no, null);
+
             builder.create().show();
         }
 

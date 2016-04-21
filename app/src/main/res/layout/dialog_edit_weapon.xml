@@ -21,7 +21,7 @@
         android:text="@string/weapon_frag_dialog_weapon_damage"/>
 
     <EditText
-        android:id="@+id/dialog_edit_weapon_soak"
+        android:id="@+id/dialog_edit_weapon_damage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
@@ -33,7 +33,7 @@
         android:text="@string/weapon_frag_dialog_weapon_critic"/>
 
     <EditText
-        android:id="@+id/dialog_edit_weapon_def_cac"
+        android:id="@+id/dialog_edit_weapon_critic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"

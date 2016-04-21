@@ -57,9 +57,9 @@ public class SWFichesApplication extends Application {
     private void initSkillList()
     {
         skillList = new ArrayList<>();
-        skillList.add(new Skill("astrogation", 'i'));
-        skillList.add(new Skill("melee", 'b'));
-        skillList.add(new Skill("perception", 'c'));
+        skillList.add(new Skill("Astrogation", 'i'));
+        skillList.add(new Skill("Melee", 'b'));
+        skillList.add(new Skill("Perception", 'c'));
     }
 
     public ArrayList<Specie> getSpeciesList() {
@@ -72,5 +72,14 @@ public class SWFichesApplication extends Application {
 
     public ArrayList<Skill> getSkillList() {
         return skillList;
+    }
+
+    public Skill getSkill(String name)
+    {
+        for (Skill skill : skillList)
+            if (skill.getName().equals(name))
+                return skill;
+
+        return null;
     }
 }

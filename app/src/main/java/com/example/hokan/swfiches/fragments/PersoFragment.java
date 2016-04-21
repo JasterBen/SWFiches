@@ -89,9 +89,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     character.setSpecie((Specie) parent.getAdapter().getItem(position));
-                    specieTextView.setText(formatString('r'));
-
-                    UpdateCharacterStatsAndCharacs();
+                    UpdateCharacterSpecie();
                 }
 
                 @Override
@@ -119,9 +117,11 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     character.setName(nameEditText.getText().toString());
-                    nameTextView.setText(formatString('n'));
+                    UpdateCharacterNameAndCareer();
                 }
             });
+
+            builder.setNegativeButton(android.R.string.no, null);
 
             builder.create().show();
 

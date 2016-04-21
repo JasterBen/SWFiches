@@ -126,6 +126,7 @@ public class CharacteristicFragment extends PlayerSuperFragment implements View.
                 }
             });
 
+            builder.setNegativeButton(android.R.string.no, null);
 
             builder.create().show();
         }

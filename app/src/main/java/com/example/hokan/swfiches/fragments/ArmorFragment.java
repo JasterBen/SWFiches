@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +13,6 @@ import android.widget.TextView;
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSeparator;
 import com.example.hokan.swfiches.items.Armor;
-
-import org.w3c.dom.Text;
 
 /**
  * Created by Ben on 18/04/2016.
@@ -106,26 +103,22 @@ public class ArmorFragment extends PlayerSuperFragment implements View.OnClickLi
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     Armor newarmor = new Armor(
-                            !nameEditText.getText().toString().equals("")  ? nameEditText.getText().toString() :
-                                    armor.getName(),
-                            !weightEditText.getText().toString().equals("") ? Integer.parseInt(weightEditText.getText().toString()) :
-                                    armor.getWeight(),
+                            getValueOrDefault(nameEditText, armor.getName()),
+                            getIntValueOrDefault(weightEditText, armor.getWeight()),
                             modContainer.getLeftValue(),
                             modContainer.getRightValue(),
-                            !specialEditText.getText().toString().equals("") ? specialEditText.getText().toString() :
-                                    armor.getSpecial(),
-                            !soakEditText.getText().toString().equals("") ? Integer.parseInt(soakEditText.getText().toString()) :
-                                    armor.getSoak(),
-                            !defCacEditText.getText().toString().equals("") ? Integer.parseInt(defCacEditText.getText().toString()) :
-                                    armor.getContactDef(),
-                            !defRangeEditText.getText().toString().equals("") ? Integer.parseInt(defRangeEditText.getText().toString()) :
-                                    armor.getRangeDef());
+                            getValueOrDefault(specialEditText, armor.getSpecial()),
+                            getIntValueOrDefault(soakEditText, armor.getSoak()),
+                            getIntValueOrDefault(defCacEditText, armor.getContactDef()),
+                            getIntValueOrDefault(defRangeEditText, armor.getRangeDef()));
 
                     character.setArmor(newarmor);
 
                     UpdateCharacterArmorAndStats();
                 }
             });
+
+            builder.setNegativeButton(android.R.string.no, null);
 
             builder.create().show();
         }

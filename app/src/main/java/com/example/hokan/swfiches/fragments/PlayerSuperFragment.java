@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.widget.EditText;
 
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.activities.PlayerActivity;
@@ -26,6 +27,51 @@ public abstract class PlayerSuperFragment extends Fragment {
 
     }
 
+
+    public String getValueOrDefault(EditText editText, String defaultValue)
+    {
+        return !editText.getText().toString().equals("") ?
+                editText.getText().toString() : defaultValue;
+    }
+
+    public int getIntValueOrDefault(EditText editText, int defaultValue)
+    {
+        return !editText.getText().toString().equals("") ?
+                Integer.parseInt(editText.getText().toString()) : defaultValue;
+    }
+
+    public int getWeaponIntValue(EditText editText)
+    {
+        return (!editText.getText().toString().equals("") ?
+                Integer.parseInt(editText.getText().toString()) : 0);
+    }
+
+
+    public void UpdateCharacterNameAndCareer()
+    {
+        FragmentManager mgr = activity.getSupportFragmentManager();
+        FragmentTransaction transaction = mgr.beginTransaction();
+
+        PersoFragment persoFrag = new PersoFragment();
+
+        transaction.replace(R.id.perso_frag_container, persoFrag);
+        transaction.commit();
+    }
+
+    public void UpdateCharacterSpecie()
+    {
+        FragmentManager mgr = activity.getSupportFragmentManager();
+        FragmentTransaction transaction = mgr.beginTransaction();
+
+        CharacteristicFragment characFrag = new CharacteristicFragment();
+        StatsFragment statFrag = new StatsFragment();
+        PersoFragment persoFrag = new PersoFragment();
+
+        transaction.replace(R.id.perso_frag_container, persoFrag);
+        transaction.replace(R.id.charac_frag_container, characFrag);
+        transaction.replace(R.id.stat_frag_container, statFrag);
+        transaction.commit();
+    }
 
     public void UpdateCharacterStatsAndCharacs()
     {
