@@ -1,5 +1,7 @@
 package com.example.hokan.swfiches.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -30,6 +32,28 @@ public class WeaponFragment extends PlayerSuperFragment implements View.OnClickL
     @Override
     public void onClick(View v) {
 
+        if (v.getId() == R.id.weapon_frag_button)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+            builder.setTitle(R.string.weapon_frag_title);
+
+            LayoutInflater inflater = LayoutInflater.from(activity);
+            View dialogContent = inflater.inflate(R.layout.dialog_edit_weapon, null);
+
+
+
+            builder.setView(dialogContent);
+
+            builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+
+            builder.create().show();
+
+        }
 
     }
 }

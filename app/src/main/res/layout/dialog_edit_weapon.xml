@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/weapon_frag_dialog_weapon_name"/>
+
+    <EditText
+        android:id="@+id/dialog_edit_weapon_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:hint="@string/weapon_frag_dialog_weapon_name"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/weapon_frag_dialog_weapon_damage"/>
+
+    <EditText
+        android:id="@+id/dialog_edit_weapon_soak"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="@string/weapon_frag_dialog_weapon_damage"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/weapon_frag_dialog_weapon_critic"/>
+
+    <EditText
+        android:id="@+id/dialog_edit_weapon_def_cac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="@string/weapon_frag_dialog_weapon_critic"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/weapon_frag_dialog_weapon_mod"/>
+
+    <com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSeparator
+        android:id="@+id/dialog_edit_weapon_mod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSeparator>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/weapon_frag_dialog_weapon_weight"/>
+
+    <EditText
+        android:id="@+id/dialog_edit_weapon_weight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="@string/weapon_frag_dialog_weapon_weight"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/weapon_frag_dialog_weapon_range"/>
+
+    <Spinner
+        android:id="@+id/dialog_edit_weapon_range_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/weapon_frag_dialog_spinner_range">
+    </Spinner>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/weapon_frag_dialog_weapon_skill"/>
+
+    <Spinner
+        android:id="@+id/dialog_edit_weapon_skill_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/weapon_frag_dialog_spinner_skill">
+    </Spinner>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/weapon_frag_dialog_weapon_special"/>
+
+    <EditText
+        android:id="@+id/dialog_edit_weapon_special"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/weapon_frag_dialog_weapon_special"/>
+
+</LinearLayout>

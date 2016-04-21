@@ -77,6 +77,39 @@
     <!-- WeaponFrag -->
     <string name="weapon_frag_title">Weapons</string>
     <string name="weapon_frag_button">Add weapon</string>
+    <string name="weapon_frag_weapon_name_format">Name : %s</string>
+    <string name="weapon_frag_weapon_damage_format">Damage\n%s</string>
+    <string name="weapon_frag_weapon_critic_format">Critic\n%s</string>
+    <string name="weapon_frag_weapon_weight_format">Weight\n%s</string>
+    <string name="weapon_frag_weapon_mod_format">Mod\n%1$s/%2$s</string>
+    <string name="weapon_frag_weapon_range_format">Range : %s</string>
+    <string name="weapon_frag_weapon_special_format">Special : %s</string>
+    <string name="weapon_frag_dialog_weapon_name">Name</string>
+    <string name="weapon_frag_dialog_weapon_damage">Damage</string>
+    <string name="weapon_frag_dialog_weapon_critic">Critic</string>
+    <string name="weapon_frag_dialog_weapon_weight">Weight</string>
+    <string name="weapon_frag_dialog_weapon_mod">Mod</string>
+    <string name="weapon_frag_dialog_weapon_range">Range</string>
+    <string name="weapon_frag_dialog_weapon_skill">Skill</string>
+    <string name="weapon_frag_dialog_weapon_special">Special</string>
+
+    <string-array name="weapon_frag_dialog_spinner_range">
+        <item>Engaged</item>
+        <item>Short</item>
+        <item>Medium</item>
+        <item>Long</item>
+        <item>Extreme</item>
+    </string-array>
+
+    <string-array name="weapon_frag_dialog_spinner_skill">
+        <item>Brawl</item>
+        <item>Gunnery</item>
+        <item>Lightsaber</item>
+        <item>Melee</item>
+        <item>Ranged Heavy</item>
+        <item>Ranged Light</item>
+    </string-array>
+    
 
 
     <!-- ArmorFrag -->
