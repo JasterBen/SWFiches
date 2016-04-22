@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical" android:clickable="true" android:id="@+id/fragment_stats_frag"
-    android:weightSum="2">
+    android:weightSum="3">
 
     <LinearLayout
         android:id="@+id/fragment_stats_top"
@@ -65,5 +65,11 @@
             android:layout_weight="1"/>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/fragment_stats_special"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
 </LinearLayout>

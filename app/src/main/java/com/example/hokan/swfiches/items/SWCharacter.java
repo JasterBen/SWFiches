@@ -32,6 +32,7 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
     protected ArrayList<Weapon> weaponList;
     protected int weaponListSize;
     protected Armor armor;
+    protected String special;
 
 
 
@@ -266,6 +267,14 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
 
     public void setWeaponListSize(int weaponListSize) {
         this.weaponListSize = weaponListSize;
+    }
+
+    public String getSpecial() {
+        return special;
+    }
+
+    public void setSpecial(String special) {
+        this.special = special;
     }
 
     //endregion
