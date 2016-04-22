@@ -17,7 +17,8 @@ import java.lang.ref.WeakReference;
 /**
  * Created by Utilisateur on 22/04/2016.
  */
-public class SkillAdapter extends RecyclerView.Adapter<SkillAdapter.ViewHolder> {
+public class CustomSkillAdapter extends RecyclerView.Adapter<CustomSkillAdapter.ViewHolder> {
+
 
     protected WeakReference<Context> ctx = new WeakReference<Context>(null);
     protected SkillsFragment skillFragment;
@@ -43,20 +44,20 @@ public class SkillAdapter extends RecyclerView.Adapter<SkillAdapter.ViewHolder> 
     }
 
 
-    public SkillAdapter(Context context, SkillsFragment skillFrag, SkillInterface si) {
+    public CustomSkillAdapter(Context context, SkillsFragment skillFrag, SkillInterface si) {
         this.ctx = new WeakReference<Context>(context);
         this.skillFragment = skillFrag;
         this.skillInterface = si;
     }
 
     @Override
-    public SkillAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CustomSkillAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(ctx.get()).inflate(R.layout.cell_skill_list, parent, false);
         return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(SkillAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(CustomSkillAdapter.ViewHolder holder, final int position) {
 
         Skill skill = getItem(position);
 
@@ -70,18 +71,37 @@ public class SkillAdapter extends RecyclerView.Adapter<SkillAdapter.ViewHolder> 
                 skillFragment.onItemClick(null, v, position, v.getId());
             }
         });
+        holder.v.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                return skillFragment.onItemLongClick(null, v, position, v.getId());
+            }
+        });
     }
 
 
     @Override
     public int getItemCount() {
-        return skillInterface.getSkillCount();
+        return skillInterface.getCustomSkillCount();
     }
 
 
     public Skill getItem(int position) {
-        return skillInterface.getSkill(position);
+        return skillInterface.getCustomSkill(position);
     }
 
+
+    public void addSkill(Skill skill)
+    {
+        skillInterface.addCustomSkill(skill);
+        notifyDataSetChanged();
+    }
+
+
+    public void removeSkill(int position)
+    {
+        skillInterface.removeCustomSkill(position);
+        notifyDataSetChanged();
+    }
 
 }

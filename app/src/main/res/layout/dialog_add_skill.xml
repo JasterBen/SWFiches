@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_skill_dialog_name"/>
+
+    <EditText
+        android:id="@+id/dialog_add_skill_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:hint="@string/add_skill_dialog_name"/>
+
+    <CheckBox
+        android:id="@+id/dialog_add_skill_is_career_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_edit_skill_is_career" />
+
+    <Spinner
+        android:id="@+id/dialog_add_skill_charac_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </Spinner>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_edit_skill_rank"
+        android:gravity="center_horizontal"/>
+
+    <com.example.hokan.swfiches.components.HorizontalNumberPicker
+        android:id="@+id/dialog_add_skill_rank_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+    </com.example.hokan.swfiches.components.HorizontalNumberPicker>
+
+</LinearLayout>

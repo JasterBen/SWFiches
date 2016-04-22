@@ -98,6 +98,18 @@ public abstract class PlayerSuperFragment extends Fragment {
     }
 
 
+    public void UpdateCharacterSkill()
+    {
+        FragmentManager mgr = activity.getSupportFragmentManager();
+        FragmentTransaction transaction = mgr.beginTransaction();
+
+        SkillsFragment skillFrag = new SkillsFragment();
+
+        transaction.replace(R.id.skill_frag_container, skillFrag);
+        transaction.commit();
+    }
+
+
     public void UpdateCharacterWeapon()
     {
         FragmentManager mgr = activity.getSupportFragmentManager();

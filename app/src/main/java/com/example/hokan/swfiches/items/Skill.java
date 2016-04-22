@@ -29,6 +29,7 @@ public class Skill implements Parcelable {
     public Skill(String name, char characteristic) {
         this.name = name;
         this.characteristic = characteristic;
+        this.level = 0;
     }
 
     public Skill(String name, int level, char characteristic, boolean isCareer) {
@@ -91,6 +92,7 @@ public class Skill implements Parcelable {
             malus = 4;
         this.malus = malus;
     }
+
 
     @Override
     public int describeContents() {
