@@ -15,52 +15,104 @@
         android:singleLine="true"
         android:hint="@string/weapon_frag_dialog_weapon_name"/>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/weapon_frag_dialog_weapon_damage"/>
+        android:orientation="horizontal"
+        android:weightSum="2">
 
-    <EditText
-        android:id="@+id/dialog_edit_weapon_damage"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/weapon_frag_dialog_weapon_damage"/>
+
+            <EditText
+                android:id="@+id/dialog_edit_weapon_damage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="@string/weapon_frag_dialog_weapon_damage"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/weapon_frag_dialog_weapon_critic"/>
+
+            <EditText
+                android:id="@+id/dialog_edit_weapon_critic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="@string/weapon_frag_dialog_weapon_critic"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:hint="@string/weapon_frag_dialog_weapon_damage"/>
+        android:orientation="horizontal"
+        android:weightSum="2">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/weapon_frag_dialog_weapon_critic"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/dialog_edit_weapon_critic"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:hint="@string/weapon_frag_dialog_weapon_critic"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/weapon_frag_dialog_weapon_mod"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/weapon_frag_dialog_weapon_mod"/>
+            <com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSeparator
+                android:id="@+id/dialog_edit_weapon_mod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSeparator>
 
-    <com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSeparator
-        android:id="@+id/dialog_edit_weapon_mod"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSeparator>
+        </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/weapon_frag_dialog_weapon_weight"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/dialog_edit_weapon_weight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:hint="@string/weapon_frag_dialog_weapon_weight"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/weapon_frag_dialog_weapon_weight"/>
+
+            <EditText
+                android:id="@+id/dialog_edit_weapon_weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="@string/weapon_frag_dialog_weapon_weight"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
     <TextView
         android:layout_width="match_parent"

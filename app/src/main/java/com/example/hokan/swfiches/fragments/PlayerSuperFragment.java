@@ -98,6 +98,17 @@ public abstract class PlayerSuperFragment extends Fragment {
     }
 
 
+    public void UpdateCharacterWeapon()
+    {
+        FragmentManager mgr = activity.getSupportFragmentManager();
+        FragmentTransaction transaction = mgr.beginTransaction();
+
+        WeaponFragment weaponFrag = new WeaponFragment();
+
+        transaction.replace(R.id.weapon_frag_container, weaponFrag);
+        transaction.commit();
+    }
+
     public void UpdateCharacterArmorAndStats()
     {
         FragmentManager mgr = activity.getSupportFragmentManager();

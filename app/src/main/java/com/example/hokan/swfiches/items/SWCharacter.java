@@ -25,9 +25,13 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
     protected Career career;
     protected Specialization mainSpecialization;
     protected ArrayList<Specialization> secondarySpecializationList;
+    protected int secondarySpecializationListSize;
     protected ArrayList<Skill> skillList;
+    protected int skillListSize;
     protected ArrayList<Skill> customSkillList;
+    protected int customSkillListSize;
     protected ArrayList<Weapon> weaponList;
+    protected int weaponListSize;
     protected Armor armor;
 
 
@@ -51,6 +55,7 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         this.actualXp = 0;
         this.totalXp = -1;
         this.skillList = SWFichesApplication.getApp().getSkillList();
+        this.skillListSize = skillList.size();
         this.armor = new Armor("", 0, 0, 0, "", 0, 0, 0);
     }
 
@@ -122,6 +127,7 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
 
     public void setSecondarySpecializationList(ArrayList<Specialization> secondarySpecializationList) {
         this.secondarySpecializationList = secondarySpecializationList;
+        this.secondarySpecializationListSize = secondarySpecializationList.size();
     }
 
     public int getForceRating() {
@@ -197,6 +203,7 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
 
     public void setSkillList(ArrayList<Skill> skillList) {
         this.skillList = skillList;
+        this.skillListSize = skillList.size();
     }
 
     public void updateSkill(int position, Skill skill)
@@ -210,11 +217,7 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
 
     public void setCustomSkillList(ArrayList<Skill> customSkillList) {
         this.customSkillList = customSkillList;
-    }
-
-    public void addCustomSkill(Skill customSkill)
-    {
-        customSkillList.add(customSkill);
+        this.customSkillListSize = customSkillList.size();
     }
 
     public ArrayList<Weapon> getWeaponList() {
@@ -225,17 +228,44 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         this.weaponList = weaponList;
     }
 
-    public void addWeapon(Weapon weapon)
-    {
-        weaponList.add(weapon);
-    }
-
     public Armor getArmor() {
         return armor;
     }
 
     public void setArmor(Armor armor) {
         this.armor = armor;
+    }
+
+    public int getSecondarySpecializationListSize() {
+        return secondarySpecializationListSize;
+    }
+
+    public void setSecondarySpecializationListSize(int secondarySpecializationListSize) {
+        this.secondarySpecializationListSize = secondarySpecializationListSize;
+    }
+
+    public int getSkillListSize() {
+        return skillListSize;
+    }
+
+    public void setSkillListSize(int skillListSize) {
+        this.skillListSize = skillListSize;
+    }
+
+    public int getCustomSkillListSize() {
+        return customSkillListSize;
+    }
+
+    public void setCustomSkillListSize(int customSkillListSize) {
+        this.customSkillListSize = customSkillListSize;
+    }
+
+    public int getWeaponListSize() {
+        return weaponListSize;
+    }
+
+    public void setWeaponListSize(int weaponListSize) {
+        this.weaponListSize = weaponListSize;
     }
 
     //endregion
@@ -269,8 +299,11 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         dest.writeInt(totalXp);
         dest.writeParcelable(career, 1);
         dest.writeTypedList(skillList);
+        dest.writeInt(skillListSize);
         dest.writeTypedList(customSkillList);
+        dest.writeInt(customSkillListSize);
         dest.writeTypedList(weaponList);
+        dest.writeInt(weaponListSize);
         dest.writeParcelable(armor, 1);
     }
 
@@ -307,10 +340,13 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         career = in.readParcelable(Career.class.getClassLoader());
         skillList = new ArrayList<>();
         in.readTypedList(skillList, Skill.CREATOR);
+        skillListSize = in.readInt();
         customSkillList = new ArrayList<>();
         in.readTypedList(customSkillList, Skill.CREATOR);
+        customSkillListSize = in.readInt();
         weaponList = new ArrayList<>();
         in.readTypedList(weaponList, Weapon.CREATOR);
+        weaponListSize = in.readInt();
         armor = in.readParcelable(Armor.class.getClassLoader());
     }
     //endregion
