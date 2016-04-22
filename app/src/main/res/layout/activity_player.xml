@@ -1,61 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:isScrollContainer="true">
+    android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/perso_frag_container"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true">
-    </FrameLayout>
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-    <FrameLayout
-        android:id="@+id/charac_frag_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/stat_frag_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </FrameLayout>
+            <FrameLayout
+                android:id="@+id/perso_frag_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true">
+            </FrameLayout>
 
-    <FrameLayout
-        android:id="@+id/skill_frag_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </FrameLayout>
+            <FrameLayout
+                android:id="@+id/charac_frag_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </FrameLayout>
 
-    <FrameLayout
-        android:id="@+id/tree_frag_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </FrameLayout>
+            <FrameLayout
+                android:id="@+id/stat_frag_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </FrameLayout>
 
-    <FrameLayout
-        android:id="@+id/weapon_frag_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </FrameLayout>
+            <FrameLayout
+                android:id="@+id/skill_frag_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </FrameLayout>
 
-    <FrameLayout
-        android:id="@+id/armor_frag_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </FrameLayout>
+            <FrameLayout
+                android:id="@+id/tree_frag_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </FrameLayout>
 
-    <FrameLayout
-        android:id="@+id/stuff_frag_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </FrameLayout>
+            <FrameLayout
+                android:id="@+id/weapon_frag_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </FrameLayout>
 
-    <FrameLayout
-        android:id="@+id/psycho_frag_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </FrameLayout>
+            <FrameLayout
+                android:id="@+id/armor_frag_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/stuff_frag_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/psycho_frag_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
 
 </LinearLayout>

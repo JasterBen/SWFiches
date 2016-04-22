@@ -69,7 +69,7 @@
 
     <!-- SkillFrag -->
     <string name="skill_frag_title">Skills</string>
-
+    <string name="add_custom_skill_button">Add custom skill</string>
 
     <!-- TreeFrag -->
     <string name="tree_frag_button">See trees</string>

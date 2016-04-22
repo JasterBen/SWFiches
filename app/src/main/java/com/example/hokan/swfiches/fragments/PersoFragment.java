@@ -198,7 +198,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                 return String.format(getString(R.string.format_specie),
                         character.getSpecie() != null ? character.getSpecie().getName() : "");
             case 'c':
-                return String.format(getString(R.string.format_career),
+                return String.format(activity.getString(R.string.format_career),
                         character.getCareer() != null ? character.getCareer().getName() : "");
             case 's':
                 String res = String.format(getString(R.string.format_spezcialization),

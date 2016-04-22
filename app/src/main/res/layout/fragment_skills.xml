@@ -3,4 +3,31 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/skill_frag_title"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/skill_fragment_skills_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/skill_fragment_recycler_view_height">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/skill_fragment_ad_custom_skill_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_custom_skill_button"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/skill_frag_custom_skill_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/skill_fragment_recycler_view_height">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+
 </LinearLayout>

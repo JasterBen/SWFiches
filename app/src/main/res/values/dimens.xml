@@ -11,4 +11,6 @@
 
     <dimen name="weapon_recycler_view_height">150dp</dimen>
 
+    <dimen name="skill_fragment_recycler_view_height">100dp</dimen>
+
 </resources>

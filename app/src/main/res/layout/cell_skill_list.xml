@@ -7,10 +7,16 @@
         android:id="@+id/cell_skill_skill_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="15"/>
+        android:layout_weight="10"/>
 
     <TextView
         android:id="@+id/cell_skill_is_career"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"/>
+
+    <TextView
+        android:id="@+id/cell_skill_rank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="5"/>
