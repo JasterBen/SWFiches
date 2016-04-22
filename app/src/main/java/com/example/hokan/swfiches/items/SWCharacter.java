@@ -12,7 +12,6 @@ import java.util.ArrayList;
  */
 public class SWCharacter extends CharacSuperClass implements Parcelable {
 
-    protected String name;
     protected Specie specie;
     protected int forceRating;
     protected int soak;
@@ -59,6 +58,10 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         this.armor = new Armor("", 0, 0, 0, "", 0, 0, 0);
     }
 
+
+
+    //region getter setter adder updater
+
     public String getName() {
         return name;
     }
@@ -86,9 +89,6 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         this.totalXp = specie.getStartingxp();
         this.forceRating = specie.isCanHaveForce() ? this.forceRating : 0;
     }
-
-
-    //region getter setter adder updater
 
 
     @Override
