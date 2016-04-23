@@ -64,6 +64,12 @@ public class SWFichesApplication extends Application {
         skillList.add(new Skill("Gunnery", 'a'));
         skillList.add(new Skill("Ranged Heavy", 'a'));
         skillList.add(new Skill("Ranged Light", 'a'));
+        skillList.add(new Skill("Lightsaber (Br)", 'b'));
+        skillList.add(new Skill("Lightsaber (Ag)", 'a'));
+        skillList.add(new Skill("Lightsaber (Int)", 'i'));
+        skillList.add(new Skill("Lightsaber (Cun)", 'c'));
+        skillList.add(new Skill("Lightsaber (Will)", 'w'));
+        skillList.add(new Skill("Lightsaber (Pr)", 'p'));
     }
 
     public ArrayList<Specie> getSpeciesList() {

@@ -126,7 +126,12 @@
     <string-array name="weapon_frag_dialog_spinner_skill">
         <item>Brawl</item>
         <item>Gunnery</item>
-        <item>Lightsaber</item>
+        <item>Lightsaber (Br)</item>
+        <item>Lightsaber (Ag)</item>
+        <item>Lightsaber (Int)</item>
+        <item>Lightsaber (Cun)</item>
+        <item>Lightsaber (Will)</item>
+        <item>Lightsaber (Pr)</item>
         <item>Melee</item>
         <item>Ranged Heavy</item>
         <item>Ranged Light</item>

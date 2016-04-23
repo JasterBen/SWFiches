@@ -225,17 +225,19 @@ public class SkillsFragment extends PlayerSuperFragment implements View.OnClickL
 
     private char setSkillCharac()
     {
-        if (charac.equals("Brawn"))
+        String[] characArray = getResources().getStringArray(R.array.skill_frag_dialog_spinner_charac);
+
+        if (charac.equals(characArray[0]))
             return 'b';
-        if (charac.equals("Agility"))
+        if (charac.equals(characArray[1]))
             return 'a';
-        if (charac.equals("Intelligence"))
+        if (charac.equals(characArray[2]))
             return 'i';
-        if (charac.equals("Cunning"))
+        if (charac.equals(characArray[3]))
             return 'c';
-        if (charac.equals("Willpower"))
+        if (charac.equals(characArray[4]))
             return 'w';
-        if (charac.equals("Presence"))
+        if (charac.equals(characArray[5]))
             return 'p';
 
         return 'n';
