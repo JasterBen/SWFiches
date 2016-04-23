@@ -134,4 +134,7 @@ public abstract class PlayerSuperFragment extends Fragment {
         transaction.commit();
     }
 
+    public SWCharacter getCharacter() {
+        return character;
+    }
 }

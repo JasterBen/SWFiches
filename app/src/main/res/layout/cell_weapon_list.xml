@@ -45,10 +45,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/weapon_cell_weapon_skill"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <include android:id="@+id/weapon_cell_weapon_skill"
+        layout="@layout/cell_skill_list"/>
     
     <TextView
         android:id="@+id/weapon_cell_weapon_special"
