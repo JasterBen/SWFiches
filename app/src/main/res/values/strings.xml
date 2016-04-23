@@ -79,7 +79,7 @@
     <string-array name="skill_frag_dialog_spinner_charac">
         <item>Brawn</item>
         <item>Agility</item>
-        <item>Intelligence</item>
+        <item>Intellect</item>
         <item>Cunning</item>
         <item>Willpower</item>
         <item>Presence</item>

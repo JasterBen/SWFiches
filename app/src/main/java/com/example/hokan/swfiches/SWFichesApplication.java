@@ -60,6 +60,10 @@ public class SWFichesApplication extends Application {
         skillList.add(new Skill("Astrogation", 'i'));
         skillList.add(new Skill("Melee", 'b'));
         skillList.add(new Skill("Perception", 'c'));
+        skillList.add(new Skill("Brawl", 'b'));
+        skillList.add(new Skill("Gunnery", 'a'));
+        skillList.add(new Skill("Ranged Heavy", 'a'));
+        skillList.add(new Skill("Ranged Light", 'a'));
     }
 
     public ArrayList<Specie> getSpeciesList() {
