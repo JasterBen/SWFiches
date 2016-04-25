@@ -282,6 +282,8 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
     private void setFreeRank()
     {
         int size = character.getCareer().getCareerSkillSize();
+        int cpt = 0;
+        int max = getMaxCareerSkill();
         ArrayList<Skill> careerSkillList = character.getCareer().getCarreerSkills();
         ArrayList<Skill> characterSkill = character.getSkillList();
 
@@ -301,6 +303,9 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                     if (selectedCareerSkill[i])
                     {
                         s.setLevel(1);
+                        cpt++;
+                        if (cpt == max)
+                            break;
                     }
                 }
             }
