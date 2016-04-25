@@ -42,7 +42,7 @@ public class SWFichesApplication extends Application {
         speciesList = new ArrayList<>();
         speciesList.add(new Specie("Humain", 2, 2, 2, 2, 2, 2, 10, 10, 110, true));
         speciesList.add(new Specie("Humain corellien", 2, 2, 2, 2, 2, 2, 10, 10, 110, true));
-        speciesList.add(new Specie("Droide", 1, 1, 1, 1, 1, 1, 10, 10, 175, false));
+        speciesList.add(new Specie("Droid", 1, 1, 1, 1, 1, 1, 10, 10, 175, false));
         speciesList.add(new Specie("Drall", 1, 1, 4, 2, 2, 2, 8, 12, 90, true));
     }
 

@@ -15,6 +15,8 @@ public interface CareerSkillInterface {
 
     void setCareerSkillChecked(int position, boolean check);
 
+    int getMaxCareerSkill();
+
     Skill getSpeSkill(int position);
 
     int getSpeSkillCount();

@@ -1,7 +1,6 @@
 package com.example.hokan.swfiches.adapters;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 
 import com.example.hokan.swfiches.R;
-import com.example.hokan.swfiches.fragments.PersoFragment;
 import com.example.hokan.swfiches.interfaces.CareerSkillInterface;
 import com.example.hokan.swfiches.items.Skill;
 

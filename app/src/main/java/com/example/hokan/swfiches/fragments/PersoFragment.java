@@ -24,7 +24,6 @@ import com.example.hokan.swfiches.items.Skill;
 import com.example.hokan.swfiches.items.Specialization;
 import com.example.hokan.swfiches.items.Specie;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -33,6 +32,10 @@ import java.util.Arrays;
  */
 public class PersoFragment extends PlayerSuperFragment implements View.OnClickListener,
         CareerSkillInterface {
+
+    private static final int DROID_MAX_CAREER_SKILL = 6;
+    private static final String SELECTED_CAREER_SKILL = "scs";
+    private static final String PREVIOUS_CAREER = "career";
 
     protected TextView nameTextView;
     protected TextView specieTextView;
@@ -44,8 +47,20 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
 
     protected boolean[] selectedCareerSkill;
     protected CareerAdapter careerAdapter;
+    protected String previousCareer;
 
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        Bundle bundle = getArguments();
+        if (bundle != null)
+        {
+            selectedCareerSkill = bundle.getBooleanArray(SELECTED_CAREER_SKILL);
+            previousCareer = bundle.getString(PREVIOUS_CAREER);
+        }
+    }
 
     @Nullable
     @Override
@@ -150,7 +165,10 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 character.setName(nameEditText.getText().toString());
-                UpdateCharacterNameAndCareer();
+                Bundle bundle = new Bundle();
+                bundle.putBooleanArray(SELECTED_CAREER_SKILL, selectedCareerSkill);
+                bundle.putString(PREVIOUS_CAREER, character.getCareer().getName());
+                UpdateCharacterNameAndCareer(bundle);
             }
         });
 
@@ -183,11 +201,15 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 character.setCareer((Career) parent.getAdapter().getItem(position));
-                int size = character.getCareer().getCareerSkillSize();
-                selectedCareerSkill = new boolean[size];
-                Arrays.fill(selectedCareerSkill, Boolean.FALSE);
-                if (careerAdapter != null)
-                    careerAdapter.notifyDataSetChanged();
+                if (selectedCareerSkill == null || selectedCareerSkill.length == 0 ||
+                        !previousCareer.equals(character.getCareer().getName()))
+                {
+                    int size = character.getCareer().getCareerSkillSize();
+                    selectedCareerSkill = new boolean[size];
+                    Arrays.fill(selectedCareerSkill, Boolean.FALSE);
+                    if (careerAdapter != null)
+                        careerAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override
@@ -206,7 +228,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
             public void onClick(DialogInterface dialog, int which) {
                 careerTextView.setText(formatString('c'));
                 addCareer.setText(character.getCareer().getName());
-
+                setFreeRank();
             }
         });
 
@@ -215,13 +237,28 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
     }
 
 
-    //TODO
+
+
     private void setFreeRank()
     {
-        for (Skill s : character.getSkillList())
+        int size = character.getCareer().getCareerSkillSize();
+        ArrayList<Skill> careerSkillList = character.getCareer().getCarreerSkills();
+        ArrayList<Skill> characterSkill = character.getSkillList();
+        for (Skill s : characterSkill)
         {
-
+            for (int i = 0; i < size; i++)
+            {
+                if (s.getName().equals(careerSkillList.get(i).getName()))
+                {
+                    s.setIsCareer(true);
+                    if (selectedCareerSkill[i])
+                    {
+                        s.setLevel(1);
+                    }
+                }
+            }
         }
+        character.setSkillList(characterSkill);
     }
 
 
@@ -276,6 +313,12 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
     @Override
     public void setCareerSkillChecked(int position, boolean check) {
         selectedCareerSkill[position] = check;
+    }
+
+    @Override
+    public int getMaxCareerSkill() {
+        return (character.getSpecie().getName().equals(activity.getString(R.string.droid)) ?
+                DROID_MAX_CAREER_SKILL : (character.getCareer().getCareerSkillSize() / 2));
     }
 
     @Override
