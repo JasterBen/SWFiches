@@ -66,23 +66,31 @@ public abstract class PlayerSuperFragment extends Fragment {
         CharacteristicFragment characFrag = new CharacteristicFragment();
         StatsFragment statFrag = new StatsFragment();
         PersoFragment persoFrag = new PersoFragment();
+        SkillsFragment skillFrag = new SkillsFragment();
+        WeaponFragment weaponFrag = new WeaponFragment();
 
         transaction.replace(R.id.perso_frag_container, persoFrag);
         transaction.replace(R.id.charac_frag_container, characFrag);
         transaction.replace(R.id.stat_frag_container, statFrag);
+        transaction.replace(R.id.skill_frag_container, skillFrag);
+        transaction.replace(R.id.weapon_frag_container, weaponFrag);
         transaction.commit();
     }
 
-    public void UpdateCharacterStatsAndCharacs()
+    public void UpdateCharacterCharacs()
     {
         FragmentManager mgr = activity.getSupportFragmentManager();
         FragmentTransaction transaction = mgr.beginTransaction();
 
         CharacteristicFragment characFrag = new CharacteristicFragment();
         StatsFragment statFrag = new StatsFragment();
+        WeaponFragment weaponFrag = new WeaponFragment();
+        SkillsFragment skillFrag = new SkillsFragment();
 
         transaction.replace(R.id.charac_frag_container, characFrag);
         transaction.replace(R.id.stat_frag_container, statFrag);
+        transaction.replace(R.id.weapon_frag_container, weaponFrag);
+        transaction.replace(R.id.skill_frag_container, skillFrag);
         transaction.commit();
     }
 
@@ -104,8 +112,11 @@ public abstract class PlayerSuperFragment extends Fragment {
         FragmentTransaction transaction = mgr.beginTransaction();
 
         SkillsFragment skillFrag = new SkillsFragment();
+        WeaponFragment weaponFrag = new WeaponFragment();
 
         transaction.replace(R.id.skill_frag_container, skillFrag);
+        transaction.replace(R.id.weapon_frag_container, weaponFrag);
+
         transaction.commit();
     }
 

@@ -122,7 +122,7 @@ public class CharacteristicFragment extends PlayerSuperFragment implements View.
                     character.setWillpower(willpowerPicker.getActualValue());
                     character.setPresence(presencePicker.getActualValue());
 
-                    UpdateCharacterStatsAndCharacs();
+                    UpdateCharacterCharacs();
                 }
             });
 
