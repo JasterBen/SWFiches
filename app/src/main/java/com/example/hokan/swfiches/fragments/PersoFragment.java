@@ -284,6 +284,13 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         int size = character.getCareer().getCareerSkillSize();
         ArrayList<Skill> careerSkillList = character.getCareer().getCarreerSkills();
         ArrayList<Skill> characterSkill = character.getSkillList();
+
+        for (Skill s : characterSkill)
+        {
+            s.setIsCareer(false);
+            s.setLevel(0);
+        }
+
         for (Skill s : characterSkill)
         {
             for (int i = 0; i < size; i++)
