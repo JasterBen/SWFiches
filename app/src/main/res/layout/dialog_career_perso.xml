@@ -9,6 +9,12 @@
         android:layout_height="wrap_content">
     </Spinner>
 
-    <!-- TODO add gridview of checkboxes -->
+    <GridView
+        android:id="@+id/dialog_career_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="2">
+
+    </GridView>
 
 </LinearLayout>

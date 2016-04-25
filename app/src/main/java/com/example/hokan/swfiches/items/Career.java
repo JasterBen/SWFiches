@@ -12,22 +12,45 @@ public class Career implements Parcelable {
 
     protected String name;
     protected ArrayList<Skill> carreerSkills;
+    protected int careerSkillSize;
     protected ArrayList<Specialization> specializationList;
+    protected int specializationListSize;
 
 
 
-
+    //TODO delete this constructor
     public Career(String name) {
         this.name = name;
+        this.careerSkillSize = 0;
     }
 
+
+    public Career(String name, ArrayList<Skill> carreerSkills) {
+        this.name = name;
+        this.carreerSkills = carreerSkills;
+        this.careerSkillSize = carreerSkills.size();
+    }
 
     public String getName() {
         return name;
     }
 
 
+    public ArrayList<Skill> getCarreerSkills() {
+        return carreerSkills;
+    }
 
+    public int getCareerSkillSize() {
+        return careerSkillSize;
+    }
+
+    public ArrayList<Specialization> getSpecializationList() {
+        return specializationList;
+    }
+
+    public int getSpecializationListSize() {
+        return specializationListSize;
+    }
 
     @Override
     public int describeContents() {
