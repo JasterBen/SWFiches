@@ -47,7 +47,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
 
     protected boolean[] selectedCareerSkill;
     protected CareerAdapter careerAdapter;
-    protected String previousCareer;
+    protected String previousCareer = "";
 
 
     @Override
@@ -167,7 +167,9 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                 character.setName(nameEditText.getText().toString());
                 Bundle bundle = new Bundle();
                 bundle.putBooleanArray(SELECTED_CAREER_SKILL, selectedCareerSkill);
-                bundle.putString(PREVIOUS_CAREER, character.getCareer().getName());
+                if (character.getCareer() != null)
+                    bundle.putString(PREVIOUS_CAREER, character.getCareer().getName());
+
                 UpdateCharacterNameAndCareer(bundle);
             }
         });
@@ -222,21 +224,59 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         careerAdapter = new CareerAdapter(activity, this);
         careerGrid.setAdapter(careerAdapter);
 
+        builder.setView(dialogContent);
 
         builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                careerTextView.setText(formatString('c'));
-                addCareer.setText(character.getCareer().getName());
-                setFreeRank();
             }
         });
 
-        builder.setView(dialogContent);
-        builder.create().show();
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+
+        //override the onclick listener to dismiss the dialog only if skillchecked number is good
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                careerTextView.setText(formatString('c'));
+                addCareer.setText(character.getCareer().getName());
+
+                int nbrSkillChecked = countCheckedSkill();
+                int max = getMaxCareerSkill();
+
+                if (nbrSkillChecked == max) {
+                    setFreeRank();
+                    dialog.dismiss();
+                } else {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+
+                    if (nbrSkillChecked < max) {
+                        builder.setMessage(String.format(activity.getString(R.string.dialog_not_enough_skill_check_message), max));
+                        builder.setPositiveButton(android.R.string.ok, null);
+                    } else {
+                        builder.setMessage(String.format(activity.getString(R.string.dialog_too_many_skill_check_message), max));
+                        builder.setPositiveButton(android.R.string.ok, null);
+                    }
+
+                    builder.create().show();
+                }
+            }
+        });
     }
 
 
+    private int countCheckedSkill()
+    {
+        int cpt = 0;
+        int size = getCareerSkillCount();
+        for (int i = 0; i < size; i++)
+            if (selectedCareerSkill[i])
+                cpt++;
+
+        return cpt;
+    }
 
 
     private void setFreeRank()

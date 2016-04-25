@@ -32,7 +32,10 @@
     <string name="format_career">Career : %s</string>
     <string name="format_spezcialization">Specializations : %s</string>
     <string name="format_multiple_specialization">, %s</string>
+    <string name="dialog_too_many_skill_check_message">You have selected too many skills. Please, select only %s skills.</string>
+    <string name="dialog_not_enough_skill_check_message">You have not selected enough skills. Please, select %s skills.</string>
     <string name="droid">Droid</string>
+
     
     
     <!-- CharacteristicFrag -->
