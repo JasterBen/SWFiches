@@ -155,6 +155,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         addSpecialization.setText(character.getMainSpecialization() != null ?
                 character.getMainSpecialization().getName() : getString(R.string.add_first_specialization));
         addSpecialization.setOnClickListener(this);
+        addSpecialization.setEnabled(character.getCareer() != null);
 
         addNewSpecialization = (Button) dialogContent.findViewById(R.id.dialog_edit_perso_add_specialization);
         addNewSpecialization.setOnClickListener(this);
@@ -248,6 +249,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                 if (nbrSkillChecked == max) {
                     setFreeRank();
                     dialog.dismiss();
+                    addSpecialization.setEnabled(true);
                 } else {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(activity);
