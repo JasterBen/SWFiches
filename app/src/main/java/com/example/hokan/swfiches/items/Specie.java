@@ -74,6 +74,27 @@ public class Specie extends CharacSuperClass implements Parcelable {
         this.special = special;
     }
 
+    public ArrayList<String> getFirstSpecieSkill() {
+        return firstSpecieSkill;
+    }
+
+    public void setFirstSpecieSkill(ArrayList<String> firstSpecieSkill) {
+        this.firstSpecieSkill = firstSpecieSkill;
+    }
+
+    public int getFirstSpecieSkillsSize()
+    {
+        return firstSpecieSkill.size();
+    }
+
+    public String getSecondSpecieSkill() {
+        return secondSpecieSkill;
+    }
+
+    public void setSecondSpecieSkill(String secondSpecieSkill) {
+        this.secondSpecieSkill = secondSpecieSkill;
+    }
+
     //endregion
 
 

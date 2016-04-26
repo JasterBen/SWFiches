@@ -17,6 +17,8 @@
     <string name="character_default_name">Character %d</string>
     <string name="remove_character_dialog_title">Remove character</string>
     <string name="remove_character_dialog_message">Are you sure you want to remove this character ?</string>
+    <string name="racial_skill_dialog_title">Racial Skill</string>
+    <string name="racial_skill_dialog_content">Please select your racial skill</string>
 
     
     <!-- PersoFrag -->
