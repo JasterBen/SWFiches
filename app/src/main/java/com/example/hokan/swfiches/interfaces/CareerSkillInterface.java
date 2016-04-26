@@ -1,13 +1,11 @@
 package com.example.hokan.swfiches.interfaces;
 
-import com.example.hokan.swfiches.items.Skill;
-
 /**
  * Created by Ben on 25/04/2016.
  */
 public interface CareerSkillInterface {
 
-    Skill getCareerSkill(int position);
+    String getCareerSkill(int position);
 
     int getCareerSkillCount();
 
@@ -17,7 +15,7 @@ public interface CareerSkillInterface {
 
     int getMaxCareerSkill();
 
-    Skill getSpeSkill(int position);
+    String getSpeSkill(int position);
 
     int getSpeSkillCount();
 }

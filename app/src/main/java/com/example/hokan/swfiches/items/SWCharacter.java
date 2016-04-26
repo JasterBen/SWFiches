@@ -45,7 +45,7 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         this.actualXp = 0;
         this.skillList = SWFichesApplication.getApp().getSkillList();
         this.skillListSize = skillList.size();
-        this.armor = new Armor("", 0, 0, 0, "", 0, 0, 0);
+        this.armor = new Armor();
     }
 
 

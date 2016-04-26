@@ -287,7 +287,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         int size = character.getCareer().getCareerSkillSize();
         int cpt = 0;
         int max = getMaxCareerSkill();
-        ArrayList<Skill> careerSkillList = character.getCareer().getCarreerSkills();
+        ArrayList<String> careerSkillList = character.getCareer().getCarreerSkills();
         ArrayList<Skill> characterSkill = character.getSkillList();
 
         for (Skill s : characterSkill)
@@ -300,7 +300,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         {
             for (int i = 0; i < size; i++)
             {
-                if (s.getName().equals(careerSkillList.get(i).getName()))
+                if (s.getName().equals(careerSkillList.get(i)))
                 {
                     s.setIsCareer(true);
                     if (selectedCareerSkill[i])
@@ -351,7 +351,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
     }
 
     @Override
-    public Skill getCareerSkill(int position) {
+    public String getCareerSkill(int position) {
         return character.getCareer().getCarreerSkills().get(position);
     }
 
@@ -377,7 +377,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
     }
 
     @Override
-    public Skill getSpeSkill(int position) {
+    public String getSpeSkill(int position) {
         return null;
     }
 

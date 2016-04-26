@@ -9,7 +9,6 @@ import android.widget.CheckBox;
 
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.interfaces.CareerSkillInterface;
-import com.example.hokan.swfiches.items.Skill;
 
 import java.lang.ref.WeakReference;
 
@@ -69,7 +68,7 @@ public class CareerAdapter extends BaseAdapter {
         }
 
         holder.skillCheckBox.setId(position);
-        holder.skillCheckBox.setText(((Skill)getItem(position)).getName());
+        holder.skillCheckBox.setText(((String)getItem(position)));
         holder.skillCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

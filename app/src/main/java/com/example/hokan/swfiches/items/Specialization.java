@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Specialization implements Parcelable {
 
     protected String name;
-    protected ArrayList<Skill> specializationrSkills;
+    protected ArrayList<String> specializationrSkills;
     protected Career career;
 
 
@@ -34,7 +34,7 @@ public class Specialization implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
-        dest.writeTypedList(specializationrSkills);
+        dest.writeStringList(specializationrSkills);
         dest.writeParcelable(career, 0);
     }
 
@@ -52,7 +52,7 @@ public class Specialization implements Parcelable {
     private Specialization(Parcel in) {
         name = in.readString();
         specializationrSkills = new ArrayList<>(4);
-        in.readTypedList(specializationrSkills, Skill.CREATOR);
+        in.readStringList(specializationrSkills);
         career = in.readParcelable(Career.class.getClassLoader());
     }
 }

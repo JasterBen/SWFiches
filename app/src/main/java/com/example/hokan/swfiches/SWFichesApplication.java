@@ -66,15 +66,15 @@ public class SWFichesApplication extends Application {
         careerList.add(new Career("Bounty Hunter"));
         careerList.add(new Career("Spy"));
 
-        ArrayList<Skill> careerSkillList = new ArrayList<>();
-        careerSkillList.add(new Skill("Astrogation", 'i'));
-        careerSkillList.add(new Skill("Melee", 'b'));
-        careerSkillList.add(new Skill("Perception", 'c'));
-        careerSkillList.add(new Skill("Brawl", 'b'));
-        careerSkillList.add(new Skill("Gunnery", 'a'));
-        careerSkillList.add(new Skill("Ranged Heavy", 'a'));
-        careerSkillList.add(new Skill("Ranged Light", 'a'));
-        careerSkillList.add(new Skill("Lightsaber (Br)", 'b'));
+        ArrayList<String> careerSkillList = new ArrayList<>();
+        careerSkillList.add("Astrogation");
+        careerSkillList.add("Melee");
+        careerSkillList.add("Perception");
+        careerSkillList.add("Brawl");
+        careerSkillList.add("Gunnery");
+        careerSkillList.add("Ranged Heavy");
+        careerSkillList.add("Ranged Light");
+        careerSkillList.add("Lightsaber (Br)");
         careerList.add(new Career("Test", careerSkillList));
     }
 

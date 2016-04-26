@@ -13,6 +13,14 @@ public class Armor extends BattleStuff implements Parcelable {
     protected int rangeDef;
 
 
+    public Armor()
+    {
+        super("", 0, 0, 0, "");
+        this.soak = 0;
+        this.contactDef = 0;
+        this.rangeDef = 0;
+    }
+
     public Armor(String name, int weight, int actualMod, int maxMod, String special, int soak, int contactDef, int rangeDef) {
         super(name, weight, actualMod, maxMod, special);
         this.soak = soak;

@@ -16,8 +16,10 @@ public class Specie extends CharacSuperClass implements Parcelable {
     protected int startingxp;
     @SerializedName("can_have_force")
     protected boolean canHaveForce;
-    protected ArrayList<Skill> firstSpecieSkill;
-    protected ArrayList<Skill> secondSpecieSkill;
+    @SerializedName("skill_one")
+    protected ArrayList<String> firstSpecieSkill;
+    @SerializedName("skill_two")
+    protected String secondSpecieSkill;
     @SerializedName("special")
     protected String special;
 
@@ -94,8 +96,8 @@ public class Specie extends CharacSuperClass implements Parcelable {
         dest.writeInt(strain);
         dest.writeInt(startingxp);
         dest.writeByte((byte) (canHaveForce ? 1 : 0));
-        dest.writeTypedList(firstSpecieSkill);
-        dest.writeTypedList(secondSpecieSkill);
+        dest.writeStringList(firstSpecieSkill);
+        dest.writeString(secondSpecieSkill);
         dest.writeString(special);
     }
 
@@ -123,9 +125,8 @@ public class Specie extends CharacSuperClass implements Parcelable {
         startingxp= in.readInt();
         canHaveForce = in.readByte() != 0;
         firstSpecieSkill = new ArrayList<>();
-        in.readTypedList(firstSpecieSkill, Skill.CREATOR);
-        secondSpecieSkill = new ArrayList<>();
-        in.readTypedList(secondSpecieSkill, Skill.CREATOR);
+        in.readStringList(firstSpecieSkill);
+        secondSpecieSkill = in.readString();
         special = in.readString();
     }
 
