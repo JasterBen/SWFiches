@@ -29,7 +29,6 @@
         android:id="@+id/dialog_edit_perso_add_specialization"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add_specialization"
-        android:enabled="false"/>
+        android:text="@string/add_specialization" />
 
 </LinearLayout>

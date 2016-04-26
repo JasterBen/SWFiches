@@ -159,6 +159,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
 
         addNewSpecialization = (Button) dialogContent.findViewById(R.id.dialog_edit_perso_add_specialization);
         addNewSpecialization.setOnClickListener(this);
+        addNewSpecialization.setEnabled(character.getMainSpecialization() != null);
 
         builder.setView(dialogContent);
 
