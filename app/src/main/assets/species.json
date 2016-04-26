@@ -1,0 +1,1106 @@
+[
+	{
+		"name" : "Aqualish (aquala)",
+		"brawn" : "3",
+		"agility" : "2",
+		"intellect" : "1",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "2",
+		"wound" : "11",
+		"strain" : "8",
+		"startingxp" : "90",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Pugilat"
+			}
+		],
+		"skill_two": [
+			{
+				"name" : "Résistance"
+			}
+		],
+		"special": "-1 dé d'infortune froid"
+	},
+	{
+		"name" : "Aqualish (Ualaq))",
+		"brawn" : "3",
+		"agility" : "2",
+		"intellect" : "1",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "2",
+		"wound" : "11",
+		"strain" : "8",
+		"startingxp" : "90",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Pugilat"
+			}
+		],
+		"skill_two": [
+			{
+				"name" : "Survie"
+			},
+			{
+				"name" : "Perception"
+			}
+		],
+		"special": "-1 dé d'infortune dans l'obscurité \n +1 dé d'infortune en perception lumière clair"
+
+	},
+	
+	{
+		"name" : "Aqualish (Quara))",
+		"brawn" : "3",
+		"agility" : "2",
+		"intellect" : "1",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "2",
+		"wound" : "11",
+		"strain" : "8",
+		"startingxp" : "90",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Pugilat"
+			}
+		],
+		"skill_two": [
+			{
+				"name" : "Athlétisme"
+			},
+			{
+				"name" : "Coercition"
+			}
+		],
+		"special": "-1 dé d'infortune dans la nature"
+
+	},
+	
+	{
+		"name" : "Arcona",
+		"brawn" : "1",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "3",
+		"wound" : "10",
+		"strain" : "10",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Vigilance"
+			}
+		],
+		"skill_two": [], 
+		"special": "+1 avantage charme et négociation"
+	},
+	
+	
+	{
+		"name" : "Bothan",
+		"brawn" : "1",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "3",
+		"willpower" : "2",
+		"presence" : "2",
+		"wound" : "10",
+		"strain" : "11",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Système D"
+			}
+		],
+		"skill_two": [
+			{
+				"name" : "Persuasion"
+			}
+		], 
+		"special": ""
+	},
+	{
+		"name" : "Caamasi",
+		"brawn" : "2",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "1",
+		"willpower" : "3",
+		"presence" : "2",
+		"wound" : "10",
+		"strain" : "11",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Charme"
+			}, 
+			{
+				"name": "Sang-froid"
+			}
+		],
+		"skill_two": [], 
+		"special": "Une fois par session, le joueur peut retenir parfaitement une scène ou une rencontre"
+	},
+	
+	{
+		"name" : "Céréen",
+		"brawn" : "2",
+		"agility" : "1",
+		"intellect" :"3",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "2",
+		"wound" : "10",
+		"strain" : "13",
+		"startingxp" : "90",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Vigilance"
+			}
+		],
+		"skill_two": [], 
+		"special": "Toutes les compétences de connaissance sont des compétences de carrière"
+		},
+	
+	{
+		"name" : "Chadra-Fan",
+		"brawn" : "1",
+		"agility" : "3",
+		"intellect" : "3",
+		"cunning" : "2",
+		"willpower" : "1",
+		"presence" : "2",
+		"wound" : "9",
+		"strain" : "11",
+		"startingxp" : "90",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Mécanique"
+			}
+		],
+		"skill_two": [], 
+		"special": "-2 dés d'infortune aux jets de perception"
+	},
+
+	{
+		"name" : "Chevin",
+		"brawn" : "3",
+		"agility" : "1",
+		"intellect" : "2",
+		"cunning" : "3",
+		"willpower" : "2",
+		"presence" : "1",
+		"wound" : "11",
+		"strain" : "11",
+		"startingxp" : "80",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Négociation"
+			}
+		],
+		"skill_two": [], 
+		"special": "+1 dé de fortune perception olfactive\n 1 rang en dur au mal"
+	},
+
+	{
+		"name" : "Chiss",
+		"brawn" : "2",
+		"agility" : "2",
+		"intellect" : "3",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "1",
+		"wound" : "10",
+		"strain" : "10",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Calme"
+			}
+		],
+		"skill_two": [], 
+		"special": "Pas de malus en raison de l'éclairage"
+	},
+	{
+		"name" : "Drall",
+		"brawn" : "1",
+		"agility" : "1",
+		"intellect" : "4",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "2",
+		"wound" : "8",
+		"strain" : "12",
+		"startingxp" : "90",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Education"
+			}
+		],
+		"skill_two": [], 
+		"special": "+1 dé fortune pour Assitsance qualifiée"
+	},
+	
+	{
+		"name" : "Dresselian",
+		"brawn" : "2",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "3",
+		"presence" : "2",
+		"wound" : "11",
+		"strain" : "10",
+		"startingxp" : "110",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Survie"
+			}
+		],
+		"skill_two": [], 
+		"special": "Tous les tests liés à de la technologie sont améliorés d'un dé de difficulté (annulable contre 10xp à la création)"
+	},
+	
+	{
+		"name" : "Droïde",
+		"brawn" : "1",
+		"agility" : "1",
+		"intellect" : "1",
+		"cunning" : "1",
+		"willpower" : "1",
+		"presence" : "1",
+		"wound" : "10",
+		"strain" : "10",
+		"startingxp" : "175",
+		"can_have_force" : "false",
+		"skill_one": [],
+		"skill_two": [], 
+		"special": "+50% compétences carrière et spécialité \n Limite d'implant à 6 \n Immunité au poison et toxine \n 1 rang en endurance (talent)"
+	},
+	{
+		"name" : "Duros",
+		"brawn" : "1",
+		"agility" : "2",
+		"intellect" : "3",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "2",
+		"wound" : "11",
+		"strain" : "10",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Pilotage spatial"
+			}
+		],
+		"skill_two": [], 
+		"special": "+ 1 avantage à tous les tests d'astrogation"
+	},
+	{
+		"name" : "Falleen",
+		"brawn" : "1",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "3",
+		"wound" : "10",
+		"strain" : "12",
+		"startingxp" : "90",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Charme"
+			}
+		],
+		"skill_two": [], 
+		"special": "Peut subir 2 de stress pour améliorer un jet de charme, tromperie ou négociation"
+	},
+	{
+		"name" : "Gand",
+		"brawn" : "2",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "3",
+		"presence" : "1",
+		"wound" : "10",
+		"strain" : "10",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Sang-froid"
+			}
+		],
+		"skill_two": [], 
+		"special": "+10xp si poumons"
+	},	
+	{
+		"name" : "Gank",
+		"brawn" : "2",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "1",
+		"wound" : "10",
+		"strain" : "10",
+		"startingxp" : "110",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Coercition"
+			},
+			{
+				"name" : "Vigilance"
+			}
+		],
+		"skill_two": [], 
+		"special": "2 implants cybernétiques pour une valeur max de 5000 crédits (7500 si augmentation d'obilgation monétaire) \n Limite d'implants à 3 + vig"
+	},
+	{
+		"name" : "Gossam",
+		"brawn" : "1",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "3",
+		"willpower" : "2",
+		"presence" : "2",
+		"wound" : "9",
+		"strain" : "11",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Tromperie"
+			}
+		],
+		"skill_two": [], 
+		"special": "Gabarit de 0"
+	},
+	{
+		"name" : "Gotal",
+		"brawn" : "2",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "3",
+		"willpower" : "2",
+		"presence" : "1",
+		"wound" : "9",
+		"strain" : "8",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Perception"
+			}
+		],
+		"skill_two": [], 
+		"special": "1 fois par rencontre, peut sentir une présence à courte portée au prix d'une manœuvre"
+	},
+	{
+		"name" : "Gran",
+		"brawn" : "2",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "1",
+		"willpower" : "2",
+		"presence" : "3",
+		"wound" : "10",
+		"strain" : "9",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Charme"
+			},
+			{
+				"name" : "Négociation"
+			}
+		],
+		"skill_two": [], 
+		"special": "- 2 dé infortune pour la visée et la perception dû à l'environnement ou la discrétion"
+	},
+
+	{
+		"name" : "Humain",
+		"brawn" : "2",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "2",
+		"wound" : "10",
+		"strain" : "10",
+		"startingxp" : "110",
+		"can_have_force" : "true",
+		"skill_one": [],
+		"skill_two": [], 
+		"special": "1 rang dans 2 compétences hors carrière"
+	},
+
+	{
+		"name" : "Humain coréllien",
+		"brawn" : "2",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "2",
+		"wound" : "10",
+		"strain" : "10",
+		"startingxp" : "110",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Pilotage espace"
+			},
+			{
+				"name" : "Pilotage planétaire"
+			}
+		],
+		"skill_two": [], 
+		"special": "Rang 3 possible à la création en pilotage"
+	},
+
+	{
+		"name" : "Hutt",
+		"brawn" : "3",
+		"agility" : "1",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "3",
+		"presence" : "2",
+		"wound" : "13",
+		"strain" : "11",
+		"startingxp" : "70",
+		"can_have_force" : "false",
+		"skill_one": [
+			{
+				"name" : "Coercition"
+			},
+			{
+				"name" : "Sang-froid"
+			}
+		],
+		"skill_two": [], 
+		"special": "1 rang en perspicace (talent)\n 1 rang en endurance (talent)"
+	},
+
+	{
+		"name" : "Ithorien",
+		"brawn" : "2",
+		"agility" : "1",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "3",
+		"presence" : "2",
+		"wound" : "9",
+		"strain" : "12",
+		"startingxp" : "90",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Survie"
+			}
+		],
+		"skill_two": [], 
+		"special": "Cri (résistance, dégâts 6, critique 4, portée courte, Souffle 3, choc 1, cadence lente 2, dégâts étourdissants) génère 3 points de stress"
+	},
+
+	{
+		"name" : "Kel Dor",
+		"brawn" : "1",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "3",
+		"presence" : "2",
+		"wound" : "10",
+		"strain" : "10",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Education"
+			}
+		],
+		"skill_two": [], 
+		"special": "-2 dé d'infortune dans la pénombre"
+	},
+
+	{
+		"name" : "Klatooinien",
+		"brawn" : "2",
+		"agility" : "3",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "1",
+		"presence" : "2",
+		"wound" : "10",
+		"strain" : "10",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Pugilat"
+			},
+			{
+				"name" : "Distance léger"
+			},
+			{
+				"name" : "Distance lourd"
+			}
+		],
+		"skill_two": [], 
+		"special": "1 rang dans 1 compétence hors carrière"
+	},
+
+	{
+		"name" : "Mirialan",
+		"brawn" : "2",
+		"agility" : "3",
+		"intellect" : "2",
+		"cunning" : "1",
+		"willpower" : "2",
+		"presence" : "2",
+		"wound" : "11",
+		"strain" : "10",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Sang-froid"
+			}
+		],
+		"skill_two": [
+			{
+				"name" : "Calme"
+			}
+		], 
+		"special": ""
+	},
+
+	{
+		"name" : "Mon Calamari",
+		"brawn" : "2",
+		"agility" : "2",
+		"intellect" : "3",
+		"cunning" : "1",
+		"willpower" : "2",
+		"presence" : "2",
+		"wound" : "10",
+		"strain" : "10",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Education"
+			}
+		],
+		"skill_two": [], 
+		"special": "Peut respirer sous l'eau"
+	},
+
+	{
+		"name" : "Nautolan",
+		"brawn" : "3",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "1",
+		"presence" : "2",
+		"wound" : "11",
+		"strain" : "9",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Athlétisme"
+			}
+		],
+		"skill_two": [], 
+		"special": "Peut respirer sous l'eau"
+	},
+
+	{
+		"name" : "Neimoidians",
+		"brawn" : "1",
+		"agility" : "2",
+		"intellect" : "3",
+		"cunning" : "3",
+		"willpower" : "1",
+		"presence" : "2",
+		"wound" : "11",
+		"strain" : "9",
+		"startingxp" : "90",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Tromperie"
+			},
+			{
+				"name" : "Négociation"
+			}
+		],
+		"skill_two": [], 
+		"special": ""
+	},
+
+	{
+		"name" : "Nikto (Esral'sa)",
+		"brawn" : "3",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "1",
+		"wound" : "11",
+		"strain" : "10",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Survie"
+			}
+		],
+		"skill_two": [], 
+		"special": "1 rang en baroudeur (talent)"
+	},
+
+	{
+		"name" : "Nikto (Gluss'sa)",
+		"brawn" : "3",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "1",
+		"wound" : "11",
+		"strain" : "10",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Athlétisme"
+			}
+		],
+		"skill_two": [], 
+		"special": "Apnée de 2 x vigueur"
+	},
+
+	{
+		"name" : "Nikto (Kadas'sa)",
+		"brawn" : "3",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "1",
+		"wound" : "11",
+		"strain" : "10",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Coordination"
+			}
+		],
+		"skill_two": [], 
+		"special": "+1 dé de fortune escalade\n +1 dégat en pugilat et critique 3"
+	},
+
+	{
+		"name" : "Nikto (Kaijan'sa)",
+		"brawn" : "3",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "1",
+		"wound" : "11",
+		"strain" : "10",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Résistance"
+			}
+		],
+		"skill_two": [], 
+		"special": "- 1 dé d'infortune chaleur"
+	},
+
+	{
+		"name" : "Nikto (M'shento'su)",
+		"brawn" : "3",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "1",
+		"wound" : "11",
+		"strain" : "10",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Perception"
+			}
+		],
+		"skill_two": [], 
+		"special": "+1 dé fortune perception et vigilance auditive"
+	},
+
+	{
+		"name" : "Polis Massans",
+		"brawn" : "1",
+		"agility" : "2",
+		"intellect" : "3",
+		"cunning" : "2",
+		"willpower" : "3",
+		"presence" : "1",
+		"wound" : "8",
+		"strain" : "11",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Médecine"
+			}
+		],
+		"skill_two": [], 
+		"special": "-10xp si corde vocal\n Télépathie globale à portée courte\n Télépathie privée au contact"
+	},
+
+	{
+		"name" : "Quarren",
+		"brawn" : "2",
+		"agility" : "2",
+		"intellect" : "1",
+		"cunning" : "2",
+		"willpower" : "3",
+		"presence" : "2",
+		"wound" : "10",
+		"strain" : "8",
+		"startingxp" : "95",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Négociation"
+			}
+		],
+		"skill_two": [], 
+		"special": "Peut respirer sous l'eau\n Une fois par rencontre, peut subir 2 de stress pour ajouter 1 dé d'infortune (3 dans l'eau) au test de combat d'une cible à portée courte"
+	},
+
+	{
+		"name" : "Rodien",
+		"brawn" : "2",
+		"agility" : "3",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "1",
+		"presence" : "2",
+		"wound" : "10",
+		"strain" : "10",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Survie"
+			}
+		],
+		"skill_two": [], 
+		"special": "1 rang en pisteur chevronné (talent)"
+	},
+
+	{
+		"name" : "Sakiyan",
+		"brawn" : "2",
+		"agility" : "2",
+		"intellect" : "3",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "2",
+		"wound" : "8",
+		"strain" : "10",
+		"startingxp" : "80",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Perception"
+			},
+			{
+				"name" : "Vigilance"
+			}
+		],
+		"skill_two": [], 
+		"special": "1 rang en pisteur chevroné (talent)"
+	},
+
+	{
+		"name" : "Sathari",
+		"brawn" : "1",
+		"agility" : "3",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "2",
+		"wound" : "8",
+		"strain" : "10",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Coordination"
+			}
+		],
+		"skill_two": [], 
+		"special": "Pas de dégâts de chute"
+	},
+
+	{
+		"name" : "Sélonien",
+		"brawn" : "2",
+		"agility" : "3",
+		"intellect" : "2",
+		"cunning" : "1",
+		"willpower" : "3",
+		"presence" : "1",
+		"wound" : "11",
+		"strain" : "10",
+		"startingxp" : "80",
+		"can_have_force" : "true",
+		"skill_one": [],
+		"skill_two": [], 
+		"special": "Aucun malus dû à la pénombre\n Queue (pugilat, dégâts +1,critique 5, contact, désorientation 2, Renversement)"
+	},
+	{
+		"name" : "Sullustéen",
+		"brawn" : "2",
+		"agility" : "3",
+		"intellect" : "2",
+		"cunning" : "1",
+		"willpower" : "2",
+		"presence" : "2",
+		"wound" : "10",
+		"strain" : "10",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Astrogation"
+			}
+		],
+		"skill_two": [], 
+		"special": "1 rang de pilote chevronné (talent)"
+	},
+
+	{
+		"name" : "Togruta",
+		"brawn" : "1",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "3",
+		"willpower" : "2",
+		"presence" : "2",
+		"wound" : "10",
+		"strain" : "10",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Perception"
+			}
+		],
+		"skill_two": [], 
+		"special": "+1 dé de fortune Assistance qualifiée"
+	},
+
+	{
+		"name" : "Toydarian",
+		"brawn" : "1",
+		"agility" : "1",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "3",
+		"presence" : "3",
+		"wound" : "9",
+		"strain" : "12",
+		"startingxp" : "90",
+		"can_have_force" : "false",
+		"skill_one": [],
+		"skill_two": [], 
+		"special": "Pas de manœuvre supplémentaire en terrain difficile\n Gabarit de 0"
+	},
+
+	{
+		"name" : "Trandoshan",
+		"brawn" : "3",
+		"agility" : "1",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "2",
+		"wound" : "12",
+		"strain" : "9",
+		"startingxp" : "90",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Perception"
+			}
+		],
+		"skill_two": [], 
+		"special": "+1 blessure guérie dans les cuve à bacta\n Griffe : +1 dégât en pugilat, critique 3"
+	},
+
+	{
+		"name" : "Twi'lek",
+		"brawn" : "1",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "3",
+		"wound" : "10",
+		"strain" : "11",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Charme"
+			},
+			{
+				"name" : "Tromperie"
+			}
+		],
+		"skill_two": [], 
+		"special": "- 1 dé d'infortune dans un lieu chaud ou aride"
+	},
+
+	{
+		"name" : "Verpine",
+		"brawn" : "2",
+		"agility" : "3",
+		"intellect" : "3",
+		"cunning" : "1",
+		"willpower" : "2",
+		"presence" : "1",
+		"wound" : "9",
+		"strain" : "12",
+		"startingxp" : "80",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Mécanique"
+			}
+		],
+		"skill_two": [], 
+		"special": "+1 dé de fortune pour voir de petits détails\n Emission/réception d'ondes radio sur 100km"
+	},
+
+	{
+		"name" : "Weequay",
+		"brawn" : "3",
+		"agility" : "2",
+		"intellect" : "1",
+		"cunning" : "3",
+		"willpower" : "2",
+		"presence" : "1",
+		"wound" : "10",
+		"strain" : "9",
+		"startingxp" : "90",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Athlétisme"
+			},
+			{
+				"name" : "Résistance"
+			}
+		],
+		"skill_two": [], 
+		"special": "Communication indetectable entre weequay"
+	},
+
+	{
+		"name" : "Wookie",
+		"brawn" : "3",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "1",
+		"presence" : "2",
+		"wound" : "14",
+		"strain" : "8",
+		"startingxp" : "90",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Pugilat"
+			}
+		],
+		"skill_two": [], 
+		"special": "Quand blessé +1 dégât en Corps à Corps et Pugilat (+2 quand blessure critique)"
+	},
+
+	{
+		"name" : "Xexto",
+		"brawn" : "1",
+		"agility" : "3",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "1",
+		"presence" : "2",
+		"wound" : "9",
+		"strain" : "9",
+		"startingxp" : "85",
+		"can_have_force" : "true",
+		"skill_one": [],
+		"skill_two": [], 
+		"special": "1 rang en aplomb (talent)\n 4 bras (+1 manoeuvre gratuite par tour)"
+	},
+
+	{
+		"name" : "Zabrak",
+		"brawn" : "2",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "3",
+		"presence" : "1",
+		"wound" : "10",
+		"strain" : "10",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"skill_one": [
+			{
+				"name" : "Survie"
+			}
+		],
+		"skill_two": [], 
+		"special": "+1 avantage coercition"
+	}
+]
+
+
+

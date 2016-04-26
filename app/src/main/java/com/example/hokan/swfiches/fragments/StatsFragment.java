@@ -56,8 +56,8 @@ public class StatsFragment extends PlayerSuperFragment implements View.OnClickLi
         xpTextView.setText(formatString('x'));
 
         TextView specialTextView = (TextView) v.findViewById(R.id.fragment_stats_special);
-        specialTextView.setText(String.format(getString(R.string.format_special),
-                character.getSpecial() != null ? character.getSpecial() : ""));
+        specialTextView.setText(!character.getSpecie().getSpecial().equals("") ?
+                String.format(getString(R.string.format_special), character.getSpecie().getSpecial()) : "");
 
 
         v.setOnClickListener(this);

@@ -32,28 +32,17 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
     protected ArrayList<Weapon> weaponList;
     protected int weaponListSize;
     protected Armor armor;
-    protected String special;
 
 
 
-    public SWCharacter(String name) {
+    public SWCharacter(String name, Specie specie) {
         this.name = name;
-        this.brawn = -1;
-        this.agility = -1;
-        this.intellect = -1;
-        this.cunning = -1;
-        this.willpower = -1;
-        this.presence = -1;
-        this.wound = -1;
-        this.strain = -1;
-        this.soak = -1;
+        this.forceRating = 0;
+        this.setSpecie(specie);
         this.actualWound = 0;
         this.actualStrain = 0;
-        this.forceRating = 0;
-        this.weight = -1;
         this.actualWeight = 0;
         this.actualXp = 0;
-        this.totalXp = -1;
         this.skillList = SWFichesApplication.getApp().getSkillList();
         this.skillListSize = skillList.size();
         this.armor = new Armor("", 0, 0, 0, "", 0, 0, 0);
@@ -267,14 +256,6 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
 
     public void setWeaponListSize(int weaponListSize) {
         this.weaponListSize = weaponListSize;
-    }
-
-    public String getSpecial() {
-        return special;
-    }
-
-    public void setSpecial(String special) {
-        this.special = special;
     }
 
     //endregion

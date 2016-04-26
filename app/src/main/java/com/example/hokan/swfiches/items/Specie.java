@@ -3,13 +3,23 @@ package com.example.hokan.swfiches.items;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+
 /**
  * Created by Utilisateur on 02/02/2016.
  */
 public class Specie extends CharacSuperClass implements Parcelable {
 
+    @SerializedName("startingxp")
     protected int startingxp;
+    @SerializedName("can_have_force")
     protected boolean canHaveForce;
+    protected ArrayList<Skill> firstSpecieSkill;
+    protected ArrayList<Skill> secondSpecieSkill;
+    @SerializedName("special")
+    protected String special;
 
 
     public Specie(String name, int brawn, int agility, int intellect, int cunning, int willpower,
@@ -54,6 +64,13 @@ public class Specie extends CharacSuperClass implements Parcelable {
         this.canHaveForce = canHaveForce;
     }
 
+    public String getSpecial() {
+        return special;
+    }
+
+    public void setSpecial(String special) {
+        this.special = special;
+    }
 
     //endregion
 
@@ -77,6 +94,9 @@ public class Specie extends CharacSuperClass implements Parcelable {
         dest.writeInt(strain);
         dest.writeInt(startingxp);
         dest.writeByte((byte) (canHaveForce ? 1 : 0));
+        dest.writeTypedList(firstSpecieSkill);
+        dest.writeTypedList(secondSpecieSkill);
+        dest.writeString(special);
     }
 
     public static final Parcelable.Creator<Specie> CREATOR
@@ -102,6 +122,11 @@ public class Specie extends CharacSuperClass implements Parcelable {
         strain= in.readInt();
         startingxp= in.readInt();
         canHaveForce = in.readByte() != 0;
+        firstSpecieSkill = new ArrayList<>();
+        in.readTypedList(firstSpecieSkill, Skill.CREATOR);
+        secondSpecieSkill = new ArrayList<>();
+        in.readTypedList(secondSpecieSkill, Skill.CREATOR);
+        special = in.readString();
     }
 
 

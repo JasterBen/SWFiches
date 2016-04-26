@@ -1,16 +1,25 @@
 package com.example.hokan.swfiches;
 
 import android.app.Application;
+import android.os.AsyncTask;
 
 import com.example.hokan.swfiches.items.Career;
 import com.example.hokan.swfiches.items.Skill;
 import com.example.hokan.swfiches.items.Specie;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 /**
  * Created by Ben on 17/04/2016.
  */
+
+// TODO http://blog.nkdroidsolutions.com/json-parsing-from-assets-using-gson-in-android-tutorial/
+
 public class SWFichesApplication extends Application {
 
     private static SWFichesApplication app;
@@ -39,11 +48,15 @@ public class SWFichesApplication extends Application {
 
     private void initSpeciesList()
     {
-        speciesList = new ArrayList<>();
-        speciesList.add(new Specie("Humain", 2, 2, 2, 2, 2, 2, 10, 10, 110, true));
-        speciesList.add(new Specie("Humain corellien", 2, 2, 2, 2, 2, 2, 10, 10, 110, true));
-        speciesList.add(new Specie("Droid", 1, 1, 1, 1, 1, 1, 10, 10, 175, false));
-        speciesList.add(new Specie("Drall", 1, 1, 4, 2, 2, 2, 8, 12, 90, true));
+        new AsyncTask<Void,Void,Void>(){
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                Type listType = new TypeToken<ArrayList<Specie>>(){}.getType();
+                speciesList = new GsonBuilder().create().fromJson(loadJSONFromAsset(), listType);
+                return null;
+            }
+        }.execute();
     }
 
     private void initCareerList()
@@ -102,5 +115,22 @@ public class SWFichesApplication extends Application {
                 return skill;
 
         return null;
+    }
+
+
+    public String loadJSONFromAsset() {
+        String json = null;
+        try {
+            InputStream is = getAssets().open("species.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
     }
 }

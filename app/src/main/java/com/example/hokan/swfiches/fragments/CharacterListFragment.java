@@ -38,6 +38,8 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
     protected CampaignActivity activity;
     protected Campaign campaign;
 
+    protected Specie characterSpecie;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,7 +98,6 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
         View v = inflater.inflate(R.layout.dialog_create_character, null);
 
         final String name = String.format(getString(R.string.character_default_name), adapter.getItemCount() + 1);
-        final SWCharacter character = new SWCharacter(name);
 
         final EditText input = (EditText) v.findViewById(R.id.dialog_create_character_name);
         input.setHint(name);
@@ -109,7 +110,7 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
         speciesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                character.setSpecie((Specie) parent.getAdapter().getItem(position));
+                characterSpecie = (Specie) parent.getAdapter().getItem(position);
             }
 
             @Override
@@ -125,7 +126,7 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
                 String newName = !input.getText().toString().equals("") ?
                         input.getText().toString() : name;
 
-                character.setName(newName);
+                SWCharacter character = new SWCharacter(newName, characterSpecie);
                 adapter.addItem(character);
             }
         });

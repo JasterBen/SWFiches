@@ -1,18 +1,29 @@
 package com.example.hokan.swfiches.items;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Utilisateur on 19/04/2016.
  */
 public abstract class CharacSuperClass {
 
+    @SerializedName("name")
     protected String name;
+    @SerializedName("brawn")
     protected int brawn;
+    @SerializedName("agility")
     protected int agility;
+    @SerializedName("intellect")
     protected int intellect;
+    @SerializedName("cunning")
     protected int cunning;
+    @SerializedName("willpower")
     protected int willpower;
+    @SerializedName("presence")
     protected int presence;
+    @SerializedName("wound")
     protected int wound;
+    @SerializedName("strain")
     protected int strain;
 
 
