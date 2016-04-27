@@ -11,11 +11,7 @@
 		"strain" : "8",
 		"startingxp" : "90",
 		"can_have_force" : "true",
-		"skill_one": [
-				"Pugilat"
-		],
-		"skill_two": "Résistance",
-		"special": "-1 dé d'infortune froid"
+		"special": "1 rang en pugilat\n 1 rang en résistance\n -1 dé d'infortune froid"
 	},
 	{
 		"name" : "Aqualish (Ualaq))",
@@ -29,12 +25,7 @@
 		"strain" : "8",
 		"startingxp" : "90",
 		"can_have_force" : "true",
-		"skill_one": [
-		  "Survie",
-		  "Perception"
-		],
-		"skill_two": "Pugilat",
-		"special": "-1 dé d'infortune dans l'obscurité \n +1 dé d'infortune en perception lumière clair"
+		"special": "1 rang en pugilat\n 1 rang en survie ou perception\n -1 dé d'infortune dans l'obscurité\n + 1 dé d'infortune en perception lumière clair"
 
 	},
 	
@@ -50,12 +41,7 @@
 		"strain" : "8",
 		"startingxp" : "90",
 		"can_have_force" : "true",
-		"skill_one": [
-		  "Athlétisme",
-		  "Coercition"
-		],
-		"skill_two": "Pugilat",
-		"special": "-1 dé d'infortune dans la nature"
+		"special": "1 rang en pugilat\n 1 rang en athlétisme ou coercition\n -1 dé d'infortune dans la nature"
 
 	},
 	
@@ -71,13 +57,23 @@
 		"strain" : "10",
 		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Vigilance"
-		],
-		"skill_two": "", 
-		"special": "+1 avantage charme et négociation"
+		"special": "1 rang en vigilance\n - 1 dé d'infortune chaleur\n +1 avantage charme et négociation"
 	},
 	
+	{
+		"name" : "Besalisk",
+		"brawn" : "3",
+		"agility" : "1",
+		"intellect" : "2",
+		"cunning" : "1",
+		"willpower" : "2",
+		"presence" : "2",
+		"wound" : "12",
+		"strain" : "7",
+		"startingxp" : "85",
+		"can_have_force" : "true",
+		"special": "1 rang en résistance\n 4 bras (+ 1 manœuvre gratuite par tour)"
+	},
 	
 	{
 		"name" : "Bothan",
@@ -90,12 +86,7 @@
 		"wound" : "10",
 		"strain" : "11",
 		"startingxp" : "100",
-		"can_have_force" : "true",
-		"skill_one": [
-			"Système D"
-		],
-		"skill_two": "Persuasion",
-		"special": ""
+		"special": "1 rang en système D\n 1 rang en persuasion"
 	},
 	{
 		"name" : "Caamasi",
@@ -109,12 +100,7 @@
 		"strain" : "11",
 		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Charme",
-			"Sang-froid"
-		],
-		"skill_two": "", 
-		"special": "Une fois par session, le joueur peut retenir parfaitement une scène ou une rencontre"
+		"special": "1 rang en sang-froid ou charme\n Une fois par session, le joueur peut retenir parfaitement une scène ou une rencontre"
 	},
 	
 	{
@@ -129,12 +115,8 @@
 		"strain" : "13",
 		"startingxp" : "90",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Vigilance"
-		],
-		"skill_two": "", 
-		"special": "Toutes les compétences de connaissance sont des compétences de carrière"
-		},
+		"special": "1 rang en vigilance\n Toutes les compétences de connaissance sont des compétences de carrière"
+	},
 	
 	{
 		"name" : "Chadra-Fan",
@@ -148,11 +130,7 @@
 		"strain" : "11",
 		"startingxp" : "90",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Mécanique"
-		],
-		"skill_two": "", 
-		"special": "-2 dés d'infortune aux jets de perception"
+		"special": "1 rang en mécanique\n -2 dés d'infortune aux jets de perception"
 	},
 
 	{
@@ -167,11 +145,7 @@
 		"strain" : "11",
 		"startingxp" : "80",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Négociation"
-		],
-		"skill_two": "", 
-		"special": "+1 dé de fortune perception olfactive\n 1 rang en dur au mal"
+		"special": "1 rang en négociation\n +1 dé de fortune perception olfactive\n 1 rang en dur au mal"
 	},
 
 	{
@@ -186,11 +160,7 @@
 		"strain" : "10",
 		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Calme"
-		],
-		"skill_two": "", 
-		"special": "Pas de malus en raison de l'éclairage"
+		"special": "1 rang en calme\n Pas de malus en raison de l'éclairage"
 	},
 	{
 		"name" : "Drall",
@@ -204,11 +174,7 @@
 		"strain" : "12",
 		"startingxp" : "90",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Education"
-		],
-		"skill_two": "", 
-		"special": "+1 dé fortune pour Assitsance qualifiée"
+		"special": "1 rang en connaissance éducation\n +1 dé fortune pour Assitsance qualifiée"
 	},
 	
 	{
@@ -223,11 +189,7 @@
 		"strain" : "10",
 		"startingxp" : "110",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Survie"
-		],
-		"skill_two": "", 
-		"special": "Tous les tests liés à de la technologie sont améliorés d'un dé de difficulté (annulable contre 10xp à la création)"
+		"special": "1 rang en survie\n Tous les tests lié à de la technologie sont amélioré d'un dé de difficulté (annulable contre 10xp à la création)"
 	},
 	
 	{
@@ -242,10 +204,24 @@
 		"strain" : "10",
 		"startingxp" : "175",
 		"can_have_force" : "false",
-		"skill_one": [],
-		"skill_two": "", 
-		"special": "+50% compétences carrière et spécialité \n Limite d'implant à 6 \n Immunité au poison et toxine \n 1 rang en endurance (talent)"
+		"special": "+50% compétences carrière et spécialité\n Limite d'implant à 6\n Immunité au poison et toxine\n 1 rang en endurance (talent)"
 	},
+	
+	{
+		"name" : "Dug",
+		"brawn" : "2",
+		"agility" : "3",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "1",
+		"wound" : "9",
+		"strain" : "8",
+		"startingxp" : "90",
+		"can_have_force" : "true",
+		"special": "1 rang en pugilat\n 1 rang en Conduite Stratégique (talent)"
+	},
+	
 	{
 		"name" : "Duros",
 		"brawn" : "1",
@@ -258,11 +234,7 @@
 		"strain" : "10",
 		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Pilotage spatial"
-		],
-		"skill_two": "", 
-		"special": "+ 1 avantage à tous les tests d'astrogation"
+		"special": "1 rang en pilotage (spatial)\n + 1 avantage à tous les tests d'astrogation"
 	},
 	{
 		"name" : "Falleen",
@@ -275,12 +247,7 @@
 		"wound" : "10",
 		"strain" : "12",
 		"startingxp" : "90",
-		"can_have_force" : "true",
-		"skill_one": [
-			"Charme"
-		],
-		"skill_two": "", 
-		"special": "Peut subir 2 de stress pour améliorer un jet de charme, tromperie ou négociation"
+		"special": "1 rang en charme\n Peut subir 2 de stress pour améliorer un jet de charme, tromperie ou négociation"
 	},
 	{
 		"name" : "Gand",
@@ -294,11 +261,7 @@
 		"strain" : "10",
 		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Sang-froid"
-		],
-		"skill_two": "", 
-		"special": "+10xp si poumons"
+		"special": "1 rang en sang froid\n +10xp si poumons"
 	},	
 	{
 		"name" : "Gank",
@@ -312,12 +275,7 @@
 		"strain" : "10",
 		"startingxp" : "110",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Coercition",
-			"Vigilance"
-		],
-		"skill_two": "", 
-		"special": "2 implants cybernétiques pour une valeur max de 5000 crédits (7500 si augmentation d'obilgation monétaire) \n Limite d'implants à 3 + vig"
+		"special": "1 rang en coercition ou vigilance\n 2 implants cybernétiques pour une valeur max de 5000 crédits (7500 si augmentation d'obilgation monétaire)\n Limite d'implants à 3 + vig"
 	},
 	{
 		"name" : "Gossam",
@@ -331,11 +289,7 @@
 		"strain" : "11",
 		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Tromperie"
-		],
-		"skill_two": "", 
-		"special": "Gabarit de 0"
+		"special": "1 rang en tromperie\n Gabarit de 0"
 	},
 	{
 		"name" : "Gotal",
@@ -349,11 +303,7 @@
 		"strain" : "8",
 		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Perception"
-		],
-		"skill_two": "", 
-		"special": "1 fois par rencontre, peut sentir une présence à courte portée au prix d'une manœuvre"
+		"special": "1 rang en perception\n 1 fois par rencontre, peut sentir une présence à courte portée au prix d'une manœuvre"
 	},
 	{
 		"name" : "Gran",
@@ -366,13 +316,7 @@
 		"wound" : "10",
 		"strain" : "9",
 		"startingxp" : "100",
-		"can_have_force" : "true",
-		"skill_one": [
-			"Charme",
-			"Négociation"
-		],
-		"skill_two": "", 
-		"special": "- 2 dé infortune pour la visée et la perception dû à l'environnement ou la discrétion"
+		"special": "1 rang charme ou négociation\n - 2 dé infortune pour la visée et la perception dû à l'environnement ou la discrétion"
 	},
 
 	{
@@ -387,8 +331,6 @@
 		"strain" : "10",
 		"startingxp" : "110",
 		"can_have_force" : "true",
-		"skill_one": [],
-		"skill_two": "", 
 		"special": "1 rang dans 2 compétences hors carrière"
 	},
 
@@ -404,12 +346,7 @@
 		"strain" : "10",
 		"startingxp" : "110",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Pilotage espace",
-			"Pilotage planétaire"
-		],
-		"skill_two": "", 
-		"special": "Rang 3 possible à la création en pilotage"
+		"special": "1 rang en pilotage (planétaire ou spatial)\n Rang 3 possible à la créa en pilotage"
 	},
 
 	{
@@ -424,12 +361,22 @@
 		"strain" : "11",
 		"startingxp" : "70",
 		"can_have_force" : "false",
-		"skill_one": [
-			"Coercition",
-			"Sang-froid"
-		],
-		"skill_two": "", 
-		"special": "1 rang en perspicace (talent)\n 1 rang en endurance (talent)"
+		"special": "1 rang en coercition ou sang froid\n 1 rang en perspicace (talent)\n 1 rang en endurance (talent)\n Ne peut pas jamais faire plus d'une manoeuvre par tour"
+	},
+
+	{
+		"name" : "Iktotchi",
+		"brawn" : "2",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "3",
+		"presence" : "1",
+		"wound" : "10",
+		"strain" : "12",
+		"startingxp" : "90",
+		"can_have_force" : "true",
+		"special": "-1 rang en vigilance\n Peut dépenser 1 triomphe sur un jet d'initiative pour offrir un manœuvre gratuite à un allié à portée courte (lui inclus)"
 	},
 
 	{
@@ -444,11 +391,7 @@
 		"strain" : "12",
 		"startingxp" : "90",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Survie"
-		],
-		"skill_two": "", 
-		"special": "Cri (résistance, dégâts 6, critique 4, portée courte, Souffle 3, choc 1, cadence lente 2, dégâts étourdissants) génère 3 points de stress"
+		"special": "1 rang survie\n Cri (résistance, dégâts 6,critique 4, portée courte, Souffle 3, choc 1, cadence lente 2, dégâts étourdissants) génère 3 points de stress"
 	},
 
 	{
@@ -463,11 +406,7 @@
 		"strain" : "10",
 		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Education"
-		],
-		"skill_two": "", 
-		"special": "-2 dé d'infortune dans la pénombre"
+		"special": "1 rang en éducation\n -2 dé d'infortune dans la pénombre"
 	},
 
 	{
@@ -481,14 +420,22 @@
 		"wound" : "10",
 		"strain" : "10",
 		"startingxp" : "100",
+		"special": "1 rang en pugilat ou distance (léger ou lourd)\n 1 rang dans 1 compétence hors carrière"
+	},
+	
+	{
+		"name" : "Lannik",
+		"brawn" : "2",
+		"agility" : "1",
+		"intellect" :"3",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "2",
+		"wound" : "9",
+		"strain" : "12",
+		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Pugilat",
-			"Distance léger",
-			"Distance lourd"
-		],
-		"skill_two": "", 
-		"special": "1 rang dans 1 compétence hors carrière"
+		"special": "1 rang en système D\n -2 dés d'infortune des blessures critiques, de la désorientation et de la peur"
 	},
 
 	{
@@ -502,12 +449,7 @@
 		"wound" : "11",
 		"strain" : "10",
 		"startingxp" : "100",
-		"can_have_force" : "true",
-		"skill_one": [
-			"Sang-froid"
-		],
-		"skill_two": "Calme",
-		"special": ""
+		"special": "1 rang en sang-froid\n 1 rang en calme"
 	},
 
 	{
@@ -521,12 +463,36 @@
 		"wound" : "10",
 		"strain" : "10",
 		"startingxp" : "100",
+		"special": "1 rang en éducation\n Peut respirer sous l'eau"
+	},
+	
+	{
+		"name" : "Mustafarian (nord)",
+		"brawn" : "2",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "1",
+		"wound" : "10",
+		"strain" : "10",
+		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Education"
-		],
-		"skill_two": "", 
-		"special": "Peut respirer sous l'eau"
+		"special": "- 2 dés d'infortune dans un lieu chaud ou aride\n 1 rang en Œil pour le détail (talent)"
+	},
+	
+	{"name" : "Mustafarian (sud)",
+		"brawn" : "2",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "2",
+		"willpower" : "2",
+		"presence" : "1",
+		"wound" : "10",
+		"strain" : "10",
+		"startingxp" : "100",
+		"can_have_force" : "true",
+		"special": "- 2 dés d'infortune dans un lieu chaud ou aride\n 1 rang en endurance (talent)"
 	},
 
 	{
@@ -540,12 +506,7 @@
 		"wound" : "11",
 		"strain" : "9",
 		"startingxp" : "100",
-		"can_have_force" : "true",
-		"skill_one": [
-			"Athlétisme"
-		],
-		"skill_two": "", 
-		"special": "Peut respirer sous l'eau"
+		"special": "1 rang en athlétisme\n Peut respirer sous l'eau"
 	},
 
 	{
@@ -560,12 +521,7 @@
 		"strain" : "9",
 		"startingxp" : "90",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Tromperie",
-			"Négociation"
-		],
-		"skill_two": "", 
-		"special": ""
+		"special": "1 rang en tromperie ou négociation"
 	},
 
 	{
@@ -580,11 +536,7 @@
 		"strain" : "10",
 		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Survie"
-		],
-		"skill_two": "", 
-		"special": "1 rang en baroudeur (talent)"
+		"special": "1 rang en survie\n 1 rang en baroudeur (talent))"
 	},
 
 	{
@@ -599,11 +551,7 @@
 		"strain" : "10",
 		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Athlétisme"
-		],
-		"skill_two": "", 
-		"special": "Apnée de 2 x vigueur"
+		"special": "1 rang en athlétisme\n Apnée de 2 x vigueur"
 	},
 
 	{
@@ -618,11 +566,7 @@
 		"strain" : "10",
 		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Coordination"
-		],
-		"skill_two": "", 
-		"special": "+1 dé de fortune escalade\n +1 dégat en pugilat et critique 3"
+		"special": "1 rang en coordination\n +1 dé de fortune escalade\n +1 dégat en pugilat et critique 3"
 	},
 
 	{
@@ -637,11 +581,7 @@
 		"strain" : "10",
 		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Résistance"
-		],
-		"skill_two": "", 
-		"special": "- 1 dé d'infortune chaleur"
+		"special": "1 rang en résistance\n - 1 dé d'infortune chaleur"
 	},
 
 	{
@@ -656,11 +596,7 @@
 		"strain" : "10",
 		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Perception"
-		],
-		"skill_two": "", 
-		"special": "+1 dé fortune perception et vigilance auditive"
+		"special": "1 rang en perception\n +1 dé fortune perception et vigilance auditive"
 	},
 
 	{
@@ -675,11 +611,7 @@
 		"strain" : "11",
 		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Médecine"
-		],
-		"skill_two": "", 
-		"special": "-10xp si corde vocal\n Télépathie globale à portée courte\n Télépathie privée au contact"
+		"special": "1 rang en médecine\n -10xp si corde vocal\n Télépathie globale à portée courte\n Télépathie privée au contact"
 	},
 
 	{
@@ -694,11 +626,7 @@
 		"strain" : "8",
 		"startingxp" : "95",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Négociation"
-		],
-		"skill_two": "", 
-		"special": "Peut respirer sous l'eau\n Une fois par rencontre, peut subir 2 de stress pour ajouter 1 dé d'infortune (3 dans l'eau) au test de combat d'une cible à portée courte"
+		"special": "1 rang en négociation\n Peut respirer sous l'eau\n Une fois par rencontre, peut subir 2 de stress pour ajouter 1 dé d'infortune (3 dans l'eau) au test de combat d'une cible à portée courte"
 	},
 
 	{
@@ -713,11 +641,7 @@
 		"strain" : "10",
 		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Survie"
-		],
-		"skill_two": "", 
-		"special": "1 rang en pisteur chevronné (talent)"
+		"special": "1 rang en survie\n 1 rang en pisteur chevronné (talent)"
 	},
 
 	{
@@ -732,12 +656,7 @@
 		"strain" : "10",
 		"startingxp" : "80",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Perception",
-			"Vigilance"
-		],
-		"skill_two": "", 
-		"special": "1 rang en pisteur chevroné (talent)"
+		"special": "1 rang en perception ou vigilance\n 1 rang en pisteur chevroné (talent)"
 	},
 
 	{
@@ -752,11 +671,7 @@
 		"strain" : "10",
 		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Coordination"
-		],
-		"skill_two": "", 
-		"special": "Pas de dégâts de chute"
+		"special": "1 rang en coordination\n Pas de dégâts de chute"
 	},
 
 	{
@@ -771,8 +686,6 @@
 		"strain" : "10",
 		"startingxp" : "80",
 		"can_have_force" : "true",
-		"skill_one": [],
-		"skill_two": "", 
 		"special": "Aucun malus dû à la pénombre\n Queue (pugilat, dégâts +1,critique 5, contact, désorientation 2, Renversement)"
 	},
 	{
@@ -787,11 +700,7 @@
 		"strain" : "10",
 		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Astrogation"
-		],
-		"skill_two": "", 
-		"special": "1 rang de pilote chevronné (talent)"
+		"special": "1 rang d'astrogation\n 1 rang de pilote chevronné (talent)"
 	},
 
 	{
@@ -806,11 +715,7 @@
 		"strain" : "10",
 		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Perception"
-		],
-		"skill_two": "", 
-		"special": "+1 dé de fortune Assistance qualifiée"
+		"special": "1 rang en perception\n +1 dé de fortune Assistance qualifiée"
 	},
 
 	{
@@ -825,8 +730,6 @@
 		"strain" : "12",
 		"startingxp" : "90",
 		"can_have_force" : "false",
-		"skill_one": [],
-		"skill_two": "", 
 		"special": "Pas de manœuvre supplémentaire en terrain difficile\n Gabarit de 0"
 	},
 
@@ -842,11 +745,7 @@
 		"strain" : "9",
 		"startingxp" : "90",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Perception"
-		],
-		"skill_two": "", 
-		"special": "+1 blessure guérie dans les cuve à bacta\n Griffe : +1 dégât en pugilat, critique 3"
+		"special": "1 rang en perception\n +1 blessure guérie dans les cuve à bacta\n Griffe : +1 dégât en pugilat, critique 3"
 	},
 
 	{
@@ -861,12 +760,7 @@
 		"strain" : "11",
 		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Charme",
-			"Tromperie"
-		],
-		"skill_two": "", 
-		"special": "- 1 dé d'infortune dans un lieu chaud ou aride"
+		"special": "1 rang en charme ou tromperie\n - 1 dé d'infortune dans un lieu chaud ou aride"
 	},
 
 	{
@@ -881,11 +775,7 @@
 		"strain" : "12",
 		"startingxp" : "80",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Mécanique"
-		],
-		"skill_two": "", 
-		"special": "+1 dé de fortune pour voir de petits détails\n Emission/réception d'ondes radio sur 100km"
+		"special": "1 rang en mécanique\n +1 dé de fortune pour voir de petits détails Emission/réception d'ondes radio sur 100km"
 	},
 
 	{
@@ -900,12 +790,22 @@
 		"strain" : "9",
 		"startingxp" : "90",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Athlétisme",
-			"Résistance"
-		],
-		"skill_two": "", 
-		"special": "Communication indetectable entre weequay"
+		"special": "1 rang en athlétisme ou en résistance\n Communication indetectable entre weequay"
+	},
+	
+	{
+		"name" : "Whiphid",
+		"brawn" : "3",
+		"agility" : "2",
+		"intellect" : "2",
+		"cunning" : "1",
+		"willpower" : "2",
+		"presence" : "2",
+		"wound" : "12",
+		"strain" : "10",
+		"startingxp" : "80",
+		"can_have_force" : "true",
+		"special": "1 rang en survie\n +1 succès jets de survie\n +1 dégât pugilat, critique 4, sanguinaire 1"
 	},
 
 	{
@@ -920,11 +820,7 @@
 		"strain" : "8",
 		"startingxp" : "90",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Pugilat"
-		],
-		"skill_two": "", 
-		"special": "Quand blessé +1 dégât en Corps à Corps et Pugilat (+2 quand blessure critique)"
+		"special": "Q1 rang en pugilat\n Quand blessé +1 dégât en Corps à Corps et Pugilat (+2 quand blessure critique)"
 	},
 
 	{
@@ -939,8 +835,6 @@
 		"strain" : "9",
 		"startingxp" : "85",
 		"can_have_force" : "true",
-		"skill_one": [],
-		"skill_two": "", 
 		"special": "1 rang en aplomb (talent)\n 4 bras (+1 manoeuvre gratuite par tour)"
 	},
 
@@ -956,11 +850,7 @@
 		"strain" : "10",
 		"startingxp" : "100",
 		"can_have_force" : "true",
-		"skill_one": [
-			"Survie"
-		],
-		"skill_two": "", 
-		"special": "+1 avantage coercition"
+		"special": "1 rang en survie\n +1 avantage coercition"
 	}
 ]
 
