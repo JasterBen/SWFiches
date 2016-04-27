@@ -14,6 +14,9 @@ public class Specialization implements Parcelable {
     protected ArrayList<String> specializationrSkills;
 
 
+    public Specialization() {
+    }
+
     public Specialization(String name, ArrayList<String> specializationrSkills) {
         this.name = name;
         this.specializationrSkills = specializationrSkills;

@@ -47,14 +47,13 @@ public abstract class PlayerSuperFragment extends Fragment {
     }
 
 
-    public void UpdateCharacterNameAndCareer(Bundle bundle)
+    public void UpdateCharacterNameAndCareer()
     {
         FragmentManager mgr = activity.getSupportFragmentManager();
         FragmentTransaction transaction = mgr.beginTransaction();
 
         PersoFragment persoFrag = new PersoFragment();
         SkillsFragment skillFrag = new SkillsFragment();
-        persoFrag.setArguments(bundle);
 
         transaction.replace(R.id.perso_frag_container, persoFrag);
         transaction.replace(R.id.skill_frag_container, skillFrag);

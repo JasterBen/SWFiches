@@ -33,6 +33,11 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
     protected int weaponListSize;
     protected Armor armor;
 
+    protected boolean[] selectedCareerSkill;
+    protected ArrayList<String> previousCareerSkill;
+    protected boolean[] selectedSpecializationSkill;
+    protected ArrayList<String> previousSpecializationSkill;
+
 
 
     public SWCharacter(String name, Specie specie) {
@@ -258,6 +263,38 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         this.weaponListSize = weaponListSize;
     }
 
+    public boolean[] getSelectedCareerSkill() {
+        return selectedCareerSkill;
+    }
+
+    public void setSelectedCareerSkill(boolean[] selectedCareerSkill) {
+        this.selectedCareerSkill = selectedCareerSkill;
+    }
+
+    public ArrayList<String> getPreviousCareerSkill() {
+        return previousCareerSkill;
+    }
+
+    public void setPreviousCareerSkill(ArrayList<String> previousCareerSkill) {
+        this.previousCareerSkill = previousCareerSkill;
+    }
+
+    public boolean[] getSelectedSpecializationSkill() {
+        return selectedSpecializationSkill;
+    }
+
+    public void setSelectedSpecializationSkill(boolean[] selectedSpecializationSkill) {
+        this.selectedSpecializationSkill = selectedSpecializationSkill;
+    }
+
+    public ArrayList<String> getPreviousSpecializationSkill() {
+        return previousSpecializationSkill;
+    }
+
+    public void setPreviousSpecializationSkill(ArrayList<String> previousSpecializationSkill) {
+        this.previousSpecializationSkill = previousSpecializationSkill;
+    }
+
     //endregion
 
 
@@ -288,6 +325,9 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         dest.writeInt(actualXp);
         dest.writeInt(totalXp);
         dest.writeParcelable(career, 1);
+        dest.writeParcelable(mainSpecialization, 2);
+        dest.writeTypedList(secondarySpecializationList);
+        dest.writeInt(secondarySpecializationListSize);
         dest.writeTypedList(skillList);
         dest.writeInt(skillListSize);
         dest.writeTypedList(customSkillList);
@@ -295,6 +335,10 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         dest.writeTypedList(weaponList);
         dest.writeInt(weaponListSize);
         dest.writeParcelable(armor, 1);
+        dest.writeBooleanArray(selectedCareerSkill);
+        dest.writeStringList(previousCareerSkill);
+        dest.writeBooleanArray(selectedSpecializationSkill);
+        dest.writeStringList(previousSpecializationSkill);
     }
 
     public static final Parcelable.Creator<SWCharacter> CREATOR
@@ -328,6 +372,10 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         actualXp = in.readInt();
         totalXp = in.readInt();
         career = in.readParcelable(Career.class.getClassLoader());
+        mainSpecialization = in.readParcelable(Specialization.class.getClassLoader());
+        secondarySpecializationList = new ArrayList<>();
+        in.readTypedList(secondarySpecializationList, Specialization.CREATOR);
+        secondarySpecializationListSize = in.readInt();
         skillList = new ArrayList<>();
         in.readTypedList(skillList, Skill.CREATOR);
         skillListSize = in.readInt();
@@ -338,6 +386,12 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         in.readTypedList(weaponList, Weapon.CREATOR);
         weaponListSize = in.readInt();
         armor = in.readParcelable(Armor.class.getClassLoader());
+        selectedCareerSkill = in.createBooleanArray();
+        previousCareerSkill = new ArrayList<>();
+        in.readStringList(previousCareerSkill);
+        selectedSpecializationSkill = in.createBooleanArray();
+        previousSpecializationSkill = new ArrayList<>();
+        in.readStringList(previousSpecializationSkill);
     }
     //endregion
 }

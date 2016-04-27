@@ -63,9 +63,6 @@ public class SWFichesApplication extends Application {
     private void initCareerList()
     {
         careerList = new ArrayList<>();
-        careerList.add(new Career("Smuggler"));
-        careerList.add(new Career("Bounty Hunter"));
-        careerList.add(new Career("Spy"));
 
         ArrayList<String> careerSkillList = new ArrayList<>();
         careerSkillList.add("Astrogation");
@@ -86,6 +83,16 @@ public class SWFichesApplication extends Application {
         speList.add(new Specialization("Spe2", speSkillList));
         speList.add(new Specialization("Spe3", speSkillList));
         careerList.add(new Career("Test", careerSkillList, speList));
+        ArrayList<String> careerSkillList2 = new ArrayList<>();
+        careerSkillList2.add("Astrogation");
+        careerSkillList2.add("Melee");
+        careerSkillList2.add("Lightsaber (Cun)");
+        careerSkillList2.add("Perception");
+        careerSkillList2.add("Lightsaber (Pr)");
+        careerSkillList2.add("Ranged Heavy");
+        careerSkillList2.add("Ranged Light");
+        careerSkillList2.add("Lightsaber (Int)");
+        careerList.add(new Career("Test2", careerSkillList2, speList));
     }
 
     private void initSkillList()

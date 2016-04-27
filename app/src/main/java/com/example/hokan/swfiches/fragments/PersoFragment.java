@@ -41,12 +41,12 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
     private static final int DROID_MAX_CAREER_SKILL = 6;
     private static final int DROID_MAX_SPE_SKILL = 3;
 
-    private static final String SELECTED_CAREER_SKILL = "scs";
+    //private static final String SELECTED_CAREER_SKILL = "scs";
     private static final String PREVIOUS_CAREER = "career";
-    private static final String PREVIOUS_CAREER_SKILL = "pcs";
-    private static final String SELECTED_SPE_SKILL = "sss";
+    //private static final String PREVIOUS_CAREER_SKILL = "pcs";
+    //private static final String SELECTED_SPE_SKILL = "sss";
     private static final String PREVIOUS_SPE = "spe";
-    private static final String PREVIOUS_SPE_SKILL = "pss";
+    //private static final String PREVIOUS_SPE_SKILL = "pss";
 
     protected TextView nameTextView;
     protected TextView specieTextView;
@@ -56,15 +56,11 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
     protected Button addSpecialization;
     protected Button addNewSpecialization;
 
-    protected boolean[] selectedCareerSkill;
     protected CareerAdapter careerAdapter;
-    protected String previousCareer = "";
-    protected ArrayList<String> previousCareerSkill;
+    protected String previousCareer;
 
-    protected boolean[] selectedSpecializationSkill;
     protected SpecializationAdapter specializationAdapter;
     protected Specialization previousSpecialization;
-    protected ArrayList<String> previousSpecializationSkill;
 
     protected Specie characterSpecie;
 
@@ -74,19 +70,9 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        previousCareerSkill = new ArrayList<>();
-        previousSpecializationSkill = new ArrayList<>();
-        Bundle bundle = getArguments();
-        if (bundle != null)
-        {
-            selectedCareerSkill = bundle.getBooleanArray(SELECTED_CAREER_SKILL);
-            previousCareer = bundle.getString(PREVIOUS_CAREER);
-            previousCareerSkill = bundle.getStringArrayList(PREVIOUS_CAREER_SKILL);
-
-            selectedSpecializationSkill = bundle.getBooleanArray(SELECTED_SPE_SKILL);
-            previousSpecialization = bundle.getParcelable(PREVIOUS_SPE);
-            previousSpecializationSkill = bundle.getStringArrayList(PREVIOUS_SPE_SKILL);
-        }
+        previousCareer = character.getCareer() != null ? character.getCareer().getName() : "";
+        previousSpecialization = character.getMainSpecialization() != null ?
+                character.getMainSpecialization() : new Specialization();
     }
 
     @Nullable
@@ -134,8 +120,8 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         {
             // TODO
 
-            if (character.getCustomSkillList() == null)
-                character.setCustomSkillList(new ArrayList<Skill>());
+            if (character.getSecondarySpecializationList() == null)
+                character.setSecondarySpecializationList(new ArrayList<Specialization>());
         }
     }
 
@@ -155,40 +141,31 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         else if (viewId == R.id.dialog_career_spinner)
         {
             character.setCareer((Career) parent.getAdapter().getItem(position));
-            //uncomment only for test, this is a trick to test specialization function without this fuc**** setOnItemSelectedListenner being functional
-//            character.setMainSpecialization(character.getCareer().getSpecializationList().get(0));
 
+            boolean[] selectedCareerSkill = character.getSelectedCareerSkill();
             if (selectedCareerSkill == null ||
                     selectedCareerSkill.length == 0 ||
-                    !previousCareer.equals(character.getCareer().getName()))
+                    (previousCareer != null && !previousCareer.equals(character.getCareer().getName())))
             {
                 int size = character.getCareer().getCareerSkills().size();
-                selectedCareerSkill = new boolean[size];
-                Arrays.fill(selectedCareerSkill, Boolean.FALSE);
+                character.setSelectedCareerSkill(new boolean[size]);
+                Arrays.fill(character.getSelectedCareerSkill(), Boolean.FALSE);
                 if (careerAdapter != null)
                     careerAdapter.notifyDataSetChanged();
             }
 
-//            if (selectedSpecializationSkill == null ||
-//                    selectedSpecializationSkill.length == 0 ||
-//                    (previousSpecialization != null && !previousSpecialization.getName().equals(character.getMainSpecialization().getName())))
-//            {
-//                selectedSpecializationSkill = new boolean[SPE_SKILL_COUNT];
-//                Arrays.fill(selectedSpecializationSkill, Boolean.FALSE);
-//                if (specializationAdapter != null)
-//                    specializationAdapter.notifyDataSetChanged();
-//            }
         }
         else if (viewId == SPECIALIZATION_SPINNER_ID)
         {
             character.setMainSpecialization((Specialization) parent.getAdapter().getItem(position));
 
+            boolean[] selectedSpecializationSkill = character.getSelectedSpecializationSkill();
             if (selectedSpecializationSkill == null ||
                     selectedSpecializationSkill.length == 0 ||
                     (previousSpecialization != null && !previousSpecialization.getName().equals(character.getMainSpecialization().getName())))
             {
-                selectedSpecializationSkill = new boolean[SPE_SKILL_COUNT];
-                Arrays.fill(selectedSpecializationSkill, Boolean.FALSE);
+                character.setSelectedSpecializationSkill(new boolean[SPE_SKILL_COUNT]);
+                Arrays.fill(character.getSelectedSpecializationSkill(), Boolean.FALSE);
                 if (specializationAdapter != null)
                     specializationAdapter.notifyDataSetChanged();
             }
@@ -247,17 +224,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
             public void onClick(DialogInterface dialog, int which) {
                 character.setName(nameEditText.getText().toString());
 
-                Bundle bundle = new Bundle();
-                bundle.putBooleanArray(SELECTED_CAREER_SKILL, selectedCareerSkill);
-                bundle.putStringArrayList(PREVIOUS_CAREER_SKILL, previousCareerSkill);
-                if (character.getCareer() != null)
-                    bundle.putString(PREVIOUS_CAREER, character.getCareer().getName());
-
-                bundle.putBooleanArray(SELECTED_SPE_SKILL, selectedSpecializationSkill);
-                bundle.putStringArrayList(PREVIOUS_SPE_SKILL, previousSpecializationSkill);
-                bundle.putParcelable(PREVIOUS_SPE, character.getMainSpecialization());
-
-                UpdateCharacterNameAndCareer(bundle);
+                UpdateCharacterNameAndCareer();
             }
         });
 
@@ -320,7 +287,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                 careerTextView.setText(formatString('c'));
                 addCareer.setText(character.getCareer().getName());
 
-                int nbrSkillChecked = countCheckedSkill(selectedCareerSkill);
+                int nbrSkillChecked = countCheckedSkill(character.getSelectedCareerSkill());
                 int max = getMaxCareerSkill();
 
                 if (nbrSkillChecked == max) {
@@ -366,6 +333,22 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         specializationSpinner.setSelection(spinnerPosition);
         specializationSpinner.setOnItemSelectedListener(this);
 
+        //TODO : uncomment to test, WARNING not a prod solution, just a debug solution
+//        if (character.getMainSpecialization() == null || character.getMainSpecialization() != previousSpecialization)
+//        {
+//            character.setMainSpecialization(character.getCareer().getSpecializationList().get(0));
+//
+//            boolean[] selectedSpecializationSkill = character.getSelectedSpecializationSkill();
+//            if (selectedSpecializationSkill == null ||
+//                    selectedSpecializationSkill.length == 0 ||
+//                    (previousSpecialization != null && !previousSpecialization.getName().equals(character.getMainSpecialization().getName())))
+//            {
+//                character.setSelectedSpecializationSkill(new boolean[SPE_SKILL_COUNT]);
+//                Arrays.fill(character.getSelectedSpecializationSkill(), Boolean.FALSE);
+//                if (specializationAdapter != null)
+//                    specializationAdapter.notifyDataSetChanged();
+//            }
+//        }
 
 
         GridView specializationGrid = (GridView) dialogContent.findViewById(R.id.dialog_career_gridview);
@@ -393,7 +376,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                 specTextView.setText(formatString('s'));
                 addSpecialization.setText(character.getMainSpecialization().getName());
 
-                int nbrSkillChecked = countCheckedSkill(selectedSpecializationSkill);
+                int nbrSkillChecked = countCheckedSkill(character.getSelectedSpecializationSkill());
                 int max = getMaxSpeSkill();
 
                 if (nbrSkillChecked == max) {
@@ -424,7 +407,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
     private int countCheckedSkill(boolean[] checkedSkill)
     {
         int cpt = 0;
-        int size = checkedSkill == selectedCareerSkill ? getCareerSkillCount() : getSpeSkillCount();
+        int size = checkedSkill == character.getSelectedCareerSkill() ? getCareerSkillCount() : getSpeSkillCount();
         for (int i = 0; i < size; ++i)
             if (checkedSkill[i])
                 cpt++;
@@ -450,10 +433,10 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                 if (s.getName().equals(careerSkillList.get(i)))
                 {
                     s.setIsCareer(true);
-                    if (selectedCareerSkill[i])
+                    if (character.getSelectedCareerSkill()[i])
                     {
                         s.setLevel(s.getLevel() + 1);
-                        previousCareerSkill.add(s.getName());
+                        character.getPreviousCareerSkill().add(s.getName());
                         cpt++;
                         if (cpt == max)
                             break;
@@ -469,6 +452,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
     {
         resetRankOfPreviousSpe(characterSkill);
 
+        ArrayList<String> previousCareerSkill = character.getPreviousCareerSkill();
         int previousCareerSkillListSize = previousCareerSkill != null ? previousCareerSkill.size() : -1;
 
         for (int i = 0; i < previousCareerSkillListSize; ++i)
@@ -502,10 +486,10 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                 if (s.getName().equals(speSkillList.get(i)))
                 {
                     s.setIsCareer(true);
-                    if (selectedSpecializationSkill[i])
+                    if (character.getSelectedSpecializationSkill()[i])
                     {
                         s.setLevel(s.getLevel() + 1);
-                        previousSpecializationSkill.add(s.getName());
+                        character.getPreviousSpecializationSkill().add(s.getName());
                         cpt++;
                         if (cpt == max)
                             break;
@@ -519,6 +503,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
 
     private void resetRankOfPreviousSpe(ArrayList<Skill> characterSkill)
     {
+        ArrayList<String> previousSpecializationSkill = character.getPreviousSpecializationSkill();
         int previousSpeSkillListSize = previousSpecializationSkill != null ? previousSpecializationSkill.size() : -1;
         ArrayList<String> careerSkill = character.getCareer().getCareerSkills();
         int careerSkillSize = character.getCareer().getCareerSkills().size();
@@ -532,6 +517,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                     //on met isCareer a faux seulement si la compétence de spécialité n'est pas aussi une compétence de carrière
                     int k = 0;
                     while (k < careerSkillSize &&
+                            previousSpecialization.getSpecializationrSkills() != null &&
                             !previousSpecialization.getSpecializationrSkills().get(j).equals(careerSkill.get(k)))
                     {
                         k++;
@@ -606,12 +592,12 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
 
     @Override
     public boolean getCareerSkillChecked(int position) {
-        return selectedCareerSkill[position];
+        return character.getSelectedCareerSkill()[position];
     }
 
     @Override
     public void setCareerSkillChecked(int position, boolean check) {
-        selectedCareerSkill[position] = check;
+        character.getSelectedCareerSkill()[position] = check;
     }
 
     @Override
@@ -631,11 +617,11 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
     }
 
     public boolean getSpeSkillChecked(int position) {
-        return selectedSpecializationSkill[position];
+        return character.getSelectedSpecializationSkill()[position];
     }
 
     public void setSpeSkillChecked(int position, boolean selectedSpecializationSkill) {
-        this.selectedSpecializationSkill[position] = selectedSpecializationSkill;
+        character.getSelectedSpecializationSkill()[position] = selectedSpecializationSkill;
     }
 
     @Override
