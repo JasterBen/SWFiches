@@ -61,75 +61,81 @@ public class CharacteristicFragment extends PlayerSuperFragment implements View.
 
         if (v.getId() == R.id.fragment_characteristic_frag)
         {
-            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-            builder.setTitle(R.string.dialog_charac_title);
-
-            LayoutInflater inflater = LayoutInflater.from(activity);
-            View dialogContent = inflater.inflate(R.layout.dialog_edit_characteristic, null);
-            
-            final HorizontalNumberPicker brawnPicker = (HorizontalNumberPicker)
-                    dialogContent.findViewById(R.id.dialog_edit_characteristic_brawn_picker);
-            brawnPicker.setActualValue(character.getBrawn());
-            brawnPicker.setMinValue(character.getSpecie().getBrawn());
-            brawnPicker.setMaxValue(MAXVALUE);
-
-
-            final HorizontalNumberPicker agilityPicker = (HorizontalNumberPicker)
-                    dialogContent.findViewById(R.id.dialog_edit_characteristic_agility_picker);
-            agilityPicker.setActualValue(character.getAgility());
-            agilityPicker.setMinValue(character.getSpecie().getAgility());
-            agilityPicker.setMaxValue(MAXVALUE);
-
-
-            final HorizontalNumberPicker intellectPicker = (HorizontalNumberPicker)
-                    dialogContent.findViewById(R.id.dialog_edit_characteristic_intelligence_picker);
-            intellectPicker.setActualValue(character.getIntellect());
-            intellectPicker.setMinValue(character.getSpecie().getIntellect());
-            intellectPicker.setMaxValue(MAXVALUE);
-
-
-            final HorizontalNumberPicker cunningPicker = (HorizontalNumberPicker)
-                    dialogContent.findViewById(R.id.dialog_edit_characteristic_cunning_picker);
-            cunningPicker.setActualValue(character.getCunning());
-            cunningPicker.setMinValue(character.getSpecie().getCunning());
-            cunningPicker.setMaxValue(MAXVALUE);
-
-
-            final HorizontalNumberPicker willpowerPicker = (HorizontalNumberPicker)
-                    dialogContent.findViewById(R.id.dialog_edit_characteristic_willpower_picker);
-            willpowerPicker.setActualValue(character.getWillpower());
-            willpowerPicker.setMinValue(character.getSpecie().getWillpower());
-            willpowerPicker.setMaxValue(MAXVALUE);
-
-
-            final HorizontalNumberPicker presencePicker = (HorizontalNumberPicker)
-                    dialogContent.findViewById(R.id.dialog_edit_characteristic_presence_picker);
-            presencePicker.setActualValue(character.getPresence());
-            presencePicker.setMinValue(character.getSpecie().getPresence());
-            presencePicker.setMaxValue(MAXVALUE);
-
-
-            builder.setView(dialogContent);
-
-
-            builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    character.setBrawn(brawnPicker.getActualValue());
-                    character.setAgility(agilityPicker.getActualValue());
-                    character.setIntellect(intellectPicker.getActualValue());
-                    character.setCunning(cunningPicker.getActualValue());
-                    character.setWillpower(willpowerPicker.getActualValue());
-                    character.setPresence(presencePicker.getActualValue());
-
-                    UpdateCharacterCharacs();
-                }
-            });
-
-            builder.setNegativeButton(android.R.string.no, null);
-
-            builder.create().show();
+            createCharacFragment();
         }
+    }
+
+
+    private void createCharacFragment()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle(R.string.dialog_charac_title);
+
+        LayoutInflater inflater = LayoutInflater.from(activity);
+        View dialogContent = inflater.inflate(R.layout.dialog_edit_characteristic, null);
+
+        //region get element in the view
+        final HorizontalNumberPicker brawnPicker = (HorizontalNumberPicker)
+                dialogContent.findViewById(R.id.dialog_edit_characteristic_brawn_picker);
+        brawnPicker.setActualValue(character.getBrawn());
+        brawnPicker.setMinValue(character.getSpecie().getBrawn());
+        brawnPicker.setMaxValue(MAXVALUE);
+
+
+        final HorizontalNumberPicker agilityPicker = (HorizontalNumberPicker)
+                dialogContent.findViewById(R.id.dialog_edit_characteristic_agility_picker);
+        agilityPicker.setActualValue(character.getAgility());
+        agilityPicker.setMinValue(character.getSpecie().getAgility());
+        agilityPicker.setMaxValue(MAXVALUE);
+
+
+        final HorizontalNumberPicker intellectPicker = (HorizontalNumberPicker)
+                dialogContent.findViewById(R.id.dialog_edit_characteristic_intelligence_picker);
+        intellectPicker.setActualValue(character.getIntellect());
+        intellectPicker.setMinValue(character.getSpecie().getIntellect());
+        intellectPicker.setMaxValue(MAXVALUE);
+
+
+        final HorizontalNumberPicker cunningPicker = (HorizontalNumberPicker)
+                dialogContent.findViewById(R.id.dialog_edit_characteristic_cunning_picker);
+        cunningPicker.setActualValue(character.getCunning());
+        cunningPicker.setMinValue(character.getSpecie().getCunning());
+        cunningPicker.setMaxValue(MAXVALUE);
+
+
+        final HorizontalNumberPicker willpowerPicker = (HorizontalNumberPicker)
+                dialogContent.findViewById(R.id.dialog_edit_characteristic_willpower_picker);
+        willpowerPicker.setActualValue(character.getWillpower());
+        willpowerPicker.setMinValue(character.getSpecie().getWillpower());
+        willpowerPicker.setMaxValue(MAXVALUE);
+
+
+        final HorizontalNumberPicker presencePicker = (HorizontalNumberPicker)
+                dialogContent.findViewById(R.id.dialog_edit_characteristic_presence_picker);
+        presencePicker.setActualValue(character.getPresence());
+        presencePicker.setMinValue(character.getSpecie().getPresence());
+        presencePicker.setMaxValue(MAXVALUE);
+        //endregion
+
+        builder.setView(dialogContent);
+
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                character.setBrawn(brawnPicker.getActualValue());
+                character.setAgility(agilityPicker.getActualValue());
+                character.setIntellect(intellectPicker.getActualValue());
+                character.setCunning(cunningPicker.getActualValue());
+                character.setWillpower(willpowerPicker.getActualValue());
+                character.setPresence(presencePicker.getActualValue());
+
+                UpdateCharacterCharacs();
+            }
+        });
+
+        builder.setNegativeButton(android.R.string.no, null);
+
+        builder.create().show();
     }
 
 

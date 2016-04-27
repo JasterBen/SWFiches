@@ -31,7 +31,7 @@ import java.util.Arrays;
  */
 public class WeaponFragment extends PlayerSuperFragment implements View.OnClickListener,
         AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener,
-        WeaponListInterface {
+        WeaponListInterface, AdapterView.OnItemSelectedListener {
 
     private Skill skill;
     private String range;
@@ -82,6 +82,7 @@ public class WeaponFragment extends PlayerSuperFragment implements View.OnClickL
         LayoutInflater inflater = LayoutInflater.from(activity);
         View dialogContent = inflater.inflate(R.layout.dialog_edit_weapon, null);
 
+        //region get element in the view
         final EditText nameEditText = (EditText) dialogContent.findViewById(R.id.dialog_edit_weapon_name);
         if (w != null && !w.getName().equals(""))
             nameEditText.setText(w.getName());
@@ -113,17 +114,7 @@ public class WeaponFragment extends PlayerSuperFragment implements View.OnClickL
             int spinnerPosition = rangeAdapter.getPosition(w.getRange());
             rangeSpinner.setSelection(spinnerPosition);
         }
-        rangeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                range = (String) parent.getAdapter().getItem(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+        rangeSpinner.setOnItemSelectedListener(this);
 
 
         Spinner skillSpinner = (Spinner) dialogContent.findViewById(R.id.dialog_edit_weapon_skill_spinner);
@@ -136,18 +127,7 @@ public class WeaponFragment extends PlayerSuperFragment implements View.OnClickL
             int spinnerPosition = skillAdapter.getPosition(w.getSkill().getName());
             skillSpinner.setSelection(spinnerPosition);
         }
-        skillSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String skillName = (String) parent.getAdapter().getItem(position);
-                skill = SWFichesApplication.getApp().getSkill(skillName);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+        skillSpinner.setOnItemSelectedListener(this);
 
 
         final HorizontalDoubleEditTextWithSeparator modContainer =
@@ -159,7 +139,7 @@ public class WeaponFragment extends PlayerSuperFragment implements View.OnClickL
             if (w.getMaxMod() != 0)
                 modContainer.setRightValue(w.getMaxMod());
         }
-
+        //endregion
 
         builder.setView(dialogContent);
 
@@ -167,8 +147,9 @@ public class WeaponFragment extends PlayerSuperFragment implements View.OnClickL
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                if (w == null) //create a new weapon
+                if (w == null)
                 {
+                    //region create a new weapon
                     if (character.getWeaponList() == null)
                     {
                         character.setWeaponList(new ArrayList<Weapon>());
@@ -185,8 +166,10 @@ public class WeaponFragment extends PlayerSuperFragment implements View.OnClickL
                             skill);
 
                     weaponAdapter.addItem(weapon);
+                    //endregion
                 }
-                else { //update an existing weapon
+                else {
+                    //region update an existing weapon
                     w.setName(getValueOrDefault(nameEditText, w.getName()));
                     w.setDamage(getIntValueOrDefault(damageEditText, w.getDamage()));
                     w.setCritic(getIntValueOrDefault(criticEditText, w.getCritic()));
@@ -198,8 +181,8 @@ public class WeaponFragment extends PlayerSuperFragment implements View.OnClickL
                     w.setSpecial(getValueOrDefault(specialEditText, w.getSpecial()));
 
                     weaponAdapter.notifyDataSetChanged();
+                    //endregion
                 }
-
 
                 UpdateCharacterWeapon();
             }
@@ -209,7 +192,6 @@ public class WeaponFragment extends PlayerSuperFragment implements View.OnClickL
 
         builder.create().show();
     }
-
 
 
     @Override
@@ -236,6 +218,29 @@ public class WeaponFragment extends PlayerSuperFragment implements View.OnClickL
         builder.create().show();
 
         return false;
+    }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        int viewId = parent.getId();
+
+        if (viewId == R.id.dialog_edit_weapon_range_spinner)
+        {
+            range = (String) parent.getAdapter().getItem(position);
+        }
+        else if (viewId == R.id.dialog_edit_weapon_skill_spinner)
+        {
+            String skillName = (String) parent.getAdapter().getItem(position);
+            skill = SWFichesApplication.getApp().getSkill(skillName);
+        }
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
     @Override
@@ -265,4 +270,6 @@ public class WeaponFragment extends PlayerSuperFragment implements View.OnClickL
     public Weapon getWeapon(int position) {
         return character.getWeaponList().get(position);
     }
+
+
 }

@@ -60,69 +60,77 @@ public class ArmorFragment extends PlayerSuperFragment implements View.OnClickLi
 
         if (v.getId() == R.id.armor_fragment_frag)
         {
-            final Armor armor = character.getArmor();
-            
-            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-            builder.setTitle(R.string.armor_frag_title);
-
-            LayoutInflater inflater = LayoutInflater.from(activity);
-            View dialogContent = inflater.inflate(R.layout.dialog_edit_armor, null);
-
-            final EditText nameEditText = (EditText) dialogContent.findViewById(R.id.dialog_edit_armor_name);
-            if (!armor.getName().equals(""))
-                nameEditText.setText(armor.getName());
-
-            final EditText soakEditText = (EditText) dialogContent.findViewById(R.id.dialog_edit_armor_soak);
-            if (armor.getSoak() != 0)
-                soakEditText.setText(String.valueOf(armor.getSoak()));
-
-            final EditText defCacEditText = (EditText) dialogContent.findViewById(R.id.dialog_edit_armor_def_cac);
-            if (armor.getContactDef() != 0)
-                defCacEditText.setText(String.valueOf(armor.getContactDef()));
-
-            final EditText defRangeEditText = (EditText) dialogContent.findViewById(R.id.dialog_edit_armor_def_range);
-            if (armor.getRangeDef() != 0)
-                defRangeEditText.setText(String.valueOf(armor.getRangeDef()));
-
-            final HorizontalDoubleEditTextWithSeparator modContainer = (HorizontalDoubleEditTextWithSeparator)
-                    dialogContent.findViewById(R.id.dialog_edit_armor_mod);
-            modContainer.setLeftValue(armor.getActualMod());
-            modContainer.setRightValue(armor.getMaxMod());
-
-            final EditText weightEditText = (EditText) dialogContent.findViewById(R.id.dialog_edit_armor_weight);
-            if (armor.getWeight() != 0)
-                weightEditText.setText(String.valueOf(armor.getWeight()));
-
-            final EditText specialEditText = (EditText) dialogContent.findViewById(R.id.dialog_edit_armor_special);
-            if (!armor.getSpecial().equals(""))
-                specialEditText.setText(armor.getSpecial());
-
-            builder.setView(dialogContent);
-
-            builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Armor newarmor = new Armor(
-                            getValueOrDefault(nameEditText, armor.getName()),
-                            getIntValueOrDefault(weightEditText, armor.getWeight()),
-                            modContainer.getLeftValue(),
-                            modContainer.getRightValue(),
-                            getValueOrDefault(specialEditText, armor.getSpecial()),
-                            getIntValueOrDefault(soakEditText, armor.getSoak()),
-                            getIntValueOrDefault(defCacEditText, armor.getContactDef()),
-                            getIntValueOrDefault(defRangeEditText, armor.getRangeDef()));
-
-                    character.setArmor(newarmor);
-
-                    UpdateCharacterArmorAndStats();
-                }
-            });
-
-            builder.setNegativeButton(android.R.string.no, null);
-
-            builder.create().show();
+            createArmorDialog();
         }
 
+    }
+
+
+    private void createArmorDialog()
+    {
+        final Armor armor = character.getArmor();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle(R.string.armor_frag_title);
+
+        LayoutInflater inflater = LayoutInflater.from(activity);
+        View dialogContent = inflater.inflate(R.layout.dialog_edit_armor, null);
+
+        //region get elements in the view
+        final EditText nameEditText = (EditText) dialogContent.findViewById(R.id.dialog_edit_armor_name);
+        if (!armor.getName().equals(""))
+            nameEditText.setText(armor.getName());
+
+        final EditText soakEditText = (EditText) dialogContent.findViewById(R.id.dialog_edit_armor_soak);
+        if (armor.getSoak() != 0)
+            soakEditText.setText(String.valueOf(armor.getSoak()));
+
+        final EditText defCacEditText = (EditText) dialogContent.findViewById(R.id.dialog_edit_armor_def_cac);
+        if (armor.getContactDef() != 0)
+            defCacEditText.setText(String.valueOf(armor.getContactDef()));
+
+        final EditText defRangeEditText = (EditText) dialogContent.findViewById(R.id.dialog_edit_armor_def_range);
+        if (armor.getRangeDef() != 0)
+            defRangeEditText.setText(String.valueOf(armor.getRangeDef()));
+
+        final HorizontalDoubleEditTextWithSeparator modContainer = (HorizontalDoubleEditTextWithSeparator)
+                dialogContent.findViewById(R.id.dialog_edit_armor_mod);
+        modContainer.setLeftValue(armor.getActualMod());
+        modContainer.setRightValue(armor.getMaxMod());
+
+        final EditText weightEditText = (EditText) dialogContent.findViewById(R.id.dialog_edit_armor_weight);
+        if (armor.getWeight() != 0)
+            weightEditText.setText(String.valueOf(armor.getWeight()));
+
+        final EditText specialEditText = (EditText) dialogContent.findViewById(R.id.dialog_edit_armor_special);
+        if (!armor.getSpecial().equals(""))
+            specialEditText.setText(armor.getSpecial());
+        //endregion
+
+        builder.setView(dialogContent);
+
+        builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Armor newarmor = new Armor(
+                        getValueOrDefault(nameEditText, armor.getName()),
+                        getIntValueOrDefault(weightEditText, armor.getWeight()),
+                        modContainer.getLeftValue(),
+                        modContainer.getRightValue(),
+                        getValueOrDefault(specialEditText, armor.getSpecial()),
+                        getIntValueOrDefault(soakEditText, armor.getSoak()),
+                        getIntValueOrDefault(defCacEditText, armor.getContactDef()),
+                        getIntValueOrDefault(defRangeEditText, armor.getRangeDef()));
+
+                character.setArmor(newarmor);
+
+                UpdateCharacterArmorAndStats();
+            }
+        });
+
+        builder.setNegativeButton(android.R.string.no, null);
+
+        builder.create().show();
     }
 
 

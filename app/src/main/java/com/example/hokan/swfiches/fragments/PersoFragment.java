@@ -31,7 +31,7 @@ import java.util.Arrays;
  * Created by Ben on 18/04/2016.
  */
 public class PersoFragment extends PlayerSuperFragment implements View.OnClickListener,
-        CareerSkillInterface {
+        CareerSkillInterface, AdapterView.OnItemSelectedListener {
 
     private static final int DROID_MAX_CAREER_SKILL = 6;
     private static final String SELECTED_CAREER_SKILL = "scs";
@@ -92,6 +92,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         return v;
     }
 
+
     @Override
     public void onClick(View v) {
 
@@ -120,6 +121,41 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        int viewId = parent.getId();
+
+        if (viewId == R.id.dialog_edit_perso_specie)
+        {
+            characterSpecie = (Specie) parent.getAdapter().getItem(position);
+            character.setSpecie(characterSpecie);
+
+            UpdateCharacterSpecie();
+        }
+        else if (viewId == R.id.dialog_career_spinner)
+        {
+            character.setCareer((Career) parent.getAdapter().getItem(position));
+
+            if (selectedCareerSkill == null || selectedCareerSkill.length == 0 ||
+                    !previousCareer.equals(character.getCareer().getName()))
+            {
+                int size = character.getCareer().getCareerSkillSize();
+                selectedCareerSkill = new boolean[size];
+                Arrays.fill(selectedCareerSkill, Boolean.FALSE);
+                if (careerAdapter != null)
+                    careerAdapter.notifyDataSetChanged();
+            }
+        }
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+
     private void displayPersoDialog()
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
@@ -128,32 +164,19 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         LayoutInflater inflater = LayoutInflater.from(activity);
         View dialogContent = inflater.inflate(R.layout.dialog_edit_perso, null);
 
+        //region get element in the view
         final EditText nameEditText = (EditText) dialogContent.findViewById(R.id.dialog_edit_perso_name);
         nameEditText.setText(character.getName());
 
-        //region spinner
         final Spinner speciesSpinner = (Spinner) dialogContent.findViewById(R.id.dialog_edit_perso_specie);
-
         ArrayAdapter<Specie> spinnerAdapter = new ArrayAdapter<Specie>(activity,
                 android.R.layout.simple_spinner_dropdown_item, SWFichesApplication.getApp().getSpeciesList());
         speciesSpinner.setAdapter(spinnerAdapter);
         // TODO : bug fix, spinner pas sur la bonne position à la première ouverture
         int spinnerPosition = spinnerAdapter.getPosition(character.getSpecie());
         speciesSpinner.setSelection(spinnerPosition);
-        speciesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                characterSpecie = (Specie) parent.getAdapter().getItem(position);
-                character.setSpecie(characterSpecie);
+        speciesSpinner.setOnItemSelectedListener(this);
 
-                UpdateCharacterSpecie();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-        //endregion
 
         addCareer = (Button) dialogContent.findViewById(R.id.dialog_edit_perso_career);
         addCareer.setText(character.getCareer() != null ?
@@ -169,6 +192,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         addNewSpecialization = (Button) dialogContent.findViewById(R.id.dialog_edit_perso_add_specialization);
         addNewSpecialization.setOnClickListener(this);
         addNewSpecialization.setEnabled(character.getMainSpecialization() != null);
+        //endregion
 
         builder.setView(dialogContent);
 
@@ -176,12 +200,12 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 character.setName(nameEditText.getText().toString());
+
                 Bundle bundle = new Bundle();
                 bundle.putBooleanArray(SELECTED_CAREER_SKILL, selectedCareerSkill);
                 bundle.putStringArrayList(PREVIOUS_CAREER_SKILL, previousCareerSkill);
                 if (character.getCareer() != null)
                     bundle.putString(PREVIOUS_CAREER, character.getCareer().getName());
-
 
                 UpdateCharacterNameAndCareer(bundle);
             }
@@ -203,39 +227,19 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         LayoutInflater inflater = LayoutInflater.from(activity);
         View dialogContent = inflater.inflate(R.layout.dialog_career_perso, null);
 
-        //region spinner
+        //region get element in the view
         final Spinner careerSpinner = (Spinner) dialogContent.findViewById(R.id.dialog_career_spinner);
-
         ArrayAdapter<Career> spinnerAdapter = new ArrayAdapter<>(activity,
                 android.R.layout.simple_spinner_dropdown_item, SWFichesApplication.getApp().getCareerList());
         careerSpinner.setAdapter(spinnerAdapter);
-
         int spinnerPosition = spinnerAdapter.getPosition(character.getCareer());
         careerSpinner.setSelection(spinnerPosition);
-
-        careerSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                character.setCareer((Career) parent.getAdapter().getItem(position));
-                if (selectedCareerSkill == null || selectedCareerSkill.length == 0 ||
-                        !previousCareer.equals(character.getCareer().getName())) {
-                    int size = character.getCareer().getCareerSkillSize();
-                    selectedCareerSkill = new boolean[size];
-                    Arrays.fill(selectedCareerSkill, Boolean.FALSE);
-                    if (careerAdapter != null)
-                        careerAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-        //endregion
+        careerSpinner.setOnItemSelectedListener(this);
 
         GridView careerGrid = (GridView) dialogContent.findViewById(R.id.dialog_career_gridview);
         careerAdapter = new CareerAdapter(activity, this);
         careerGrid.setAdapter(careerAdapter);
+        //endregion
 
         builder.setView(dialogContent);
 
@@ -245,10 +249,12 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
             }
         });
 
+        builder.setNegativeButton(android.R.string.no, null);
+
         final AlertDialog dialog = builder.create();
         dialog.show();
 
-        //override the onclick listener to dismiss the dialog only if skillchecked number is good
+        //region override the onclick listener to dismiss the dialog only if skillchecked number is good
         dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -278,6 +284,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                 }
             }
         });
+        //endregion
     }
 
 
@@ -376,6 +383,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         }
     }
 
+
     @Override
     public String getCareerSkill(int position) {
         return character.getCareer().getCarreerSkills().get(position);
@@ -411,4 +419,5 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
     public int getSpeSkillCount() {
         return 0;
     }
+
 }

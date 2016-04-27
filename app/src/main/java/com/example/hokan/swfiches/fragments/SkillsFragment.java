@@ -29,7 +29,8 @@ import java.util.Arrays;
  * Created by Ben on 18/04/2016.
  */
 public class SkillsFragment extends PlayerSuperFragment implements View.OnClickListener,
-        AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, SkillInterface {
+        AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, SkillInterface,
+        AdapterView.OnItemSelectedListener {
 
 
     private RecyclerView customSkillRecyclerView;
@@ -70,78 +71,13 @@ public class SkillsFragment extends PlayerSuperFragment implements View.OnClickL
     }
 
 
-    public RecyclerView getSkillRecyClerView() {
-        return skillRecyClerView;
-    }
-
-    public CustomSkillAdapter getCustomSkillAdapter() {
-        return customSkillAdapter;
-    }
 
     @Override
     public void onClick(View v) {
 
         if (v.getId() == R.id.skill_fragment_ad_custom_skill_button)
         {
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-            builder.setTitle(R.string.dialog_add_skill_title);
-
-            LayoutInflater inflater = LayoutInflater.from(activity);
-            View dialogContent = inflater.inflate(R.layout.dialog_add_skill, null);
-
-
-            final EditText nameEditText = (EditText)
-                    dialogContent.findViewById(R.id.dialog_add_skill_name);
-
-            final CheckBox careerCheckBox = (CheckBox)
-                    dialogContent.findViewById(R.id.dialog_add_skill_is_career_checkbox);
-
-            final Spinner characSpinner = (Spinner)
-                    dialogContent.findViewById(R.id.dialog_add_skill_charac_spinner);
-            ArrayAdapter<String> characAdapter = new ArrayAdapter<String>(activity,
-                    android.R.layout.simple_spinner_dropdown_item,
-                    Arrays.asList(getResources().getStringArray(R.array.skill_frag_dialog_spinner_charac)));
-            characSpinner.setAdapter(characAdapter);
-            characSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    charac = parent.getAdapter().getItem(position).toString();
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-            });
-
-            final HorizontalNumberPicker rankPicker = (HorizontalNumberPicker)
-                    dialogContent.findViewById(R.id.dialog_add_skill_rank_picker);
-            rankPicker.setActualValue(0);
-            rankPicker.setMaxValue(5);
-            rankPicker.setMinValue(0);
-
-            builder.setView(dialogContent);
-
-
-            builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-
-                    Skill skill = new Skill(nameEditText.getText().toString(),
-                            rankPicker.getActualValue(),
-                            setSkillCharac(),
-                            careerCheckBox.isChecked());
-
-                    customSkillAdapter.addSkill(skill);
-
-                    UpdateCharacterSkill();
-                }
-            });
-
-            builder.setNegativeButton(android.R.string.no, null);
-
-            builder.create().show();
+            createSkillDialog();
         }
 
     }
@@ -149,6 +85,7 @@ public class SkillsFragment extends PlayerSuperFragment implements View.OnClickL
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+        //get the skill in the good adapter
         final Skill skill = view.getParent().equals(customSkillRecyclerView) ?
                 customSkillAdapter.getItem(position) : skillAdapter.getItem(position);
 
@@ -158,6 +95,7 @@ public class SkillsFragment extends PlayerSuperFragment implements View.OnClickL
         LayoutInflater inflater = LayoutInflater.from(activity);
         View dialogContent = inflater.inflate(R.layout.dialog_edit_skill, null);
 
+        //region get element in the view
         final CheckBox isCareerCheckBox = (CheckBox)
                 dialogContent.findViewById(R.id.dialog_edit_skill_is_career_checkbox);
         isCareerCheckBox.setChecked(skill.isCareer());
@@ -179,6 +117,7 @@ public class SkillsFragment extends PlayerSuperFragment implements View.OnClickL
         malusPicker.setActualValue(skill.getMalus());
         malusPicker.setMinValue(0);
         malusPicker.setMaxValue(4);
+        //endregion
 
         builder.setView(dialogContent);
 
@@ -220,6 +159,75 @@ public class SkillsFragment extends PlayerSuperFragment implements View.OnClickL
 
         return false;
 
+    }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        if (parent.getId() == R.id.dialog_add_skill_charac_spinner)
+        {
+            charac = parent.getAdapter().getItem(position).toString();
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+
+    private void createSkillDialog()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle(R.string.dialog_add_skill_title);
+
+        LayoutInflater inflater = LayoutInflater.from(activity);
+        View dialogContent = inflater.inflate(R.layout.dialog_add_skill, null);
+
+        //region get element in the view
+        final EditText nameEditText = (EditText)
+                dialogContent.findViewById(R.id.dialog_add_skill_name);
+
+        final CheckBox careerCheckBox = (CheckBox)
+                dialogContent.findViewById(R.id.dialog_add_skill_is_career_checkbox);
+
+        final Spinner characSpinner = (Spinner)
+                dialogContent.findViewById(R.id.dialog_add_skill_charac_spinner);
+        ArrayAdapter<String> characAdapter = new ArrayAdapter<String>(activity,
+                android.R.layout.simple_spinner_dropdown_item,
+                Arrays.asList(getResources().getStringArray(R.array.skill_frag_dialog_spinner_charac)));
+        characSpinner.setAdapter(characAdapter);
+        characSpinner.setOnItemSelectedListener(this);
+
+        final HorizontalNumberPicker rankPicker = (HorizontalNumberPicker)
+                dialogContent.findViewById(R.id.dialog_add_skill_rank_picker);
+        rankPicker.setActualValue(0);
+        rankPicker.setMaxValue(5);
+        rankPicker.setMinValue(0);
+        //endregion
+
+        builder.setView(dialogContent);
+
+
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                Skill skill = new Skill(nameEditText.getText().toString(),
+                        rankPicker.getActualValue(),
+                        setSkillCharac(),
+                        careerCheckBox.isChecked());
+
+                customSkillAdapter.addSkill(skill);
+
+                UpdateCharacterSkill();
+            }
+        });
+
+        builder.setNegativeButton(android.R.string.no, null);
+
+        builder.create().show();
     }
 
 

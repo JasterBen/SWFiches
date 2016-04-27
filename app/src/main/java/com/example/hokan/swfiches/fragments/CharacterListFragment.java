@@ -32,7 +32,8 @@ import com.example.hokan.swfiches.items.Specie;
  * Created by Ben on 17/04/2016.
  */
 public class CharacterListFragment extends Fragment implements View.OnClickListener,
-        AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
+        AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener,
+        AdapterView.OnItemSelectedListener {
 
     protected CharacterListAdapter adapter;
     protected CampaignActivity activity;
@@ -97,6 +98,7 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
         LayoutInflater inflater = LayoutInflater.from(activity);
         View v = inflater.inflate(R.layout.dialog_create_character, null);
 
+        //region get elements in the view
         final String name = String.format(getString(R.string.character_default_name), adapter.getItemCount() + 1);
 
         final EditText input = (EditText) v.findViewById(R.id.dialog_create_character_name);
@@ -107,16 +109,8 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
         ArrayAdapter<Specie> spinnerAdapter = new ArrayAdapter<Specie>(activity,
                 android.R.layout.simple_spinner_dropdown_item, SWFichesApplication.getApp().getSpeciesList());
         speciesSpinner.setAdapter(spinnerAdapter);
-        speciesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                characterSpecie = (Specie) parent.getAdapter().getItem(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
+        speciesSpinner.setOnItemSelectedListener(this);
+        //endregion
 
         builder.setView(v);
 
@@ -166,6 +160,23 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
 
 
     @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        if (parent.getId() == R.id.dialog_create_character_species)
+        {
+            characterSpecie = (Specie) parent.getAdapter().getItem(position);
+        }
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+
+
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == CampaignActivity.REQUEST_CODE)
@@ -178,6 +189,4 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
             }
         }
     }
-
-
 }
