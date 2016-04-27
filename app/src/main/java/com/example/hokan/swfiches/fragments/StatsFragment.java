@@ -1,6 +1,5 @@
 package com.example.hokan.swfiches.fragments;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.support.v7.app.AlertDialog;
 
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSeparator;

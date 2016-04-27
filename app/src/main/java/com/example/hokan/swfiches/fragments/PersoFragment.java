@@ -1,6 +1,5 @@
 package com.example.hokan.swfiches.fragments;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +13,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.support.v7.app.AlertDialog;
 
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.SWFichesApplication;
@@ -33,6 +33,8 @@ import java.util.Arrays;
  */
 public class PersoFragment extends PlayerSuperFragment implements View.OnClickListener,
         CareerSkillInterface, AdapterView.OnItemSelectedListener {
+
+    private static final int SPECIALIZATION_SPINNER_ID = 0;
 
     private static final int SPE_SKILL_COUNT = 4;
     private static final int MAX_SPE_SKILL = 2;
@@ -61,7 +63,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
 
     protected boolean[] selectedSpecializationSkill;
     protected SpecializationAdapter specializationAdapter;
-    protected String previousSpecializtion = "";
+    protected Specialization previousSpecialization;
     protected ArrayList<String> previousSpecializationSkill;
 
     protected Specie characterSpecie;
@@ -82,7 +84,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
             previousCareerSkill = bundle.getStringArrayList(PREVIOUS_CAREER_SKILL);
 
             selectedSpecializationSkill = bundle.getBooleanArray(SELECTED_SPE_SKILL);
-            previousSpecializtion = bundle.getString(PREVIOUS_SPE);
+            previousSpecialization = bundle.getParcelable(PREVIOUS_SPE);
             previousSpecializationSkill = bundle.getStringArrayList(PREVIOUS_SPE_SKILL);
         }
     }
@@ -153,6 +155,8 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         else if (viewId == R.id.dialog_career_spinner)
         {
             character.setCareer((Career) parent.getAdapter().getItem(position));
+            //uncomment only for test, this is a trick to test specialization function without this fuc**** setOnItemSelectedListenner being functional
+//            character.setMainSpecialization(character.getCareer().getSpecializationList().get(0));
 
             if (selectedCareerSkill == null ||
                     selectedCareerSkill.length == 0 ||
@@ -164,14 +168,24 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                 if (careerAdapter != null)
                     careerAdapter.notifyDataSetChanged();
             }
+
+//            if (selectedSpecializationSkill == null ||
+//                    selectedSpecializationSkill.length == 0 ||
+//                    (previousSpecialization != null && !previousSpecialization.getName().equals(character.getMainSpecialization().getName())))
+//            {
+//                selectedSpecializationSkill = new boolean[SPE_SKILL_COUNT];
+//                Arrays.fill(selectedSpecializationSkill, Boolean.FALSE);
+//                if (specializationAdapter != null)
+//                    specializationAdapter.notifyDataSetChanged();
+//            }
         }
-        else if (viewId == R.id.dialog_specialization_spinner)
+        else if (viewId == SPECIALIZATION_SPINNER_ID)
         {
             character.setMainSpecialization((Specialization) parent.getAdapter().getItem(position));
 
             if (selectedSpecializationSkill == null ||
                     selectedSpecializationSkill.length == 0 ||
-                    !previousSpecializtion.equals(character.getMainSpecialization().getName()))
+                    (previousSpecialization != null && !previousSpecialization.getName().equals(character.getMainSpecialization().getName())))
             {
                 selectedSpecializationSkill = new boolean[SPE_SKILL_COUNT];
                 Arrays.fill(selectedSpecializationSkill, Boolean.FALSE);
@@ -200,7 +214,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         final EditText nameEditText = (EditText) dialogContent.findViewById(R.id.dialog_edit_perso_name);
         nameEditText.setText(character.getName());
 
-        final Spinner speciesSpinner = (Spinner) dialogContent.findViewById(R.id.dialog_edit_perso_specie);
+        Spinner speciesSpinner = (Spinner) dialogContent.findViewById(R.id.dialog_edit_perso_specie);
         ArrayAdapter<Specie> spinnerAdapter = new ArrayAdapter<Specie>(activity,
                 android.R.layout.simple_spinner_dropdown_item, SWFichesApplication.getApp().getSpeciesList());
         speciesSpinner.setAdapter(spinnerAdapter);
@@ -241,8 +255,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
 
                 bundle.putBooleanArray(SELECTED_SPE_SKILL, selectedSpecializationSkill);
                 bundle.putStringArrayList(PREVIOUS_SPE_SKILL, previousSpecializationSkill);
-                if (character.getMainSpecialization() != null)
-                    bundle.putString(PREVIOUS_SPE, character.getMainSpecialization().getName());
+                bundle.putParcelable(PREVIOUS_SPE, character.getMainSpecialization());
 
                 UpdateCharacterNameAndCareer(bundle);
             }
@@ -265,7 +278,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         View dialogContent = inflater.inflate(R.layout.dialog_career_perso, null);
 
         //region get element in the view
-        final Spinner careerSpinner = (Spinner) dialogContent.findViewById(R.id.dialog_career_spinner);
+        Spinner careerSpinner = (Spinner) dialogContent.findViewById(R.id.dialog_career_spinner);
 
         ArrayList<Career> careerList = new ArrayList<>();
         ArrayList<Career> tmp = SWFichesApplication.getApp().getCareerList();
@@ -341,10 +354,11 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         builder.setTitle(R.string.dialog_add_specialization_title);
 
         LayoutInflater inflater = LayoutInflater.from(activity);
-        View dialogContent = inflater.inflate(R.layout.dialog_spe_perso, null);
+        View dialogContent = inflater.inflate(R.layout.dialog_career_perso, null);
 
         //region get element in the view
-        final Spinner specializationSpinner = (Spinner) dialogContent.findViewById(R.id.dialog_specialization_spinner);
+        Spinner specializationSpinner = (Spinner) dialogContent.findViewById(R.id.dialog_career_spinner);
+        specializationSpinner.setId(SPECIALIZATION_SPINNER_ID);
         ArrayAdapter<Specialization> spinnerAdapter =
                 new ArrayAdapter<>(activity, android.R.layout.simple_spinner_dropdown_item, character.getCareer().getSpecializationList());
         specializationSpinner.setAdapter(spinnerAdapter);
@@ -353,7 +367,8 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         specializationSpinner.setOnItemSelectedListener(this);
 
 
-        GridView specializationGrid = (GridView) dialogContent.findViewById(R.id.dialog_specialization_gridview);
+
+        GridView specializationGrid = (GridView) dialogContent.findViewById(R.id.dialog_career_gridview);
         specializationAdapter = new SpecializationAdapter(activity, this);
         specializationGrid.setAdapter(specializationAdapter);
         //endregion
@@ -410,7 +425,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
     {
         int cpt = 0;
         int size = checkedSkill == selectedCareerSkill ? getCareerSkillCount() : getSpeSkillCount();
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < size; ++i)
             if (checkedSkill[i])
                 cpt++;
 
@@ -430,7 +445,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
 
         for (Skill s : characterSkill)
         {
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < size; ++i)
             {
                 if (s.getName().equals(careerSkillList.get(i)))
                 {
@@ -456,16 +471,16 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
 
         int previousCareerSkillListSize = previousCareerSkill != null ? previousCareerSkill.size() : -1;
 
-        for (Skill s : characterSkill)
+        for (int i = 0; i < previousCareerSkillListSize; ++i)
         {
-            for (int i = 0; i < previousCareerSkillListSize; i++)
+            for (Skill s : characterSkill)
             {
                 if (s.getName().equals(previousCareerSkill.get(i)))
                 {
                     s.setLevel(s.getLevel() != 0 ? s.getLevel() - 1 : 0);
                 }
+                s.setIsCareer(false);
             }
-            s.setIsCareer(false);
         }
     }
 
@@ -482,7 +497,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
 
         for (Skill s : characterSkill)
         {
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < size; ++i)
             {
                 if (s.getName().equals(speSkillList.get(i)))
                 {
@@ -508,25 +523,40 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         ArrayList<String> careerSkill = character.getCareer().getCareerSkills();
         int careerSkillSize = character.getCareer().getCareerSkills().size();
 
-        for (Skill s : characterSkill)
+        if (previousSpecialization != null)
         {
-            for (int i = 0; i < previousSpeSkillListSize; i++)
+            for (Skill s : characterSkill)
             {
-                if (s.getName().equals(previousSpecializationSkill.get(i)))
+                for (int j = 0; j < SPE_SKILL_COUNT; ++j)
                 {
-                    s.setLevel(s.getLevel() != 0 ? s.getLevel() - 1 : 0);
-                }
-                for (int j = 0; j < careerSkillSize; j++)
-                {
-                    //si la compétence de spé n'est pas une compétence de la carrière, on met isCareer à false
-                    if (!previousSpecializationSkill.get(i).equals(careerSkill.get(j)))
+                    //on met isCareer a faux seulement si la compétence de spécialité n'est pas aussi une compétence de carrière
+                    int k = 0;
+                    while (k < careerSkillSize &&
+                            !previousSpecialization.getSpecializationrSkills().get(j).equals(careerSkill.get(k)))
+                    {
+                        k++;
+                    }
+
+                    if (k >= SPE_SKILL_COUNT && s.getName().equals(previousSpecialization.getSpecializationrSkills().get(j)))
                     {
                         s.setIsCareer(false);
                     }
                 }
             }
-
         }
+
+        //si on avait mis un point gratuit dans cette compétence, on l'enlève
+        for (int i = 0; i < previousSpeSkillListSize; ++i)
+        {
+            for (Skill s : characterSkill)
+            {
+                if (s.getName().equals(previousSpecializationSkill.get(i)))
+                {
+                    s.setLevel(s.getLevel() != 0 ? s.getLevel() - 1 : 0);
+                }
+            }
+        }
+
     }
 
 

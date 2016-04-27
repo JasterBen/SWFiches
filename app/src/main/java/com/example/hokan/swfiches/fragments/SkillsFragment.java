@@ -1,6 +1,5 @@
 package com.example.hokan.swfiches.fragments;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,6 +14,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.support.v7.app.AlertDialog;
 
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.adapters.CustomSkillAdapter;
