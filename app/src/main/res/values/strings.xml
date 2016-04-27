@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">SWFiches</string>
 
+    <string name="species_json_name">species.json</string>
+
     <!-- Campaign List Fragment -->
     <string name="add_campaign">Add a new campaign</string>
     <string name="add_campaign_dialog_title">Add campaign</string>
     <string name="add_campaign_dialog_message">Name your campaign</string>
-    <string name="campagne_default_title">Campagne %d</string>
+    <string name="campagne_default_title">Campaign %d</string>
     <string name="remove_campaign_dialog_title">Remove campaign</string>
     <string name="remove_campaign_dialog_message">Are you sure you want to remove this campaign ?</string>
 
@@ -17,8 +19,6 @@
     <string name="character_default_name">Character %d</string>
     <string name="remove_character_dialog_title">Remove character</string>
     <string name="remove_character_dialog_message">Are you sure you want to remove this character ?</string>
-    <string name="racial_skill_dialog_title">Racial Skill</string>
-    <string name="racial_skill_dialog_content">Please select your racial skill</string>
 
     
     <!-- PersoFrag -->
@@ -43,7 +43,7 @@
     <!-- CharacteristicFrag -->
     <string name="format_brawn">Brawn : %s</string>
     <string name="format_agility">Agility : %s</string>
-    <string name="format_intelligence">Intelligence : %s</string>
+    <string name="format_intelligence">Intellect : %s</string>
     <string name="format_cunning">Cunning : %s</string>
     <string name="format_willpower">Willpower : %s</string>
     <string name="format_presence">Presence : %s</string>
@@ -62,7 +62,7 @@
     <string name="format_strain">Strain\n%1$s/%2$s</string>
     <string name="format_defense">Defense\n%1$s|%2$s</string>
     <string name="format_force_rate">Force rate\n%s</string>
-    <string name="format_weight">Weight\n%1$s/%2$s</string>
+    <string name="format_weight">Encumbrance\n%1$s/%2$s</string>
     <string name="format_xp">Xp\n%1$s/%2$s</string>
     <string name="format_special">Special : %s</string>
     <string name="dialog_stats_title">Statistics</string>
@@ -107,7 +107,7 @@
     <string name="weapon_frag_weapon_name_format">Name : %s</string>
     <string name="weapon_frag_weapon_damage_format">Damage\n%s</string>
     <string name="weapon_frag_weapon_critic_format">Critic\n%s</string>
-    <string name="weapon_frag_weapon_weight_format">Weight\n%s</string>
+    <string name="weapon_frag_weapon_weight_format">Encumbrance\n%s</string>
     <string name="weapon_frag_weapon_mod_format">Mod\n%1$s/%2$s</string>
     <string name="weapon_frag_weapon_range_format">Range : %s</string>
     <string name="weapon_frag_weapon_special_format">Special : %s</string>
@@ -115,7 +115,7 @@
     <string name="weapon_frag_dialog_weapon_name">Name</string>
     <string name="weapon_frag_dialog_weapon_damage">Damage</string>
     <string name="weapon_frag_dialog_weapon_critic">Critic</string>
-    <string name="weapon_frag_dialog_weapon_weight">Weight</string>
+    <string name="weapon_frag_dialog_weapon_weight">Encumbrance</string>
     <string name="weapon_frag_dialog_weapon_mod">Mod</string>
     <string name="weapon_frag_dialog_weapon_range">Range</string>
     <string name="weapon_frag_dialog_weapon_skill">Skill</string>
@@ -153,14 +153,14 @@
     <string name="armor_frag_armor_name_format">Name : %s</string>
     <string name="armor_frag_armor_soak_format">Soak\n%s</string>
     <string name="armor_frag_armor_def_format">Defense\n%1$s|%2$s</string>
-    <string name="armor_frag_armor_weight_format">Weight\n%s</string>
+    <string name="armor_frag_armor_weight_format">Encumbrance\n%s</string>
     <string name="armor_frag_armor_mod_format">Mod\n%1$s/%2$s</string>
     <string name="armor_frag_armor_special_format">Special : %s</string>
     <string name="armor_frag_dialog_armor_name">Name</string>
     <string name="armor_frag_dialog_armor_soak">Soak</string>
     <string name="armor_frag_dialog_armor_def_cac">Melee Defense</string>
     <string name="armor_frag_dialog_armor_def_range">Range Defense</string>
-    <string name="armor_frag_dialog_armor_weight">Weight</string>
+    <string name="armor_frag_dialog_armor_weight">Encumbrance</string>
     <string name="armor_frag_dialog_armor_mod">Mod</string>
     <string name="armor_frag_dialog_armor_special">Special</string>
 

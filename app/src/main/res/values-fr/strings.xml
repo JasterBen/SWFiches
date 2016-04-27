@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="species_json_name">species_fr.json</string>
+
+    <!-- Campaign List Fragment -->
+    <string name="add_campaign">Ajouter une nouvelle campagne</string>
+    <string name="add_campaign_dialog_title">Ajouter campagne</string>
+    <string name="add_campaign_dialog_message">Nommer votre campagne</string>
+    <string name="campagne_default_title">Campagne %d</string>
+    <string name="remove_campaign_dialog_title">Supprimer campagne</string>
+    <string name="remove_campaign_dialog_message">Êtes vous sûr de vouloir supprimer cette campagne ?</string>
+
+
+    <!-- Character List Fragment -->
+    <string name="add_character">Ajouter un nouveau personnage</string>
+    <string name="add_character_dialog_title">Ajouter personnage</string>
+    <string name="add_character_dialog_message">Nommer votre personnage</string>
+    <string name="character_default_name">Personnage %d</string>
+    <string name="remove_character_dialog_title">Supprimer personnage</string>
+    <string name="remove_character_dialog_message">Êtes vous sûr de vouloir supprimer ce personnage ?</string>
+
+
+    <!-- PersoFrag -->
+    <string name="add_career">Carrière</string>
+    <string name="add_first_specialization">Spécialisation</string>
+    <string name="add_specialization">Ajouter spécialisation</string>
+    <string name="dialog_edit_perso_title">Perso</string>
+    <string name="dialog_add_career_title">@string/add_career</string>
+    <string name="dialog_add_specialization_title">@string/add_first_specialization</string>
+    <string name="dialog_add_new_specialization_title">@string/add_specialization</string>
+    <string name="format_name">Nom : %s</string>
+    <string name="format_specie">Espèce : %s</string>
+    <string name="format_career">Carrière : %s</string>
+    <string name="format_spezcialization">Spécialisations : %s</string>
+    <string name="format_multiple_specialization">, %s</string>
+    <string name="dialog_too_many_skill_check_message">Vous avez sélectionner trop de compétences. Veuillez ne sélectionner que %s compétences.</string>
+    <string name="dialog_not_enough_skill_check_message">Vous n\'avez pas sélectionner assez de compétences. Veuillez sélectionner %s compétences.</string>
+    <string name="droid">Droide</string>
+
+
+
+    <!-- CharacteristicFrag -->
+    <string name="format_brawn">Vigueur : %s</string>
+    <string name="format_agility">Agilité : %s</string>
+    <string name="format_intelligence">Intelligence : %s</string>
+    <string name="format_cunning">Ruse : %s</string>
+    <string name="format_willpower">Volonté : %s</string>
+    <string name="format_presence">Présence : %s</string>
+    <string name="dialog_charac_title">Caractéristiques</string>
+    <string name="dialog_brawn">Vigueur</string>
+    <string name="dialog_agility">Agilité</string>
+    <string name="dialog_intelligence">Intelligence</string>
+    <string name="dialog_cunning">Ruse</string>
+    <string name="dialog_willpower">Volonté</string>
+    <string name="dialog_presence">Présence</string>
+
+
+    <!-- StatsFrag -->
+    <string name="format_soak">Encaissement\n%s</string>
+    <string name="format_wound">Blessure\n%1$s/%2$s</string>
+    <string name="format_strain">Stress\n%1$s/%2$s</string>
+    <string name="format_defense">Défense\n%1$s|%2$s</string>
+    <string name="format_force_rate">Valeur de force\n%s</string>
+    <string name="format_weight">Encombrement\n%1$s/%2$s</string>
+    <string name="format_xp">Xp\n%1$s/%2$s</string>
+    <string name="format_special">Spécial : %s</string>
+    <string name="dialog_stats_title">Statistiques</string>
+    <string name="dialog_stats_wound">Seuil de blessure</string>
+    <string name="dialog_stats_strain">Seuil de stress</string>
+    <string name="dialog_stats_force_rating">Valeur de force</string>
+    <string name="dialog_stats_weight">Encombrement</string>
+    <string name="dialog_stats_xp">XP</string>
+
+
+    <!-- SkillFrag -->
+    <string name="skill_frag_title">Compétences</string>
+    <string name="add_custom_skill_button">Ajouter une compétence personnalisée</string>
+    <string name="dialog_add_skill_title">Ajouter compétence</string>
+    <string name="dialog_edit_skill_is_career">Compétence de carrière</string>
+    <string name="dialog_edit_skill_rank">Rang</string>
+    <string name="dialog_edit_skill_bonus_dice">Dé de fortune</string>
+    <string name="dialog_edit_skill_malus_dice">Dé d\'infortune</string>
+
+    <string-array name="skill_frag_dialog_spinner_charac">
+        <item>Vigueur</item>
+        <item>Agilité</item>
+        <item>Intelligence</item>
+        <item>Ruse</item>
+        <item>Volonté</item>
+        <item>Présence</item>
+    </string-array>
+
+    <string name="add_skill_dialog_name">Nom</string>
+    <string name="remove_skill_dialog_title">Supprimer compétence</string>
+    <string name="remove_skill_dialog_message">Êtes vous sîr de vouloir supprimer cette compétence ?</string>
+
+
+    <!-- TreeFrag -->
+    <string name="tree_frag_button">Voir arbres</string>
+
+
+    <!-- WeaponFrag -->
+    <string name="weapon_frag_title">Armes</string>
+    <string name="weapon_frag_button">Ajouter une arme</string>
+
+    <string name="weapon_frag_weapon_name_format">Nom : %s</string>
+    <string name="weapon_frag_weapon_damage_format">Dégâts\n%s</string>
+    <string name="weapon_frag_weapon_critic_format">Critique\n%s</string>
+    <string name="weapon_frag_weapon_weight_format">Encombrement\n%s</string>
+    <string name="weapon_frag_weapon_mod_format">Mod\n%1$s/%2$s</string>
+    <string name="weapon_frag_weapon_range_format">Portée : %s</string>
+    <string name="weapon_frag_weapon_special_format">Spécial : %s</string>
+
+    <string name="weapon_frag_dialog_weapon_name">Nom</string>
+    <string name="weapon_frag_dialog_weapon_damage">Dégâts</string>
+    <string name="weapon_frag_dialog_weapon_critic">Critique</string>
+    <string name="weapon_frag_dialog_weapon_weight">Encombrement</string>
+    <string name="weapon_frag_dialog_weapon_mod">Mod</string>
+    <string name="weapon_frag_dialog_weapon_range">Portée</string>
+    <string name="weapon_frag_dialog_weapon_skill">Compétence</string>
+    <string name="weapon_frag_dialog_weapon_special">Spécial</string>
+
+    <string-array name="weapon_frag_dialog_spinner_range">
+        <item>Contact</item>
+        <item>Courte</item>
+        <item>Moyenne</item>
+        <item>Longue</item>
+        <item>Extrême</item>
+    </string-array>
+
+    <string-array name="weapon_frag_dialog_spinner_skill">
+        <item>Artillerie</item>
+        <item>Corps à corps</item>
+        <item>Distance (arme légère)</item>
+        <item>Distance (arme lourde)</item>
+        <item>Pugilat</item>
+        <item>Sabre laser (Vig)</item>
+        <item>Sabre laser (Ag)</item>
+        <item>Sabre laser (Int)</item>
+        <item>Sabre laser (Ru)</item>
+        <item>Sabre laser (Vol)</item>
+        <item>Sabre laser (Pr)</item>
+    </string-array>
+
+    <string name="weapon_remove_dialog_title">Supprimer arme</string>
+    <string name="weapon_remove_dialog_content">Êtes vous sûr de vouloir supprimer cette arme ?</string>
+
+
+
+    <!-- ArmorFrag -->
+    <string name="armor_frag_title">Armure</string>
+    <string name="armor_frag_armor_name_format">Nom : %s</string>
+    <string name="armor_frag_armor_soak_format">Encaissement\n%s</string>
+    <string name="armor_frag_armor_def_format">Défense\n%1$s|%2$s</string>
+    <string name="armor_frag_armor_weight_format">Encombrement\n%s</string>
+    <string name="armor_frag_armor_mod_format">Mod\n%1$s/%2$s</string>
+    <string name="armor_frag_armor_special_format">Spécial : %s</string>
+    <string name="armor_frag_dialog_armor_name">Nom</string>
+    <string name="armor_frag_dialog_armor_soak">Encaissement</string>
+    <string name="armor_frag_dialog_armor_def_cac">Défense CàC</string>
+    <string name="armor_frag_dialog_armor_def_range">Défense distance</string>
+    <string name="armor_frag_dialog_armor_weight">Encombrement</string>
+    <string name="armor_frag_dialog_armor_mod">Mod</string>
+    <string name="armor_frag_dialog_armor_special">Spécial</string>
+
+</resources>

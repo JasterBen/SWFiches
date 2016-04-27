@@ -121,7 +121,7 @@ public class SWFichesApplication extends Application {
     public String loadJSONFromAsset() {
         String json = null;
         try {
-            InputStream is = getAssets().open("species.json");
+            InputStream is = getAssets().open(getString(R.string.species_json_name));
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
