@@ -37,7 +37,6 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
     private static final String SELECTED_CAREER_SKILL = "scs";
     private static final String PREVIOUS_CAREER = "career";
     private static final String PREVIOUS_CAREER_SKILL = "pcs";
-    private static final String PREVIOUS_RACIAL_SKILL = "prs";
 
     protected TextView nameTextView;
     protected TextView specieTextView;
@@ -51,10 +50,8 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
     protected CareerAdapter careerAdapter;
     protected String previousCareer = "";
     protected ArrayList<String> previousCareerSkill;
-    //protected ArrayList<String> previousRacialSkills;
 
     protected Specie characterSpecie;
-    //protected String racialSkill;
 
 
 
@@ -63,15 +60,12 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         super.onCreate(savedInstanceState);
 
         previousCareerSkill = new ArrayList<>();
-        //previousRacialSkills = new ArrayList<>();
         Bundle bundle = getArguments();
         if (bundle != null)
         {
             selectedCareerSkill = bundle.getBooleanArray(SELECTED_CAREER_SKILL);
             previousCareer = bundle.getString(PREVIOUS_CAREER);
             previousCareerSkill = bundle.getStringArrayList(PREVIOUS_CAREER_SKILL);
-            /*previousRacialSkills = bundle.getStringArrayList(PREVIOUS_RACIAL_SKILL);
-            racialSkill = previousRacialSkills.get(0);*/
         }
     }
 
@@ -150,18 +144,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 characterSpecie = (Specie) parent.getAdapter().getItem(position);
-                /*if (characterSpecie.getFirstSpecieSkillsSize() > 1)
-                {
-                    showSelectRacialSkillDialog();
-                }
-                else
-                {
-                    racialSkill = characterSpecie.getFirstSpecieSkill().get(0) != null ?
-                            characterSpecie.getFirstSpecieSkill().get(0) : "";
-                }
-
-                resetRankOfPreviousSpecie();*/
-                character.setSpecie(characterSpecie/*, racialSkill*/);
+                character.setSpecie(characterSpecie);
 
                 UpdateCharacterSpecie();
             }
@@ -196,9 +179,6 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                 Bundle bundle = new Bundle();
                 bundle.putBooleanArray(SELECTED_CAREER_SKILL, selectedCareerSkill);
                 bundle.putStringArrayList(PREVIOUS_CAREER_SKILL, previousCareerSkill);
-                /*previousRacialSkills.add(racialSkill);
-                previousRacialSkills.add(character.getSpecie().getSecondSpecieSkill());
-                bundle.putStringArrayList(PREVIOUS_RACIAL_SKILL, previousRacialSkills);*/
                 if (character.getCareer() != null)
                     bundle.putString(PREVIOUS_CAREER, character.getCareer().getName());
 
@@ -212,36 +192,6 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         builder.create().show();
     }
 
-
-    /*private void showSelectRacialSkillDialog()
-    {
-
-        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(activity);
-        builder.setTitle(R.string.racial_skill_dialog_title);
-        builder.setMessage(R.string.racial_skill_dialog_content);
-
-        Spinner skillSpinner = new Spinner(activity);
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(activity,
-                android.R.layout.simple_spinner_dropdown_item, characterSpecie.getFirstSpecieSkill());
-        skillSpinner.setAdapter(spinnerAdapter);
-        skillSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                racialSkill = (String) parent.getAdapter().getItem(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        builder.setView(skillSpinner);
-
-        builder.setPositiveButton(android.R.string.ok, null);
-
-        builder.create().show();
-    }*/
 
 
     private void displayCareerDialog()
@@ -392,23 +342,6 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         }
     }
 
-
-    /*private void resetRankOfPreviousSpecie()
-    {
-        int previousSpecieSkillSize = previousRacialSkills != null ? previousRacialSkills.size() : -1;
-        ArrayList<Skill> characterSkill = character.getSkillList();
-
-        for (Skill s : characterSkill)
-        {
-            for (int i = 0; i < previousSpecieSkillSize; i++)
-            {
-                if (s.getName().equals(previousRacialSkills.get(i)))
-                {
-                    s.setLevel(s.getLevel() != 0 ? s.getLevel() - 1 : 0);
-                }
-            }
-        }
-    }*/
 
     /**
      * @param mode 'n' for name,

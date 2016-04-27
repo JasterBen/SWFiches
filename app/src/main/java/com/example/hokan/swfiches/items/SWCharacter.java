@@ -35,7 +35,7 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
 
 
 
-    public SWCharacter(String name, Specie specie/*, String racialSkill*/) {
+    public SWCharacter(String name, Specie specie) {
         this.name = name;
         this.forceRating = 0;
         this.actualWound = 0;
@@ -44,7 +44,7 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         this.actualXp = 0;
         this.skillList = SWFichesApplication.getApp().getSkillList();
         this.skillListSize = skillList.size();
-        this.setSpecie(specie/*, racialSkill*/);
+        this.setSpecie(specie);
         this.armor = new Armor();
     }
 
@@ -64,7 +64,7 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         return specie;
     }
 
-    public void setSpecie(Specie specie/*, String racialSkill*/) {
+    public void setSpecie(Specie specie) {
         this.specie = specie;
         this.brawn = specie.getBrawn();
         this.agility = specie.getAgility();
@@ -78,26 +78,6 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         this.weight = 5 + specie.getBrawn();
         this.totalXp = specie.getStartingxp();
         this.forceRating = specie.isCanHaveForce() ? this.forceRating : 0;
-
-        /*if (!racialSkill.equals("")) {
-            for (Skill s : skillList)
-                if (s.getName().equals(racialSkill))
-                {
-                    s.setLevel(s.getLevel() + 1);
-                    break;
-                }
-        }
-
-        String secondRacialSkill = specie.getSecondSpecieSkill();
-        if (!secondRacialSkill.equals(""))
-        {
-            for (Skill s : skillList)
-                if (s.getName().equals(secondRacialSkill))
-                {
-                    s.setLevel(s.getLevel() + 1);
-                    break;
-                }
-        }*/
     }
 
 

@@ -39,7 +39,6 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
     protected Campaign campaign;
 
     protected Specie characterSpecie;
-    //protected String racialSkill = null;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -112,15 +111,6 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 characterSpecie = (Specie) parent.getAdapter().getItem(position);
-                /*if (characterSpecie.getFirstSpecieSkillsSize() > 1)
-                {
-                    showSelectRacialSkillDialog();
-                }
-                else
-                {
-                    racialSkill = characterSpecie.getFirstSpecieSkill().get(0) != null ?
-                        characterSpecie.getFirstSpecieSkill().get(0) : "";
-                }*/
             }
 
             @Override
@@ -144,37 +134,6 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
         builder.setNegativeButton(android.R.string.no, null);
         builder.create().show();
     }
-
-
-    /*private void showSelectRacialSkillDialog()
-    {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setTitle(R.string.racial_skill_dialog_title);
-        builder.setMessage(R.string.racial_skill_dialog_content);
-
-        Spinner skillSpinner = new Spinner(activity);
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(activity,
-                android.R.layout.simple_spinner_dropdown_item, characterSpecie.getFirstSpecieSkill());
-        skillSpinner.setAdapter(spinnerAdapter);
-        skillSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                racialSkill = (String) parent.getAdapter().getItem(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        builder.setView(skillSpinner);
-
-        builder.setPositiveButton(android.R.string.ok, null);
-
-        builder.create().show();
-    }*/
 
 
 
