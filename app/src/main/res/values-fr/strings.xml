@@ -36,7 +36,7 @@
     <string name="format_multiple_specialization">, %s</string>
     <string name="dialog_too_many_skill_check_message">Vous avez sélectionner trop de compétences. Veuillez ne sélectionner que %s compétences.</string>
     <string name="dialog_not_enough_skill_check_message">Vous n\'avez pas sélectionner assez de compétences. Veuillez sélectionner %s compétences.</string>
-    <string name="droid">Droide</string>
+    <string name="droid">Droïde</string>
 
 
 

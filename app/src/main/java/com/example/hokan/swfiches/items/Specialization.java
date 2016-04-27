@@ -12,9 +12,12 @@ public class Specialization implements Parcelable {
 
     protected String name;
     protected ArrayList<String> specializationrSkills;
-    protected Career career;
 
 
+    public Specialization(String name, ArrayList<String> specializationrSkills) {
+        this.name = name;
+        this.specializationrSkills = specializationrSkills;
+    }
 
     public String getName() {
         return name;
@@ -24,8 +27,14 @@ public class Specialization implements Parcelable {
         this.name = name;
     }
 
-    
-    
+    public ArrayList<String> getSpecializationrSkills() {
+        return specializationrSkills;
+    }
+
+    public void setSpecializationrSkills(ArrayList<String> specializationrSkills) {
+        this.specializationrSkills = specializationrSkills;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -35,7 +44,6 @@ public class Specialization implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeStringList(specializationrSkills);
-        dest.writeParcelable(career, 0);
     }
 
     public static final Parcelable.Creator<Specialization> CREATOR
@@ -53,6 +61,10 @@ public class Specialization implements Parcelable {
         name = in.readString();
         specializationrSkills = new ArrayList<>(4);
         in.readStringList(specializationrSkills);
-        career = in.readParcelable(Career.class.getClassLoader());
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }

@@ -11,24 +11,30 @@ import java.util.ArrayList;
 public class Career implements Parcelable {
 
     protected String name;
-    protected ArrayList<String> carreerSkills;
-    protected int careerSkillSize;
+    protected ArrayList<String> careerSkills;
     protected ArrayList<Specialization> specializationList;
-    protected int specializationListSize;
 
 
 
     //TODO delete this constructor
     public Career(String name) {
         this.name = name;
-        this.careerSkillSize = 0;
+        this.careerSkills = new ArrayList<>();
+        this.specializationList = new ArrayList<>();
     }
 
 
-    public Career(String name, ArrayList<String> carreerSkills) {
+    public Career(String name, ArrayList<String> careerSkills) {
         this.name = name;
-        this.carreerSkills = carreerSkills;
-        this.careerSkillSize = carreerSkills.size();
+        this.careerSkills = careerSkills;
+        this.specializationList = new ArrayList<>();
+
+    }
+
+    public Career(String name, ArrayList<String> careerSkills, ArrayList<Specialization> specializationList) {
+        this.name = name;
+        this.careerSkills = careerSkills;
+        this.specializationList = specializationList;
     }
 
     public String getName() {
@@ -36,21 +42,15 @@ public class Career implements Parcelable {
     }
 
 
-    public ArrayList<String> getCarreerSkills() {
-        return carreerSkills;
+    public ArrayList<String> getCareerSkills() {
+        return careerSkills;
     }
 
-    public int getCareerSkillSize() {
-        return careerSkillSize;
-    }
 
     public ArrayList<Specialization> getSpecializationList() {
         return specializationList;
     }
 
-    public int getSpecializationListSize() {
-        return specializationListSize;
-    }
 
     @Override
     public int describeContents() {
@@ -60,7 +60,7 @@ public class Career implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
-        dest.writeStringList(carreerSkills);
+        dest.writeStringList(careerSkills);
         dest.writeTypedList(specializationList);
     }
 
@@ -77,8 +77,8 @@ public class Career implements Parcelable {
 
     private Career(Parcel in) {
         name = in.readString();
-        carreerSkills = new ArrayList<>(8);
-        in.readStringList(carreerSkills);
+        careerSkills = new ArrayList<>(8);
+        in.readStringList(careerSkills);
         specializationList = new ArrayList<>(6);
         in.readTypedList(specializationList, Specialization.CREATOR);
     }

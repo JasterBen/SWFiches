@@ -18,4 +18,10 @@ public interface CareerSkillInterface {
     String getSpeSkill(int position);
 
     int getSpeSkillCount();
+
+    boolean getSpeSkillChecked(int position);
+
+    void setSpeSkillChecked(int position, boolean selectedSpecializationSkill);
+
+    int getMaxSpeSkill();
 }

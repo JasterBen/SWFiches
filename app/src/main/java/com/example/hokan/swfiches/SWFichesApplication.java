@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 
 import com.example.hokan.swfiches.items.Career;
 import com.example.hokan.swfiches.items.Skill;
+import com.example.hokan.swfiches.items.Specialization;
 import com.example.hokan.swfiches.items.Specie;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -75,7 +76,16 @@ public class SWFichesApplication extends Application {
         careerSkillList.add("Ranged Heavy");
         careerSkillList.add("Ranged Light");
         careerSkillList.add("Lightsaber (Br)");
-        careerList.add(new Career("Test", careerSkillList));
+        ArrayList<String> speSkillList = new ArrayList<>();
+        speSkillList.add("Astrogation");
+        speSkillList.add("Lightsaber (Cun)");
+        speSkillList.add("Perception");
+        speSkillList.add("Lightsaber (Pr)");
+        ArrayList<Specialization> speList = new ArrayList<>();
+        speList.add(new Specialization("Spe1", speSkillList));
+        speList.add(new Specialization("Spe2", speSkillList));
+        speList.add(new Specialization("Spe3", speSkillList));
+        careerList.add(new Career("Test", careerSkillList, speList));
     }
 
     private void initSkillList()
