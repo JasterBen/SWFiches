@@ -41,13 +41,6 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
     private static final int DROID_MAX_CAREER_SKILL = 6;
     private static final int DROID_MAX_SPE_SKILL = 3;
 
-    //private static final String SELECTED_CAREER_SKILL = "scs";
-    private static final String PREVIOUS_CAREER = "career";
-    //private static final String PREVIOUS_CAREER_SKILL = "pcs";
-    //private static final String SELECTED_SPE_SKILL = "sss";
-    private static final String PREVIOUS_SPE = "spe";
-    //private static final String PREVIOUS_SPE_SKILL = "pss";
-
     protected TextView nameTextView;
     protected TextView specieTextView;
     protected TextView careerTextView;
@@ -341,7 +334,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
 //            boolean[] selectedSpecializationSkill = character.getSelectedSpecializationSkill();
 //            if (selectedSpecializationSkill == null ||
 //                    selectedSpecializationSkill.length == 0 ||
-//                    (previousSpecialization != null && !previousSpecialization.getName().equals(character.getMainSpecialization().getName())))
+//                    (previousSpecialization.getName() != null && !previousSpecialization.getName().equals(character.getMainSpecialization().getName())))
 //            {
 //                character.setSelectedSpecializationSkill(new boolean[SPE_SKILL_COUNT]);
 //                Arrays.fill(character.getSelectedSpecializationSkill(), Boolean.FALSE);

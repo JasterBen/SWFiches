@@ -376,7 +376,7 @@
 		"strain" : "12",
 		"startingxp" : "90",
 		"can_have_force" : "true",
-		"special": "-1 rang en vigilance\n Peut dépenser 1 triomphe sur un jet d'initiative pour offrir un manœuvre gratuite à un allié à portée courte (lui inclus)"
+		"special": "1 rang en vigilance\n Peut dépenser 1 triomphe sur un jet d'initiative pour offrir un manœuvre gratuite à un allié à portée courte (lui inclus)"
 	},
 
 	{
