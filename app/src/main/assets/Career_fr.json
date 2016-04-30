@@ -1,0 +1,353 @@
+[
+	{
+		"name" : "Chasseur de primes",
+		"SkillOne": [
+			"Athlétisme",
+			"Distance (armes lourdes)",
+			"Perception",
+			"Pilotage (espace)",
+			"Pilotage (planétaire)",
+			"Pugilat",
+			"Système D",
+			"Vigilance"
+		],
+		"Speciality": [
+			{
+				"name": "Assassin",
+				"SkillTwo": [
+					"Corps à corps",
+					"Discrétion",
+					"Distance (armes lourdes)",
+					"Magouille"
+				]
+			},
+			{
+				"name": "Expert en gadgets",
+				"SkillTwo": [
+					"Coercition",
+					"Distance (armes légères)",
+					"Mécanique",
+					"Pugilat"
+				]
+			},
+			{
+				"name": "Expert en survie",
+				"SkillTwo": [
+					"Xénologie",
+					"Perception",
+					"Résistance",
+					"Survie"
+				]
+			}
+		],
+		"need_force": "false"
+	},
+	{
+		"name" : "Colon",
+		"SkillOne": [
+			"Charme",
+			"Commandement",
+			"Culture",
+			"Education",
+			"Mondes du noyau",
+			"Négociation",
+			"Système D",
+			"Tromperie"
+		],
+		"Speciality": [
+			{
+				"name": "Artiste",
+				"SkillTwo": [
+					"Charme",
+					"Coordination",
+					"Corps à corps",
+					"Tromperie"
+				]
+			},
+			{
+				"name": "Entrepreneur",
+				"SkillTwo": [
+					"Education",
+					"Négociation",
+					"Pègre",
+					"Sang-froid"
+				]
+			},
+			{
+				"name": "Érudit",
+				"SkillTwo": [
+					"Bordure extérieure",
+					"Pègre",
+					"Perception",
+					"Xénologie"
+				]
+			},
+			{
+				"name": "Diplomate",
+				"SkillTwo": [
+					"Charme",
+					"Coercition",
+					"Mondes du noyau",
+					"Tromperie"
+				]
+			},
+			{
+				"name": "Marshal",
+				"SkillTwo": [
+					"Coercition",
+					"Distance (armes légères)",
+					"Pègre",
+					"Vigilance"
+				]
+			},
+			{
+				"name": "Médecin",
+				"SkillTwo": [
+					"Calme",
+					"Education",
+					"Médecine",
+					"Résistance"
+				]
+			}
+		],
+		"need_force": "false"
+	},
+	{
+		"name" : "Contrebandier",
+		"SkillOne": [
+			"Coordination",
+			"Magouille",
+			"Pègre",
+			"Perception",
+			"Pilotage (espace)",
+			"Système D",
+			"Tromperie",
+			"Vigilance"
+		],
+		"Speciality": [
+			{
+				"name": "Pilote",
+				"SkillTwo": [
+					"Corps à corps",
+					"Discrétion",
+					"Distance (armes lourdes)",
+					"Magouille"
+				]
+			},
+			{
+				"name": "Vaurien",
+				"SkillTwo": [
+					"Calme",
+					"Charme",
+					"Distance (armes légères)",
+					"Tromperie"
+				]
+			},
+			{
+				"name": "Voleur",
+				"SkillTwo": [
+					"Discrétion",
+					"Informatique",
+					"Magouille",
+					"Vigilance"
+				]
+			}
+
+		],
+		"need_force": "false"
+	},
+	{
+		"name" : "Explorateur",
+		"SkillOne": [
+			"Astrogation",
+			"Calme",
+			"Bordure extérieure",
+			"Culture",
+			"Perception",
+			"Pilotage (espace)",
+			"Survie",
+			"Xénologie"
+		],
+		"Speciality": [
+			{
+				"name": "Archéologue",
+				"SkillTwo": [
+					"Athlétisme",
+					"Culture",
+					"Education",
+					"Sang-froid"
+				]
+			},
+			{
+				"name": "Bourlingueur",
+				"SkillTwo": [
+					"Astrogation",
+					"Coordination",
+					"Négociation",
+					"Système D"
+				]
+			},
+			{
+				"name": "Éclaireur",
+				"SkillTwo": [
+					"Athlétisme",
+					"Médecine",
+					"Pilotage (planétaire)",
+					"Survie"
+				]
+			},
+			{
+				"name": "Fonceur",
+				"SkillTwo": [
+					"Artillerie",
+					"Calme",
+					"Mécanique",
+					"Pilotage (planétaire)"
+				]
+			},
+			{
+				"name": "Négociant",
+				"SkillTwo": [
+					"Mondes du noyau",
+					"Négociation",
+					"Pègre",
+					"Tromperie"
+				]
+			},
+			{
+				"name": "Prédateur",
+				"SkillTwo": [
+					"Discrétion",
+					"Distance (armes lourdes)",
+					"Survie",
+					"Xénologie"
+				]
+			}
+		],
+		"need_force": "false"
+	},
+	{
+		"name" : "Mercenaire",
+		"SkillOne": [
+			"Athlétisme",
+			"Corps à corps",
+			"Distance (armes légères)",
+			"Pilotage (planétaire)",
+			"Pugilat",
+			"Résistance",
+			"Sang-froid",
+			"Vigilance"
+		],
+		"Speciality": [
+			{
+				"name": "Canonnier",
+				"SkillTwo": [
+					"Artillerie",
+					"Distance (armes lourdes)",
+					"Perception",
+					"Résistance"
+				]
+			},
+			{
+				"name": "Démolisseur",
+				"SkillTwo": [
+					"Calme",
+					"Informatique",
+					"Magouille",
+					"Mécanique"
+				]
+			},
+			{
+				"name": "Garde du corps",
+				"SkillTwo": [
+					"Artillerie",
+					"Distance (armes lourdes)",
+					"Perception",
+					"Pilotage (planétaire)"
+				]
+			},
+			{
+				"name": "Maraudeur",
+				"SkillTwo": [
+					"Coercition",
+					"Corps à corps",
+					"Résistance",
+					"Survie"
+				]
+			},
+			{
+				"name": "Nervi",
+				"SkillTwo": [
+					"Coercition",
+					"Pègre",
+					"Pugilat",
+					"Système D"
+				]
+			},
+			{
+				"name": "Soldat à louer",
+				"SkillTwo": [
+					"Artillerie",
+					"Commandement",
+					"Distance (armes lourdes)",
+					"Sang-froid"
+				]
+			}
+		],
+		"need_force": "false"
+	},
+	{
+		"name" : "Technicien",
+		"SkillOne": [
+			"Astrogation",
+			"Bordure extérieure",
+			"Coordination",
+			"Informatique",
+			"Mécanique",
+			"Perception",
+			"Pilotage (planétaire)",
+			"Sang-froid"
+		],
+		"Speciality": [
+			{
+				"name": "Mécanicien",
+				"SkillTwo": [
+					"Magouille",
+					"Mécanique",
+					"Pilotage (espace)",
+					"Pugilat"
+				]
+			},
+			{
+				"name": "Slicer",
+				"SkillTwo": [
+					"Discrétion",
+					"Education",
+					"Informatique",
+					"Pègre"
+				]
+			},
+			{
+				"name": "Tech hors-la-loi",
+				"SkillTwo": [
+					"Education",
+					"Mécanique",
+					"Pègre",
+					"Système D"
+				]
+			}
+		],
+		"need_force": "false"
+	},
+
+
+
+
+
+
+
+
+
+
+
+]
