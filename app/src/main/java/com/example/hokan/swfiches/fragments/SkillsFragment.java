@@ -33,6 +33,7 @@ public class SkillsFragment extends PlayerSuperFragment implements View.OnClickL
         AdapterView.OnItemSelectedListener {
 
 
+    private View customSkillContainer;
     private RecyclerView customSkillRecyclerView;
     private RecyclerView skillRecyClerView;
     private CustomSkillAdapter customSkillAdapter;
@@ -63,8 +64,9 @@ public class SkillsFragment extends PlayerSuperFragment implements View.OnClickL
         customSkillAdapter = new CustomSkillAdapter(activity, this, this);
         customSkillRecyclerView.setAdapter(customSkillAdapter);
 
+        customSkillContainer = v.findViewById(R.id.skill_frag_custom_skill_layout);
         if (character.getCustomSkillListSize() == 0)
-            customSkillRecyclerView.setVisibility(View.GONE);
+            customSkillContainer.setVisibility(View.GONE);
 
 
         return v;
@@ -260,7 +262,7 @@ public class SkillsFragment extends PlayerSuperFragment implements View.OnClickL
     @Override
     public void addCustomSkill(Skill skill) {
         if (character.getCustomSkillListSize() == 0)
-            customSkillRecyclerView.setVisibility(View.VISIBLE);
+            customSkillContainer.setVisibility(View.VISIBLE);
 
         character.getCustomSkillList().add(skill);
         character.setCustomSkillListSize(character.getCustomSkillListSize() + 1);
@@ -272,7 +274,7 @@ public class SkillsFragment extends PlayerSuperFragment implements View.OnClickL
         character.setCustomSkillListSize(character.getCustomSkillListSize() - 1);
 
         if (character.getCustomSkillListSize() == 0)
-            customSkillRecyclerView.setVisibility(View.GONE);
+            customSkillContainer.setVisibility(View.GONE);
     }
 
     @Override

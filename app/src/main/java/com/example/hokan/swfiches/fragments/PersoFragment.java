@@ -184,9 +184,10 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         final EditText nameEditText = (EditText) dialogContent.findViewById(R.id.dialog_edit_perso_name);
         nameEditText.setText(character.getName());
 
+        ArrayList<Specie> speciesList = SWFichesApplication.getApp().getSpeciesList();
         Spinner speciesSpinner = (Spinner) dialogContent.findViewById(R.id.dialog_edit_perso_specie);
         ArrayAdapter<Specie> spinnerAdapter = new ArrayAdapter<Specie>(activity,
-                android.R.layout.simple_spinner_dropdown_item, SWFichesApplication.getApp().getSpeciesList());
+                android.R.layout.simple_spinner_dropdown_item, speciesList);
         speciesSpinner.setAdapter(spinnerAdapter);
         // TODO : bug fix, spinner pas sur la bonne position à la première ouverture
         int spinnerPosition = spinnerAdapter.getPosition(character.getSpecie());

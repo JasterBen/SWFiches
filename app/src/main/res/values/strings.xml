@@ -75,6 +75,7 @@
 
     <!-- SkillFrag -->
     <string name="skill_frag_title">Skills</string>
+    <string name="skill_frag_custom_skill_title">Custom skills</string>
     <string name="add_custom_skill_button">Add custom skill</string>
     <string name="dialog_add_skill_title">Add skill</string>
     <string name="dialog_edit_skill_is_career">Career skill</string>

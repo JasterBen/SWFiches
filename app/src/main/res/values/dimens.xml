@@ -11,7 +11,8 @@
 
     <dimen name="weapon_recycler_view_height">150dp</dimen>
 
-    <dimen name="skill_fragment_recycler_view_height">100dp</dimen>
+    <dimen name="skill_fragment_recycler_view_height">90dp</dimen>
+    <dimen name="custom_skill_recycler_view_height">50dp</dimen>
     <dimen name="dialog_edit_skill_checkbox_top_margin">20dp</dimen>
     <dimen name="dialog_edit_skill_checkbox_left_margin">35dp</dimen>
 
