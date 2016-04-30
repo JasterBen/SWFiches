@@ -2,6 +2,7 @@
 <resources>
 
     <string name="species_json_name">species_fr.json</string>
+    <string name="skill_json_name">skill_fr.json</string>
 
     <!-- Campaign List Fragment -->
     <string name="add_campaign">Ajouter une nouvelle campagne</string>
@@ -133,8 +134,8 @@
     <string-array name="weapon_frag_dialog_spinner_skill">
         <item>Artillerie</item>
         <item>Corps à corps</item>
-        <item>Distance (arme légère)</item>
-        <item>Distance (arme lourde)</item>
+        <item>Distance (armes légères)</item>
+        <item>Distance (armes lourdes)</item>
         <item>Pugilat</item>
         <item>Sabre laser (Vig)</item>
         <item>Sabre laser (Ag)</item>

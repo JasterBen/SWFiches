@@ -3,11 +3,14 @@ package com.example.hokan.swfiches.items;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Utilisateur on 03/02/2016.
  */
 public class Skill implements Parcelable {
 
+    @SerializedName("name")
     protected String name;
     protected int level;
     protected int bonus;
@@ -22,6 +25,7 @@ public class Skill implements Parcelable {
      * 'w' Willpower
      * 'p' Presence
      **/
+    @SerializedName("characteristic")
     protected char characteristic;
     protected boolean isCareer;
 

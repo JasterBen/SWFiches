@@ -34,9 +34,9 @@ public class SWFichesApplication extends Application {
         super.onCreate();
         app = this;
         tablet = getResources().getBoolean(R.bool.is_tablet);
+        initSkillList();
         initSpeciesList();
         initCareerList();
-        initSkillList();
     }
 
     public static SWFichesApplication getApp() {
@@ -54,7 +54,7 @@ public class SWFichesApplication extends Application {
             @Override
             protected Void doInBackground(Void... voids) {
                 Type listType = new TypeToken<ArrayList<Specie>>(){}.getType();
-                speciesList = new GsonBuilder().create().fromJson(loadJSONFromAsset(), listType);
+                speciesList = new GsonBuilder().create().fromJson(loadJSONFromAsset(getString(R.string.species_json_name)), listType);
                 return null;
             }
         }.execute();
@@ -97,20 +97,16 @@ public class SWFichesApplication extends Application {
 
     private void initSkillList()
     {
-        skillList = new ArrayList<>();
-        skillList.add(new Skill("Astrogation", 'i'));
-        skillList.add(new Skill("Melee", 'b'));
-        skillList.add(new Skill("Perception", 'c'));
-        skillList.add(new Skill("Brawl", 'b'));
-        skillList.add(new Skill("Gunnery", 'a'));
-        skillList.add(new Skill("Ranged Heavy", 'a'));
-        skillList.add(new Skill("Ranged Light", 'a'));
-        skillList.add(new Skill("Lightsaber (Br)", 'b'));
-        skillList.add(new Skill("Lightsaber (Ag)", 'a'));
-        skillList.add(new Skill("Lightsaber (Int)", 'i'));
-        skillList.add(new Skill("Lightsaber (Cun)", 'c'));
-        skillList.add(new Skill("Lightsaber (Will)", 'w'));
-        skillList.add(new Skill("Lightsaber (Pr)", 'p'));
+        new AsyncTask<Void,Void,Void>(){
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                Type listType = new TypeToken<ArrayList<Skill>>(){}.getType();
+                skillList = new GsonBuilder().create().fromJson(loadJSONFromAsset(getString(R.string.skill_json_name)), listType);
+                return null;
+            }
+        }.execute();
+
     }
 
     public ArrayList<Specie> getSpeciesList() {
@@ -135,10 +131,10 @@ public class SWFichesApplication extends Application {
     }
 
 
-    public String loadJSONFromAsset() {
+    public String loadJSONFromAsset(String jsonName) {
         String json = null;
         try {
-            InputStream is = getAssets().open(getString(R.string.species_json_name));
+            InputStream is = getAssets().open(jsonName);
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);

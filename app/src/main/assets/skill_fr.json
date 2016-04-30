@@ -1,0 +1,162 @@
+[
+  {
+    "name" : "Astrogation",
+    "characteristic" : "i"
+  },
+  {
+    "name" : "Athlétisme",
+    "characteristic" : "b"
+  },
+  {
+    "name" : "Artillerie",
+    "characteristic" : "a"
+  },
+  {
+    "name" : "Bordure extérieure",
+    "characteristic" : "i"
+  },
+  {
+    "name" : "Calme",
+    "characteristic" : "p"
+  },
+  {
+    "name" : "Charme",
+    "characteristic" : "p"
+  },
+  {
+    "name" : "Coercition",
+    "characteristic" : "w"
+  },
+  {
+    "name" : "Commandement",
+    "characteristic" : "p"
+  },
+  {
+    "name" : "Coordination",
+    "characteristic" : "a"
+  },
+  {
+    "name" : "Corps à corps",
+    "characteristic" : "b"
+  },
+  {
+    "name" : "Culture",
+    "characteristic" : "i"
+  },
+  {
+    "name" : "Discrétion",
+    "characteristic" : "a"
+  },
+  {
+    "name" : "Distance (armes légères)",
+    "characteristic" : "a"
+  },
+  {
+    "name" : "Distance (armes lourdes)",
+    "characteristic" : "a"
+  },
+  {
+    "name" : "Education",
+    "characteristic" : "i"
+  },
+  {
+    "name" : "Informatique",
+    "characteristic" : "i"
+  },
+  {
+    "name" : "Magouille",
+    "characteristic" : "c"
+  },
+  {
+    "name" : "Mécanique",
+    "characteristic" : "i"
+  },
+  {
+    "name" : "Médecine",
+    "characteristic" : "i"
+  },
+  {
+    "name" : "Mondes du noyau",
+    "characteristic" : "i"
+  },
+  {
+    "name" : "Négociation",
+    "characteristic" : "p"
+  },
+  {
+    "name" : "Pègre",
+    "characteristic" : "i"
+  },
+  {
+    "name" : "Perception",
+    "characteristic" : "c"
+  },
+  {
+    "name" : "Pilotage (espace)",
+    "characteristic" : "a"
+  },
+  {
+    "name" : "Pilotage (planétaire)",
+    "characteristic" : "a"
+  },
+  {
+    "name" : "Pugilat",
+    "characteristic" : "b"
+  },
+  {
+    "name" : "Résistance",
+    "characteristic" : "b"
+  },
+  {
+    "name" : "Sabre laser (Vig)",
+    "characteristic" : "b"
+  },
+  {
+    "name" : "Sabre laser (Ag)",
+    "characteristic" : "a"
+  },
+  {
+    "name" : "Sabre laser (Int)",
+    "characteristic" : "i"
+  },
+  {
+    "name" : "Sabre laser (Ru)",
+    "characteristic" : "c"
+  },
+  {
+    "name" : "Sabre laser (Vol)",
+    "characteristic" : "w"
+  },
+  {
+    "name" : "Sabre laser (Pr)",
+    "characteristic" : "p"
+  },
+  {
+    "name" : "Sang-froid",
+    "characteristic" : "w"
+  },
+  {
+    "name" : "Stratégie",
+    "characteristic" : "i"
+  },
+  {
+    "name" : "Survie",
+    "characteristic" : "c"
+  },
+  {
+    "name" : "Système D",
+    "characteristic" : "c"
+  },
+  {
+    "name" : "Tromperie",
+    "characteristic" : "c"
+  },
+  {
+    "name" : "Vigilance",
+    "characteristic" : "w"
+  },
+  {
+    "name" : "Xénologie",
+    "characteristic" : "i"
+  }
+]
