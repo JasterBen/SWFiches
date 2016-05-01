@@ -245,12 +245,12 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         Spinner careerSpinner = (Spinner) dialogContent.findViewById(R.id.dialog_career_spinner);
 
         ArrayList<Career> careerList = new ArrayList<>();
-        boolean canUseForce = characterSpecie.isCanHaveForce();
+        boolean canCharacterUseForce = characterSpecie.isCanHaveForce();
         ArrayList<Career> tmp = SWFichesApplication.getApp().getCareerList();
         for (Career c : tmp)
         {
             if (c.getSpecializationList().size() >= 3 &&
-                    ((canUseForce) || (!canUseForce && !c.isNeedForce())))
+                    ((canCharacterUseForce) || (!canCharacterUseForce && !c.isNeedForce())))
                 careerList.add(c);
         }
 
@@ -409,39 +409,45 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         builder.setTitle(R.string.dialog_add_specialization_title);
 
         final ArrayList<Specialization> otherSpecializationList = new ArrayList<>();
+        boolean canCharacterUseForce = characterSpecie.isCanHaveForce();
         ArrayList<Career> careerList = SWFichesApplication.getApp().getCareerList();
         //pour toutes les carrières
         for (Career c : careerList)
         {
-            //pour toutes les spécialisations de la carrière
-            for (Specialization s : c.getSpecializationList())
+            //si la carrière est autorisée pour ce personnage
+            if (((canCharacterUseForce) || (!canCharacterUseForce && !c.isNeedForce())))
             {
-                //si la spécialisation "courante" n'est pas la spécialisation principale du personnage
-                if (!s.getName().equals(character.getMainSpecialization().getName()))
+                //pour toutes les spécialisations de la carrière
+                for (Specialization s : c.getSpecializationList())
                 {
-                    //si la liste des spécialisations secondaires n'est pas null
-                    if (character.getSecondarySpecializationList() != null)
+                    //si la spécialisation "courante" n'est pas la spécialisation principale du personnage
+                    if (!s.getName().equals(character.getMainSpecialization().getName()))
                     {
-                        int i = 0;
-                        int size = character.getSecondarySpecializationListSize();
-                        ArrayList<Specialization> specializationsList = character.getSecondarySpecializationList();
-                        //tant que la spécialisation "courante" n'est pas dans la liste des spécialisations secondaires on avance dans la liste
-                        while (i < size &&
-                                !s.getName().equals(specializationsList.get(i).getName()))
+                        //si la liste des spécialisations secondaires n'est pas null
+                        if (character.getSecondarySpecializationList() != null)
                         {
-                            i++;
-                        }
+                            int i = 0;
+                            int size = character.getSecondarySpecializationListSize();
+                            ArrayList<Specialization> specializationsList = character.getSecondarySpecializationList();
+                            //tant que la spécialisation "courante" n'est pas dans la liste des spécialisations secondaires on avance dans la liste
+                            while (i < size &&
+                                    !s.getName().equals(specializationsList.get(i).getName()))
+                            {
+                                i++;
+                            }
 
-                        //si on n'a pas trouvé la spécialisation dans la liste des spécialisations secondaires, on peut l'ajouter
-                        if (i >= size)
+                            //si on n'a pas trouvé la spécialisation dans la liste des spécialisations secondaires, on peut l'ajouter
+                            if (i >= size)
+                                otherSpecializationList.add(s);
+                        }
+                        else
+                        {
                             otherSpecializationList.add(s);
-                    }
-                    else
-                    {
-                        otherSpecializationList.add(s);
+                        }
                     }
                 }
             }
+
         }
 
         Spinner otherSpecializationSpinner = new Spinner(activity);

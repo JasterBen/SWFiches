@@ -18,7 +18,6 @@ import java.util.ArrayList;
  * Created by Ben on 17/04/2016.
  */
 
-// TODO http://blog.nkdroidsolutions.com/json-parsing-from-assets-using-gson-in-android-tutorial/
 
 public class SWFichesApplication extends Application {
 
