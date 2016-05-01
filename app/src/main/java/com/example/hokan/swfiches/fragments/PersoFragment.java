@@ -126,7 +126,46 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         if (viewId == R.id.dialog_edit_perso_specie)
         {
             characterSpecie = (Specie) parent.getAdapter().getItem(position);
+            Specie characterPreviousSpecie = character.getSpecie();
             character.setSpecie(characterSpecie);
+
+            String droid = SWFichesApplication.getApp().getString(R.string.droid);
+
+            //si on devient droide, on réinitilaise tout
+            if (characterPreviousSpecie != null &&
+                    characterPreviousSpecie.getName().equals(droid) &&
+                    !characterSpecie.equals(characterPreviousSpecie))
+            {
+                character.setCareer(null);
+                character.setMainSpecialization(null);
+                character.setSecondarySpecializationList(null);
+                resetAllSkill();
+            }
+
+            Career career = character.getCareer();
+            //si on n'a plus d'affinité avec la force, on réinitialise les spé secondaires (par sécurité)
+            // et on réinitialise la carrière et la spécialisation si besoin
+            if (!characterSpecie.isCanHaveForce())
+            {
+                resetSecondarySkill();
+
+                if ((career != null && career.isNeedForce()) ||
+                        characterSpecie.getName().equals(droid))
+                {
+                    character.setCareer(null);
+                    character.setMainSpecialization(null);
+                    resetAllSkill();
+                }
+            }
+
+            addCareer.setText(character.getCareer() != null ?
+                    character.getCareer().getName() : activity.getString(R.string.add_career));
+
+            addSpecialization.setText(character.getMainSpecialization() != null ?
+                    character.getMainSpecialization().getName() : activity.getString(R.string.add_first_specialization));
+            addSpecialization.setEnabled(character.getCareer() != null);
+
+            addNewSpecialization.setEnabled(character.getMainSpecialization() != null);
 
             UpdateCharacterSpecie();
         }
@@ -636,6 +675,59 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                 }
             }
         }
+    }
+
+
+    private void resetAllSkill()
+    {
+        ArrayList<Skill> characterSkill = character.getSkillList();
+        for (Skill s : characterSkill)
+        {
+            s.setLevel(0);
+            s.setIsCareer(false);
+        }
+    }
+
+    private void resetSecondarySkill()
+    {
+        ArrayList<String> careerAndSpecializationSkill = new ArrayList<>();
+        if (character.getCareer() != null)
+            for (String s : character.getCareer().getCareerSkills())
+                careerAndSpecializationSkill.add(s);
+
+        if (character.getMainSpecialization() != null)
+            for (String s : character.getMainSpecialization().getSpecializationrSkills())
+                careerAndSpecializationSkill.add(s);
+
+        int size = careerAndSpecializationSkill.size();
+        ArrayList<Skill> characterSkill = character.getSkillList();
+        ArrayList<Specialization> characterSecondarySpecializationList = character.getSecondarySpecializationList();
+        if (characterSecondarySpecializationList != null)
+        {
+            for (Specialization s : characterSecondarySpecializationList)
+            {
+                for (String skillName : s.getSpecializationrSkills())
+                {
+                    int i = 0;
+                    while (i < size && !skillName.equals(careerAndSpecializationSkill.get(i)))
+                        i++;
+
+                    if (i >= size)
+                    {
+                        for (Skill skill : characterSkill)
+                        {
+                            if (skill.getName().equals(skillName))
+                            {
+                                skill.setIsCareer(false);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        character.setSecondarySpecializationList(null);
     }
 
 

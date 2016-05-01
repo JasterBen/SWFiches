@@ -85,17 +85,6 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         this.weight = 5 + specie.getBrawn();
         this.totalXp = specie.getStartingxp();
         this.forceRating = specie.isCanHaveForce() ? this.forceRating : 0;
-
-        if (!this.specie.canHaveForce)
-        {
-            if (this.career != null && this.career.isNeedForce())
-            {
-                career = null;
-                mainSpecialization = null;
-                secondarySpecializationList = null;
-            }
-        }
-
     }
 
 
@@ -119,7 +108,7 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
 
     public void setCareer(Career career) {
         this.career = career;
-        if (career.isNeedForce())
+        if (career != null && career.isNeedForce())
             this.forceRating = 1;
     }
 
@@ -137,7 +126,7 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
 
     public void setSecondarySpecializationList(ArrayList<Specialization> secondarySpecializationList) {
         this.secondarySpecializationList = secondarySpecializationList;
-        this.secondarySpecializationListSize = secondarySpecializationList.size();
+        this.secondarySpecializationListSize = secondarySpecializationList != null ? secondarySpecializationList.size() : 0;
     }
 
     public void addSpecialization(Specialization specialization)
