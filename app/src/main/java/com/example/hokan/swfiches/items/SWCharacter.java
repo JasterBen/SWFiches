@@ -1,8 +1,10 @@
 package com.example.hokan.swfiches.items;
 
+import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.SWFichesApplication;
 
 import java.util.ArrayList;
@@ -106,6 +108,8 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
 
     public void setCareer(Career career) {
         this.career = career;
+        if (career.isNeedForce())
+            this.forceRating = 1;
     }
 
     public Specialization getMainSpecialization() {
@@ -123,6 +127,23 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
     public void setSecondarySpecializationList(ArrayList<Specialization> secondarySpecializationList) {
         this.secondarySpecializationList = secondarySpecializationList;
         this.secondarySpecializationListSize = secondarySpecializationList.size();
+    }
+
+    public void addSpecialization(Specialization specialization)
+    {
+        if (this.secondarySpecializationList == null)
+            this.secondarySpecializationList = new ArrayList<>();
+
+        this.secondarySpecializationList.add(specialization);
+
+        Context ctx = SWFichesApplication.getApp().getApplicationContext();
+        if (specialization.getName().equals(ctx.getString(R.string.force_sensitive_emergent)) ||
+                (specialization.getName().equals(ctx.getString(R.string.force_sensitive_exile))))
+        {
+            this.forceRating = Math.max(this.forceRating, 1);
+        }
+
+        this.secondarySpecializationListSize++;
     }
 
     public int getForceRating() {
@@ -201,18 +222,8 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         this.skillListSize = skillList.size();
     }
 
-    public void updateSkill(int position, Skill skill)
-    {
-        skillList.set(position, skill);
-    }
-
     public ArrayList<Skill> getCustomSkillList() {
         return customSkillList;
-    }
-
-    public void setCustomSkillList(ArrayList<Skill> customSkillList) {
-        this.customSkillList = customSkillList;
-        this.customSkillListSize = customSkillList.size();
     }
 
     public ArrayList<Weapon> getWeaponList() {
@@ -241,10 +252,6 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
 
     public int getSkillListSize() {
         return skillListSize;
-    }
-
-    public void setSkillListSize(int skillListSize) {
-        this.skillListSize = skillListSize;
     }
 
     public int getCustomSkillListSize() {

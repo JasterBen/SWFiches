@@ -46,6 +46,10 @@ public class Career implements Parcelable {
     }
 
 
+    public boolean isNeedForce() {
+        return needForce;
+    }
+
     @Override
     public int describeContents() {
         return 0;

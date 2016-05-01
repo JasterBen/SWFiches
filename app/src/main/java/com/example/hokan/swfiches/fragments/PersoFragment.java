@@ -34,7 +34,8 @@ import java.util.Arrays;
 public class PersoFragment extends PlayerSuperFragment implements View.OnClickListener,
         CareerSkillInterface, AdapterView.OnItemSelectedListener {
 
-    private static final int SPECIALIZATION_SPINNER_ID = 0;
+    private static final int FIRST_SPECIALIZATION_SPINNER_ID = 0;
+    private static final int OTHER_SPECIALIZATION_SPINNER_ID = FIRST_SPECIALIZATION_SPINNER_ID + 1;
 
     private static final int SPE_SKILL_COUNT = 4;
     private static final int MAX_SPE_SKILL = 2;
@@ -56,6 +57,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
     protected Specialization previousSpecialization;
 
     protected Specie characterSpecie;
+    protected Specialization characterOtherSpecialization;
 
 
 
@@ -111,10 +113,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         }
         else if (id == R.id.dialog_edit_perso_add_specialization)
         {
-            // TODO
-
-            if (character.getSecondarySpecializationList() == null)
-                character.setSecondarySpecializationList(new ArrayList<Specialization>());
+            displaySecondarySpecializationDialog();
         }
     }
 
@@ -148,7 +147,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
             }
 
         }
-        else if (viewId == SPECIALIZATION_SPINNER_ID)
+        else if (viewId == FIRST_SPECIALIZATION_SPINNER_ID)
         {
             character.setMainSpecialization((Specialization) parent.getAdapter().getItem(position));
 
@@ -162,6 +161,10 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                 if (specializationAdapter != null)
                     specializationAdapter.notifyDataSetChanged();
             }
+        }
+        else if (viewId == OTHER_SPECIALIZATION_SPINNER_ID)
+        {
+            characterOtherSpecialization = (Specialization) parent.getAdapter().getItem(position);
         }
 
     }
@@ -242,10 +245,12 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         Spinner careerSpinner = (Spinner) dialogContent.findViewById(R.id.dialog_career_spinner);
 
         ArrayList<Career> careerList = new ArrayList<>();
+        boolean canUseForce = characterSpecie.isCanHaveForce();
         ArrayList<Career> tmp = SWFichesApplication.getApp().getCareerList();
         for (Career c : tmp)
         {
-            if (c.getSpecializationList().size() >= 3)
+            if (c.getSpecializationList().size() >= 3 &&
+                    ((canUseForce) || (!canUseForce && !c.isNeedForce())))
                 careerList.add(c);
         }
 
@@ -319,7 +324,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
 
         //region get element in the view
         Spinner specializationSpinner = (Spinner) dialogContent.findViewById(R.id.dialog_career_spinner);
-        specializationSpinner.setId(SPECIALIZATION_SPINNER_ID);
+        specializationSpinner.setId(FIRST_SPECIALIZATION_SPINNER_ID);
         ArrayAdapter<Specialization> spinnerAdapter =
                 new ArrayAdapter<>(activity, android.R.layout.simple_spinner_dropdown_item, character.getCareer().getSpecializationList());
         specializationSpinner.setAdapter(spinnerAdapter);
@@ -397,6 +402,71 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
 
     }
 
+
+    private void displaySecondarySpecializationDialog()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle(R.string.dialog_add_specialization_title);
+
+        final ArrayList<Specialization> otherSpecializationList = new ArrayList<>();
+        ArrayList<Career> careerList = SWFichesApplication.getApp().getCareerList();
+        //pour toutes les carrières
+        for (Career c : careerList)
+        {
+            //pour toutes les spécialisations de la carrière
+            for (Specialization s : c.getSpecializationList())
+            {
+                //si la spécialisation "courante" n'est pas la spécialisation principale du personnage
+                if (!s.getName().equals(character.getMainSpecialization().getName()))
+                {
+                    //si la liste des spécialisations secondaires n'est pas null
+                    if (character.getSecondarySpecializationList() != null)
+                    {
+                        int i = 0;
+                        int size = character.getSecondarySpecializationListSize();
+                        ArrayList<Specialization> specializationsList = character.getSecondarySpecializationList();
+                        //tant que la spécialisation "courante" n'est pas dans la liste des spécialisations secondaires on avance dans la liste
+                        while (i < size &&
+                                !s.getName().equals(specializationsList.get(i).getName()))
+                        {
+                            i++;
+                        }
+
+                        //si on n'a pas trouvé la spécialisation dans la liste des spécialisations secondaires, on peut l'ajouter
+                        if (i >= size)
+                            otherSpecializationList.add(s);
+                    }
+                    else
+                    {
+                        otherSpecializationList.add(s);
+                    }
+                }
+            }
+        }
+
+        Spinner otherSpecializationSpinner = new Spinner(activity);
+        otherSpecializationSpinner.setId(OTHER_SPECIALIZATION_SPINNER_ID);
+        ArrayAdapter<Specialization> spinnerAdapter =
+                new ArrayAdapter<>(activity, android.R.layout.simple_spinner_dropdown_item, otherSpecializationList);
+        otherSpecializationSpinner.setAdapter(spinnerAdapter);
+        int spinnerPosition = spinnerAdapter.getPosition(character.getMainSpecialization());
+        otherSpecializationSpinner.setSelection(spinnerPosition);
+        otherSpecializationSpinner.setOnItemSelectedListener(this);
+
+        builder.setView(otherSpecializationSpinner);
+
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                character.addSpecialization(characterOtherSpecialization);
+                setOtherSpecialisationSkill(characterOtherSpecialization);
+            }
+        });
+
+        builder.setNegativeButton(android.R.string.no, null);
+
+        builder.create().show();
+    }
 
     private int countCheckedSkill(boolean[] checkedSkill)
     {
@@ -537,6 +607,25 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
             }
         }
 
+    }
+
+
+    private void setOtherSpecialisationSkill(Specialization spe)
+    {
+        ArrayList<Skill> characterSkill = character.getSkillList();
+        ArrayList<String> speSkillList = spe.getSpecializationrSkills();
+
+        for (String speSkill : speSkillList)
+        {
+            for (Skill s : characterSkill)
+            {
+                if (speSkill.equals(s.getName()))
+                {
+                    s.setIsCareer(true);
+                    break;
+                }
+            }
+        }
     }
 
 

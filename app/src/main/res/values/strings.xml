@@ -39,6 +39,8 @@
     <string name="dialog_too_many_skill_check_message">You have selected too many skills. Please, select only %s skills.</string>
     <string name="dialog_not_enough_skill_check_message">You have not selected enough skills. Please, select %s skills.</string>
     <string name="droid">Droid</string>
+    <string name="force_sensitive_emergent">Force sensitive emergent</string>
+    <string name="force_sensitive_exile">Force sensitive exile</string>
 
     
     
