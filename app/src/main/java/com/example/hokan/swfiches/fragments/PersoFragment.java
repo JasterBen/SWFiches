@@ -131,6 +131,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
 
             String droid = SWFichesApplication.getApp().getString(R.string.droid);
 
+            //region force sensitivity security
             //si on devient droide, on réinitilaise tout
             if (characterPreviousSpecie != null &&
                     characterPreviousSpecie.getName().equals(droid) &&
@@ -157,7 +158,9 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                     resetAllSkill();
                 }
             }
+            //endregion
 
+            //region updating buttons
             addCareer.setText(character.getCareer() != null ?
                     character.getCareer().getName() : activity.getString(R.string.add_career));
 
@@ -166,6 +169,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
             addSpecialization.setEnabled(character.getCareer() != null);
 
             addNewSpecialization.setEnabled(character.getMainSpecialization() != null);
+            //endregion
 
             UpdateCharacterSpecie();
         }
@@ -539,13 +543,17 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
 
         resetRankOfPreviousCareer(characterSkill);
 
+        //pour toutes les skills
         for (Skill s : characterSkill)
         {
+            //pour toutes les skills de la carrière
             for (int i = 0; i < size; ++i)
             {
+                //si le nom de la skill "courante" est celui d'une skill de la carrière
                 if (s.getName().equals(careerSkillList.get(i)))
                 {
                     s.setIsCareer(true);
+                    //si cette skill a été choisie par l'utilisateur
                     if (character.getSelectedCareerSkill()[i])
                     {
                         s.setLevel(s.getLevel() + 1);
@@ -568,10 +576,13 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         ArrayList<String> previousCareerSkill = character.getPreviousCareerSkill();
         int previousCareerSkillListSize = previousCareerSkill != null ? previousCareerSkill.size() : -1;
 
+        //pour toutes les skills de la carrière précédente
         for (int i = 0; i < previousCareerSkillListSize; ++i)
         {
+            //pour toutes les skills du personnage
             for (Skill s : characterSkill)
             {
+                //si le nom de la skill "courante" est dans les skills de la carrière précédente
                 if (s.getName().equals(previousCareerSkill.get(i)))
                 {
                     s.setLevel(s.getLevel() != 0 ? s.getLevel() - 1 : 0);
@@ -592,13 +603,17 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
 
         resetRankOfPreviousSpe(characterSkill);
 
+        //pour toutes les skills
         for (Skill s : characterSkill)
         {
+            //pour toutes les skill de la spe
             for (int i = 0; i < size; ++i)
             {
+                //si la skill "courante" est dans les skill de spe
                 if (s.getName().equals(speSkillList.get(i)))
                 {
                     s.setIsCareer(true);
+                    //si l'utilisateur a selectionné cette skill
                     if (character.getSelectedSpecializationSkill()[i])
                     {
                         s.setLevel(s.getLevel() + 1);
@@ -623,12 +638,14 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
 
         if (previousSpecialization != null)
         {
+            //pour toutes les skills
             for (Skill s : characterSkill)
             {
+                //pour toutes les skill de la spe précédente
                 for (int j = 0; j < SPE_SKILL_COUNT; ++j)
                 {
-                    //on met isCareer a faux seulement si la compétence de spécialité n'est pas aussi une compétence de carrière
                     int k = 0;
+                    //on cherche la skill de spe "courante" dans les skill de la carrière
                     while (k < careerSkillSize &&
                             previousSpecialization.getSpecializationrSkills() != null &&
                             !previousSpecialization.getSpecializationrSkills().get(j).equals(careerSkill.get(k)))
@@ -636,6 +653,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                         k++;
                     }
 
+                    //on met isCareer a faux seulement si la compétence de spécialité n'est pas aussi une compétence de carrière
                     if (k >= SPE_SKILL_COUNT && s.getName().equals(previousSpecialization.getSpecializationrSkills().get(j)))
                     {
                         s.setIsCareer(false);
@@ -659,6 +677,11 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
     }
 
 
+    /**
+     * This function set all the skill of the new specialisation to isCareer = true
+     *
+     * @param spe the new specialization
+     */
     private void setOtherSpecialisationSkill(Specialization spe)
     {
         ArrayList<Skill> characterSkill = character.getSkillList();
@@ -688,13 +711,17 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         }
     }
 
+
     private void resetSecondarySkill()
     {
         ArrayList<String> careerAndSpecializationSkill = new ArrayList<>();
+
+        //on récupère les skill de la carrière
         if (character.getCareer() != null)
             for (String s : character.getCareer().getCareerSkills())
                 careerAndSpecializationSkill.add(s);
 
+        //on récupère les skill de la mainspé
         if (character.getMainSpecialization() != null)
             for (String s : character.getMainSpecialization().getSpecializationrSkills())
                 careerAndSpecializationSkill.add(s);
@@ -704,14 +731,18 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
         ArrayList<Specialization> characterSecondarySpecializationList = character.getSecondarySpecializationList();
         if (characterSecondarySpecializationList != null)
         {
+            //pour toutes les spécializations secondaire
             for (Specialization s : characterSecondarySpecializationList)
             {
+                //pour toutes les skill de la spécialization "courante"
                 for (String skillName : s.getSpecializationrSkills())
                 {
                     int i = 0;
+                    //on cherche la skill dans la liste des skill de la carrière et de la mainspé
                     while (i < size && !skillName.equals(careerAndSpecializationSkill.get(i)))
                         i++;
 
+                    //on met isCareer à false seulement si la skill n'appartient ni à la carrière ni à la mainspé
                     if (i >= size)
                     {
                         for (Skill skill : characterSkill)
