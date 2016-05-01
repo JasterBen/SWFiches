@@ -54,7 +54,9 @@ public abstract class PlayerSuperFragment extends Fragment {
 
         PersoFragment persoFrag = new PersoFragment();
         SkillsFragment skillFrag = new SkillsFragment();
+        StatsFragment statFrag = new StatsFragment();
 
+        transaction.replace(R.id.stat_frag_container, statFrag);
         transaction.replace(R.id.perso_frag_container, persoFrag);
         transaction.replace(R.id.skill_frag_container, skillFrag);
         transaction.commit();

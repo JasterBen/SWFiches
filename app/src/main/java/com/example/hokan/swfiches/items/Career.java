@@ -18,7 +18,7 @@ public class Career implements Parcelable {
     protected ArrayList<String> careerSkills;
     @SerializedName("specialization_list")
     protected ArrayList<Specialization> specializationList;
-    //@SerializedName("need_force")
+    @SerializedName("need_force")
     protected boolean needForce;
 
 

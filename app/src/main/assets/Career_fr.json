@@ -338,6 +338,21 @@
 			}
 		],
 		"need_force": "false"
+	},
+	{
+	  "career_name" : "Universelle_force",
+	  "career_skill": [],
+	  "specialization_list": [
+		{
+		  "spe_name": "Aspirant de la force",
+		  "specialization_skill": []
+		},
+		{
+		  "spe_name": "Fugitif de la force",
+		  "specialization_skill": []
+		}
+	  ],
+	  "need_force": "true"
 	}
   
 ]

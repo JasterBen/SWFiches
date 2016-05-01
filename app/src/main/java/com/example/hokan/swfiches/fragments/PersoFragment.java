@@ -410,12 +410,16 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
 
         final ArrayList<Specialization> otherSpecializationList = new ArrayList<>();
         boolean canCharacterUseForce = characterSpecie.isCanHaveForce();
+        boolean characterForceRatingIsOk = character.getForceRating() > 0;
         ArrayList<Career> careerList = SWFichesApplication.getApp().getCareerList();
         //pour toutes les carrières
         for (Career c : careerList)
         {
             //si la carrière est autorisée pour ce personnage
-            if (((canCharacterUseForce) || (!canCharacterUseForce && !c.isNeedForce())))
+            if ((canCharacterUseForce &&
+                    (characterForceRatingIsOk ||
+                            (c.isNeedForce() && c.getSpecializationList().size() < 3))) ||
+                (!c.isNeedForce()))
             {
                 //pour toutes les spécialisations de la carrière
                 for (Specialization s : c.getSpecializationList())
