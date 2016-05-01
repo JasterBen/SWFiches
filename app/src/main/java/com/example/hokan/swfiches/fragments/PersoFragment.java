@@ -155,7 +155,7 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
             boolean[] selectedSpecializationSkill = character.getSelectedSpecializationSkill();
             if (selectedSpecializationSkill == null ||
                     selectedSpecializationSkill.length == 0 ||
-                    (previousSpecialization != null && !previousSpecialization.getName().equals(character.getMainSpecialization().getName())))
+                    (previousSpecialization.getName() != null && !previousSpecialization.getName().equals(character.getMainSpecialization().getName())))
             {
                 character.setSelectedSpecializationSkill(new boolean[SPE_SKILL_COUNT]);
                 Arrays.fill(character.getSelectedSpecializationSkill(), Boolean.FALSE);
