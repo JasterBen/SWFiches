@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">SWFiches</string>
 
     <string name="species_json_name">species_fr.json</string>
     <string name="skill_json_name">skill_fr.json</string>
