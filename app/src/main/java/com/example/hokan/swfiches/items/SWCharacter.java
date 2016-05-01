@@ -85,6 +85,17 @@ public class SWCharacter extends CharacSuperClass implements Parcelable {
         this.weight = 5 + specie.getBrawn();
         this.totalXp = specie.getStartingxp();
         this.forceRating = specie.isCanHaveForce() ? this.forceRating : 0;
+
+        if (!this.specie.canHaveForce)
+        {
+            if (this.career != null && this.career.isNeedForce())
+            {
+                career = null;
+                mainSpecialization = null;
+                secondarySpecializationList = null;
+            }
+        }
+
     }
 
 
