@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 
 import com.example.hokan.swfiches.items.Career;
 import com.example.hokan.swfiches.items.Skill;
-import com.example.hokan.swfiches.items.Specialization;
 import com.example.hokan.swfiches.items.Specie;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -62,37 +61,15 @@ public class SWFichesApplication extends Application {
 
     private void initCareerList()
     {
-        careerList = new ArrayList<>();
+        new AsyncTask<Void,Void,Void>(){
 
-        ArrayList<String> careerSkillList = new ArrayList<>();
-        careerSkillList.add("Astrogation");
-        careerSkillList.add("Melee");
-        careerSkillList.add("Perception");
-        careerSkillList.add("Brawl");
-        careerSkillList.add("Gunnery");
-        careerSkillList.add("Ranged Heavy");
-        careerSkillList.add("Ranged Light");
-        careerSkillList.add("Lightsaber (Br)");
-        ArrayList<String> speSkillList = new ArrayList<>();
-        speSkillList.add("Astrogation");
-        speSkillList.add("Lightsaber (Cun)");
-        speSkillList.add("Perception");
-        speSkillList.add("Lightsaber (Pr)");
-        ArrayList<Specialization> speList = new ArrayList<>();
-        speList.add(new Specialization("Spe1", speSkillList));
-        speList.add(new Specialization("Spe2", speSkillList));
-        speList.add(new Specialization("Spe3", speSkillList));
-        careerList.add(new Career("Test", careerSkillList, speList));
-        ArrayList<String> careerSkillList2 = new ArrayList<>();
-        careerSkillList2.add("Astrogation");
-        careerSkillList2.add("Melee");
-        careerSkillList2.add("Lightsaber (Cun)");
-        careerSkillList2.add("Perception");
-        careerSkillList2.add("Lightsaber (Pr)");
-        careerSkillList2.add("Ranged Heavy");
-        careerSkillList2.add("Ranged Light");
-        careerSkillList2.add("Lightsaber (Int)");
-        careerList.add(new Career("Test2", careerSkillList2, speList));
+            @Override
+            protected Void doInBackground(Void... voids) {
+                Type listType = new TypeToken<ArrayList<Career>>(){}.getType();
+                careerList = new GsonBuilder().create().fromJson(loadJSONFromAsset(getString(R.string.career_json_name)), listType);
+                return null;
+            }
+        }.execute();
     }
 
     private void initSkillList()

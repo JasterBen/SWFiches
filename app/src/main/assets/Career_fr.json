@@ -1,7 +1,7 @@
 [
 	{
-		"name" : "Chasseur de primes",
-		"SkillOne": [
+		"career_name" : "Chasseur de primes",
+		"career_skill": [
 			"Athlétisme",
 			"Distance (armes lourdes)",
 			"Perception",
@@ -11,10 +11,10 @@
 			"Système D",
 			"Vigilance"
 		],
-		"Speciality": [
+		"specialization_list": [
 			{
-				"name": "Assassin",
-				"SkillTwo": [
+				"spe_name": "Assassin",
+				"specialization_skill": [
 					"Corps à corps",
 					"Discrétion",
 					"Distance (armes lourdes)",
@@ -22,8 +22,8 @@
 				]
 			},
 			{
-				"name": "Expert en gadgets",
-				"SkillTwo": [
+				"spe_name": "Expert en gadgets",
+				"specialization_skill": [
 					"Coercition",
 					"Distance (armes légères)",
 					"Mécanique",
@@ -31,8 +31,8 @@
 				]
 			},
 			{
-				"name": "Expert en survie",
-				"SkillTwo": [
+				"spe_name": "Expert en survie",
+				"specialization_skill": [
 					"Xénologie",
 					"Perception",
 					"Résistance",
@@ -43,8 +43,8 @@
 		"need_force": "false"
 	},
 	{
-		"name" : "Colon",
-		"SkillOne": [
+		"career_name" : "Colon",
+		"career_skill": [
 			"Charme",
 			"Commandement",
 			"Culture",
@@ -54,10 +54,10 @@
 			"Système D",
 			"Tromperie"
 		],
-		"Speciality": [
+		"specialization_list": [
 			{
-				"name": "Artiste",
-				"SkillTwo": [
+				"spe_name": "Artiste",
+				"specialization_skill": [
 					"Charme",
 					"Coordination",
 					"Corps à corps",
@@ -65,8 +65,8 @@
 				]
 			},
 			{
-				"name": "Entrepreneur",
-				"SkillTwo": [
+				"spe_name": "Entrepreneur",
+				"specialization_skill": [
 					"Education",
 					"Négociation",
 					"Pègre",
@@ -74,8 +74,8 @@
 				]
 			},
 			{
-				"name": "Érudit",
-				"SkillTwo": [
+				"spe_name": "Érudit",
+				"specialization_skill": [
 					"Bordure extérieure",
 					"Pègre",
 					"Perception",
@@ -83,8 +83,8 @@
 				]
 			},
 			{
-				"name": "Diplomate",
-				"SkillTwo": [
+				"spe_name": "Diplomate",
+				"specialization_skill": [
 					"Charme",
 					"Coercition",
 					"Mondes du noyau",
@@ -92,8 +92,8 @@
 				]
 			},
 			{
-				"name": "Marshal",
-				"SkillTwo": [
+				"spe_name": "Marshal",
+				"specialization_skill": [
 					"Coercition",
 					"Distance (armes légères)",
 					"Pègre",
@@ -101,8 +101,8 @@
 				]
 			},
 			{
-				"name": "Médecin",
-				"SkillTwo": [
+				"spe_name": "Médecin",
+				"specialization_skill": [
 					"Calme",
 					"Education",
 					"Médecine",
@@ -113,8 +113,8 @@
 		"need_force": "false"
 	},
 	{
-		"name" : "Contrebandier",
-		"SkillOne": [
+		"career_name" : "Contrebandier",
+		"career_skill": [
 			"Coordination",
 			"Magouille",
 			"Pègre",
@@ -124,10 +124,10 @@
 			"Tromperie",
 			"Vigilance"
 		],
-		"Speciality": [
+		"specialization_list": [
 			{
-				"name": "Pilote",
-				"SkillTwo": [
+				"spe_name": "Pilote",
+				"specialization_skill": [
 					"Corps à corps",
 					"Discrétion",
 					"Distance (armes lourdes)",
@@ -135,8 +135,8 @@
 				]
 			},
 			{
-				"name": "Vaurien",
-				"SkillTwo": [
+				"spe_name": "Vaurien",
+				"specialization_skill": [
 					"Calme",
 					"Charme",
 					"Distance (armes légères)",
@@ -144,8 +144,8 @@
 				]
 			},
 			{
-				"name": "Voleur",
-				"SkillTwo": [
+				"spe_name": "Voleur",
+				"specialization_skill": [
 					"Discrétion",
 					"Informatique",
 					"Magouille",
@@ -157,8 +157,8 @@
 		"need_force": "false"
 	},
 	{
-		"name" : "Explorateur",
-		"SkillOne": [
+		"career_name" : "Explorateur",
+		"career_skill": [
 			"Astrogation",
 			"Calme",
 			"Bordure extérieure",
@@ -168,10 +168,10 @@
 			"Survie",
 			"Xénologie"
 		],
-		"Speciality": [
+		"specialization_list": [
 			{
-				"name": "Archéologue",
-				"SkillTwo": [
+				"spe_name": "Archéologue",
+				"specialization_skill": [
 					"Athlétisme",
 					"Culture",
 					"Education",
@@ -179,8 +179,8 @@
 				]
 			},
 			{
-				"name": "Bourlingueur",
-				"SkillTwo": [
+				"spe_name": "Bourlingueur",
+				"specialization_skill": [
 					"Astrogation",
 					"Coordination",
 					"Négociation",
@@ -188,8 +188,8 @@
 				]
 			},
 			{
-				"name": "Éclaireur",
-				"SkillTwo": [
+				"spe_name": "Éclaireur",
+				"specialization_skill": [
 					"Athlétisme",
 					"Médecine",
 					"Pilotage (planétaire)",
@@ -197,8 +197,8 @@
 				]
 			},
 			{
-				"name": "Fonceur",
-				"SkillTwo": [
+				"spe_name": "Fonceur",
+				"specialization_skill": [
 					"Artillerie",
 					"Calme",
 					"Mécanique",
@@ -206,8 +206,8 @@
 				]
 			},
 			{
-				"name": "Négociant",
-				"SkillTwo": [
+				"spe_name": "Négociant",
+				"specialization_skill": [
 					"Mondes du noyau",
 					"Négociation",
 					"Pègre",
@@ -215,8 +215,8 @@
 				]
 			},
 			{
-				"name": "Prédateur",
-				"SkillTwo": [
+				"spe_name": "Prédateur",
+				"specialization_skill": [
 					"Discrétion",
 					"Distance (armes lourdes)",
 					"Survie",
@@ -227,8 +227,8 @@
 		"need_force": "false"
 	},
 	{
-		"name" : "Mercenaire",
-		"SkillOne": [
+		"career_name" : "Mercenaire",
+		"career_skill": [
 			"Athlétisme",
 			"Corps à corps",
 			"Distance (armes légères)",
@@ -238,10 +238,10 @@
 			"Sang-froid",
 			"Vigilance"
 		],
-		"Speciality": [
+		"specialization_list": [
 			{
-				"name": "Canonnier",
-				"SkillTwo": [
+				"spe_name": "Canonnier",
+				"specialization_skill": [
 					"Artillerie",
 					"Distance (armes lourdes)",
 					"Perception",
@@ -249,8 +249,8 @@
 				]
 			},
 			{
-				"name": "Démolisseur",
-				"SkillTwo": [
+				"spe_name": "Démolisseur",
+				"specialization_skill": [
 					"Calme",
 					"Informatique",
 					"Magouille",
@@ -258,8 +258,8 @@
 				]
 			},
 			{
-				"name": "Garde du corps",
-				"SkillTwo": [
+				"spe_name": "Garde du corps",
+				"specialization_skill": [
 					"Artillerie",
 					"Distance (armes lourdes)",
 					"Perception",
@@ -267,8 +267,8 @@
 				]
 			},
 			{
-				"name": "Maraudeur",
-				"SkillTwo": [
+				"spe_name": "Maraudeur",
+				"specialization_skill": [
 					"Coercition",
 					"Corps à corps",
 					"Résistance",
@@ -276,8 +276,8 @@
 				]
 			},
 			{
-				"name": "Nervi",
-				"SkillTwo": [
+				"spe_name": "Nervi",
+				"specialization_skill": [
 					"Coercition",
 					"Pègre",
 					"Pugilat",
@@ -285,8 +285,8 @@
 				]
 			},
 			{
-				"name": "Soldat à louer",
-				"SkillTwo": [
+				"spe_name": "Soldat à louer",
+				"specialization_skill": [
 					"Artillerie",
 					"Commandement",
 					"Distance (armes lourdes)",
@@ -297,8 +297,8 @@
 		"need_force": "false"
 	},
 	{
-		"name" : "Technicien",
-		"SkillOne": [
+		"career_name" : "Technicien",
+		"career_skill": [
 			"Astrogation",
 			"Bordure extérieure",
 			"Coordination",
@@ -308,10 +308,10 @@
 			"Pilotage (planétaire)",
 			"Sang-froid"
 		],
-		"Speciality": [
+		"specialization_list": [
 			{
-				"name": "Mécanicien",
-				"SkillTwo": [
+				"spe_name": "Mécanicien",
+				"specialization_skill": [
 					"Magouille",
 					"Mécanique",
 					"Pilotage (espace)",
@@ -319,8 +319,8 @@
 				]
 			},
 			{
-				"name": "Slicer",
-				"SkillTwo": [
+				"spe_name": "Slicer",
+				"specialization_skill": [
 					"Discrétion",
 					"Education",
 					"Informatique",
@@ -328,8 +328,8 @@
 				]
 			},
 			{
-				"name": "Tech hors-la-loi",
-				"SkillTwo": [
+				"spe_name": "Tech hors-la-loi",
+				"specialization_skill": [
 					"Education",
 					"Mécanique",
 					"Pègre",
@@ -338,16 +338,6 @@
 			}
 		],
 		"need_force": "false"
-	},
-
-
-
-
-
-
-
-
-
-
-
+	}
+  
 ]

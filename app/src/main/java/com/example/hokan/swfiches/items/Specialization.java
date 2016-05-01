@@ -3,6 +3,8 @@ package com.example.hokan.swfiches.items;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 /**
@@ -10,7 +12,9 @@ import java.util.ArrayList;
  */
 public class Specialization implements Parcelable {
 
+    @SerializedName("spe_name")
     protected String name;
+    @SerializedName("specialization_skill")
     protected ArrayList<String> specializationrSkills;
 
 

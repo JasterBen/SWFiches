@@ -3,6 +3,8 @@ package com.example.hokan.swfiches.items;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 /**
@@ -10,31 +12,23 @@ import java.util.ArrayList;
  */
 public class Career implements Parcelable {
 
+    @SerializedName("career_name")
     protected String name;
+    @SerializedName("career_skill")
     protected ArrayList<String> careerSkills;
+    @SerializedName("specialization_list")
     protected ArrayList<Specialization> specializationList;
+    //@SerializedName("need_force")
+    protected boolean needForce;
 
 
 
-    //TODO delete this constructor
-    public Career(String name) {
-        this.name = name;
-        this.careerSkills = new ArrayList<>();
-        this.specializationList = new ArrayList<>();
-    }
 
-
-    public Career(String name, ArrayList<String> careerSkills) {
-        this.name = name;
-        this.careerSkills = careerSkills;
-        this.specializationList = new ArrayList<>();
-
-    }
-
-    public Career(String name, ArrayList<String> careerSkills, ArrayList<Specialization> specializationList) {
+    public Career(String name, ArrayList<String> careerSkills, ArrayList<Specialization> specializationList, boolean force) {
         this.name = name;
         this.careerSkills = careerSkills;
         this.specializationList = specializationList;
+        this.needForce = force;
     }
 
     public String getName() {
@@ -62,6 +56,7 @@ public class Career implements Parcelable {
         dest.writeString(name);
         dest.writeStringList(careerSkills);
         dest.writeTypedList(specializationList);
+        dest.writeByte((byte) (needForce ? 1 : 0));
     }
 
     public static final Parcelable.Creator<Career> CREATOR
@@ -81,6 +76,7 @@ public class Career implements Parcelable {
         in.readStringList(careerSkills);
         specializationList = new ArrayList<>(6);
         in.readTypedList(specializationList, Specialization.CREATOR);
+        needForce = in.readByte() != 0;
     }
 
 

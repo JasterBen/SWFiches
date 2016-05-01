@@ -3,6 +3,7 @@
 
     <string name="species_json_name">species_fr.json</string>
     <string name="skill_json_name">skill_fr.json</string>
+    <string name="career_json_name">career_fr.json</string>
 
     <!-- Campaign List Fragment -->
     <string name="add_campaign">Ajouter une nouvelle campagne</string>
