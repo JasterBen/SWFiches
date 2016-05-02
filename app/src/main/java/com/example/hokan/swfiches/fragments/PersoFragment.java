@@ -187,6 +187,10 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                 Arrays.fill(character.getSelectedCareerSkill(), Boolean.FALSE);
                 if (careerAdapter != null)
                     careerAdapter.notifyDataSetChanged();
+
+                resetSecondarySkill();
+                character.setMainSpecialization(null);
+                character.setSecondarySpecializationList(null);
             }
 
         }
@@ -203,6 +207,9 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                 Arrays.fill(character.getSelectedSpecializationSkill(), Boolean.FALSE);
                 if (specializationAdapter != null)
                     specializationAdapter.notifyDataSetChanged();
+
+                resetSecondarySkill();
+                character.setSecondarySpecializationList(null);
             }
         }
         else if (viewId == OTHER_SPECIALIZATION_SPINNER_ID)
@@ -329,6 +336,12 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
                 careerTextView.setText(formatString('c'));
                 addCareer.setText(character.getCareer().getName());
 
+                addSpecialization.setText(character.getMainSpecialization() != null ?
+                        character.getMainSpecialization().getName() : activity.getString(R.string.add_first_specialization));
+                addSpecialization.setEnabled(character.getCareer() != null);
+
+                addNewSpecialization.setEnabled(character.getMainSpecialization() != null);
+
                 int nbrSkillChecked = countCheckedSkill(character.getSelectedCareerSkill());
                 int max = getMaxCareerSkill();
 
@@ -417,6 +430,8 @@ public class PersoFragment extends PlayerSuperFragment implements View.OnClickLi
             public void onClick(View v) {
                 specTextView.setText(formatString('s'));
                 addSpecialization.setText(character.getMainSpecialization().getName());
+
+                addNewSpecialization.setEnabled(character.getMainSpecialization() != null);
 
                 int nbrSkillChecked = countCheckedSkill(character.getSelectedSpecializationSkill());
                 int max = getMaxSpeSkill();

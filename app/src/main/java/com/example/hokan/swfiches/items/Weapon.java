@@ -8,13 +8,13 @@ import android.os.Parcelable;
  */
 public class Weapon extends BattleStuff implements Parcelable {
 
-    protected int damage;
+    protected String damage;
     protected int critic;
     protected String range;
     protected Skill skill;
 
 
-    public Weapon(String name, int weight, int actualMod, int maxMod, String special, int damage, int critic, String range, Skill skill) {
+    public Weapon(String name, int weight, int actualMod, int maxMod, String special, String damage, int critic, String range, Skill skill) {
         super(name, weight, actualMod, maxMod, special);
         this.damage = damage;
         this.critic = critic;
@@ -22,11 +22,11 @@ public class Weapon extends BattleStuff implements Parcelable {
         this.skill = skill;
     }
 
-    public int getDamage() {
+    public String getDamage() {
         return damage;
     }
 
-    public void setDamage(int damage) {
+    public void setDamage(String damage) {
         this.damage = damage;
     }
 
@@ -66,7 +66,7 @@ public class Weapon extends BattleStuff implements Parcelable {
         dest.writeInt(actualMod);
         dest.writeInt(maxMod);
         dest.writeString(special);
-        dest.writeInt(damage);
+        dest.writeString(damage);
         dest.writeInt(critic);
         dest.writeString(range);
         dest.writeParcelable(skill, 0);
@@ -85,7 +85,7 @@ public class Weapon extends BattleStuff implements Parcelable {
 
     private Weapon(Parcel in) {
         super(in);
-        damage = in.readInt();
+        damage = in.readString();
         critic = in.readInt();
         range = in.readString();
         skill = in.readParcelable(Skill.class.getClassLoader());

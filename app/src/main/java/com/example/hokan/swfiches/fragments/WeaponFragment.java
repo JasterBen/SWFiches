@@ -88,8 +88,8 @@ public class WeaponFragment extends PlayerSuperFragment implements View.OnClickL
             nameEditText.setText(w.getName());
 
         final EditText damageEditText = (EditText) dialogContent.findViewById(R.id.dialog_edit_weapon_damage);
-        if (w != null && w.getDamage() != 0)
-            damageEditText.setText(String.valueOf(w.getDamage()));
+        if (w != null && w.getDamage() != null)
+            damageEditText.setText(w.getDamage());
 
         final EditText criticEditText = (EditText) dialogContent.findViewById(R.id.dialog_edit_weapon_critic);
         if (w != null && w.getCritic() != 0)
@@ -160,7 +160,7 @@ public class WeaponFragment extends PlayerSuperFragment implements View.OnClickL
                             modContainer.getLeftValue(),
                             modContainer.getRightValue(),
                             specialEditText.getText().toString(),
-                            getWeaponIntValue(damageEditText),
+                            damageEditText.getText().toString(),
                             getWeaponIntValue(criticEditText),
                             range,
                             skill);
@@ -171,7 +171,7 @@ public class WeaponFragment extends PlayerSuperFragment implements View.OnClickL
                 else {
                     //region update an existing weapon
                     w.setName(getValueOrDefault(nameEditText, w.getName()));
-                    w.setDamage(getIntValueOrDefault(damageEditText, w.getDamage()));
+                    w.setDamage(getValueOrDefault(damageEditText, w.getDamage()));
                     w.setCritic(getIntValueOrDefault(criticEditText, w.getCritic()));
                     w.setWeight(getIntValueOrDefault(weightEditText, w.getWeight()));
                     w.setActualMod(modContainer.getLeftValue());
