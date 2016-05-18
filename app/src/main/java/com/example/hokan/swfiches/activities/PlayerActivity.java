@@ -4,23 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.SWFichesApplication;
 import com.example.hokan.swfiches.adapters.PlayerViewPagerAdapter;
-import com.example.hokan.swfiches.fragments.ArmorFragment;
-import com.example.hokan.swfiches.fragments.CharacteristicFragment;
-import com.example.hokan.swfiches.fragments.PersoFragment;
-import com.example.hokan.swfiches.fragments.PsychoFragment;
-import com.example.hokan.swfiches.fragments.SkillsFragment;
-import com.example.hokan.swfiches.fragments.StatsFragment;
-import com.example.hokan.swfiches.fragments.StuffFragment;
-import com.example.hokan.swfiches.fragments.TreeFragment;
-import com.example.hokan.swfiches.fragments.WeaponFragment;
 import com.example.hokan.swfiches.interfaces.CharacterListInterface;
 import com.example.hokan.swfiches.items.SWCharacter;
 

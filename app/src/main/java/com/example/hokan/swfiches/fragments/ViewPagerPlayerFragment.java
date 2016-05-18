@@ -1,6 +1,5 @@
 package com.example.hokan.swfiches.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -20,6 +19,7 @@ import com.example.hokan.swfiches.items.SWCharacter;
 public class ViewPagerPlayerFragment extends Fragment {
 
     protected SWCharacter character;
+    protected int position;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,8 +29,8 @@ public class ViewPagerPlayerFragment extends Fragment {
         if (bundle != null)
         {
             PlayerActivity activity = (PlayerActivity) getActivity();
-            int position = bundle.getInt(PlayerActivity.POSITION);
-            character = activity.getCharacterList().get(position);
+            position = bundle.getInt(PlayerActivity.POSITION);
+            character = activity.getItem(position);
         }
 
     }
