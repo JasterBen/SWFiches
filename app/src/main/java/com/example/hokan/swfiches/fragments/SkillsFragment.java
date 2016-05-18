@@ -28,7 +28,7 @@ import java.util.Arrays;
 /**
  * Created by Ben on 18/04/2016.
  */
-public class SkillsFragment extends PlayerSuperFragment implements View.OnClickListener,
+public class SkillsFragment extends PlayerAbstractFragment implements View.OnClickListener,
         AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, SkillInterface,
         AdapterView.OnItemSelectedListener {
 

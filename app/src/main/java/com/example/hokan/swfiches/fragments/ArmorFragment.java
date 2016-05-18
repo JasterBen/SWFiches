@@ -17,7 +17,7 @@ import com.example.hokan.swfiches.items.Armor;
 /**
  * Created by Ben on 18/04/2016.
  */
-public class ArmorFragment extends PlayerSuperFragment implements View.OnClickListener {
+public class ArmorFragment extends PlayerAbstractFragment implements View.OnClickListener {
 
     private TextView nameTextView;
     private TextView soakTextView;

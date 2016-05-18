@@ -16,7 +16,7 @@ import com.example.hokan.swfiches.components.HorizontalNumberPicker;
 /**
  * Created by Ben on 18/04/2016.
  */
-public class StatsFragment extends PlayerSuperFragment implements View.OnClickListener {
+public class StatsFragment extends PlayerAbstractFragment implements View.OnClickListener {
 
     protected TextView soakTextView;
     protected TextView woundTextView;

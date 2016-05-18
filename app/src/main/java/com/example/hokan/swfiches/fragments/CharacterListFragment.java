@@ -28,6 +28,8 @@ import com.example.hokan.swfiches.items.Campaign;
 import com.example.hokan.swfiches.items.SWCharacter;
 import com.example.hokan.swfiches.items.Specie;
 
+import java.util.ArrayList;
+
 /**
  * Created by Ben on 17/04/2016.
  */
@@ -134,10 +136,11 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        SWCharacter c = adapter.getItem(position);
+        //SWCharacter c = adapter.getItem(position);
         Intent intent = new Intent(activity, PlayerActivity.class);
-        intent.putExtra(PlayerActivity.CHARACTER, c);
+        //intent.putExtra(PlayerActivity.CHARACTER, c);
         intent.putExtra(PlayerActivity.POSITION, position);
+        intent.putParcelableArrayListExtra(PlayerActivity.CHARACTERLIST, campaign.getCharacterList());
         startActivityForResult(intent, CampaignActivity.REQUEST_CODE);
     }
 
@@ -183,9 +186,12 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
         {
             if (resultCode == Activity.RESULT_OK)
             {
-                SWCharacter character = data.getParcelableExtra(PlayerActivity.CHARACTER);
+                /*SWCharacter character = data.getParcelableExtra(PlayerActivity.CHARACTER);
                 int position = data.getIntExtra(PlayerActivity.POSITION, 0);
-                adapter.setItem(character, position);
+                adapter.setItem(character, position);*/
+                ArrayList<SWCharacter> characterList = data.getParcelableArrayListExtra(PlayerActivity.CHARACTERLIST);
+                campaign.setCharacterList(characterList);
+                adapter.notifyDataSetChanged();
             }
         }
     }

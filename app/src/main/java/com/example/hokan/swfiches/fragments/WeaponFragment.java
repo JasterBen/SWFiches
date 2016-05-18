@@ -29,7 +29,7 @@ import java.util.Arrays;
 /**
  * Created by Ben on 18/04/2016.
  */
-public class WeaponFragment extends PlayerSuperFragment implements View.OnClickListener,
+public class WeaponFragment extends PlayerAbstractFragment implements View.OnClickListener,
         AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener,
         WeaponListInterface, AdapterView.OnItemSelectedListener {
 
