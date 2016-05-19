@@ -108,7 +108,7 @@ public class SkillsFragment extends PlayerAbstractFragment implements View.OnCli
         rankPicker.setMaxValue(5);
         rankPicker.setMinValue(0);
 
-        HorizontalNumberPicker bonusPicker = (HorizontalNumberPicker)
+        /*HorizontalNumberPicker bonusPicker = (HorizontalNumberPicker)
                 dialogContent.findViewById(R.id.dialog_edit_skill_bonus_picker);
         bonusPicker.setActualValue(skill.getBonus());
         bonusPicker.setMaxValue(4);
@@ -118,7 +118,7 @@ public class SkillsFragment extends PlayerAbstractFragment implements View.OnCli
                 dialogContent.findViewById(R.id.dialog_edit_skill_malus_picker);
         malusPicker.setActualValue(skill.getMalus());
         malusPicker.setMinValue(0);
-        malusPicker.setMaxValue(4);
+        malusPicker.setMaxValue(4);*/
         //endregion
 
         builder.setView(dialogContent);
@@ -128,8 +128,8 @@ public class SkillsFragment extends PlayerAbstractFragment implements View.OnCli
             public void onClick(DialogInterface dialog, int which) {
                 skill.setIsCareer(isCareerCheckBox.isChecked());
                 skill.setLevel(rankPicker.getActualValue());
-                skill.setBonus(rankPicker.getActualValue());
-                skill.setMalus(rankPicker.getActualValue());
+                /*skill.setBonus(rankPicker.getActualValue());
+                skill.setMalus(rankPicker.getActualValue());*/
 
                 UpdateCharacterSkill();
             }

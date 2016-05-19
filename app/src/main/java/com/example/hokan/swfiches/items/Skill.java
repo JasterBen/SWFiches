@@ -13,8 +13,8 @@ public class Skill implements Parcelable {
     @SerializedName("name")
     protected String name;
     protected int level;
-    protected int bonus;
-    protected int malus;
+    /*protected int bonus;
+    protected int malus;*/
 
     /**
      * characteristic
@@ -77,7 +77,7 @@ public class Skill implements Parcelable {
         this.isCareer = isCareer;
     }
 
-    public int getBonus() {
+    /*public int getBonus() {
         return bonus;
     }
 
@@ -95,7 +95,7 @@ public class Skill implements Parcelable {
         if (malus > 4)
             malus = 4;
         this.malus = malus;
-    }
+    }*/
 
 
     @Override
@@ -107,8 +107,8 @@ public class Skill implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeInt(level);
-        dest.writeInt(bonus);
-        dest.writeInt(malus);
+        /*dest.writeInt(bonus);
+        dest.writeInt(malus);*/
         dest.writeInt(characteristic);
         dest.writeByte((byte) (isCareer ? 1 : 0));
     }
@@ -128,8 +128,8 @@ public class Skill implements Parcelable {
     private Skill(Parcel in) {
         name = in.readString();
         level = in.readInt();
-        bonus = in.readInt();
-        malus = in.readInt();
+        /*bonus = in.readInt();
+        malus = in.readInt();*/
         characteristic = (char) in.readInt();
         isCareer = in.readByte() != 0;
     }
