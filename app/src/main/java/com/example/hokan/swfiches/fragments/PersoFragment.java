@@ -467,6 +467,7 @@ public class PersoFragment extends PlayerAbstractFragment implements View.OnClic
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(R.string.dialog_add_specialization_title);
 
+        //region create otherSpecializationList
         final ArrayList<Specialization> otherSpecializationList = new ArrayList<>();
         boolean canCharacterUseForce = characterSpecie.isCanHaveForce();
         boolean characterForceRatingIsOk = character.getForceRating() > 0;
@@ -512,6 +513,7 @@ public class PersoFragment extends PlayerAbstractFragment implements View.OnClic
             }
 
         }
+        //endregion
 
         Spinner otherSpecializationSpinner = new Spinner(activity);
         otherSpecializationSpinner.setId(OTHER_SPECIALIZATION_SPINNER_ID);
