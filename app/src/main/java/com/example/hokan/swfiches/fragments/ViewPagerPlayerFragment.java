@@ -30,7 +30,7 @@ public class ViewPagerPlayerFragment extends Fragment {
         {
             PlayerActivity activity = (PlayerActivity) getActivity();
             position = bundle.getInt(PlayerActivity.POSITION);
-            character = activity.getItem(position);
+            character = activity.getCharacter(position);
         }
 
     }

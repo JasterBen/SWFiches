@@ -17,12 +17,10 @@ import java.lang.ref.WeakReference;
 public class PlayerViewPagerAdapter extends FragmentStatePagerAdapter {
 
     protected CharacterListInterface characterListInterface;
-    protected WeakReference<PlayerActivity> activity = new WeakReference<PlayerActivity>(null);
 
-    public PlayerViewPagerAdapter(FragmentManager fm, CharacterListInterface cli, PlayerActivity act) {
+    public PlayerViewPagerAdapter(FragmentManager fm, CharacterListInterface cli) {
         super(fm);
         characterListInterface = cli;
-        activity = new WeakReference<PlayerActivity>(act);
     }
 
     @Override

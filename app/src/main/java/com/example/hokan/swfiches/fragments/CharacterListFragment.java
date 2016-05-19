@@ -95,7 +95,6 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(R.string.add_character_dialog_title);
-        builder.setMessage(R.string.add_character_dialog_message);
 
         LayoutInflater inflater = LayoutInflater.from(activity);
         View v = inflater.inflate(R.layout.dialog_create_character, null);
@@ -136,9 +135,7 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //SWCharacter c = adapter.getItem(position);
         Intent intent = new Intent(activity, PlayerActivity.class);
-        //intent.putExtra(PlayerActivity.CHARACTER, c);
         intent.putExtra(PlayerActivity.POSITION, position);
         intent.putParcelableArrayListExtra(PlayerActivity.CHARACTERLIST, campaign.getCharacterList());
         startActivityForResult(intent, CampaignActivity.REQUEST_CODE);
@@ -186,9 +183,6 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
         {
             if (resultCode == Activity.RESULT_OK)
             {
-                /*SWCharacter character = data.getParcelableExtra(PlayerActivity.CHARACTER);
-                int position = data.getIntExtra(PlayerActivity.POSITION, 0);
-                adapter.setItem(character, position);*/
                 ArrayList<SWCharacter> characterList = data.getParcelableArrayListExtra(PlayerActivity.CHARACTERLIST);
                 campaign.setCharacterList(characterList);
                 adapter.notifyDataSetChanged();

@@ -7,18 +7,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add_character_dialog_message"/>
+        android:text="@string/add_campaign_dialog_message"/>
 
     <EditText
-        android:id="@+id/dialog_create_character_name"
+        android:id="@+id/dialog_create_campaign_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:singleLine="true"/>
-
-    <Spinner
-        android:id="@+id/dialog_create_character_species"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </Spinner>
 
 </LinearLayout>

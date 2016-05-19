@@ -9,5 +9,5 @@ public interface CharacterListInterface {
 
     int getItemCount();
 
-    SWCharacter getItem(int position);
+    SWCharacter getCharacter(int position);
 }

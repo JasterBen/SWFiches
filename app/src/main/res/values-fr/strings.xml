@@ -83,7 +83,7 @@
     <string name="skill_frag_custom_skill_title">Compétences maison</string>
     <string name="add_custom_skill_button">Ajouter une compétence personnalisée</string>
     <string name="dialog_add_skill_title">Ajouter compétence</string>
-    <string name="dialog_edit_skill_is_career">Compétence de carrière</string>
+    <string name="dialog_edit_skill_is_career">Compétence\nde carrière</string>
     <string name="dialog_edit_skill_rank">Rang</string>
     <string name="dialog_edit_skill_bonus_dice">Dé de fortune</string>
     <string name="dialog_edit_skill_malus_dice">Dé d\'infortune</string>

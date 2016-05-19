@@ -5,18 +5,20 @@
 
     <Button
         android:id="@+id/horizontal_number_picker_minus_button"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/horizontal_number_picker_button_width"
         android:layout_height="wrap_content"
         android:text="-"/>
 
     <TextView
         android:id="@+id/horizontal_number_picker_number_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="@dimen/horizontal_number_picker_text_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"/>
 
     <Button
         android:id="@+id/horizontal_number_picker_plus_button"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/horizontal_number_picker_button_width"
         android:layout_height="wrap_content"
         android:text="+"/>
 

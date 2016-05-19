@@ -19,12 +19,10 @@ import java.util.ArrayList;
  * Created by Ben on 18/04/2016.
  */
 public class PlayerActivity extends AppCompatActivity implements CharacterListInterface {
-
-    //public static final String CHARACTER = "character";
+    
     public static final String POSITION = "position";
     public static final String CHARACTERLIST = "characterlist";
 
-    //protected SWCharacter character;
     protected int characterPosition;
     protected ArrayList<SWCharacter> characterList;
     protected int characterListSize;
@@ -44,45 +42,21 @@ public class PlayerActivity extends AppCompatActivity implements CharacterListIn
         if (savedInstanceState == null)
         {
             Intent intent = getIntent();
-            //character = intent.getParcelableExtra(CHARACTER);
             characterPosition = intent.getIntExtra(POSITION, 0);
             characterList = intent.getParcelableArrayListExtra(CHARACTERLIST);
             characterListSize = characterList.size();
-            //character = characterList.get(characterPosition);
 
             viewPager = (ViewPager) findViewById(R.id.player_view_pager);
-            playerViewPagerAdapter = new PlayerViewPagerAdapter(getSupportFragmentManager(), this, this);
+            playerViewPagerAdapter = new PlayerViewPagerAdapter(getSupportFragmentManager(), this);
             viewPager.setAdapter(playerViewPagerAdapter);
             viewPager.setCurrentItem(characterPosition);
         }
     }
 
-    public int getCharacterPosition() {
-        return characterPosition;
-    }
-
-    public void setCharacterPosition(int characterPosition) {
-        this.characterPosition = characterPosition;
-    }
-
-    public ArrayList<SWCharacter> getCharacterList() {
-        return characterList;
-    }
-
-    //    public SWCharacter getCharacter() {
-//        return character;
-//    }
-//
-//    public void setCharacter(SWCharacter character) {
-//        this.character = character;
-//    }
-
 
     @Override
     public void finish() {
         Intent returnIntent = new Intent();
-        /*returnIntent.putExtra(CHARACTER, character);
-        returnIntent.putExtra(POSITION, characterPosition);*/
         returnIntent.putParcelableArrayListExtra(CHARACTERLIST, characterList);
         setResult(Activity.RESULT_OK, returnIntent);
 
@@ -95,7 +69,7 @@ public class PlayerActivity extends AppCompatActivity implements CharacterListIn
     }
 
     @Override
-    public SWCharacter getItem(int position) {
+    public SWCharacter getCharacter(int position) {
         return characterList.get(position);
     }
 }
