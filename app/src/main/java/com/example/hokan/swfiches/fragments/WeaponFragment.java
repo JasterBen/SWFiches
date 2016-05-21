@@ -38,21 +38,47 @@ public class WeaponFragment extends PlayerAbstractFragment implements View.OnCli
     private String range;
 
     private WeaponAdapter weaponAdapter;
+    private View recyclerContainer;
     private RecyclerView weaponListView;
+    private View containerLayout;
+    private Button hideWeaponButton;
+
+    private int cellHeightInPx;
+    private boolean areWeapnVisible;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        areWeapnVisible = ((ViewPagerPlayerFragment) getParentFragment()).getAreWeaponVisible();
+        cellHeightInPx = (int) activity.getResources().getDimension(R.dimen.weapon_cell_height);
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_weapon, container, false);
 
+        containerLayout = v.findViewById(R.id.weapon_frag_container_layout);
+        containerLayout.setVisibility(areWeapnVisible ? View.VISIBLE : View.GONE);
+
+        hideWeaponButton = (Button) v.findViewById(R.id.weapon_frag_hide_list_button);
+        hideWeaponButton.setOnClickListener(this);
+        hideWeaponButton.setText(areWeapnVisible ? R.string.weapon_frag_hide_weapons_button_text
+                : R.string.weapon_frag_show_weapons_button_text);
+
         weaponListView = (RecyclerView) v.findViewById(R.id.weapon_frag_recycler_view);
+        ViewGroup.LayoutParams params = weaponListView.getLayoutParams();
+        params.height = cellHeightInPx * getWeaponCount();
+        weaponListView.requestLayout();
 
         weaponListView.setLayoutManager(new LinearLayoutManager(activity));
         weaponAdapter = new WeaponAdapter(activity, this, this);
         weaponListView.setAdapter(weaponAdapter);
 
-        if (character.getWeaponListSize() == 0)
-            weaponListView.setVisibility(View.GONE);
+        recyclerContainer = v.findViewById(R.id.weapon_frag_list_container);
+
+        if (getWeaponCount() == 0)
+            recyclerContainer.setVisibility(View.GONE);
 
         Button b = (Button) v.findViewById(R.id.weapon_frag_button);
         b.setOnClickListener(this);
@@ -63,9 +89,26 @@ public class WeaponFragment extends PlayerAbstractFragment implements View.OnCli
     @Override
     public void onClick(View v) {
 
-        if (v.getId() == R.id.weapon_frag_button)
+        int id = v.getId();
+
+        if (id == R.id.weapon_frag_button)
         {
             createEditWeaponDialog(null);
+        }
+        else if (id == R.id.weapon_frag_hide_list_button)
+        {
+            if (containerLayout.getVisibility() == View.GONE)
+            {
+                containerLayout.setVisibility(View.VISIBLE);
+                hideWeaponButton.setText(R.string.weapon_frag_hide_weapons_button_text);
+                ((ViewPagerPlayerFragment) getParentFragment()).setAreWeaponVisible(true);
+            }
+            else
+            {
+                containerLayout.setVisibility(View.GONE);
+                hideWeaponButton.setText(R.string.weapon_frag_show_weapons_button_text);
+                ((ViewPagerPlayerFragment) getParentFragment()).setAreWeaponVisible(false);
+            }
         }
 
     }
@@ -251,20 +294,30 @@ public class WeaponFragment extends PlayerAbstractFragment implements View.OnCli
 
     @Override
     public void addWeapon(Weapon w) {
-        if (character.getWeaponListSize() == 0)
-            weaponListView.setVisibility(View.VISIBLE);
+        if (getWeaponCount() == 0)
+            recyclerContainer.setVisibility(View.VISIBLE);
+
+        ViewGroup.LayoutParams params = weaponListView.getLayoutParams();
+        params.height = cellHeightInPx * getWeaponCount();
+        weaponListView.requestLayout();
 
         character.getWeaponList().add(w);
-        character.setWeaponListSize(character.getWeaponListSize() + 1);
+        character.setWeaponListSize(getWeaponCount() + 1);
     }
 
     @Override
     public void removeWeapon(int position) {
         character.getWeaponList().remove(position);
-        character.setWeaponListSize(character.getWeaponListSize() - 1);
+        character.setWeaponListSize(getWeaponCount() - 1);
 
-        if (character.getWeaponListSize() == 0)
-            weaponListView.setVisibility(View.GONE);
+        if (getWeaponCount() == 0)
+            recyclerContainer.setVisibility(View.GONE);
+        else
+        {
+            ViewGroup.LayoutParams params = weaponListView.getLayoutParams();
+            params.height = cellHeightInPx * getWeaponCount();
+            weaponListView.requestLayout();
+        }
     }
 
     @Override

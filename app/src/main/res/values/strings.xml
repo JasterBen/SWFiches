@@ -110,6 +110,9 @@
 
 
     <!-- WeaponFrag -->
+    <string name="weapon_frag_hide_weapons_button_text">Hide weapons</string>
+    <string name="weapon_frag_show_weapons_button_text">Show weapons</string>
+
     <string name="weapon_frag_title">Weapons</string>
     <string name="weapon_frag_button">Add weapon</string>
 

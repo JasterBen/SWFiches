@@ -22,6 +22,7 @@ public class ViewPagerPlayerFragment extends Fragment {
     protected int position;
     private boolean areSkillsVisible;
     private boolean areCustomSkillsVisible;
+    private boolean areWeaponVisible;
 
 
     @Override
@@ -88,5 +89,13 @@ public class ViewPagerPlayerFragment extends Fragment {
 
     public void setAreCustomSkillsVisible(boolean areCustomSkillsVisible) {
         this.areCustomSkillsVisible = areCustomSkillsVisible;
+    }
+
+    public boolean getAreWeaponVisible() {
+        return areWeaponVisible;
+    }
+
+    public void setAreWeaponVisible(boolean areWeaponVisible) {
+        this.areWeaponVisible = areWeaponVisible;
     }
 }

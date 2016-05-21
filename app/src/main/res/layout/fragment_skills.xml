@@ -46,6 +46,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <Button
+            android:id="@+id/skill_fragment_add_custom_skill_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_custom_skill_button"/>
+
         <LinearLayout
             android:id="@+id/skill_frag_custom_skill_layout"
             android:layout_width="match_parent"
@@ -66,12 +72,6 @@
             </android.support.v7.widget.RecyclerView>
 
         </LinearLayout>
-
-        <Button
-            android:id="@+id/skill_fragment_add_custom_skill_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/add_custom_skill_button"/>
 
     </LinearLayout>
 

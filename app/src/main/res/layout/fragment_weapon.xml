@@ -5,24 +5,43 @@
     android:layout_marginLeft="@dimen/fragment_horizontal_margin"
     android:layout_marginRight="@dimen/fragment_horizontal_margin">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/weapon_frag_title"/>
-
-
-     <android.support.v7.widget.RecyclerView
-         android:id="@+id/weapon_frag_recycler_view"
-         android:layout_width="match_parent"
-         android:layout_height="@dimen/weapon_recycler_view_height">
-
-     </android.support.v7.widget.RecyclerView>
-
-
     <Button
-        android:id="@+id/weapon_frag_button"
+        android:id="@+id/weapon_frag_hide_list_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/weapon_frag_container_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/weapon_frag_button"/>
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/weapon_frag_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/weapon_frag_button"/>
+
+        <LinearLayout
+            android:id="@+id/weapon_frag_list_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/weapon_frag_title"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/weapon_frag_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/weapon_recycler_view_height">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
