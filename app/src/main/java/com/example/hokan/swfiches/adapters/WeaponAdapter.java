@@ -9,8 +9,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.hokan.swfiches.R;
+import com.example.hokan.swfiches.components.DicePoolView;
 import com.example.hokan.swfiches.fragments.WeaponFragment;
 import com.example.hokan.swfiches.interfaces.WeaponListInterface;
+import com.example.hokan.swfiches.items.SWCharacter;
 import com.example.hokan.swfiches.items.Skill;
 import com.example.hokan.swfiches.items.Weapon;
 
@@ -40,6 +42,7 @@ public class WeaponAdapter extends RecyclerView.Adapter<WeaponAdapter.ViewHolder
         protected TextView weaponSkillName;
         protected TextView weaponSkillCareer;
         protected TextView weaponSkillRank;
+        protected DicePoolView weaponSkillDicePool;
         protected TextView weaponSpecial;
 
         public ViewHolder(View itemView) {
@@ -55,6 +58,7 @@ public class WeaponAdapter extends RecyclerView.Adapter<WeaponAdapter.ViewHolder
             weaponSkillName = (TextView) weaponSkill.findViewById(R.id.cell_skill_skill_name);
             weaponSkillCareer = (TextView) weaponSkill.findViewById(R.id.cell_skill_is_career);
             weaponSkillRank = (TextView) weaponSkill.findViewById(R.id.cell_skill_rank);
+            weaponSkillDicePool = (DicePoolView) weaponSkill.findViewById(R.id.cell_skill_dice_pool);
             weaponSpecial = (TextView) itemView.findViewById(R.id.weapon_cell_weapon_special);
         }
     }
@@ -78,6 +82,8 @@ public class WeaponAdapter extends RecyclerView.Adapter<WeaponAdapter.ViewHolder
 
         Weapon w = getItem(position);
         Skill skill = getCharacterSkill(w);
+        int skillLevel = skill.getLevel();
+        int characLevel = getCharacLevel(skill.getCharacteristic());
 
         holder.weaponName.setText(formatString('n', w));
         holder.weaponDamage.setText(formatString('d', w));
@@ -87,7 +93,9 @@ public class WeaponAdapter extends RecyclerView.Adapter<WeaponAdapter.ViewHolder
         holder.weaponRange.setText(formatString('r', w));
         holder.weaponSkillName.setText(skill != null ? skill.getName() : "");
         holder.weaponSkillCareer.setText(skill != null ? (skill.isCareer() ? "c" : "") : "");
-        holder.weaponSkillRank.setText(skill != null ? String.valueOf(skill.getLevel()) : "");
+        holder.weaponSkillRank.setText(skill != null ? String.valueOf(skillLevel) : "");
+        holder.weaponSkillDicePool.setCharacLevel(skillLevel);
+        holder.weaponSkillDicePool.setSkillLevel(characLevel);
         holder.weaponSpecial.setText(formatString('s', w));
 
         holder.v.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +111,33 @@ public class WeaponAdapter extends RecyclerView.Adapter<WeaponAdapter.ViewHolder
             }
         });
     }
+
+
+
+
+    private int getCharacLevel(char characteristic)
+    {
+        SWCharacter character = weaponFragment.getCharacter();
+
+        switch (characteristic)
+        {
+            case 'b' :
+                return character.getBrawn();
+            case 'a' :
+                return character.getAgility();
+            case 'i' :
+                return character.getIntellect();
+            case 'c' :
+                return character.getCunning();
+            case 'w' :
+                return character.getWillpower();
+            case 'p' :
+                return character.getPresence();
+            default:
+                return 0;
+        }
+    }
+
 
     @Override
     public int getItemCount() {

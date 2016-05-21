@@ -24,7 +24,8 @@
         android:layout_weight="1"
         android:gravity="center"/>
 
-    <TextView
+    <com.example.hokan.swfiches.components.DicePoolView
+        android:id="@+id/cell_skill_dice_pool"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="4" />

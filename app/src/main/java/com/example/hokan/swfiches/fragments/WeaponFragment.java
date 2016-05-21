@@ -1,12 +1,12 @@
 package com.example.hokan.swfiches.fragments;
 
 import android.content.DialogInterface;
-import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +23,7 @@ import com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSeparat
 import com.example.hokan.swfiches.interfaces.WeaponListInterface;
 import com.example.hokan.swfiches.items.Skill;
 import com.example.hokan.swfiches.items.Weapon;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -70,6 +71,10 @@ public class WeaponFragment extends PlayerAbstractFragment implements View.OnCli
         ViewGroup.LayoutParams params = weaponListView.getLayoutParams();
         params.height = cellHeightInPx * getWeaponCount();
         weaponListView.requestLayout();
+
+        weaponListView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(activity)
+                .color(Color.BLACK)
+                .build());
 
         weaponListView.setLayoutManager(new LinearLayoutManager(activity));
         weaponAdapter = new WeaponAdapter(activity, this, this);
