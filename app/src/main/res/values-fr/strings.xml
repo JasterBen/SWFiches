@@ -79,6 +79,10 @@
 
 
     <!-- SkillFrag -->
+    <string name="skill_frag_hide_skills_button_text">Masquer les compétences</string>
+    <string name="skill_frag_show_skills_button_text">Afficher les compétences</string>
+    <string name="skill_frag_hide_custom_skills_button_text">Masquer les compétences personnalisées</string>
+    <string name="skill_frag_show_custom_skills_button_text">Afficher les compétences personnalisées</string>
     <string name="skill_frag_title">Compétences</string>
     <string name="skill_frag_custom_skill_title">Compétences maison</string>
     <string name="add_custom_skill_button">Ajouter une compétence personnalisée</string>

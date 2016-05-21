@@ -20,6 +20,9 @@ public class ViewPagerPlayerFragment extends Fragment {
 
     protected SWCharacter character;
     protected int position;
+    private boolean areSkillsVisible;
+    private boolean areCustomSkillsVisible;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,5 +72,21 @@ public class ViewPagerPlayerFragment extends Fragment {
 
     public SWCharacter getCharacter() {
         return character;
+    }
+
+    public boolean getAreSkillsVisible() {
+        return areSkillsVisible;
+    }
+
+    public void setAreSkillsVisible(boolean areSkillsVisible) {
+        this.areSkillsVisible = areSkillsVisible;
+    }
+
+    public boolean getAreCustomSkillsVisible() {
+        return areCustomSkillsVisible;
+    }
+
+    public void setAreCustomSkillsVisible(boolean areCustomSkillsVisible) {
+        this.areCustomSkillsVisible = areCustomSkillsVisible;
     }
 }

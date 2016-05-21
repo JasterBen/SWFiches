@@ -5,21 +5,14 @@
     android:layout_marginLeft="@dimen/fragment_horizontal_margin"
     android:layout_marginRight="@dimen/fragment_horizontal_margin">
 
-    <TextView
+    <Button
+        android:id="@+id/skill_fragment_hide_skills_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/skill_frag_title"
-        android:textStyle="bold"/>
+        android:layout_height="wrap_content" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/skill_fragment_skills_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/skill_fragment_recycler_view_height">
-
-    </android.support.v7.widget.RecyclerView>
 
     <LinearLayout
-        android:id="@+id/skill_frag_custom_skill_layout"
+        android:id="@+id/skill_frag_skill_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -27,13 +20,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/skill_frag_custom_skill_title"
+            android:text="@string/skill_frag_title"
             android:textStyle="bold"/>
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/skill_frag_custom_skill_recycler_view"
+            android:id="@+id/skill_fragment_skills_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/custom_skill_recycler_view_height">
+            android:layout_height="@dimen/skill_fragment_recycler_view_height"
+            android:isScrollContainer="false">
 
         </android.support.v7.widget.RecyclerView>
 
@@ -41,11 +35,45 @@
 
 
     <Button
-        android:id="@+id/skill_fragment_ad_custom_skill_button"
+        android:id="@+id/skill_fragment_hide_custom_skills_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:id="@+id/skill_frag_custom_skill_container_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add_custom_skill_button"/>
+        android:orientation="vertical">
 
+        <LinearLayout
+            android:id="@+id/skill_frag_custom_skill_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/skill_frag_custom_skill_title"
+                android:textStyle="bold"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/skill_frag_custom_skill_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/custom_skill_recycler_view_height">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/skill_fragment_add_custom_skill_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_custom_skill_button"/>
+
+    </LinearLayout>
 
 
 </LinearLayout>
