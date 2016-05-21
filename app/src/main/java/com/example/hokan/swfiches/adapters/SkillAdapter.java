@@ -79,7 +79,7 @@ public class SkillAdapter extends RecyclerView.Adapter<SkillAdapter.ViewHolder> 
         });
     }
 
-    private int getCharacLevel(char characteristic)
+    protected int getCharacLevel(char characteristic)
     {
         SWCharacter character = skillFragment.getCharacter();
 
