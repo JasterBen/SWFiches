@@ -7,12 +7,13 @@ import android.os.Parcelable;
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.SWFichesApplication;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Utilisateur on 02/02/2016.
  */
-public class SWCharacter extends CharacSuperClass implements Parcelable {
+public class SWCharacter extends CharacSuperClass implements Parcelable, Serializable {
 
     protected Specie specie;
     protected int forceRating;

@@ -3,10 +3,12 @@ package com.example.hokan.swfiches.items;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * Created by Ben on 18/04/2016.
  */
-public class Armor extends BattleStuff implements Parcelable {
+public class Armor extends BattleStuff implements Parcelable, Serializable {
 
     protected int soak;
     protected int contactDef;

@@ -14,6 +14,7 @@ import com.example.hokan.swfiches.fragments.CampaignListFragment;
 import com.example.hokan.swfiches.interfaces.CampaignListInterface;
 import com.example.hokan.swfiches.items.Campaign;
 import com.example.hokan.swfiches.items.SWCharacter;
+import com.example.hokan.swfiches.services.InternalStorageService;
 
 import java.util.ArrayList;
 
@@ -88,5 +89,11 @@ public class CampaignActivity extends AppCompatActivity implements CampaignListI
     @Override
     public void changeCharacterList(Campaign c, ArrayList<SWCharacter> list) {
         c.setCharacterList(list);
+    }
+
+    @Override
+    protected void onStop() {
+        InternalStorageService.saveCampaignsCollection(campaignList);
+        super.onStop();
     }
 }

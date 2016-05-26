@@ -3,12 +3,13 @@ package com.example.hokan.swfiches.items;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Utilisateur on 02/02/2016.
  */
-public class Campaign implements Parcelable {
+public class Campaign implements Parcelable, Serializable {
 
     protected String name;
     protected ArrayList<SWCharacter> characterList;

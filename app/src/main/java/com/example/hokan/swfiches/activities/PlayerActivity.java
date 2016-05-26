@@ -11,7 +11,9 @@ import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.SWFichesApplication;
 import com.example.hokan.swfiches.adapters.PlayerViewPagerAdapter;
 import com.example.hokan.swfiches.interfaces.CharacterListInterface;
+import com.example.hokan.swfiches.items.Campaign;
 import com.example.hokan.swfiches.items.SWCharacter;
+import com.example.hokan.swfiches.services.InternalStorageService;
 
 import java.util.ArrayList;
 
@@ -22,7 +24,9 @@ public class PlayerActivity extends AppCompatActivity implements CharacterListIn
     
     public static final String POSITION = "position";
     public static final String CHARACTERLIST = "characterlist";
+    public static final String CAMPAIGN = "campaign";
 
+    protected Campaign campaign;
     protected int characterPosition;
     protected ArrayList<SWCharacter> characterList;
     protected int characterListSize;
@@ -43,7 +47,8 @@ public class PlayerActivity extends AppCompatActivity implements CharacterListIn
         {
             Intent intent = getIntent();
             characterPosition = intent.getIntExtra(POSITION, 0);
-            characterList = intent.getParcelableArrayListExtra(CHARACTERLIST);
+            campaign = intent.getParcelableExtra(CAMPAIGN);
+            characterList = campaign.getCharacterList();
             characterListSize = characterList.size();
 
             viewPager = (ViewPager) findViewById(R.id.player_view_pager);
@@ -71,5 +76,11 @@ public class PlayerActivity extends AppCompatActivity implements CharacterListIn
     @Override
     public SWCharacter getCharacter(int position) {
         return characterList.get(position);
+    }
+
+    @Override
+    protected void onStop() {
+        InternalStorageService.saveCampaign(campaign);
+        super.onStop();
     }
 }

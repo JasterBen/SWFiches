@@ -5,12 +5,13 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Utilisateur on 02/02/2016.
  */
-public class Specie extends CharacSuperClass implements Parcelable {
+public class Specie extends CharacSuperClass implements Parcelable, Serializable {
 
     @SerializedName("startingxp")
     protected int startingxp;
