@@ -14,7 +14,7 @@ import com.example.hokan.swfiches.items.SWCharacter;
 /**
  * Created by Ben on 19/04/2016.
  */
-public abstract class PlayerAbstractFragment extends Fragment {
+public abstract class SWFichesFragment extends Fragment {
 
     protected PlayerActivity activity;
     protected SWCharacter character;

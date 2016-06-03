@@ -31,7 +31,7 @@ import java.util.Arrays;
 /**
  * Created by Ben on 18/04/2016.
  */
-public class PersoFragment extends PlayerAbstractFragment implements View.OnClickListener,
+public class PersoFragment extends SWFichesFragment implements View.OnClickListener,
         CareerSkillInterface, AdapterView.OnItemSelectedListener {
 
     private static final int FIRST_SPECIALIZATION_SPINNER_ID = 0;

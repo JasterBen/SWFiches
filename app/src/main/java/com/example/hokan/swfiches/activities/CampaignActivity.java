@@ -2,11 +2,17 @@ package com.example.hokan.swfiches.activities;
 
 
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.Uri;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.SWFichesApplication;
@@ -38,6 +44,10 @@ public class CampaignActivity extends AppCompatActivity implements CampaignListI
             campaignList = new ArrayList<>();
             campainListSize = campaignList.size();
 
+            Toolbar toolbar = (Toolbar) findViewById(R.id.campaign_activity_toolbar);
+            toolbar.setNavigationIcon(R.mipmap.smuggler);
+            setSupportActionBar(toolbar);
+
             FragmentManager mgr = getSupportFragmentManager();
             FragmentTransaction transaction = mgr.beginTransaction();
 
@@ -47,6 +57,27 @@ public class CampaignActivity extends AppCompatActivity implements CampaignListI
             transaction.commit();
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_action_bar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case (R.id.show_trees) :
+//                File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/example.pdf");
+//                Intent intent = new Intent(Intent.ACTION_VIEW);
+//                intent.setDataAndType(Uri.fromFile(file), "application/pdf");
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+//                startActivity(intent);
+                Toast.makeText(this, "Guillaume, on t'attend !", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return true;
     }
 
     public ArrayList<Campaign> getCampaignList() {

@@ -1,12 +1,10 @@
 package com.example.hokan.swfiches.fragments;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +28,7 @@ import java.util.Arrays;
 /**
  * Created by Ben on 18/04/2016.
  */
-public class SkillsFragment extends PlayerAbstractFragment implements View.OnClickListener,
+public class SkillsFragment extends SWFichesFragment implements View.OnClickListener,
         AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, SkillInterface,
         AdapterView.OnItemSelectedListener {
 

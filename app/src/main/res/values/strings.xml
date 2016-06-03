@@ -105,8 +105,8 @@
     <string name="remove_skill_dialog_message">Are you sure you want to remove this skill ?</string>
 
 
-    <!-- TreeFrag -->
-    <string name="tree_frag_button">See trees</string>
+    <!-- Tree -->
+    <string name="toolbar_menu_tree_item">See trees</string>
 
 
     <!-- WeaponFrag -->
