@@ -1,5 +1,48 @@
 [
 	{
+		"career_name" : "As",
+		"career_skill": [
+			"Artillerie",
+			"Astrogation",
+			"Calme",
+			"Distance (armes légères)",
+			"Mécanique",
+			"Perception",
+			"Pilotage (espace)",
+			"Pilotage (planétaire)"
+		],
+		"specialization_list": [
+			{
+				"spe_name": "Artilleur",
+				"specialization_skill": [
+					"Artillerie",
+					"Distance (armes lourdes)",
+					"Résistance",
+					"Sang-froid"
+				]
+			},
+			{
+				"spe_name": "Fonceur",
+				"specialization_skill": [
+					"Artillerie",
+					"Calme",
+					"Mécanique",
+					"Pilotage (planétaire)"
+				]
+			},
+			{
+				"spe_name": "Pilote",
+				"specialization_skill": [
+					"Artillerie",
+					"Astrogation",
+					"Pilotage (espace)",
+					"Pilotage (planétaire)"
+				]
+			}
+		],
+		"need_force": "false"
+	},
+	{
 		"career_name" : "Chasseur de primes",
 		"career_skill": [
 			"Athlétisme",
@@ -157,6 +200,93 @@
 		"need_force": "false"
 	},
 	{
+		"career_name" : "Diplomate",
+		"career_skill": [
+			"Bordure extérieure",
+			"Charme",
+			"Commandement",
+			"Culture",
+			"Mondes du noyau",
+			"Négociation",
+			"Tromperie",
+			"Xénologie" 
+		],
+		"specialization_list": [
+			{
+				"spe_name": "Agitateur",
+				"specialization_skill": [
+					"Coercition",
+					"Pègre",
+					"Système D",
+					"Tromperie"
+				]
+			},
+			{
+				"spe_name": "Ambassadeur",
+				"specialization_skill": [
+					"Charme",
+					"Négociation",
+					"Mondes du noyau",
+					"Sang-froid"
+				]
+			},
+			{
+				"spe_name": "Intendant",
+				"specialization_skill": [
+					"Informatique",
+					"Magouille",
+					"Négociation",
+					"Vigilance"
+				]
+			}
+		],
+		"need_force": "false"
+	},
+	{
+		"career_name" : "Espion",
+		"career_skill": [
+			"Charme",
+			"################",
+			"Coordination",
+			"Discrétion",
+			"Informatique",
+			"Magouille",
+			"Perception",
+			"Tromperie"
+		],
+		"specialization_list": [
+			{
+				"spe_name": "Éclaireur",
+				"specialization_skill": [
+					"Athlétisme",
+					"Médecine",
+					"Pilotage (planétaire)",
+					"Survie"
+				]
+			},
+			{
+				"spe_name": "Slicer",
+				"specialization_skill": [
+					"Discrétion",
+					"Education",
+					"Informatique", 
+					"Pègre"
+				]
+			},
+			{
+				"spe_name": "Taupe",
+				"specialization_skill": [
+					"Corps à corps",
+					"Magouille",
+					"Système D",
+					"Tromperie"
+				]
+			}
+
+		],
+		"need_force": "false"
+	},
+	{
 		"career_name" : "Explorateur",
 		"career_skill": [
 			"Astrogation",
@@ -221,6 +351,49 @@
 					"Distance (armes lourdes)",
 					"Survie",
 					"Xénologie"
+				]
+			}
+		],
+		"need_force": "false"
+	},
+	{
+		"career_name" : "Ingénieur",
+		"career_skill": [
+			"Athlétisme",
+			"Distance (armes légères)",
+			"Education",
+			"Informatique",
+			"Mécanique",
+			"Perception",
+			"Pilotage (espace)",
+			"Vigilance"
+		],
+		"specialization_list": [
+			{
+				"spe_name": "Mécanicien",
+				"specialization_skill": [
+					"Magouille",
+					"Mécanique",
+					"Pilotage (espace)",
+					"Pugilat"
+				]
+			},
+			{
+				"spe_name": "Saboteur",
+				"specialization_skill": [
+					"Coordination",
+					"Discrétion",
+					"Magouille",
+					"Mécanique"
+				]
+			},
+			{
+				"spe_name": "Scientifique",
+				"specialization_skill": [
+					"Culture",
+					"Education",
+					"Informatique",
+					"Médecine"
 				]
 			}
 		],
@@ -339,6 +512,92 @@
 		],
 		"need_force": "false"
 	},
+	{
+		"career_name" : "Soldat",
+		"career_skill": [
+			"Athlétisme",
+			"#########", 
+			"Corps à corps",
+			"Distance (armes légères)",
+			"Distance (armes lourdes)",
+			"Médecine",
+			"Pugilat",
+			"Survie"
+		],
+		"specialization_list": [
+			{
+				"spe_name": "Commando",
+				"specialization_skill": [
+					"Corps à corps",
+					"Pugilat",
+					"Résistance"
+					"Survie",
+				]
+			},
+			{
+				"spe_name": " Tireur d’élite",
+				"specialization_skill": [
+					"Calme",
+					"Distance (armes légères)",
+					"Magouille",
+					"Mécanique"
+				]
+			},
+			{
+				"spe_name": "Urgentiste",
+				"specialization_skill": [
+					"Médecine",
+					"Résistance",
+					"Vigilance",
+					"Xénologie"
+				]
+			}
+		],
+		"need_force": "false"
+	},
+	{
+		"career_name" : "Stratège",
+		"career_skill": [
+			"Calme",
+			"Coercition",
+			"Commandement",
+			"#### strategie // guerre ####",
+			"Distance (armes légères)",
+			"Perception",
+			"Sang-froid", 
+			"Vigilance",
+		],
+		"specialization_list": [
+			{
+				"spe_name": "Chef d'escadron",
+				"specialization_skill": [
+					"Artillerie",
+					"Mécanique",
+					"Pilotage (espace)",
+					"Pilotage (planétaire)"
+				]
+			},
+			{
+				"spe_name": "Commodore",
+				"specialization_skill": [
+					"Astrogation",
+					"Bordure extérieure",
+					"Education",
+					"Informatique"
+				]
+			},
+			{
+				"spe_name": "Tacticien",
+				"specialization_skill": [
+					"Commandement",
+					"Distance (armes légères)",
+					"Pugilat",
+					"Sang-froid"
+				]
+			}
+		],
+		"need_force": "false"
+	}, 
 	{
 	  "career_name" : "Universelle_force",
 	  "career_skill": [],
