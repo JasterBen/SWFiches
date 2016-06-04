@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 
 import com.example.hokan.swfiches.items.Career;
 import com.example.hokan.swfiches.items.Skill;
+import com.example.hokan.swfiches.items.Specialization;
 import com.example.hokan.swfiches.items.Specie;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -26,6 +27,7 @@ public class SWFichesApplication extends Application {
     private ArrayList<Specie> speciesList;
     private ArrayList<Career> careerList;
     private ArrayList<Skill> skillList;
+    private ArrayList<Specialization> specializationList;
 
     @Override
     public void onCreate() {
@@ -68,6 +70,14 @@ public class SWFichesApplication extends Application {
                 careerList = new GsonBuilder().create().fromJson(loadJSONFromAsset(getString(R.string.career_json_name)), listType);
                 return null;
             }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                specializationList = new ArrayList<Specialization>();
+                for (Career c : careerList)
+                    specializationList.addAll(c.getSpecializationList());
+            }
         }.execute();
     }
 
@@ -106,6 +116,9 @@ public class SWFichesApplication extends Application {
         return null;
     }
 
+    public ArrayList<Specialization> getSpecializationList() {
+        return specializationList;
+    }
 
     public String loadJSONFromAsset(String jsonName) {
         String json = null;
