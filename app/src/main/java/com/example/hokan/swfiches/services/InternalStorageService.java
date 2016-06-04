@@ -27,9 +27,22 @@ public class InternalStorageService {
         return String.format("%s%s%s", CAMPAIGNS_DIR, File.separator, campaignName);
     }
 
-    private static Boolean fileExists(String fileName) {
-        File file = SWFichesApplication.getApp().getApplicationContext().getFileStreamPath(fileName);
-        return file.exists();
+    private static Boolean fileExists(String fileName, Boolean campaign) {
+
+        if (campaign) {
+            File directory = SWFichesApplication.getApp().getApplicationContext().getFileStreamPath(CAMPAIGNS_DIR);
+
+            if (directory.exists()) {
+                File campaignFile = new File(directory, fileName);
+                return campaignFile.exists();
+            }
+
+            return false;
+        }
+        else {
+            File file = SWFichesApplication.getApp().getApplicationContext().getFileStreamPath(fileName);
+            return file.exists();
+        }
     }
 
     private static void createCampaignDirIfNotExists() {
@@ -53,6 +66,11 @@ public class InternalStorageService {
     }
     //endregion
 
+    public static boolean savesExists() {
+        File campaignDirectory  = SWFichesApplication.getApp().getApplicationContext().getFileStreamPath(CAMPAIGNS_DIR);
+        return campaignDirectory.exists();
+    }
+
     //region Save Campaigns
     public static void saveCampaign(Campaign campaign) {
 
@@ -67,12 +85,12 @@ public class InternalStorageService {
 
         try {
             // If the file doesn't exists, it needs to be created
-            if (!fileExists(campaign.getName())) {
+            if (!fileExists(campaign.getName(), true)) {
                 File newFile = new File(app.getApplicationContext().getFilesDir(), filename);
                 newFile.createNewFile();
             }
             // The file exists or has been created, we can now write the object
-            FileOutputStream outputStream = app.openFileOutput(campaign.getName(), Context.MODE_PRIVATE);
+            FileOutputStream outputStream = new FileOutputStream(filename);
             WriteObject(outputStream, campaign);
 
         } catch (IOException e) {
@@ -93,10 +111,10 @@ public class InternalStorageService {
         SWFichesApplication app = SWFichesApplication.getApp();
         String filename = getFilePath(campaignName);
 
-        if (fileExists(filename)) {
+        if (fileExists(campaignName, true)) {
 
             try {
-                FileInputStream fileInputStream = app.openFileInput(filename);
+                FileInputStream fileInputStream = new FileInputStream(filename);
                 ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
                 return (Campaign) objectInputStream.readObject();
             } catch (ClassNotFoundException e) {

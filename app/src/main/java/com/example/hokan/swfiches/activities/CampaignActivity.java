@@ -17,6 +17,7 @@ import com.example.hokan.swfiches.items.SWCharacter;
 import com.example.hokan.swfiches.services.InternalStorageService;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class CampaignActivity extends AppCompatActivity implements CampaignListInterface {
 
@@ -37,6 +38,11 @@ public class CampaignActivity extends AppCompatActivity implements CampaignListI
         if (savedInstanceState == null)
         {
             campaignList = new ArrayList<>();
+
+            if (InternalStorageService.savesExists()) {
+                campaignList.addAll(InternalStorageService.loadCampaignCollection());
+            }
+
             campainListSize = campaignList.size();
 
             FragmentManager mgr = getSupportFragmentManager();
@@ -47,7 +53,6 @@ public class CampaignActivity extends AppCompatActivity implements CampaignListI
             transaction.replace(R.id.home_page_fragment, frag);
             transaction.commit();
         }
-
     }
 
     public ArrayList<Campaign> getCampaignList() {
