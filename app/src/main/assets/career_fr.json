@@ -209,7 +209,7 @@
 			"Mondes du noyau",
 			"Négociation",
 			"Tromperie",
-			"Xénologie" 
+			"Xénologie"
 		],
 		"specialization_list": [
 			{
@@ -246,7 +246,7 @@
 		"career_name" : "Espion",
 		"career_skill": [
 			"Charme",
-			"################",
+			"Stratégie",
 			"Coordination",
 			"Discrétion",
 			"Informatique",
@@ -269,7 +269,7 @@
 				"specialization_skill": [
 					"Discrétion",
 					"Education",
-					"Informatique", 
+					"Informatique",
 					"Pègre"
 				]
 			},
@@ -516,7 +516,7 @@
 		"career_name" : "Soldat",
 		"career_skill": [
 			"Athlétisme",
-			"#########", 
+			"Stratégie",
 			"Corps à corps",
 			"Distance (armes légères)",
 			"Distance (armes lourdes)",
@@ -530,8 +530,8 @@
 				"specialization_skill": [
 					"Corps à corps",
 					"Pugilat",
-					"Résistance"
-					"Survie",
+					"Résistance",
+					"Survie"
 				]
 			},
 			{
@@ -561,11 +561,11 @@
 			"Calme",
 			"Coercition",
 			"Commandement",
-			"#### strategie // guerre ####",
+			"Stratégie",
 			"Distance (armes légères)",
 			"Perception",
-			"Sang-froid", 
-			"Vigilance",
+			"Sang-froid",
+			"Vigilance"
 		],
 		"specialization_list": [
 			{
@@ -597,21 +597,21 @@
 			}
 		],
 		"need_force": "false"
-	}, 
+	},
 	{
-	  "career_name" : "Universelle_force",
-	  "career_skill": [],
-	  "specialization_list": [
-		{
-		  "spe_name": "Aspirant de la force",
-		  "specialization_skill": []
-		},
-		{
-		  "spe_name": "Fugitif de la force",
-		  "specialization_skill": []
-		}
-	  ],
-	  "need_force": "true"
+		"career_name" : "Universelle_force",
+		"career_skill": [],
+		"specialization_list": [
+			{
+				"spe_name": "Aspirant de la force",
+				"specialization_skill": []
+			},
+			{
+				"spe_name": "Fugitif de la force",
+				"specialization_skill": []
+			}
+		],
+		"need_force": "true"
 	}
-  
+
 ]
