@@ -1,9 +1,17 @@
 <resources>
     <string name="app_name">SWFiches</string>
+    <string name="path">/SWFiches/Specializations/en/</string>
 
     <string name="species_json_name">species.json</string>
     <string name="skill_json_name">skill.json</string>
     <string name="career_json_name">career.json</string>
+
+    <string name="no_connection">No internet connection.</string>
+    <string name="not_on_wifi_title">Not on wifi</string>
+    <string name="not_on_wifi_message">You are not using wi-fi. Continue ?</string>
+
+    <string name="see_specialization_tree_title">See specialization tree</string>
+    <string name="select_specialisation_tree">Select specialization tree</string>
 
     <!-- Campaign List Fragment -->
     <string name="add_campaign">Add a new campaign</string>
