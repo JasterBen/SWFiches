@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical" android:clickable="true" android:id="@+id/fragment_stats_frag"
-    android:weightSum="3">
+    android:weightSum="3" android:layout_marginLeft="@dimen/fragment_horizontal_margin">
 
     <LinearLayout
         android:id="@+id/fragment_stats_top"
@@ -14,27 +14,31 @@
 
         <TextView
             android:id="@+id/fragment_stats_soak"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:gravity="center_horizontal"/>
 
         <TextView
             android:id="@+id/fragment_stats_wound"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:gravity="center_horizontal"/>
 
         <TextView
             android:id="@+id/fragment_stats_strain"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:gravity="center_horizontal"/>
 
         <TextView
             android:id="@+id/fragment_stats_def"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:gravity="center_horizontal"/>
 
     </LinearLayout>
 
@@ -48,21 +52,24 @@
 
         <TextView
             android:id="@+id/fragment_stats_force_rate"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:gravity="center_horizontal"/>
 
         <TextView
             android:id="@+id/fragment_stats_weight"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:gravity="center_horizontal"/>
 
         <TextView
             android:id="@+id/fragment_stats_xp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:gravity="center_horizontal"/>
 
     </LinearLayout>
 
@@ -70,6 +77,6 @@
         android:id="@+id/fragment_stats_special"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_weight="1"/>
 
 </LinearLayout>

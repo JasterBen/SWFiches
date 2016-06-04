@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:weightSum="2">
+    android:layout_height="match_parent" android:weightSum="2"
+    android:padding="@dimen/dialog_padding">
 
     <LinearLayout
         android:orientation="vertical"
@@ -12,32 +13,38 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_brawn" />
+            android:text="@string/dialog_brawn"
+            android:layout_gravity="center"/>
 
         <com.example.hokan.swfiches.components.HorizontalNumberPicker
             android:id="@+id/dialog_edit_characteristic_brawn_picker"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_agility" />
+            android:text="@string/dialog_agility"
+            android:layout_gravity="center"/>
 
         <com.example.hokan.swfiches.components.HorizontalNumberPicker
             android:id="@+id/dialog_edit_characteristic_agility_picker"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_intelligence" />
+            android:text="@string/dialog_intelligence"
+            android:layout_gravity="center"/>
 
         <com.example.hokan.swfiches.components.HorizontalNumberPicker
             android:id="@+id/dialog_edit_characteristic_intelligence_picker"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 
@@ -50,32 +57,38 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_cunning" />
+            android:text="@string/dialog_cunning"
+            android:layout_gravity="center"/>
 
         <com.example.hokan.swfiches.components.HorizontalNumberPicker
             android:id="@+id/dialog_edit_characteristic_cunning_picker"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_willpower" />
+            android:text="@string/dialog_willpower"
+            android:layout_gravity="center"/>
 
         <com.example.hokan.swfiches.components.HorizontalNumberPicker
             android:id="@+id/dialog_edit_characteristic_willpower_picker"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_presence" />
+            android:text="@string/dialog_presence"
+            android:layout_gravity="center"/>
 
         <com.example.hokan.swfiches.components.HorizontalNumberPicker
             android:id="@+id/dialog_edit_characteristic_presence_picker"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 

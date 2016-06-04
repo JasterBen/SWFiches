@@ -15,7 +15,7 @@ import com.example.hokan.swfiches.components.HorizontalNumberPicker;
 /**
  * Created by Ben on 18/04/2016.
  */
-public class CharacteristicFragment extends PlayerSuperFragment implements View.OnClickListener {
+public class CharacteristicFragment extends SWFichesFragment implements View.OnClickListener {
 
     private final static int MAXVALUE = 6;
 

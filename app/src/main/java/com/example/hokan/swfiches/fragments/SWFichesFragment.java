@@ -14,7 +14,7 @@ import com.example.hokan.swfiches.items.SWCharacter;
 /**
  * Created by Ben on 19/04/2016.
  */
-public abstract class PlayerSuperFragment extends Fragment {
+public abstract class SWFichesFragment extends Fragment {
 
     protected PlayerActivity activity;
     protected SWCharacter character;
@@ -23,8 +23,8 @@ public abstract class PlayerSuperFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activity = (PlayerActivity) getActivity();
-        character = activity.getCharacter();
-
+        ViewPagerPlayerFragment frag = (ViewPagerPlayerFragment) getParentFragment();
+        character = frag.getCharacter();
     }
 
 
@@ -49,7 +49,7 @@ public abstract class PlayerSuperFragment extends Fragment {
 
     public void UpdateCharacterNameAndCareer()
     {
-        FragmentManager mgr = activity.getSupportFragmentManager();
+        FragmentManager mgr = getParentFragment().getChildFragmentManager();
         FragmentTransaction transaction = mgr.beginTransaction();
 
         PersoFragment persoFrag = new PersoFragment();
@@ -64,7 +64,7 @@ public abstract class PlayerSuperFragment extends Fragment {
 
     public void UpdateCharacterSpecie()
     {
-        FragmentManager mgr = activity.getSupportFragmentManager();
+        FragmentManager mgr = getParentFragment().getChildFragmentManager();
         FragmentTransaction transaction = mgr.beginTransaction();
 
         CharacteristicFragment characFrag = new CharacteristicFragment();
@@ -83,7 +83,7 @@ public abstract class PlayerSuperFragment extends Fragment {
 
     public void UpdateCharacterCharacs()
     {
-        FragmentManager mgr = activity.getSupportFragmentManager();
+        FragmentManager mgr = getParentFragment().getChildFragmentManager();
         FragmentTransaction transaction = mgr.beginTransaction();
 
         CharacteristicFragment characFrag = new CharacteristicFragment();
@@ -100,7 +100,7 @@ public abstract class PlayerSuperFragment extends Fragment {
 
     public void UpdateCharacterStats()
     {
-        FragmentManager mgr = activity.getSupportFragmentManager();
+        FragmentManager mgr = getParentFragment().getChildFragmentManager();
         FragmentTransaction transaction = mgr.beginTransaction();
 
         StatsFragment statFrag = new StatsFragment();
@@ -112,7 +112,7 @@ public abstract class PlayerSuperFragment extends Fragment {
 
     public void UpdateCharacterSkill()
     {
-        FragmentManager mgr = activity.getSupportFragmentManager();
+        FragmentManager mgr = getParentFragment().getChildFragmentManager();
         FragmentTransaction transaction = mgr.beginTransaction();
 
         SkillsFragment skillFrag = new SkillsFragment();
@@ -127,7 +127,7 @@ public abstract class PlayerSuperFragment extends Fragment {
 
     public void UpdateCharacterWeapon()
     {
-        FragmentManager mgr = activity.getSupportFragmentManager();
+        FragmentManager mgr = getParentFragment().getChildFragmentManager();
         FragmentTransaction transaction = mgr.beginTransaction();
 
         WeaponFragment weaponFrag = new WeaponFragment();
@@ -138,7 +138,7 @@ public abstract class PlayerSuperFragment extends Fragment {
 
     public void UpdateCharacterArmorAndStats()
     {
-        FragmentManager mgr = activity.getSupportFragmentManager();
+        FragmentManager mgr = getParentFragment().getChildFragmentManager();
         FragmentTransaction transaction = mgr.beginTransaction();
 
         StatsFragment statFrag = new StatsFragment();

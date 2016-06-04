@@ -202,7 +202,7 @@
 	"presence" : "1",
 	"wound" : "11",
 	"strain" : "10",
-	"startingxp" : "100",
+	"startingxp" : "95",
 	"can_have_force" : "true",
 	"special": "1 rang en survie ou tromperie\n +1 succès aux jets de résistance"
   },

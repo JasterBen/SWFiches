@@ -1,11 +1,12 @@
 package com.example.hokan.swfiches.fragments;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import com.example.hokan.swfiches.components.HorizontalDoubleEditTextWithSeparat
 import com.example.hokan.swfiches.interfaces.WeaponListInterface;
 import com.example.hokan.swfiches.items.Skill;
 import com.example.hokan.swfiches.items.Weapon;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,7 +31,7 @@ import java.util.Arrays;
 /**
  * Created by Ben on 18/04/2016.
  */
-public class WeaponFragment extends PlayerSuperFragment implements View.OnClickListener,
+public class WeaponFragment extends SWFichesFragment implements View.OnClickListener,
         AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener,
         WeaponListInterface, AdapterView.OnItemSelectedListener {
 
@@ -37,21 +39,51 @@ public class WeaponFragment extends PlayerSuperFragment implements View.OnClickL
     private String range;
 
     private WeaponAdapter weaponAdapter;
+    private View recyclerContainer;
     private RecyclerView weaponListView;
+    private View containerLayout;
+    private Button hideWeaponButton;
+
+    private int cellHeightInPx;
+    private boolean areWeapnVisible;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        areWeapnVisible = ((ViewPagerPlayerFragment) getParentFragment()).getAreWeaponVisible();
+        cellHeightInPx = (int) activity.getResources().getDimension(R.dimen.weapon_cell_height);
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_weapon, container, false);
 
+        containerLayout = v.findViewById(R.id.weapon_frag_container_layout);
+        containerLayout.setVisibility(areWeapnVisible ? View.VISIBLE : View.GONE);
+
+        hideWeaponButton = (Button) v.findViewById(R.id.weapon_frag_hide_list_button);
+        hideWeaponButton.setOnClickListener(this);
+        hideWeaponButton.setText(areWeapnVisible ? R.string.weapon_frag_hide_weapons_button_text
+                : R.string.weapon_frag_show_weapons_button_text);
+
         weaponListView = (RecyclerView) v.findViewById(R.id.weapon_frag_recycler_view);
+        ViewGroup.LayoutParams params = weaponListView.getLayoutParams();
+        params.height = cellHeightInPx * getWeaponCount();
+        weaponListView.requestLayout();
+
+        weaponListView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(activity)
+                .color(Color.BLACK)
+                .build());
 
         weaponListView.setLayoutManager(new LinearLayoutManager(activity));
         weaponAdapter = new WeaponAdapter(activity, this, this);
         weaponListView.setAdapter(weaponAdapter);
 
-        if (character.getWeaponListSize() == 0)
-            weaponListView.setVisibility(View.GONE);
+        recyclerContainer = v.findViewById(R.id.weapon_frag_list_container);
+
+        if (getWeaponCount() == 0)
+            recyclerContainer.setVisibility(View.GONE);
 
         Button b = (Button) v.findViewById(R.id.weapon_frag_button);
         b.setOnClickListener(this);
@@ -62,9 +94,26 @@ public class WeaponFragment extends PlayerSuperFragment implements View.OnClickL
     @Override
     public void onClick(View v) {
 
-        if (v.getId() == R.id.weapon_frag_button)
+        int id = v.getId();
+
+        if (id == R.id.weapon_frag_button)
         {
             createEditWeaponDialog(null);
+        }
+        else if (id == R.id.weapon_frag_hide_list_button)
+        {
+            if (containerLayout.getVisibility() == View.GONE)
+            {
+                containerLayout.setVisibility(View.VISIBLE);
+                hideWeaponButton.setText(R.string.weapon_frag_hide_weapons_button_text);
+                ((ViewPagerPlayerFragment) getParentFragment()).setAreWeaponVisible(true);
+            }
+            else
+            {
+                containerLayout.setVisibility(View.GONE);
+                hideWeaponButton.setText(R.string.weapon_frag_show_weapons_button_text);
+                ((ViewPagerPlayerFragment) getParentFragment()).setAreWeaponVisible(false);
+            }
         }
 
     }
@@ -88,8 +137,8 @@ public class WeaponFragment extends PlayerSuperFragment implements View.OnClickL
             nameEditText.setText(w.getName());
 
         final EditText damageEditText = (EditText) dialogContent.findViewById(R.id.dialog_edit_weapon_damage);
-        if (w != null && w.getDamage() != 0)
-            damageEditText.setText(String.valueOf(w.getDamage()));
+        if (w != null && w.getDamage() != null)
+            damageEditText.setText(w.getDamage());
 
         final EditText criticEditText = (EditText) dialogContent.findViewById(R.id.dialog_edit_weapon_critic);
         if (w != null && w.getCritic() != 0)
@@ -160,7 +209,7 @@ public class WeaponFragment extends PlayerSuperFragment implements View.OnClickL
                             modContainer.getLeftValue(),
                             modContainer.getRightValue(),
                             specialEditText.getText().toString(),
-                            getWeaponIntValue(damageEditText),
+                            damageEditText.getText().toString(),
                             getWeaponIntValue(criticEditText),
                             range,
                             skill);
@@ -171,7 +220,7 @@ public class WeaponFragment extends PlayerSuperFragment implements View.OnClickL
                 else {
                     //region update an existing weapon
                     w.setName(getValueOrDefault(nameEditText, w.getName()));
-                    w.setDamage(getIntValueOrDefault(damageEditText, w.getDamage()));
+                    w.setDamage(getValueOrDefault(damageEditText, w.getDamage()));
                     w.setCritic(getIntValueOrDefault(criticEditText, w.getCritic()));
                     w.setWeight(getIntValueOrDefault(weightEditText, w.getWeight()));
                     w.setActualMod(modContainer.getLeftValue());
@@ -250,20 +299,30 @@ public class WeaponFragment extends PlayerSuperFragment implements View.OnClickL
 
     @Override
     public void addWeapon(Weapon w) {
-        if (character.getWeaponListSize() == 0)
-            weaponListView.setVisibility(View.VISIBLE);
+        if (getWeaponCount() == 0)
+            recyclerContainer.setVisibility(View.VISIBLE);
+
+        ViewGroup.LayoutParams params = weaponListView.getLayoutParams();
+        params.height = cellHeightInPx * getWeaponCount();
+        weaponListView.requestLayout();
 
         character.getWeaponList().add(w);
-        character.setWeaponListSize(character.getWeaponListSize() + 1);
+        character.setWeaponListSize(getWeaponCount() + 1);
     }
 
     @Override
     public void removeWeapon(int position) {
         character.getWeaponList().remove(position);
-        character.setWeaponListSize(character.getWeaponListSize() - 1);
+        character.setWeaponListSize(getWeaponCount() - 1);
 
-        if (character.getWeaponListSize() == 0)
-            weaponListView.setVisibility(View.GONE);
+        if (getWeaponCount() == 0)
+            recyclerContainer.setVisibility(View.GONE);
+        else
+        {
+            ViewGroup.LayoutParams params = weaponListView.getLayoutParams();
+            params.height = cellHeightInPx * getWeaponCount();
+            weaponListView.requestLayout();
+        }
     }
 
     @Override

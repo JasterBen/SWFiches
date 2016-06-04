@@ -28,20 +28,33 @@ import java.util.Arrays;
 /**
  * Created by Ben on 18/04/2016.
  */
-public class SkillsFragment extends PlayerSuperFragment implements View.OnClickListener,
+public class SkillsFragment extends SWFichesFragment implements View.OnClickListener,
         AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, SkillInterface,
         AdapterView.OnItemSelectedListener {
 
-
-    private View customSkillContainer;
+    private Button hideCustomSkillButton;
+    private View customSkillLayout;
+    private View customSkillContainerLayout;
     private RecyclerView customSkillRecyclerView;
-    private RecyclerView skillRecyClerView;
+    private Button hideSkillButton;
+    private View skillContainer;
     private CustomSkillAdapter customSkillAdapter;
     private SkillAdapter skillAdapter;
 
     private String charac;
+    private boolean areSkillsVisible;
+    private boolean areCustomSkillVisible;
+    int cellHeightInPx;
 
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ViewPagerPlayerFragment frag = ((ViewPagerPlayerFragment) getParentFragment());
+        areSkillsVisible = frag.getAreSkillsVisible();
+        areCustomSkillVisible = frag.getAreCustomSkillsVisible();
+        cellHeightInPx = (int) activity.getResources().getDimension(R.dimen.skill_cell_height);
+    }
 
     @Nullable
     @Override
@@ -49,24 +62,44 @@ public class SkillsFragment extends PlayerSuperFragment implements View.OnClickL
 
         View v = inflater.inflate(R.layout.fragment_skills, container, false);
 
-        skillRecyClerView = (RecyclerView) v.findViewById(R.id.skill_fragment_skills_recycler_view);
+        hideSkillButton = (Button) v.findViewById(R.id.skill_fragment_hide_skills_recycler_view);
+        hideSkillButton.setOnClickListener(this);
+        hideSkillButton.setText(areSkillsVisible ? R.string.skill_frag_hide_skills_button_text
+                : R.string.skill_frag_show_skills_button_text);
+
+        skillContainer = v.findViewById(R.id.skill_frag_skill_layout);
+        skillContainer.setVisibility(areSkillsVisible ? View.VISIBLE : View.GONE);
+
+        RecyclerView skillRecyClerView = (RecyclerView) v.findViewById(R.id.skill_fragment_skills_recycler_view);
 
         skillRecyClerView.setLayoutManager(new LinearLayoutManager(activity));
         skillAdapter = new SkillAdapter(activity, this, this);
         skillRecyClerView.setAdapter(skillAdapter);
 
-        Button b = (Button) v.findViewById(R.id.skill_fragment_ad_custom_skill_button);
-        b.setOnClickListener(this);
+        hideCustomSkillButton = (Button) v.findViewById(R.id.skill_fragment_hide_custom_skills_recycler_view);
+        hideCustomSkillButton.setOnClickListener(this);
+        hideCustomSkillButton.setText(areCustomSkillVisible ? R.string.skill_frag_hide_custom_skills_button_text
+                : R.string.skill_frag_show_custom_skills_button_text);
+
+        customSkillContainerLayout = v.findViewById(R.id.skill_frag_custom_skill_container_layout);
+        customSkillContainerLayout.setVisibility(areCustomSkillVisible ? View.VISIBLE : View.GONE);
+
+        Button addCustomSkillButton = (Button) v.findViewById(R.id.skill_fragment_add_custom_skill_button);
+        addCustomSkillButton.setOnClickListener(this);
 
         customSkillRecyclerView = (RecyclerView) v.findViewById(R.id.skill_frag_custom_skill_recycler_view);
+        int heightInPx = (int) activity.getResources().getDimension(R.dimen.skill_cell_height);
+        ViewGroup.LayoutParams params = customSkillRecyclerView.getLayoutParams();
+        params.height = heightInPx * getCustomSkillCount();
+        customSkillRecyclerView.requestLayout();
 
         customSkillRecyclerView.setLayoutManager(new LinearLayoutManager(activity));
         customSkillAdapter = new CustomSkillAdapter(activity, this, this);
         customSkillRecyclerView.setAdapter(customSkillAdapter);
 
-        customSkillContainer = v.findViewById(R.id.skill_frag_custom_skill_layout);
+        customSkillLayout = v.findViewById(R.id.skill_frag_custom_skill_layout);
         if (character.getCustomSkillListSize() == 0)
-            customSkillContainer.setVisibility(View.GONE);
+            customSkillLayout.setVisibility(View.GONE);
 
 
         return v;
@@ -77,9 +110,41 @@ public class SkillsFragment extends PlayerSuperFragment implements View.OnClickL
     @Override
     public void onClick(View v) {
 
-        if (v.getId() == R.id.skill_fragment_ad_custom_skill_button)
+        int id = v.getId();
+
+        if (id == R.id.skill_fragment_add_custom_skill_button)
         {
             createSkillDialog();
+        }
+        else if (id == R.id.skill_fragment_hide_skills_recycler_view)
+        {
+            if (skillContainer.getVisibility() == View.GONE)
+            {
+                skillContainer.setVisibility(View.VISIBLE);
+                hideSkillButton.setText(R.string.skill_frag_hide_skills_button_text);
+                ((ViewPagerPlayerFragment) getParentFragment()).setAreSkillsVisible(true);
+            }
+            else
+            {
+                skillContainer.setVisibility(View.GONE);
+                hideSkillButton.setText(R.string.skill_frag_show_skills_button_text);
+                ((ViewPagerPlayerFragment) getParentFragment()).setAreSkillsVisible(false);
+            }
+        }
+        else if (id == R.id.skill_fragment_hide_custom_skills_recycler_view)
+        {
+            if (customSkillContainerLayout.getVisibility() == View.GONE)
+            {
+                customSkillContainerLayout.setVisibility(View.VISIBLE);
+                hideCustomSkillButton.setText(R.string.skill_frag_hide_custom_skills_button_text);
+                ((ViewPagerPlayerFragment) getParentFragment()).setAreCustomSkillsVisible(true);
+            }
+            else
+            {
+                customSkillContainerLayout.setVisibility(View.GONE);
+                hideCustomSkillButton.setText(R.string.skill_frag_show_custom_skills_button_text);
+                ((ViewPagerPlayerFragment) getParentFragment()).setAreCustomSkillsVisible(false);
+            }
         }
 
     }
@@ -108,7 +173,7 @@ public class SkillsFragment extends PlayerSuperFragment implements View.OnClickL
         rankPicker.setMaxValue(5);
         rankPicker.setMinValue(0);
 
-        HorizontalNumberPicker bonusPicker = (HorizontalNumberPicker)
+        /*HorizontalNumberPicker bonusPicker = (HorizontalNumberPicker)
                 dialogContent.findViewById(R.id.dialog_edit_skill_bonus_picker);
         bonusPicker.setActualValue(skill.getBonus());
         bonusPicker.setMaxValue(4);
@@ -118,7 +183,7 @@ public class SkillsFragment extends PlayerSuperFragment implements View.OnClickL
                 dialogContent.findViewById(R.id.dialog_edit_skill_malus_picker);
         malusPicker.setActualValue(skill.getMalus());
         malusPicker.setMinValue(0);
-        malusPicker.setMaxValue(4);
+        malusPicker.setMaxValue(4);*/
         //endregion
 
         builder.setView(dialogContent);
@@ -128,8 +193,8 @@ public class SkillsFragment extends PlayerSuperFragment implements View.OnClickL
             public void onClick(DialogInterface dialog, int which) {
                 skill.setIsCareer(isCareerCheckBox.isChecked());
                 skill.setLevel(rankPicker.getActualValue());
-                skill.setBonus(rankPicker.getActualValue());
-                skill.setMalus(rankPicker.getActualValue());
+                /*skill.setBonus(rankPicker.getActualValue());
+                skill.setMalus(rankPicker.getActualValue());*/
 
                 UpdateCharacterSkill();
             }
@@ -160,7 +225,6 @@ public class SkillsFragment extends PlayerSuperFragment implements View.OnClickL
         builder.create().show();
 
         return false;
-
     }
 
 
@@ -262,7 +326,7 @@ public class SkillsFragment extends PlayerSuperFragment implements View.OnClickL
     @Override
     public void addCustomSkill(Skill skill) {
         if (character.getCustomSkillListSize() == 0)
-            customSkillContainer.setVisibility(View.VISIBLE);
+            customSkillLayout.setVisibility(View.VISIBLE);
 
         character.getCustomSkillList().add(skill);
         character.setCustomSkillListSize(character.getCustomSkillListSize() + 1);
@@ -273,8 +337,16 @@ public class SkillsFragment extends PlayerSuperFragment implements View.OnClickL
         character.getCustomSkillList().remove(position);
         character.setCustomSkillListSize(character.getCustomSkillListSize() - 1);
 
-        if (character.getCustomSkillListSize() == 0)
-            customSkillContainer.setVisibility(View.GONE);
+        int size = character.getCustomSkillListSize();
+
+        if (size == 0)
+            customSkillLayout.setVisibility(View.GONE);
+        else
+        {
+            ViewGroup.LayoutParams params = customSkillRecyclerView.getLayoutParams();
+            params.height = cellHeightInPx * size;
+            customSkillRecyclerView.requestLayout();
+        }
     }
 
     @Override
