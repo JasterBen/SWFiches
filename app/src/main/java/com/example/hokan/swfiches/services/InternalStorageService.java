@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -38,15 +39,14 @@ public class InternalStorageService {
             }
 
             return false;
-        }
-        else {
+        } else {
             File file = SWFichesApplication.getApp().getApplicationContext().getFileStreamPath(fileName);
             return file.exists();
         }
     }
 
     private static void createCampaignDirIfNotExists() {
-        File campaignDirectory  = SWFichesApplication.getApp().getApplicationContext().getFileStreamPath(CAMPAIGNS_DIR);
+        File campaignDirectory = SWFichesApplication.getApp().getApplicationContext().getFileStreamPath(CAMPAIGNS_DIR);
 
         if (!campaignDirectory.exists())
             campaignDirectory.mkdir();
@@ -67,7 +67,7 @@ public class InternalStorageService {
     //endregion
 
     public static boolean savesExists() {
-        File campaignDirectory  = SWFichesApplication.getApp().getApplicationContext().getFileStreamPath(CAMPAIGNS_DIR);
+        File campaignDirectory = SWFichesApplication.getApp().getApplicationContext().getFileStreamPath(CAMPAIGNS_DIR);
         return campaignDirectory.exists();
     }
 
@@ -107,30 +107,41 @@ public class InternalStorageService {
     //endregion
 
     //region Load Campaigns
-    public static Campaign loadCampaign(String campaignName) {
-        SWFichesApplication app = SWFichesApplication.getApp();
-        String filename = getFilePath(campaignName);
+    public static Campaign loadCampaign(File campaign) {
 
-        if (fileExists(campaignName, true)) {
-
-            try {
-                FileInputStream fileInputStream = new FileInputStream(filename);
-                ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-                return (Campaign) objectInputStream.readObject();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            FileInputStream fileInputStream = new FileInputStream(campaign);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            return (Campaign) objectInputStream.readObject();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         return null;
     }
 
     public static Collection<Campaign> loadCampaignCollection() {
-        // get list of filenames for "BaseContext/campaigns/*
-        // and load everyone of them
-        return Collections.emptyList();
+        File campaignDirectory = SWFichesApplication.getApp().getApplicationContext().getFileStreamPath(CAMPAIGNS_DIR);
+
+        if (!campaignDirectory.exists())
+            return Collections.emptyList();
+
+        Collection<Campaign> campaigns = new ArrayList<Campaign>();
+        File campaignsArray[] = campaignDirectory.listFiles();
+
+        if (campaignsArray == null || campaignsArray.length == 0)
+            return Collections.emptyList();
+
+        for (File campaign : campaignsArray) {
+            Campaign savedCamp = loadCampaign(campaign);
+
+            if (savedCamp != null)
+                campaigns.add(savedCamp);
+        }
+
+        return campaigns;
     }
     //endregion
 }
