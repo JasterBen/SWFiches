@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by Ben on 17/04/2016.
@@ -77,6 +79,12 @@ public class SWFichesApplication extends Application {
                 specializationList = new ArrayList<Specialization>();
                 for (Career c : careerList)
                     specializationList.addAll(c.getSpecializationList());
+                Collections.sort(specializationList, new Comparator<Specialization>() {
+                    @Override
+                    public int compare(Specialization s1, Specialization s2) {
+                        return s1.getName().compareTo(s2.getName());
+                    }
+                });
             }
         }.execute();
     }

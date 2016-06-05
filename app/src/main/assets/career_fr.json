@@ -22,7 +22,7 @@
 				]
 			},
 			{
-				"spe_name": "Fonceur",
+				"spe_name": "Fonceur (AoR)",
 				"specialization_skill": [
 					"Artillerie",
 					"Calme",
@@ -31,7 +31,7 @@
 				]
 			},
 			{
-				"spe_name": "Pilote",
+				"spe_name": "Pilote (AoR)",
 				"specialization_skill": [
 					"Artillerie",
 					"Astrogation",
@@ -117,7 +117,7 @@
 				]
 			},
 			{
-				"spe_name": "Érudit",
+				"spe_name": "Erudit",
 				"specialization_skill": [
 					"Bordure extérieure",
 					"Pègre",
@@ -169,7 +169,7 @@
 		],
 		"specialization_list": [
 			{
-				"spe_name": "Pilote",
+				"spe_name": "Pilote (EotE)",
 				"specialization_skill": [
 					"Corps à corps",
 					"Discrétion",
@@ -256,7 +256,7 @@
 		],
 		"specialization_list": [
 			{
-				"spe_name": "Éclaireur",
+				"spe_name": "Eclaireur (AoR)",
 				"specialization_skill": [
 					"Athlétisme",
 					"Médecine",
@@ -265,7 +265,7 @@
 				]
 			},
 			{
-				"spe_name": "Slicer",
+				"spe_name": "Slicer (AoR)",
 				"specialization_skill": [
 					"Discrétion",
 					"Education",
@@ -318,7 +318,7 @@
 				]
 			},
 			{
-				"spe_name": "Éclaireur",
+				"spe_name": "Eclaireur (EotE)",
 				"specialization_skill": [
 					"Athlétisme",
 					"Médecine",
@@ -327,7 +327,7 @@
 				]
 			},
 			{
-				"spe_name": "Fonceur",
+				"spe_name": "Fonceur (EotE)",
 				"specialization_skill": [
 					"Artillerie",
 					"Calme",
@@ -370,7 +370,7 @@
 		],
 		"specialization_list": [
 			{
-				"spe_name": "Mécanicien",
+				"spe_name": "Mécanicien (AoR)",
 				"specialization_skill": [
 					"Magouille",
 					"Mécanique",
@@ -413,7 +413,7 @@
 		],
 		"specialization_list": [
 			{
-				"spe_name": "Canonnier",
+				"spe_name": "Canonnier (EotE)",
 				"specialization_skill": [
 					"Artillerie",
 					"Distance (armes lourdes)",
@@ -483,7 +483,7 @@
 		],
 		"specialization_list": [
 			{
-				"spe_name": "Mécanicien",
+				"spe_name": "Mécanicien (EotE)",
 				"specialization_skill": [
 					"Magouille",
 					"Mécanique",
@@ -492,7 +492,7 @@
 				]
 			},
 			{
-				"spe_name": "Slicer",
+				"spe_name": "Slicer (EotE)",
 				"specialization_skill": [
 					"Discrétion",
 					"Education",
@@ -535,7 +535,7 @@
 				]
 			},
 			{
-				"spe_name": " Tireur d’élite",
+				"spe_name": "Tireur d’élite",
 				"specialization_skill": [
 					"Calme",
 					"Distance (armes légères)",
@@ -612,6 +612,22 @@
 			}
 		],
 		"need_force": "true"
+	},
+	{
+	  "career_name" : "Universelle_non_force",
+	  "career_skill": [],
+	  "specialization_list": [
+		{
+		  "spe_name": "Recrue",
+		  "specialization_skill": [
+			"Athlétisme",
+			"Sang-froid",
+			"Survie",
+			"Vigilance"
+		  ]
+		}
+	  ],
+	  "need_force": "false"
 	}
 
 ]
