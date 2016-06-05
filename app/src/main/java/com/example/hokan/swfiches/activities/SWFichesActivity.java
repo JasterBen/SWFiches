@@ -35,7 +35,7 @@ public abstract class SWFichesActivity extends AppCompatActivity implements Adap
 
     public void initToolbar()
     {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.campaign_activity_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_toolbar);
         toolbar.setNavigationIcon(R.mipmap.smuggler);
         setSupportActionBar(toolbar);
     }
