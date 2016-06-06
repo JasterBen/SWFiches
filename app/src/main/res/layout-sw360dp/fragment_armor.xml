@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="@dimen/weapon_cell_height"
-    android:paddingTop="@dimen/weapon_cell_padding"
-    android:paddingBottom="@dimen/weapon_cell_padding">
+    android:layout_height="match_parent" android:id="@+id/armor_fragment_frag"
+    android:clickable="true" android:layout_marginLeft="@dimen/fragment_horizontal_margin"
+    android:layout_marginRight="@dimen/fragment_horizontal_margin">
 
     <TextView
-        android:id="@+id/weapon_cell_weapon_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/armor_frag_title"/>
+
+    <TextView
+        android:id="@+id/armor_fragment_armor_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -14,48 +19,48 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="4">
+        android:weightSum="2">
 
         <TextView
-            android:id="@+id/weapon_cell_weapon_damage"
+            android:id="@+id/armor_fragment_armor_soak"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"/>
 
         <TextView
-            android:id="@+id/weapon_cell_weapon_critic"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"/>
-
-        <TextView
-            android:id="@+id/weapon_cell_weapon_weight"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"/>
-
-        <TextView
-            android:id="@+id/weapon_cell_weapon_mod"
+            android:id="@+id/armor_fragment_armor_defense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"/>
 
     </LinearLayout>
-    
-    <TextView
-        android:id="@+id/weapon_cell_weapon_range"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
-    <include android:id="@+id/weapon_cell_weapon_skill"
-        layout="@layout/cell_skill_list"/>
-    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/armor_fragment_armor_weight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/armor_fragment_armor_mod"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"/>
+
+    </LinearLayout>
+
     <TextView
-        android:id="@+id/weapon_cell_weapon_special"
+        android:id="@+id/armor_fragment_armor_special"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
