@@ -127,4 +127,11 @@ public class Specie extends CharacSuperClass implements Parcelable, Serializable
     public String toString() {
         return name;
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        Specie specie = (Specie) o;
+        return this.name.equals(specie.getName());
+    }
 }

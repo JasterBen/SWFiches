@@ -65,6 +65,8 @@ public class PersoFragment extends SWFichesFragment implements View.OnClickListe
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        characterSpecie = character.getSpecie();
+
         previousCareer = character.getCareer() != null ? character.getCareer().getName() : "";
         previousSpecialization = character.getMainSpecialization() != null ?
                 character.getMainSpecialization() : new Specialization();
@@ -128,51 +130,55 @@ public class PersoFragment extends SWFichesFragment implements View.OnClickListe
         {
             characterSpecie = (Specie) parent.getAdapter().getItem(position);
             Specie characterPreviousSpecie = character.getSpecie();
-            character.setSpecie(characterSpecie);
 
-            String droid = SWFichesApplication.getApp().getString(R.string.droid);
-
-            //region force sensitivity security
-            //si on devient droide, on réinitilaise tout
-            if (characterPreviousSpecie != null &&
-                    characterPreviousSpecie.getName().equals(droid) &&
-                    !characterSpecie.equals(characterPreviousSpecie))
+            if (characterPreviousSpecie != characterSpecie)
             {
-                character.setCareer(null);
-                character.setMainSpecialization(null);
-                character.setSecondarySpecializationList(null);
-                resetAllSkill();
-            }
+                character.setSpecie(characterSpecie);
 
-            Career career = character.getCareer();
-            //si on n'a plus d'affinité avec la force, on réinitialise les spé secondaires (par sécurité)
-            // et on réinitialise la carrière et la spécialisation si besoin
-            if (!characterSpecie.isCanHaveForce())
-            {
-                resetSecondarySkill();
+                String droid = SWFichesApplication.getApp().getString(R.string.droid);
 
-                if ((career != null && career.isNeedForce()) ||
-                        characterSpecie.getName().equals(droid))
+                //region force sensitivity security
+                //si on devient droide, on réinitilaise tout
+                if (characterPreviousSpecie != null &&
+                        characterPreviousSpecie.getName().equals(droid) &&
+                        !characterSpecie.equals(characterPreviousSpecie))
                 {
                     character.setCareer(null);
                     character.setMainSpecialization(null);
+                    character.setSecondarySpecializationList(null);
                     resetAllSkill();
                 }
+
+                Career career = character.getCareer();
+                //si on n'a plus d'affinité avec la force, on réinitialise les spé secondaires (par sécurité)
+                // et on réinitialise la carrière et la spécialisation si besoin
+                if (!characterSpecie.isCanHaveForce())
+                {
+                    resetSecondarySkill();
+
+                    if ((career != null && career.isNeedForce()) ||
+                            characterSpecie.getName().equals(droid))
+                    {
+                        character.setCareer(null);
+                        character.setMainSpecialization(null);
+                        resetAllSkill();
+                    }
+                }
+                //endregion
+
+                //region updating buttons
+                addCareer.setText(character.getCareer() != null ?
+                        character.getCareer().getName() : activity.getString(R.string.add_career));
+
+                addSpecialization.setText(character.getMainSpecialization() != null ?
+                        character.getMainSpecialization().getName() : activity.getString(R.string.add_first_specialization));
+                addSpecialization.setEnabled(character.getCareer() != null);
+
+                addNewSpecialization.setEnabled(character.getMainSpecialization() != null);
+                //endregion
+
+                UpdateCharacterSpecie();
             }
-            //endregion
-
-            //region updating buttons
-            addCareer.setText(character.getCareer() != null ?
-                    character.getCareer().getName() : activity.getString(R.string.add_career));
-
-            addSpecialization.setText(character.getMainSpecialization() != null ?
-                    character.getMainSpecialization().getName() : activity.getString(R.string.add_first_specialization));
-            addSpecialization.setEnabled(character.getCareer() != null);
-
-            addNewSpecialization.setEnabled(character.getMainSpecialization() != null);
-            //endregion
-
-            UpdateCharacterSpecie();
         }
         else if (viewId == R.id.dialog_career_spinner)
         {
@@ -243,8 +249,7 @@ public class PersoFragment extends SWFichesFragment implements View.OnClickListe
         ArrayAdapter<Specie> spinnerAdapter = new ArrayAdapter<Specie>(activity,
                 android.R.layout.simple_spinner_dropdown_item, speciesList);
         speciesSpinner.setAdapter(spinnerAdapter);
-        // TODO : bug fix, spinner pas sur la bonne position à la première ouverture
-        int spinnerPosition = spinnerAdapter.getPosition(character.getSpecie());
+        int spinnerPosition = characterSpecie != null ? spinnerAdapter.getPosition(characterSpecie) : 0;
         speciesSpinner.setSelection(spinnerPosition);
         speciesSpinner.setOnItemSelectedListener(this);
 
