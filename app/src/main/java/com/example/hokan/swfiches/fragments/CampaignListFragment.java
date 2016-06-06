@@ -21,6 +21,7 @@ import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.activities.CampaignActivity;
 import com.example.hokan.swfiches.adapters.CampaignAdapter;
 import com.example.hokan.swfiches.items.Campaign;
+import com.example.hokan.swfiches.services.InternalStorageService;
 
 /**
  * Created by Utilisateur on 02/02/2016.
@@ -116,6 +117,10 @@ public class CampaignListFragment extends Fragment implements View.OnClickListen
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+        // Delete Campaign filesave
+        Campaign toDelete = campaignAdapter.getItem(position);
+        InternalStorageService.deleteCampaign(toDelete.getName());
+        // Delete Campaign from campaign list
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle(R.string.remove_campaign_dialog_title);
         builder.setMessage(R.string.remove_campaign_dialog_message);

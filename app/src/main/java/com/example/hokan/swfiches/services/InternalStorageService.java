@@ -67,6 +67,13 @@ public class InternalStorageService {
         }
     }
     //endregion
+    public static void deleteCampaign(String campaignName) {
+        File file = new File(getFilePath(campaignName));
+
+        if (file.exists())
+            file.delete();
+
+    }
 
     public static boolean savesExists() {
         File campaignDirectory = SWFichesApplication.getApp().getApplicationContext().getFileStreamPath(CAMPAIGNS_DIR);
@@ -88,7 +95,7 @@ public class InternalStorageService {
         try {
             // If the file doesn't exists, it needs to be created
             if (!fileExists(campaign.getName(), true)) {
-                File newFile = new File(app.getApplicationContext().getFilesDir(), filename);
+                File newFile = new File(app.getApplicationContext().getFilesDir(), campaign.getName());
                 newFile.createNewFile();
             }
             // The file exists or has been created, we can now write the object
