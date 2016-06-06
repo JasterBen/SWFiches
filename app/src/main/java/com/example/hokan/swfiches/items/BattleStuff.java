@@ -3,10 +3,12 @@ package com.example.hokan.swfiches.items;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * Created by Ben on 18/04/2016.
  */
-public class BattleStuff implements Parcelable {
+public class BattleStuff implements Parcelable, Serializable {
 
     protected String name;
     protected int weight;

@@ -12,8 +12,10 @@ import com.example.hokan.swfiches.fragments.CampaignListFragment;
 import com.example.hokan.swfiches.interfaces.CampaignListInterface;
 import com.example.hokan.swfiches.items.Campaign;
 import com.example.hokan.swfiches.items.SWCharacter;
+import com.example.hokan.swfiches.services.InternalStorageService;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class CampaignActivity extends SWFichesActivity implements CampaignListInterface {
 
@@ -34,6 +36,11 @@ public class CampaignActivity extends SWFichesActivity implements CampaignListIn
         if (savedInstanceState == null)
         {
             campaignList = new ArrayList<>();
+
+            if (InternalStorageService.savesExists()) {
+                campaignList.addAll(InternalStorageService.loadCampaignCollection());
+            }
+
             campainListSize = campaignList.size();
 
             initToolbar();
@@ -46,7 +53,6 @@ public class CampaignActivity extends SWFichesActivity implements CampaignListIn
             transaction.replace(R.id.home_page_fragment, frag);
             transaction.commit();
         }
-
     }
 
 
@@ -89,5 +95,11 @@ public class CampaignActivity extends SWFichesActivity implements CampaignListIn
     @Override
     public void changeCharacterList(Campaign c, ArrayList<SWCharacter> list) {
         c.setCharacterList(list);
+    }
+
+    @Override
+    protected void onStop() {
+        InternalStorageService.saveCampaignsCollection(campaignList);
+        super.onStop();
     }
 }

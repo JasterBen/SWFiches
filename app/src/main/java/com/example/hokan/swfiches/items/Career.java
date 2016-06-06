@@ -5,12 +5,13 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Utilisateur on 02/02/2016.
  */
-public class Career implements Parcelable {
+public class Career implements Parcelable, Serializable {
 
     @SerializedName("career_name")
     protected String name;

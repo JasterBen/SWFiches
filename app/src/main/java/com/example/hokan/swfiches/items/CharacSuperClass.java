@@ -2,10 +2,12 @@ package com.example.hokan.swfiches.items;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by Utilisateur on 19/04/2016.
  */
-public abstract class CharacSuperClass {
+public abstract class CharacSuperClass implements Serializable {
 
     @SerializedName("name")
     protected String name;

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -137,7 +138,7 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(activity, PlayerActivity.class);
         intent.putExtra(PlayerActivity.POSITION, position);
-        intent.putParcelableArrayListExtra(PlayerActivity.CHARACTERLIST, campaign.getCharacterList());
+        intent.putExtra(PlayerActivity.CAMPAIGN, (Parcelable) campaign);
         startActivityForResult(intent, CampaignActivity.REQUEST_CODE);
     }
 

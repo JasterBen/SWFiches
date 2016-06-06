@@ -60,6 +60,7 @@ public class SWFichesApplication extends Application {
                 return null;
             }
         }.execute();
+
     }
 
     private void initCareerList()
