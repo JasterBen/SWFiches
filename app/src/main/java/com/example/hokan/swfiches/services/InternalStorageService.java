@@ -25,7 +25,9 @@ public class InternalStorageService {
 
     //region Utility
     private static String getFilePath(String campaignName) {
-        return String.format("%s%s%s", CAMPAIGNS_DIR, File.separator, campaignName);
+        return String.format("%s%s%s",
+                SWFichesApplication.getApp().getApplicationContext().getFileStreamPath(CAMPAIGNS_DIR).getAbsolutePath(),
+                File.separator, campaignName);
     }
 
     private static Boolean fileExists(String fileName, Boolean campaign) {
