@@ -83,7 +83,7 @@ public class SWFichesApplication extends Application {
                 Collections.sort(specializationList, new Comparator<Specialization>() {
                     @Override
                     public int compare(Specialization s1, Specialization s2) {
-                        return s1.getName().compareTo(s2.getName());
+                        return s1.getListName().compareTo(s2.getListName());
                     }
                 });
             }

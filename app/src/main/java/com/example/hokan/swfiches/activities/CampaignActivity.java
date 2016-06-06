@@ -33,6 +33,8 @@ public class CampaignActivity extends SWFichesActivity implements CampaignListIn
         if (!SWFichesApplication.getApp().isTablet())
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
 
+        initToolbar();
+
         if (savedInstanceState == null)
         {
             campaignList = new ArrayList<>();
@@ -42,8 +44,6 @@ public class CampaignActivity extends SWFichesActivity implements CampaignListIn
             }
 
             campainListSize = campaignList.size();
-
-            initToolbar();
 
             FragmentManager mgr = getSupportFragmentManager();
             FragmentTransaction transaction = mgr.beginTransaction();

@@ -23,6 +23,7 @@ import com.example.hokan.swfiches.SWFichesApplication;
 import com.example.hokan.swfiches.items.Specialization;
 
 import java.io.File;
+import java.util.ArrayList;
 
 /**
  * Created by Utilisateur on 04/06/2016.
@@ -65,10 +66,15 @@ public abstract class SWFichesActivity extends AppCompatActivity implements Adap
         LayoutInflater inflater = LayoutInflater.from(this);
         View dialogContent = inflater.inflate(R.layout.dialog_see_tree, null);
 
+        ArrayList<Specialization> specializationList = SWFichesApplication.getApp().getSpecializationList();
+        ArrayList<String> spinnerList = new ArrayList<>();
+        for (Specialization s : specializationList)
+            spinnerList.add(s.getListName());
+
         Spinner spinner = (Spinner) dialogContent.findViewById(R.id.select_specialization_tree_spinner);
-        ArrayAdapter<Specialization> spinnerAdapter = new ArrayAdapter<Specialization>(this,
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_dropdown_item,
-                SWFichesApplication.getApp().getSpecializationList());
+                spinnerList);
         spinner.setAdapter(spinnerAdapter);
         spinner.setOnItemSelectedListener(this);
 
@@ -137,7 +143,7 @@ public abstract class SWFichesActivity extends AppCompatActivity implements Adap
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        filename = ((Specialization) parent.getItemAtPosition(position)).getName();
+        filename = (String) parent.getItemAtPosition(position);
         File externStorage = Environment.getExternalStorageDirectory();
 
         String format = externStorage.getAbsolutePath() + getString(R.string.path) + "%s.pdf";

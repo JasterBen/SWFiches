@@ -42,6 +42,8 @@ public class PlayerActivity extends SWFichesActivity implements CharacterListInt
         if (!SWFichesApplication.getApp().isTablet())
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
 
+        initToolbar();
+
         if (savedInstanceState == null)
         {
             Intent intent = getIntent();
@@ -49,8 +51,6 @@ public class PlayerActivity extends SWFichesActivity implements CharacterListInt
             campaign = intent.getParcelableExtra(CAMPAIGN);
             characterList = campaign.getCharacterList();
             characterListSize = characterList.size();
-
-            initToolbar();
 
             viewPager = (ViewPager) findViewById(R.id.player_view_pager);
             playerViewPagerAdapter = new PlayerViewPagerAdapter(getSupportFragmentManager(), this);

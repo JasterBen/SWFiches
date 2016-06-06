@@ -27,6 +27,8 @@ import com.example.hokan.swfiches.items.Specie;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by Ben on 18/04/2016.
@@ -519,6 +521,13 @@ public class PersoFragment extends SWFichesFragment implements View.OnClickListe
 
         }
         //endregion
+
+        Collections.sort(otherSpecializationList, new Comparator<Specialization>() {
+            @Override
+            public int compare(Specialization lhs, Specialization rhs) {
+                return lhs.getName().compareTo(rhs.getName());
+            }
+        });
 
         Spinner otherSpecializationSpinner = new Spinner(activity);
         otherSpecializationSpinner.setId(OTHER_SPECIALIZATION_SPINNER_ID);

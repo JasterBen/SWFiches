@@ -15,16 +15,13 @@ public class Specialization implements Parcelable, Serializable {
 
     @SerializedName("spe_name")
     protected String name;
+    @SerializedName("spe_list_name")
+    protected String listName;
     @SerializedName("specialization_skill")
     protected ArrayList<String> specializationrSkills;
 
 
     public Specialization() {
-    }
-
-    public Specialization(String name, ArrayList<String> specializationrSkills) {
-        this.name = name;
-        this.specializationrSkills = specializationrSkills;
     }
 
     public String getName() {
@@ -35,13 +32,14 @@ public class Specialization implements Parcelable, Serializable {
         this.name = name;
     }
 
+    public String getListName() {
+        return listName;
+    }
+
     public ArrayList<String> getSpecializationrSkills() {
         return specializationrSkills;
     }
 
-    public void setSpecializationrSkills(ArrayList<String> specializationrSkills) {
-        this.specializationrSkills = specializationrSkills;
-    }
 
     @Override
     public int describeContents() {
@@ -51,6 +49,7 @@ public class Specialization implements Parcelable, Serializable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
+        dest.writeString(listName);
         dest.writeStringList(specializationrSkills);
     }
 
@@ -67,6 +66,7 @@ public class Specialization implements Parcelable, Serializable {
 
     private Specialization(Parcel in) {
         name = in.readString();
+        listName = in.readString();
         specializationrSkills = new ArrayList<>(4);
         in.readStringList(specializationrSkills);
     }
