@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">SWFiches</string>
     <string name="path">/SWFiches/Specializations/en/</string>
+    <string name="url_path">https://swfiches.herokuapp.com/</string>
 
     <string name="species_json_name">species.json</string>
     <string name="skill_json_name">skill.json</string>

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Environment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,11 @@ import com.example.hokan.swfiches.SWFichesApplication;
 import com.example.hokan.swfiches.items.Specialization;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -30,8 +36,9 @@ import java.util.ArrayList;
  */
 public abstract class SWFichesActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    protected File file;
+    protected String filePath;
     protected String filename;
+    protected String folderPath;
 
 
     public void initToolbar()
@@ -100,7 +107,7 @@ public abstract class SWFichesActivity extends AppCompatActivity implements Adap
             if (info.getType() == ConnectivityManager.TYPE_WIFI)
             {
                 //TODO : launch asynctask
-                Toast.makeText(this, "launch asyntask", Toast.LENGTH_SHORT).show();
+                new DownloadFile().execute();
             }
             else {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -111,7 +118,7 @@ public abstract class SWFichesActivity extends AppCompatActivity implements Adap
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //TODO : launch asynctask
-                        Toast.makeText(getApplicationContext(), "launch asyntask", Toast.LENGTH_SHORT).show();
+                        new DownloadFile().execute();
                     }
                 });
 
@@ -127,6 +134,8 @@ public abstract class SWFichesActivity extends AppCompatActivity implements Adap
 
     public void openfile()
     {
+        File file = new File(filePath);
+
         if (file.exists())
         {
             Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -143,14 +152,70 @@ public abstract class SWFichesActivity extends AppCompatActivity implements Adap
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        filename = (String) parent.getItemAtPosition(position);
-        File externStorage = Environment.getExternalStorageDirectory();
+        filename = ((String) parent.getItemAtPosition(position)).replaceAll(" ", "-");
 
-        String format = externStorage.getAbsolutePath() + getString(R.string.path) + "%s.pdf";
-        file = new File(String.format(format, filename));
+        folderPath = Environment.getExternalStorageDirectory().getAbsolutePath()
+                + getString(R.string.path);
+        String format = folderPath + "%s.pdf";
+        filePath = String.format(format, filename);
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+    }
+
+
+    private class DownloadFile extends AsyncTask<Void, Void, Void>
+    {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            File folder = new File(folderPath);
+            if (!folder.exists())
+                folder.mkdirs();
+
+
+            //File pdfFile = new File(filePath);
+            File pdfFile = new File(folderPath, filename + ".pdf");
+            try {
+                pdfFile.createNewFile();
+
+                String format = getString(R.string.url_path) + "%s.pdf";
+                URL url = new URL(String.format(format, filename));
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.connect();
+
+                InputStream inputStream = connection.getInputStream();
+                FileOutputStream fileOutputStream = new FileOutputStream(pdfFile);
+
+                byte[] buffer = new byte[1024 * 1024];
+                int bufferLength = 0;
+                while ((bufferLength = inputStream.read()) >= 0)
+                    fileOutputStream.write(buffer, 0, bufferLength);
+
+                fileOutputStream.close();
+                inputStream.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            File file = new File(filePath);
+
+            if (file.exists())
+            {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setDataAndType(Uri.fromFile(file), "application/pdf");
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+            }
+        }
     }
 }
