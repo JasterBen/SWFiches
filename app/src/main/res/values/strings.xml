@@ -21,6 +21,7 @@
     <string name="campagne_default_title">Campaign %d</string>
     <string name="remove_campaign_dialog_title">Remove campaign</string>
     <string name="remove_campaign_dialog_message">Are you sure you want to remove this campaign ?</string>
+    <string name="existing_campaign_dialog_message">This campaign already exists, please enter another name.</string>
 
 
     <!-- Character List Fragment -->

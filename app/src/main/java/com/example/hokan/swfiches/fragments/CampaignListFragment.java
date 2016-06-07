@@ -68,7 +68,7 @@ public class CampaignListFragment extends Fragment implements View.OnClickListen
 
     private void createNewCampaign()
     {
-        Activity activity = getActivity();
+        final Activity activity = getActivity();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(R.string.add_campaign_dialog_title);
@@ -85,17 +85,35 @@ public class CampaignListFragment extends Fragment implements View.OnClickListen
         builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String name = !input.getText().toString().equals("") ?
-                        input.getText().toString() : title;
-
-
-                Campaign campaign = new Campaign(name);
-                campaignAdapter.addItem(campaign);
             }
         });
 
         builder.setNegativeButton(android.R.string.no, null);
-        builder.create().show();
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = !input.getText().toString().equals("") ?
+                        input.getText().toString() : title;
+
+                Campaign campaign = new Campaign(name);
+                if (((CampaignActivity) activity).getCampaignList().contains(campaign))
+                {
+                    AlertDialog.Builder b = new AlertDialog.Builder(activity);
+                    b.setMessage(R.string.existing_campaign_dialog_message);
+                    b.setPositiveButton(android.R.string.ok, null);
+                    b.create().show();
+                }
+                else
+                {
+                    campaignAdapter.addItem(campaign);
+                    dialog.dismiss();
+                }
+
+            }
+        });
     }
 
     @Override

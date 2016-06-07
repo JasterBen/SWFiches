@@ -23,12 +23,14 @@ import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.SWFichesApplication;
 import com.example.hokan.swfiches.items.Specialization;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.Normalizer;
 import java.util.ArrayList;
 
 /**
@@ -106,7 +108,6 @@ public abstract class SWFichesActivity extends AppCompatActivity implements Adap
         {
             if (info.getType() == ConnectivityManager.TYPE_WIFI)
             {
-                //TODO : launch asynctask
                 new DownloadFile().execute();
             }
             else {
@@ -117,7 +118,6 @@ public abstract class SWFichesActivity extends AppCompatActivity implements Adap
                 builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //TODO : launch asynctask
                         new DownloadFile().execute();
                     }
                 });
@@ -152,7 +152,12 @@ public abstract class SWFichesActivity extends AppCompatActivity implements Adap
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        filename = ((String) parent.getItemAtPosition(position)).replaceAll(" ", "-");
+        filename = ((String) parent.getItemAtPosition(position))
+                .replaceAll(" ", "_")
+                .replaceAll("’", "_");
+
+        filename = Normalizer.normalize(filename, Normalizer.Form.NFD);
+        filename = filename.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
 
         folderPath = Environment.getExternalStorageDirectory().getAbsolutePath()
                 + getString(R.string.path);
@@ -181,16 +186,15 @@ public abstract class SWFichesActivity extends AppCompatActivity implements Adap
                 pdfFile.createNewFile();
 
                 String format = getString(R.string.url_path) + "%s.pdf";
-                URL url = new URL(String.format(format, filename));
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.connect();
 
-                InputStream inputStream = connection.getInputStream();
+                URL url = new URL(String.format(format, filename));
+
+                BufferedInputStream inputStream = new BufferedInputStream(url.openStream());
                 FileOutputStream fileOutputStream = new FileOutputStream(pdfFile);
 
-                byte[] buffer = new byte[1024 * 1024];
+                byte[] buffer = new byte[1024];
                 int bufferLength = 0;
-                while ((bufferLength = inputStream.read()) >= 0)
+                while ((bufferLength = inputStream.read(buffer, 0, 1024)) > -1)
                     fileOutputStream.write(buffer, 0, bufferLength);
 
                 fileOutputStream.close();

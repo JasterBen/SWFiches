@@ -81,4 +81,10 @@ public class Campaign implements Parcelable, Serializable {
         in.readTypedList(characterList, SWCharacter.CREATOR);
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        Campaign c = (Campaign) o;
+        return this.name.equals(c.getName());
+    }
 }
