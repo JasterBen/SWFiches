@@ -90,4 +90,10 @@ public class Career implements Parcelable, Serializable {
         return name;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        Career c = (Career) o;
+        return this.getName().equals(c.getName());
+    }
 }

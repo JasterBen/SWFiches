@@ -59,6 +59,7 @@ public class PersoFragment extends SWFichesFragment implements View.OnClickListe
     protected Specialization previousSpecialization;
 
     protected Specie characterSpecie;
+    protected Career characterCareer;
     protected Specialization characterOtherSpecialization;
 
 
@@ -184,14 +185,14 @@ public class PersoFragment extends SWFichesFragment implements View.OnClickListe
         }
         else if (viewId == R.id.dialog_career_spinner)
         {
-            character.setCareer((Career) parent.getAdapter().getItem(position));
+            characterCareer = (Career) parent.getAdapter().getItem(position);
 
             boolean[] selectedCareerSkill = character.getSelectedCareerSkill();
             if (selectedCareerSkill == null ||
                     selectedCareerSkill.length == 0 ||
-                    (previousCareer != null && !previousCareer.equals(character.getCareer().getName())))
+                    (previousCareer != null && !previousCareer.equals(characterCareer.getName())))
             {
-                int size = character.getCareer().getCareerSkills().size();
+                int size = characterCareer.getCareerSkills().size();
                 character.setSelectedCareerSkill(new boolean[size]);
                 Arrays.fill(character.getSelectedCareerSkill(), Boolean.FALSE);
                 if (careerAdapter != null)
@@ -315,7 +316,7 @@ public class PersoFragment extends SWFichesFragment implements View.OnClickListe
         ArrayAdapter<Career> spinnerAdapter = new ArrayAdapter<>(activity,
                 android.R.layout.simple_spinner_dropdown_item, careerList);
         careerSpinner.setAdapter(spinnerAdapter);
-        int spinnerPosition = spinnerAdapter.getPosition(character.getCareer());
+        int spinnerPosition = spinnerAdapter.getPosition(characterCareer);
         careerSpinner.setSelection(spinnerPosition);
         careerSpinner.setOnItemSelectedListener(this);
 
@@ -341,6 +342,7 @@ public class PersoFragment extends SWFichesFragment implements View.OnClickListe
         dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                character.setCareer(characterCareer);
                 careerTextView.setText(formatString('c'));
                 addCareer.setText(character.getCareer().getName());
 
@@ -830,12 +832,12 @@ public class PersoFragment extends SWFichesFragment implements View.OnClickListe
 
     @Override
     public String getCareerSkill(int position) {
-        return character.getCareer().getCareerSkills().get(position);
+        return characterCareer.getCareerSkills().get(position);
     }
 
     @Override
     public int getCareerSkillCount() {
-        return character.getCareer() != null ? character.getCareer().getCareerSkills().size() : 0;
+        return characterCareer != null ? characterCareer.getCareerSkills().size() : 0;
     }
 
     @Override
