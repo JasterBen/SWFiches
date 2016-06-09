@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hokan.swfiches.R;
@@ -27,13 +26,13 @@ public class CampaignAdapter extends RecyclerView.Adapter<CampaignAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         protected View v;
-        protected ImageView campaignImage;
+        //protected ImageView campaignImage;
         protected TextView campaignTitle;
 
         public ViewHolder(View itemView) {
             super(itemView);
             v = itemView;
-            campaignImage = (ImageView) itemView.findViewById(R.id.campaign_cell_illustration);
+            //campaignImage = (ImageView) itemView.findViewById(R.id.campaign_cell_illustration);
             campaignTitle = (TextView) itemView.findViewById(R.id.campaign_cell_title);
         }
     }

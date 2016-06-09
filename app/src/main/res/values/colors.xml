@@ -7,7 +7,11 @@
     <color name="dice_green">#42B14B</color>
     <color name="dice_yellow">#FFEB00</color>
 
+    <color name="perso_cell_color">#ff0000</color>
+    <color name="campaign_cell_color">#ffff00</color>
+
     <color name="fragment_color">#80ffffff</color>
+    <color name="recycler_color">#00ffffff</color>
     <color name="toolbar_background">#000000</color>
     <color name="toolbar_text_color">#ffeb00</color>
 </resources>

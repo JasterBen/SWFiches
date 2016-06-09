@@ -4,7 +4,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hokan.swfiches.R;
@@ -32,13 +31,13 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         protected View v;
-        protected ImageView characterImage;
+        //protected ImageView characterImage;
         protected TextView characterName;
 
         public ViewHolder(View itemView) {
             super(itemView);
             v = itemView;
-            characterImage = (ImageView) itemView.findViewById(R.id.character_cell_illustration);
+            //characterImage = (ImageView) itemView.findViewById(R.id.character_cell_illustration);
             characterName = (TextView) itemView.findViewById(R.id.character_cell_name);
         }
 

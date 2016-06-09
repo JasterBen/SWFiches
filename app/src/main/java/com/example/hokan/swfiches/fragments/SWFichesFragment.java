@@ -5,9 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.activities.PlayerActivity;
@@ -56,10 +54,12 @@ public abstract class SWFichesFragment extends Fragment {
         PersoFragment persoFrag = new PersoFragment();
         SkillsFragment skillFrag = new SkillsFragment();
         StatsFragment statFrag = new StatsFragment();
+        WeaponFragment weaponFrag = new WeaponFragment();
 
         transaction.replace(R.id.stat_frag_container, statFrag);
         transaction.replace(R.id.perso_frag_container, persoFrag);
         transaction.replace(R.id.skill_frag_container, skillFrag);
+        transaction.replace(R.id.weapon_frag_container, weaponFrag);
         transaction.commit();
     }
 

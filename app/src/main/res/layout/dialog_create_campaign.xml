@@ -13,6 +13,7 @@
         android:id="@+id/dialog_create_campaign_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textCapWords"
         android:singleLine="true"/>
 
 </LinearLayout>
