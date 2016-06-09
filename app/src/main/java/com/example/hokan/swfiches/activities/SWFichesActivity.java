@@ -1,12 +1,16 @@
 package com.example.hokan.swfiches.activities;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -37,6 +41,8 @@ import java.util.ArrayList;
  * Created by Utilisateur on 04/06/2016.
  */
 public abstract class SWFichesActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+    private static final int WRITE_EXTERNAL_STORAGE_PERMISSION_CODE = 1;
 
     protected String filePath;
     protected String filename;
@@ -108,6 +114,7 @@ public abstract class SWFichesActivity extends AppCompatActivity implements Adap
         {
             if (info.getType() == ConnectivityManager.TYPE_WIFI)
             {
+                isWriteStoragePermissionGranted();
                 new DownloadFile().execute();
             }
             else {
@@ -118,6 +125,7 @@ public abstract class SWFichesActivity extends AppCompatActivity implements Adap
                 builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        isWriteStoragePermissionGranted();
                         new DownloadFile().execute();
                     }
                 });
@@ -138,10 +146,19 @@ public abstract class SWFichesActivity extends AppCompatActivity implements Adap
 
         if (file.exists())
         {
+            PackageManager packageManager = SWFichesApplication.getApp().getPackageManager();
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setDataAndType(Uri.fromFile(file), "application/pdf");
             intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-            startActivity(intent);
+            if (packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY).size() > 0) {
+                startActivity(intent);
+            } else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage(R.string.no_pdf_reader_installed);
+                builder.setPositiveButton(android.R.string.ok, null);
+                builder.create().show();
+            }
+
         }
         else
         {
@@ -169,6 +186,27 @@ public abstract class SWFichesActivity extends AppCompatActivity implements Adap
     public void onNothingSelected(AdapterView<?> parent) {
     }
 
+
+    public void isWriteStoragePermissionGranted() {
+
+        String writeExternalStoragePermission = Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
+        if (Build.VERSION.SDK_INT >= 23 &&
+                checkSelfPermission(writeExternalStoragePermission) != PackageManager.PERMISSION_GRANTED)
+            {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{writeExternalStoragePermission},
+                        WRITE_EXTERNAL_STORAGE_PERMISSION_CODE);
+            }
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            new DownloadFile().execute();
+    }
 
     private class DownloadFile extends AsyncTask<Void, Void, Void>
     {
@@ -215,10 +253,19 @@ public abstract class SWFichesActivity extends AppCompatActivity implements Adap
 
             if (file.exists())
             {
+                PackageManager packageManager = SWFichesApplication.getApp().getPackageManager();
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setDataAndType(Uri.fromFile(file), "application/pdf");
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                startActivity(intent);
+                if (packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY).size() > 0) {
+                    startActivity(intent);
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                    builder.setMessage(R.string.no_pdf_reader_installed);
+                    builder.setPositiveButton(android.R.string.ok, null);
+                    builder.create().show();
+                }
+
             }
         }
     }

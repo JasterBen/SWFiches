@@ -1,6 +1,7 @@
 package com.example.hokan.swfiches;
 
 import android.app.Application;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 
 import com.example.hokan.swfiches.items.Career;

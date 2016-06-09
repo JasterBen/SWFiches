@@ -7,9 +7,12 @@
     <string name="skill_json_name">skill.json</string>
     <string name="career_json_name">career.json</string>
 
+    <!-- Errors -->
     <string name="no_connection">No internet connection.</string>
     <string name="not_on_wifi_title">Not on wifi</string>
     <string name="not_on_wifi_message">You are not using wi-fi. Continue ?</string>
+    <string name="no_pdf_reader_installed">There is no PDF reader installed on your phone. Please, install one.</string>
+
 
     <string name="see_specialization_tree_title">See specialization tree</string>
     <string name="select_specialisation_tree">Select specialization tree</string>
