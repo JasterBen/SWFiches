@@ -5,7 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.activities.PlayerActivity;
@@ -26,7 +28,6 @@ public abstract class SWFichesFragment extends Fragment {
         ViewPagerPlayerFragment frag = (ViewPagerPlayerFragment) getParentFragment();
         character = frag.getCharacter();
     }
-
 
     public String getValueOrDefault(EditText editText, String defaultValue)
     {

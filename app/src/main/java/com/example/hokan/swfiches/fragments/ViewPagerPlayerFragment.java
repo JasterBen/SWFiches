@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.activities.PlayerActivity;
@@ -53,11 +54,11 @@ public class ViewPagerPlayerFragment extends Fragment {
             CharacteristicFragment characFrag = new CharacteristicFragment();
             StatsFragment statFrag = new StatsFragment();
             SkillsFragment skillsFrag = new SkillsFragment();
-            TreeFragment treeFrag = new TreeFragment();
+            //TreeFragment treeFrag = new TreeFragment();
             WeaponFragment weaponFrag = new WeaponFragment();
             ArmorFragment armorFrag = new ArmorFragment();
-            StuffFragment stuffFrag = new StuffFragment();
-            PsychoFragment psychoFrag = new PsychoFragment();
+            /*StuffFragment stuffFrag = new StuffFragment();
+            PsychoFragment psychoFrag = new PsychoFragment();*/
 
             transaction.replace(R.id.perso_frag_container, persoFrag);
             transaction.replace(R.id.charac_frag_container, characFrag);

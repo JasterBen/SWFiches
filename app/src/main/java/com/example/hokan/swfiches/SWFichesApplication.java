@@ -2,6 +2,7 @@ package com.example.hokan.swfiches;
 
 import android.app.Application;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 
 import com.example.hokan.swfiches.items.Career;
@@ -31,12 +32,14 @@ public class SWFichesApplication extends Application {
     private ArrayList<Career> careerList;
     private ArrayList<Skill> skillList;
     private ArrayList<Specialization> specializationList;
+    private Typeface font;
 
     @Override
     public void onCreate() {
         super.onCreate();
         app = this;
         tablet = getResources().getBoolean(R.bool.is_tablet);
+        font = Typeface.createFromAsset(getAssets(), "font/star_wars_font.ttf");
         initSkillList();
         initSpeciesList();
         initCareerList();
@@ -103,6 +106,10 @@ public class SWFichesApplication extends Application {
             }
         }.execute();
 
+    }
+
+    public Typeface getFont() {
+        return font;
     }
 
     public ArrayList<Specie> getSpeciesList() {

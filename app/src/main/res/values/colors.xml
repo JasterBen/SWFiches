@@ -6,4 +6,8 @@
 
     <color name="dice_green">#42B14B</color>
     <color name="dice_yellow">#FFEB00</color>
+
+    <color name="fragment_color">#80ffffff</color>
+    <color name="toolbar_background">#000000</color>
+    <color name="toolbar_text_color">#ffeb00</color>
 </resources>

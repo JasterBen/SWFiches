@@ -3,9 +3,9 @@
     <string name="app_name">SWFiches</string>
     <string name="path">/SWFiches/Specializations/fr/</string>
 
-    <string name="species_json_name">species_fr.json</string>
-    <string name="skill_json_name">skill_fr.json</string>
-    <string name="career_json_name">career_fr.json</string>
+    <string name="species_json_name">json_fr/species_fr.json</string>
+    <string name="skill_json_name">json_fr/skill_fr.json</string>
+    <string name="career_json_name">json_fr/career_fr.json</string>
 
     <string name="no_connection">Aucune connexion internet.</string>
     <string name="not_on_wifi_title">Connexion non wifi</string>

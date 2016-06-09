@@ -3,12 +3,15 @@ package com.example.hokan.swfiches.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 
 import com.example.hokan.swfiches.R;
 import com.example.hokan.swfiches.SWFichesApplication;
 import com.example.hokan.swfiches.adapters.PlayerViewPagerAdapter;
+import com.example.hokan.swfiches.fragments.ViewPagerPlayerFragment;
 import com.example.hokan.swfiches.interfaces.CharacterListInterface;
 import com.example.hokan.swfiches.items.Campaign;
 import com.example.hokan.swfiches.items.SWCharacter;
@@ -19,7 +22,7 @@ import java.util.ArrayList;
 /**
  * Created by Ben on 18/04/2016.
  */
-public class PlayerActivity extends SWFichesActivity implements CharacterListInterface {
+public class PlayerActivity extends SWFichesActivity implements CharacterListInterface, ViewPager.OnPageChangeListener {
     
     public static final String POSITION = "position";
     public static final String CHARACTERLIST = "characterlist";
@@ -56,6 +59,8 @@ public class PlayerActivity extends SWFichesActivity implements CharacterListInt
             playerViewPagerAdapter = new PlayerViewPagerAdapter(getSupportFragmentManager(), this);
             viewPager.setAdapter(playerViewPagerAdapter);
             viewPager.setCurrentItem(characterPosition);
+            viewPager.setOnPageChangeListener(this);
+            getSupportActionBar().setTitle(characterList.get(characterPosition).getName());
         }
     }
 
@@ -68,6 +73,7 @@ public class PlayerActivity extends SWFichesActivity implements CharacterListInt
 
         super.finish();
     }
+
 
     @Override
     public int getItemCount() {
@@ -83,5 +89,20 @@ public class PlayerActivity extends SWFichesActivity implements CharacterListInt
     protected void onStop() {
         InternalStorageService.saveCampaign(campaign);
         super.onStop();
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        getSupportActionBar().setTitle(characterList.get(position).getName());
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
     }
 }
