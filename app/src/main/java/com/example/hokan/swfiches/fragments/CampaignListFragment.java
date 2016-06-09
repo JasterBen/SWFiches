@@ -55,6 +55,13 @@ public class CampaignListFragment extends Fragment implements View.OnClickListen
         return v;
     }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        act.getSupportActionBar().setSubtitle("");
+    }
+
     @Override
     public void onClick(View v) {
 

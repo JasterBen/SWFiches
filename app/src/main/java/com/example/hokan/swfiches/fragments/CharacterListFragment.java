@@ -53,6 +53,7 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
         if (bundle != null)
         {
             campaign = bundle.getParcelable(CampaignActivity.CAMPAIGN);
+            activity.getSupportActionBar().setSubtitle(campaign.getName());
         }
     }
 
@@ -61,8 +62,8 @@ public class CharacterListFragment extends Fragment implements View.OnClickListe
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_character_list, container, false);
 
-        TextView title = (TextView) v.findViewById(R.id.character_list_campaign_name);
-        title.setText(campaign.getName());
+        /*TextView title = (TextView) v.findViewById(R.id.character_list_campaign_name);
+        title.setText(campaign.getName());*/
 
         Button addCharacter = (Button) v.findViewById(R.id.add_character_button);
         addCharacter.setOnClickListener(this);

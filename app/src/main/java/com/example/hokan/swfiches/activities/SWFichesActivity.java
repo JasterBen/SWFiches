@@ -63,6 +63,7 @@ public abstract class SWFichesActivity extends AppCompatActivity implements Adap
         Resources resources = getResources();
         toolbar.setBackgroundColor(resources.getColor(R.color.toolbar_background));
         toolbar.setTitleTextColor(resources.getColor(R.color.toolbar_text_color));
+        toolbar.setSubtitleTextColor(resources.getColor(R.color.toolbar_text_color));
 
         setSupportActionBar(toolbar);
     }
