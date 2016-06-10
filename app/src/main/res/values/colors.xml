@@ -14,4 +14,9 @@
     <color name="recycler_color">#00ffffff</color>
     <color name="toolbar_background">#000000</color>
     <color name="toolbar_text_color">#ffeb00</color>
+
+    <color name="alert_dialog_background">#000000</color>
+    <color name="alert_dialog_text_color">#ffff00</color>
+
+    <color name="dark_yellow">#ffaa00</color>
 </resources>

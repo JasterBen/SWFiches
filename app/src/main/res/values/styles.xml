@@ -7,7 +7,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
-        <item name="android:textColorSecondary">@color/toolbar_text_color</item>
+        <item name="android:textColorSecondary">@color/dark_yellow</item>
     </style>
+
 
 </resources>
