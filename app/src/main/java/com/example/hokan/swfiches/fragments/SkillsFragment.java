@@ -37,6 +37,7 @@ public class SkillsFragment extends SWFichesFragment implements View.OnClickList
     private View customSkillContainerLayout;
     private RecyclerView customSkillRecyclerView;
     private Button hideSkillButton;
+    private Button bottomHideSkillButton;
     private View skillContainer;
     private CustomSkillAdapter customSkillAdapter;
     private SkillAdapter skillAdapter;
@@ -66,6 +67,9 @@ public class SkillsFragment extends SWFichesFragment implements View.OnClickList
         hideSkillButton.setOnClickListener(this);
         hideSkillButton.setText(areSkillsVisible ? R.string.skill_frag_hide_skills_button_text
                 : R.string.skill_frag_show_skills_button_text);
+
+        bottomHideSkillButton = (Button) v.findViewById(R.id.skill_fragment_skill_layout_hide_skills_button);
+        bottomHideSkillButton.setOnClickListener(this);
 
         skillContainer = v.findViewById(R.id.skill_frag_skill_layout);
         skillContainer.setVisibility(areSkillsVisible ? View.VISIBLE : View.GONE);
@@ -130,6 +134,12 @@ public class SkillsFragment extends SWFichesFragment implements View.OnClickList
                 hideSkillButton.setText(R.string.skill_frag_show_skills_button_text);
                 ((ViewPagerPlayerFragment) getParentFragment()).setAreSkillsVisible(false);
             }
+        }
+        else if (id == R.id.skill_fragment_skill_layout_hide_skills_button)
+        {
+            skillContainer.setVisibility(View.GONE);
+            hideSkillButton.setText(R.string.skill_frag_show_skills_button_text);
+            ((ViewPagerPlayerFragment) getParentFragment()).setAreSkillsVisible(false);
         }
         else if (id == R.id.skill_fragment_hide_custom_skills_recycler_view)
         {
