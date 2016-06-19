@@ -3,9 +3,11 @@
     <string name="path">/SWFiches/Specializations/en/</string>
     <string name="url_path">https://swfiches.herokuapp.com/</string>
 
-    <string name="species_json_name">json/species.json</string>
+    <!--<string name="species_json_name">json/species.json</string>
+    <string name="career_json_name">json/career.json</string>-->
     <string name="skill_json_name">json/skill.json</string>
-    <string name="career_json_name">json/career.json</string>
+    <string name="species_json_name">json_fr/species_fr.json</string>
+    <string name="career_json_name">json_fr/career_fr.json</string>
 
     <!-- Errors -->
     <string name="no_connection">No internet connection.</string>
