@@ -58,7 +58,22 @@
 	"special": "1 rang en pugilat\n 1 rang en athlétisme ou coercition\n -1 dé d'infortune dans la nature"
 
   },
-
+  
+  {
+	"name" : "Anx",
+	"brawn" : "3",
+	"agility" : "1",
+	"intellect" : "2",
+	"cunning" : "2",
+	"willpower" : "2",
+	"presence" : "2",
+	"wound" : "13",
+	"strain" : "10",
+	"startingxp" : "85",
+	"can_have_force" : "true",
+	"special": "1 rang en Irrésistible (talent)\n1 rang en coup mortel (talent)\nSi la crête n'est pas couverte, les jets de tromperie sont améliorés une fois"
+  },
+  
   {
 	"name" : "Arcona",
 	"brawn" : "1",
@@ -73,7 +88,7 @@
 	"can_have_force" : "true",
 	"special": "1 rang en vigilance\n - 1 dé d'infortune chaleur\n +1 avantage charme et négociation"
   },
-
+  
   {
 	"name" : "Bardottan",
 	"brawn" : "2",
@@ -162,6 +177,21 @@
 	"special": "1 rang en mécanique\n -2 dés d'infortune aux jets de perception"
   },
 
+  {
+	"name" : "Chagrien",
+	"brawn" : "2",
+	"agility" : "1",
+	"intellect" : "2",
+	"cunning" : "2",
+	"willpower" : "3",
+	"presence" : "2",
+	"wound" : "11",
+	"strain" : "10",
+	"startingxp" : "90",
+	"can_have_force" : "true",
+	"special": "1 rang en résistance\n1 rang en Connaissance spécialisé (talent)\nPeut respirer sous l'eau"
+  },
+  
   {
 	"name" : "Chevin",
 	"brawn" : "3",
@@ -281,6 +311,37 @@
 	"can_have_force" : "true",
 	"special": "1 rang en pilotage (spatial)\n + 1 avantage à tous les tests d'astrogation"
   },
+  
+  {
+	"name" : "Elom",
+	"brawn" : "3",
+	"agility" : "2",
+	"intellect" : "2",
+	"cunning" : "2",
+	"willpower" : "2",
+	"presence" : "1",
+	"wound" : "10",
+	"strain" : "9",
+	"startingxp" : "100",
+	"can_have_force" : "true",
+	"special": "1 rang en résistance\nPeut utiliser une manoeuvre pour creuser avant son mouvement"
+  },
+  
+  {
+	"name" : "Elomin",
+	"brawn" : "2",
+	"agility" : "2",
+	"intellect" : "3",
+	"cunning" : "2",
+	"willpower" : "1",
+	"presence" : "2",
+	"wound" : "9",
+	"strain" : "10",
+	"startingxp" : "105",
+	"can_have_force" : "true",
+	"special": "1 rang en charme\n1 rang en éducation"
+  },
+  
   {
 	"name" : "Falleen",
 	"brawn" : "1",
@@ -439,6 +500,21 @@
   },
 
   {
+	"name" : "Ishi tib",
+	"brawn" : "2",
+	"agility" : "2",
+	"intellect" : "3",
+	"cunning" : "2",
+	"willpower" : "1",
+	"presence" : "2",
+	"wound" : "12",
+	"strain" : "10",
+	"startingxp" : "100",
+	"can_have_force" : "true",
+	"special": "1 rang en sang froid\n Peut respirer sous l'eau\nSubit 2 point de stress si n'est pas en contact avec de l'eau salée toutes les 24h"
+  },
+  
+  {
 	"name" : "Ithorien",
 	"brawn" : "2",
 	"agility" : "1",
@@ -480,6 +556,20 @@
 	"strain" : "10",
 	"startingxp" : "100",
 	"special": "1 rang en pugilat ou distance (léger ou lourd)\n 1 rang dans 1 compétence hors carrière"
+  },
+  
+  {
+	"name" : "Kyuzo",
+	"brawn" : "2",
+	"agility" : "3",
+	"intellect" : "2",
+	"cunning" : "2",
+	"willpower" : "2",
+	"presence" : "1",
+	"wound" : "11",
+	"strain" : "11",
+	"startingxp" : "90",
+	"special": "1 rang en coordination\nPeut dépenser 3 points de stress pour sauter horizontalement ou verticalement à portée moyenne au prix d'une manoeuvre"
   },
 
   {
@@ -687,6 +777,21 @@
 	"can_have_force" : "true",
 	"special": "1 rang en négociation\n Peut respirer sous l'eau\n Une fois par rencontre, peut subir 2 de stress pour ajouter 1 dé d'infortune (3 dans l'eau) au test de combat d'une cible à portée courte"
   },
+  
+  {
+	"name" : "Quermian",
+	"brawn" : "1",
+	"agility" : "2",
+	"intellect" : "3",
+	"cunning" : "2",
+	"willpower" : "2",
+	"presence" : "1",
+	"wound" : "10",
+	"strain" : "10",
+	"startingxp" : "85",
+	"can_have_force" : "true",
+	"special": "1 rang en perception\n4 bras (+1 manoeuvre gratuite par tour)"
+  },
 
   {
 	"name" : "Rodien",
@@ -747,6 +852,22 @@
 	"can_have_force" : "true",
 	"special": "Aucun malus dû à la pénombre\n Queue (pugilat, dégâts +1,critique 5, contact, désorientation 2, Renversement)"
   },
+  
+  {
+	"name" : "Shistavanen",
+	"brawn" : "2",
+	"agility" : "3",
+	"intellect" : "3",
+	"cunning" : "2",
+	"willpower" : "1",
+	"presence" : "1",
+	"wound" : "12",
+	"strain" : "10",
+	"startingxp" : "80",
+	"can_have_force" : "true",
+	"special": "1 rang en pugilat ou survie\nPeut réaliser des tests d'initiative avec survie"
+  },
+  
   {
 	"name" : "Sullustéen",
 	"brawn" : "2",
